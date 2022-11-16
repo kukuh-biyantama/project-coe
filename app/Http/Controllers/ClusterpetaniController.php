@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\clusterpetani;
 use GuzzleHttp\Client;
 
+//pasti kubisa menaklukkannya haa...
+
 class ClusterpetaniController extends Controller
 {
     public function index()
