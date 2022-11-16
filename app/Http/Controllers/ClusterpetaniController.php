@@ -22,6 +22,7 @@ class ClusterpetaniController extends Controller
         $api_url = "http://compute.dinus.ac.id:6001/predict";
         //konversi luas lahan (meter)
         //hallo bosss udah malam
+        //aku cinta oshiku
         $satuanLuas_lahan = $request->input('stnluasLahan');
         $dataLuas_lahan = $request->input('inptLuaslahan');
         $dataHasil = $dataLuas_lahan;
@@ -30,7 +31,7 @@ class ClusterpetaniController extends Controller
         } else {
             $dataHasil = $dataHasil;
         }
-        //konversi 
+        //konversi
         $res = $client->post($api_url, [
             'json' => [
                 "nama" => $request->input('nama'),
