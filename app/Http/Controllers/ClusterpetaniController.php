@@ -23,10 +23,11 @@ class ClusterpetaniController extends Controller
         $dataLuas_lahan = $request->input('inptLuaslahan');
         $dataHasil = $dataLuas_lahan;
         if ($satuanLuas_lahan == "Hektar") {
-            $konversiLuaslahan = $dataHasil * 10000;
+            $dataHasil = $dataHasil * 10000;
         } else {
-            $konversiLuaslahan = $dataHasil;
+            $dataHasil = $dataHasil;
         }
+        //konversi 
         $res = $client->post($api_url, [
             'json' => [
                 "nama" => $request->input('nama'),
@@ -38,7 +39,7 @@ class ClusterpetaniController extends Controller
                 "status kepemilikan lahan" => $request->only(["status_kpLahan"]),
                 "sumber modal" => $request->only(["smbrModal"]),
                 "tanam permusim" => $request->input("tnmPermusim"),
-                "luas lahan" => $request->input('inptLuaslahan'),
+                "luas lahan" => (string)$dataHasil,
                 "lama menjadi petani" => $request->input("lmmnjdPetani"),
                 "durasi tanam" => $request->input("drsTanam"),
                 "bibit" => $request->input("jmlBibit"),
@@ -66,7 +67,7 @@ class ClusterpetaniController extends Controller
             $data_body = "anda memenuhi";
         }
         // echo $data_body;
-        return view('/pages/clusterpetani/tampildatajson', ['data_body' => $data_body], ['konversiLuaslahan' => $konversiLuaslahan]);
+        return view('/pages/clusterpetani/tampildatajson', ['data_body' => $data_body], ['konversiLuaslahan' => $dataHasil]);
         // $result = json_encode($request->all());
         // return redirect()->route('tampildatajson')->with('success', $result);
     }
