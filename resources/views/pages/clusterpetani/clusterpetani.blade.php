@@ -138,20 +138,8 @@
         </div>
       </div>
       <div class="field-input">
-        <label class="col-form-label">Lama Menjadi Petani</label>
+        <label class="col-form-label">Lama Menjadi Petani (Tahun)</label>
         <p><input type="number" placeholder="Berapa Lama Menjadi Petani" name="lmmnjdPetani"></p>
-        <div class="form-radio">
-          <div class="up">
-            <input class="inputan" type="radio" name="blnlamaBertani" id="lamaBertani_bulan" value="Bulan">
-            <label>Bulan</label>
-          </div>
-        </div>
-        <div class="form-radio">
-          <div class="down">
-            <input class="inputan" type="radio" name="blnlamaBertani" id="lamaBertani_tahun" value="Tahun">
-            <label>Tahun</label>
-          </div>
-        </div>
       </div>
       <div class="field-input">
         <label class="col-form-label">Durasi Tanam</label>

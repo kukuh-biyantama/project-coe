@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\clusterpetani;
 use GuzzleHttp\Client;
+use PhpParser\Node\Expr\Cast\Double;
 
 //pasti kubisa menaklukkannya haa...
 
@@ -21,17 +22,47 @@ class ClusterpetaniController extends Controller
         $client = new Client();
         $api_url = "http://compute.dinus.ac.id:6001/predict";
         //konversi luas lahan (meter)
-        //hallo bosss udah malam
-        //aku cinta oshiku
         $satuanLuas_lahan = $request->input('stnluasLahan');
         $dataLuas_lahan = $request->input('inptLuaslahan');
-        $dataHasil = $dataLuas_lahan;
+        $dataHasilluaslahan = $dataLuas_lahan;
         if ($satuanLuas_lahan == "Hektar") {
-            $dataHasil = $dataHasil * 10000;
+            $dataHasilluaslahan = $dataHasilluaslahan * 10000;
         } else {
-            $dataHasil = $dataHasil;
+            $dataHasilluaslahan = $dataHasilluaslahan;
         }
-        //konversi
+        //konversi durasi tanam (hari)
+        $bulaN = $request->input('hridurasiTanam');
+        $dataDurasitanam = $request->input('drsTanam');
+        $dataHasildurasitanam = $dataDurasitanam;
+        if ($bulaN == "Bulan") {
+            $dataHasildurasitanam = $dataHasildurasitanam * 30;
+        } else {
+            $dataHasildurasitanam = $dataHasildurasitanam;
+        }
+        //konversi bibit ke kg
+        $jmlBibit = $request->input('jmlBibit');
+        $stnJmlbibit = $request->input('stnBibit');
+        $dataHasiljumlahbibit = $jmlBibit;
+        if ($stnJmlbibit == "Kwintal") {
+            $dataHasiljumlahbibit = $dataHasiljumlahbibit * 100;
+        }
+        if ($stnJmlbibit == "Ton") {
+            $dataHasiljumlahbibit = $dataHasiljumlahbibit * 1000;
+        } else {
+            $dataHasiljumlahbibit = $dataHasiljumlahbibit;
+        }
+        //konversi pupuk ke kg
+        $jmlPupuk = $request->input('jmlPupuk');
+        $stnJmlpupuk = $request->input('stnPupuk');
+        $dataHasiljumlahpupuk = $jmlPupuk;
+        if ($stnJmlbibit == "Kwintal") {
+            $dataHasiljumlahpupuk = $dataHasiljumlahpupuk * 100;
+        }
+        if ($stnJmlbibit == "Ton") {
+            $dataHasiljumlahpupuk = $dataHasiljumlahpupuk * 1000;
+        } else {
+            $dataHasiljumlahpupuk = $dataHasiljumlahpupuk;
+        }
         $res = $client->post($api_url, [
             'json' => [
                 "nama" => $request->input('nama'),
@@ -43,10 +74,10 @@ class ClusterpetaniController extends Controller
                 "status kepemilikan lahan" => $request->only(["status_kpLahan"]),
                 "sumber modal" => $request->only(["smbrModal"]),
                 "tanam permusim" => $request->input("tnmPermusim"),
-                "luas lahan" => (string)$dataHasil,
+                "luas lahan" => (string)$dataHasilluaslahan,
                 "lama menjadi petani" => $request->input("lmmnjdPetani"),
-                "durasi tanam" => $request->input("drsTanam"),
-                "bibit" => $request->input("jmlBibit"),
+                "durasi tanam" => (string)$dataHasildurasitanam,
+                "bibit" => (string)$dataHasiljumlahbibit,
                 "pupuk" => $request->input("jmlPupuk"),
                 "rata rata hasil panen" => $request->input("ratarataHasilpanen"),
                 "bulan tanam bawang" => $request->only(["blnTanambawang"]),
@@ -70,22 +101,9 @@ class ClusterpetaniController extends Controller
         } else {
             $data_body = "anda memenuhi";
         }
-        // echo $data_body;
-        return view('/pages/clusterpetani/tampildatajson', ['data_body' => $data_body], ['konversiLuaslahan' => $dataHasil]);
-        // $result = json_encode($request->all());
-        // return redirect()->route('tampildatajson')->with('success', $result);
+        return view('/pages/clusterpetani/tampildatajson', ['data_body' => $data_body]);
     }
 
-    // public function getData()
-    // {
-    //     $client = new Client();
-    //     $data = $client->get('http://compute.dinus.ac.id:6001/predict');
-    //     $data_body = $data->getBody();
-
-    //     $api = $data_body;
-
-    //     echo $api;
-    // }
     public function tampildatajson()
     {
         return view('/pages/clusterpetani/tampildatajson');
