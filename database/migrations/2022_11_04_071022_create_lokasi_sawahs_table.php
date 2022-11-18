@@ -14,11 +14,12 @@ return new class extends Migration
     public function up()
     {
         Schema::create('lokasi_sawahs', function (Blueprint $table) {
-            $table->id('lokasi_id');
-            $table->float('lokasi_latitude');
-            $table->float('lokasi_longitude');
+            $table->id();
+            $table->float('lokasi_latitude')->nullable();
+            $table->float('lokasi_longitude')->nullable();
             $table->string('kabupaten');
             $table->string('lokasi_keterangan');
+            $table->integer('id_iot');
             $table->timestamps();
         });
     }
