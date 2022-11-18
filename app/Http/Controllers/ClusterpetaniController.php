@@ -55,13 +55,25 @@ class ClusterpetaniController extends Controller
         $jmlPupuk = $request->input('jmlPupuk');
         $stnJmlpupuk = $request->input('stnPupuk');
         $dataHasiljumlahpupuk = $jmlPupuk;
-        if ($stnJmlbibit == "Kwintal") {
+        if ($stnJmlpupuk == "Kwintal") {
             $dataHasiljumlahpupuk = $dataHasiljumlahpupuk * 100;
         }
-        if ($stnJmlbibit == "Ton") {
+        if ($stnJmlpupuk == "Ton") {
             $dataHasiljumlahpupuk = $dataHasiljumlahpupuk * 1000;
         } else {
             $dataHasiljumlahpupuk = $dataHasiljumlahpupuk;
+        }
+        //konversi hasil panen ke kg
+        $ratarataPanen = $request->input('ratarataHasilpanen');
+        $stnHasilpanen = $request->input('stnratarataPanen');
+        $dataHasilrataratapanen = $ratarataPanen;
+        if ($stnHasilpanen == "Kwintal") {
+            $dataHasilrataratapanen = $dataHasilrataratapanen * 100;
+        }
+        if ($stnHasilpanen == "Ton") {
+            $dataHasilrataratapanen = $dataHasilrataratapanen * 1000;
+        } else {
+            $dataHasilrataratapanen = $dataHasilrataratapanen;
         }
         $res = $client->post($api_url, [
             'json' => [
@@ -78,8 +90,8 @@ class ClusterpetaniController extends Controller
                 "lama menjadi petani" => $request->input("lmmnjdPetani"),
                 "durasi tanam" => (string)$dataHasildurasitanam,
                 "bibit" => (string)$dataHasiljumlahbibit,
-                "pupuk" => $request->input("jmlPupuk"),
-                "rata rata hasil panen" => $request->input("ratarataHasilpanen"),
+                "pupuk" => (string)$dataHasiljumlahpupuk,
+                "rata rata hasil panen" => (string)$dataHasilrataratapanen,
                 "bulan tanam bawang" => $request->only(["blnTanambawang"]),
                 "varietas bawang merah" => $request->only(["vrtsBawang"]),
                 "jenis pupuk" => $request->only(["jnsPupuk"]),
@@ -92,7 +104,6 @@ class ClusterpetaniController extends Controller
                 "sumber pengairan" => $request->only(["smbrPengairan"]),
                 "setelah panen" => $request->only(["stlhPanen"]),
                 "tempat menjual hasil panen" => $request->only(["tmptmenjualPanen"])
-                #sesuai input
             ]
         ]);
         $data_body = $res->getBody();
