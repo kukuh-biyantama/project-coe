@@ -4,8 +4,8 @@
     @include('layouts.headers.cards')
 
     <div class="container-fluid mt--7">
-        <div class="row">
-            <div class="col-xl-4 mb-4 mb-xl-0">
+        {{-- <div class="row">
+            {{-- <div class="col-xl-4 mb-4 mb-xl-0">
                 <div class="card bg-gradient-default shadow">
                     <div class="card-header bg-transparent">
                         <div class="row align-items-center">
@@ -139,8 +139,8 @@
                         </table>
                     </div>
                 </div>
-            </div>
-            <div class="col-xl-4 col-lg-6">
+            </div> --}}
+            {{-- <div class="col-xl-4 col-lg-6">
                 <div class="card card-stats bg-primary mb-4 mb-xl-0 btn btn-secondary">
                     <div class="card-body">
                         <div class="row align-items-center">
@@ -254,7 +254,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
 
         @include('layouts.footers.auth')
     </div>

@@ -35,8 +35,60 @@
                   >
                   </a>
                 </div>
+                {{-- <div class="container">
+                    <div class="row">
+                      <div class="col-4">.col-4<br>Since 9 + 4 = 13 &gt; 12, this 4-column-wide div gets wrapped onto a new line as one contiguous unit.</div>
+                      <div class="col-6">.col-6<br>Subsequent columns continue along the new line.</div>
+                    </div>
+                </div> --}}
+                {{-- <div class="col-xl-4 col-lg-6 pt-2">
+                    <div class="card card-stats bg-white mb-4 mb-xl-0 btn btn-secondary">
+                        <div class="card-body pb-2">
+                            <div class="row align-items-center">
+                                <div class="col">
+                                    <h3 class="mb-0 text-black text-center">Sensor IoT</h3>
+                                </div>
+                            </div>
+                            <div class="row pt-4">
+                                <div class="col">
+                                    <h3 class="mb-0 text-black text-center">Suhu</h3>
+                                    <h2 class="card-title text-uppercase text-black mb-0 wrap-text">39
+                                        <span>&#8451;</span>
+                                    </h2>
+                                </div>
+                                <div class="col">
+                                    <h3 class="mb-0 text-black text-center">Kelembapan</h3>
+                                    <h2 class="card-title text-uppercase text-black mb-0 wrap-text">109%</h2>
+                                </div>
+                                <div class="col">
+                                    <h3 class="mb-0 text-black text-center">Ph Tanah</h3>
+                                    <h2 class="card-title text-uppercase text-black mb-0 wrap-text">9
+                                        <span>&#13271;</span>
+                                    </h2>
+                                </div>
+                              </div>
+                            </div>
+                        </div>
+                        <div class="card card-stats mb-4 mb-xl-0 btn btn-secondary">
+                            <a href="/datassensorsawah">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col">
+                                            <h2 class="card-title text-uppercase text-muted mb-0">IoT</h2>
+                                        </div>
+                                        <div class="col">
+                                            <div class="icon icon-shape bg-info text-white rounded-circle shadow">
+                                                <i class="fas fa-thermometer-three-quarters"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div> --}}
             <div class="row pt-2">
-                <div class="col-xl-3 col-lg-6">
+                <div class="container-xl-4 col-lg-4">
                     <div class="card card-stats mb-4 mb-xl-0 btn btn-secondary" >
                         <a href="/formlokasisawah/">
                             <div class="card-body">
@@ -45,7 +97,7 @@
                                         <h2 class="card-title text-uppercase text-muted mb-0">Lokasi</h2>
                                     </div>
                                     <div class="col">
-                                        <div class="icon icon-shape bg-info text-white rounded-circle shadow">
+                                        <div class="icon icon-shape bg-info text-black rounded-circle shadow">
                                             <i class="ni ni-square-pin"></i>
                                         </div>
                                     </div>
@@ -54,13 +106,76 @@
                         </a>
                     </div>
                 </div>
-                <div class="col-xl-3 col-lg-6">
+                <div class="container-xl-8 col-lg-8">
+                    <div class="card card-stats mb-2 mb-xl-0 btn btn-secondary">
+                        {{-- <a href="/formpenanamanbawang/"> --}}
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col">
+                                        <h2 class="card-title text-uppercase text-muted mb-3">Lokasi Pak Farhan</h2>
+                                    </div>
+                                    {{-- <div class="col">
+                                        <div class="icon icon-shape bg-info text-white rounded-circle shadow">
+                                            <i class="fa fa-location-arrow"></i>
+                                        </div>
+                                    </div> --}}
+                                </div>
+                            </div>
+                        {{-- </a> --}}
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-6 pt-2">
+                    <div class="card card-stats bg-white mb-4 mb-xl-0 btn btn-secondary">
+                        <div class="card-body">
+                            <div class="row align-items-center">
+                                <div class="col">
+                                    <h3 class="mb-0 text-black text-center">Perkiraan Cuaca</h3>
+                                </div>
+                            </div>
+                            <div class="row pt-4">
+                                <div class="col">
+                                    <h3 class="mb-0 text-black text-center">Suhu</h3>
+                                    <h2 class="card-title text-uppercase text-black mb-0 wrap-text">39
+                                        <span>&#8451;</span>
+                                    </h2>
+                                </div>
+                                <div class="col">
+                                    <h3 class="mb-0 text-black text-center">Kelembapan</h3>
+                                    <h2 class="card-title text-uppercase text-black mb-0 wrap-text">109%</h2>
+                                </div>
+                                <div class="col">
+                                    <h3 class="mb-0 text-black text-center">Ph Tanah</h3>
+                                    <h2 class="card-title text-uppercase text-black mb-0 wrap-text">9
+                                        <span>&#13271;</span>
+                                    </h2>
+                                </div>
+                            </div>
+                            <div class="card card-stats mb-4 mb-xl-0 btn btn-secondary">
+                                <a href="/datassensorsawah">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col">
+                                                <h2 class="card-title text-uppercase text-muted mb-0">IoT</h2>
+                                            </div>
+                                            <div class="col">
+                                                <div class="icon icon-shape bg-info text-white rounded-circle shadow">
+                                                    <i class="fas fa-thermometer-three-quarters"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container-xl-4 col-lg-4 pt-2">
                     <div class="card card-stats mb-4 mb-xl-0 btn btn-secondary">
                         <a href="/formpenanamanbawang/">
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col">
-                                        <h2 class="card-title text-uppercase text-muted mb-0">Tanam</h2>
+                                        <h2 class="card-title text-uppercase text-muted mb-4">Penanaman Bibit Bawang</h2>
                                     </div>
                                     <div class="col">
                                         <div class="icon icon-shape bg-info text-white rounded-circle shadow">
@@ -71,26 +186,137 @@
                             </div>
                         </a>
                     </div>
-                </div>
-                <div class="col-xl-3 col-lg-6">
-                    <div class="card card-stats mb-4 mb-xl-0 btn btn-secondary">
-                        <a href="/datapestisida/">
+                    <div class="container-xl-4 row-lg-4 pt-3">
+                        <div class="card card-stats bg-white mb-4 mb-xl-0 btn btn-secondary">
                             <div class="card-body">
+                                <div class="row align-items-center">
+                                    <div class="col">
+                                        <h3 class="mb-0 text-black text-center">Kapan Pestisida</h3>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="icon icon-shape text-black rounded-circle shadow">
+                                        <i class="fas fa-calendar" style="width 100px, height 100px" ></i>
+                                    </div>
+                                </div>
                                 <div class="row">
                                     <div class="col">
-                                        <h2 class="card-title text-uppercase text-muted mb-0">Pestisida</h2>
+                                        <h2 class="card-title text-uppercase text-black mb-0 wrap-text">14 November 2022</h2>
                                     </div>
+                                </div>
+                                <div class="card card-stats mb-4 mb-xl-0 btn btn-info text-balck pt-2">
+                                    <a href="/datapestisida/">
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <h2 class="card-title text-uppercase text-muted mb-2">Laporan Pestisida</h2>
+                                                </div>
+                                                {{-- <div class="col">
+                                                    <div class="icon icon-shape bg-info text-white rounded-circle shadow">
+                                                        <i class="ni ni-atom"></i>
+                                                    </div>
+                                                </div> --}}
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container-xl-4 row-lg-4 pt-3">
+                        <div class="card card-stats bg-white mb-4 mb-xl-0 btn btn-secondary">
+                            <div class="card-body">
+                                <div class="row align-items-center">
                                     <div class="col">
-                                        <div class="icon icon-shape bg-info text-white rounded-circle shadow">
-                                            <i class="ni ni-atom"></i>
+                                        <h3 class="mb-0 text-black text-center">Kapan Pupuk</h3>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="icon icon-shape text-black rounded-circle shadow">
+                                        <i class="fas fa-calendar" style="width 100px, height 100px" ></i>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <h2 class="card-title text-uppercase text-black mb-0 wrap-text">14 November 2022</h2>
+                                    </div>
+                                </div>
+                                <div class="card card-stats mb-4 mb-xl-0 btn btn-info text-balck pt-2">
+                                    <a href="/datapupuk/">
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <h2 class="card-title text-uppercase text-muted mb-0">Laporan Pupuk</h2>
+                                                </div>
+                                                {{-- <div class="col">
+                                                    <div class="icon icon-shape bg-info text-white rounded-circle shadow">
+                                                        <i class="fas fa-tree"></i>
+                                                    </div>
+                                                </div> --}}
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container-xl-4 col-lg-4 pt-2">
+                    <div class="card card-stats bg-white mb-4 mb-xl-0 btn btn-secondary">
+                        <div class="card-body">
+                            <div class="row align-items-center">
+                                <div class="col">
+                                    <h2 class="mb-0 text-black text-center">Anda Berada Di Cluster 1</h2>
+                                </div>
+                            </div>
+                            {{-- <div class="col">
+                                <div class="icon icon-shape text-black rounded-circle shadow">
+                                    <i class="fas fa-calendar" style="width 100px, height 100px" ></i>
+                                </div>
+                            </div> --}}
+                            {{-- <div class="row">
+                                <div class="col">
+                                    <h2 class="card-title text-uppercase text-black mb-0 wrap-text">14 November 2022</h2>
+                                </div>
+                            </div> --}}
+                            <div class="card card-stats mb-0 mb-xl-0 btn btn-secondary">
+                                <a href="/summarycluster/">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col">
+                                                <h2 class="card-title text-uppercase text-muted mb-0">Lihat Cluster</h2>
+                                            </div>
+                                            {{-- <div class="col">
+                                                <div class="icon icon-shape bg-info text-white rounded-circle shadow">
+                                                    <i class="fas fa-snowflake"></i>
+                                                </div>
+                                            </div> --}}
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container-xl-4 row-lg-4 pt-2">
+                        <div class="card card-stats mb-4 mb-xl-0 btn btn-secondary">
+                            <a href="/clusterpetani/">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col">
+                                            <h2 class="card-title text-uppercase text-muted mb-0">Cluster Petani</h2>
+                                        </div>
+                                        <div class="col">
+                                            <div class="icon icon-shape bg-info text-white rounded-circle shadow">
+                                                <i class="fas fa-snowflake"></i>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </a>
+                            </a>
+                        </div>
                     </div>
                 </div>
-                <div class="col-xl-3 col-lg-6">
+                {{-- <div class="col-xl-3 col-lg-6">
                     <div class="card card-stats mb-4 mb-xl-0 btn btn-secondary">
                         <a href="/datapupuk/">
                             <div class="card-body">
@@ -108,17 +334,17 @@
                         </a>
                     </div>
                 </div>
-                <div class="col-xl-3 col-lg-6 pt-2">
+                <div class="col-xl-4 row-lg-6 pt-2 ml-10">
                     <div class="card card-stats mb-4 mb-xl-0 btn btn-secondary">
-                        <a href="/datassensorsawah">
+                        <a href="/datapestisida/">
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col">
-                                        <h2 class="card-title text-uppercase text-muted mb-0">IoT</h2>
+                                        <h2 class="card-title text-uppercase text-muted mb-0">Pestisida</h2>
                                     </div>
                                     <div class="col">
                                         <div class="icon icon-shape bg-info text-white rounded-circle shadow">
-                                            <i class="fas fa-thermometer-three-quarters"></i>
+                                            <i class="ni ni-atom"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -143,8 +369,8 @@
                             </div>
                         </a>
                     </div>
-                </div>
-                <div class="col-xl-3 col-lg-6 pt-2">
+                </div> --}}
+                {{-- <div class="col-xl-3 col-lg-6 pt-2">
                     <div class="card card-stats mb-4 mb-xl-0 btn btn-secondary">
                         <a href="/datahama/">
                             <div class="card-body">
@@ -182,24 +408,6 @@
                 </div>
                 <div class="col-xl-3 col-lg-6 pt-2">
                     <div class="card card-stats mb-4 mb-xl-0 btn btn-secondary">
-                        <a href="/clusterpetani/">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col">
-                                        <h2 class="card-title text-uppercase text-muted mb-0">Cluster Petani</h2>
-                                    </div>
-                                    <div class="col">
-                                        <div class="icon icon-shape bg-info text-white rounded-circle shadow">
-                                            <i class="fas fa-snowflake"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-6 pt-2">
-                    <div class="card card-stats mb-4 mb-xl-0 btn btn-secondary">
                         <a href="/summarycluster/">
                             <div class="card-body">
                                 <div class="row">
@@ -215,7 +423,7 @@
                             </div>
                         </a>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>
