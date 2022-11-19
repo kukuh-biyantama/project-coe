@@ -21,10 +21,9 @@
                 <div class="col-8">
                     <div class="card">
                         <div class="card-body">
-                            <form action="" method="POST" enctype="multipart/form-data">
-                                <!-- @csrf -->
+                            <form id="lokasiForm" action="/lokasisawahjson" method="POST">
+                                @csrf
                                 <a href="/home" type="button" class="btn btn-primary">Kembali</a>
-
                                 <!-- Latitude -->
                                 <div class="mb-3 pt-2">
                                     <label for="lokasiLatitude" class="form-label">Latitude</label>
@@ -38,15 +37,15 @@
                                 <!-- Kabupaten -->
                                 <div class="mb-3">
                                     <label for="" class="form-label">Kabupaten</label>
-                                    <select class="form-select" name="lokasi_kabupaten" aria-label="Default select example">
+                                    <select class="form-select" name="kabupaten" aria-label="Default select example">
                                         <option selected disabled>Pilih</option>
-                                        <option value="1">Boyolali</option>
-                                        <option value="2">Brebes</option>
-                                        <option value="3">Demak</option>
-                                        <option value="4">Kendal</option>
-                                        <option value="5">Temanggung</option>
-                                        <option value="6">Kudus</option>
-                                        <option value="7">Pati</option>
+                                        <option value="Boyolali">Boyolali</option>
+                                        <option value="Brebes">Brebes</option>
+                                        <option value="Demak">Demak</option>
+                                        <option value="Kendal">Kendal</option>
+                                        <option value="Temanggung">Temanggung</option>
+                                        <option value="Kudus">Kudus</option>
+                                        <option value="Pati">Pati</option>
                                     </select>
                                 </div>
                                 <!-- Keterangan -->
@@ -54,12 +53,18 @@
                                     <label for="lokasiKeterangan" class="form-label">Keterangan</label>
                                     <textarea name="lokasi_keterangan" style="height: 100px" class="form-control" id="lokasiKeterangan" aria-describedby="lokasiKeterangan"></textarea>
                                 </div>
+                                <!-- ID IoT -->
+                                <div class="mb-3 pt-2">
+                                    <label for="id_iot" class="form-label">ID IoT</label>
+                                    <input type="number" name="id_iot" class="form-control" id="id_iot" aria-describedby="id_iot">
+                                </div>
                                 <!-- Button Submit dan Cancel -->
                                 <div class="mb-4 mt-5 text-center">
                                     <button type="submit" class="btn btn-primary me-4">Submit</button>
                                     <button type="reset" class="btn btn-danger ">Cancel</button>
                                 </div>
                             </form>
+                            <script src="/assets/js/scriptlokasisawah.js"></script>
                         </div>
                     </div>
                 </div>
