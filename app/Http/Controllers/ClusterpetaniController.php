@@ -6,19 +6,18 @@ use Illuminate\Http\Request;
 use App\Models\clusterpetani;
 use GuzzleHttp\Client;
 use PhpParser\Node\Expr\Cast\Double;
-
-//pasti kubisa menaklukkannya haa...
+use Auth;
 
 class ClusterpetaniController extends Controller
 {
     public function index()
     {
-        // $halo = "hello world";
         return view('/pages/clusterpetani/clusterpetani');
     }
 
     public function clusterpetanijson(Request $request)
     {
+        $currentuserid = Auth::user()->id;
         $client = new Client();
         $api_url = "http://compute.dinus.ac.id:6001/predict";
         //konversi luas lahan (meter)
@@ -77,6 +76,7 @@ class ClusterpetaniController extends Controller
         }
         $res = $client->post($api_url, [
             'json' => [
+                "id" => $currentuserid,
                 "nama" => $request->input('nama'),
                 "usia" => $request->input('usia'),
                 "jenis kelamin" => $request->input('jenisKelamin'),
