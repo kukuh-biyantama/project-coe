@@ -27,7 +27,7 @@ class LokasiSawahController extends Controller
 
         // $client = new Client();
         // $api_url = "http://compute.dinus.ac.id:900/api/tambah/datalokasi";
-        $post = Http::post('http://compute.dinus.ac.id:900/api/tambah/datalokasi', [
+        $post = Http::post('compute.dinus.ac.id:900/api/post/location/', [
             'id' => $currentuserid,
             'lokasi_latitude' => (string)$lokasi_latitude,
             'lokasi_longitude' => (string)$lokasi_longitude,
