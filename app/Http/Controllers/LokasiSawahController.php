@@ -6,6 +6,7 @@ use GuzzleHttp\Client;
 use App\Models\lokasi_sawah;
 use Illuminate\Http\Request;
 use PhpParser\Node\Expr\Cast\Double;
+use Illuminate\Support\Facades\Http;
 
 class LokasiSawahController extends Controller
 {
@@ -21,17 +22,16 @@ class LokasiSawahController extends Controller
         $lokasi_keterangan = $request->input('lokasi_keterangan');
         $id_iot = $request->input('id_iot');
         
-        $client = new Client();
-        $api_url = "http://compute.dinus.ac.id:900/api/tambah/datalokasi";
-        // $post = Http::post('http://compute.dinus.ac.id:900/api/tambah/datalokasi', [
-        $res = $client->post($api_url. [
-            'json' => [    
+        // $client = new Client();
+        // $api_url = "http://compute.dinus.ac.id:900/api/tambah/datalokasi";
+        $post = Http::post('http://compute.dinus.ac.id:900/api/tambah/datalokasi', [
+        // $res = $client->post($api_url. [
+        //     'json' =>     
             'lokasi_latitude' => (string)$lokasi_latitude,
                 'lokasi_longitude' => (string)$lokasi_longitude,
                 'kabupaten' => (string)$kabupaten,
                 'lokasi_keterangan' => (string)$lokasi_keterangan,
                 'id_iot' => (int)$id_iot
-            ]
         ]);
             
             // $tanggal = $date->format('Y-m-d H:i:s');
