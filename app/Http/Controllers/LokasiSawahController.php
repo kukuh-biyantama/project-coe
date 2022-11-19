@@ -7,6 +7,7 @@ use App\Models\lokasi_sawah;
 use Illuminate\Http\Request;
 use PhpParser\Node\Expr\Cast\Double;
 use Illuminate\Support\Facades\Http;
+use auth;
 
 class LokasiSawahController extends Controller
 {
@@ -17,6 +18,7 @@ class LokasiSawahController extends Controller
 
     public function tambahlokasi(request $request)
     {
+        $currentuserid = Auth::user()->id;
         $lokasi_latitude = $request->input('lokasi_latitude');
         $lokasi_longitude = $request->input('lokasi_longitude');
         $kabupaten = $request->input('kabupaten');
@@ -26,8 +28,7 @@ class LokasiSawahController extends Controller
         // $client = new Client();
         // $api_url = "http://compute.dinus.ac.id:900/api/tambah/datalokasi";
         $post = Http::post('http://compute.dinus.ac.id:900/api/tambah/datalokasi', [
-            // $res = $client->post($api_url. [
-            //     'json' =>     
+            'id' => $currentuserid,
             'lokasi_latitude' => (string)$lokasi_latitude,
             'lokasi_longitude' => (string)$lokasi_longitude,
             'kabupaten' => (string)$kabupaten,
