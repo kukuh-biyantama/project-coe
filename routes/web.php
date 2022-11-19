@@ -57,8 +57,8 @@ Route::group(['middleware' => 'auth'], function () {
 
 // Form Lokasi Sawah
 Route::get('/formlokasisawah', [LokasiSawahController::class, 'index'])->name('formlokasisawah');
-Route::post('/lokasisawahjson', [LokasiSawahController::class, 'lokasisawahjson'])->name(' lokasisawahjson');
-Route::get('/getDataLokasiSawah', [LokasiSawahController::class, 'getDataLokasiSawah'])->name('getDataLokasiSawah');
+Route::post('/lokasisawahjson', [LokasiSawahController::class, 'tambahlokasi'])->name(' tambahlokasi');
+// Route::get('/getDataLokasiSawah', [LokasiSawahController::class, 'getDataLokasiSawah'])->name('getDataLokasiSawah');
 
 // Form Penanaman Bawang
 Route::get('/formpenanamanbawang', [PenanamanBawangController::class, 'index'])->name('formpenanamanbawang');
