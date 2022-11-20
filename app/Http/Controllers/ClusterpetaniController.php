@@ -149,7 +149,7 @@ class ClusterpetaniController extends Controller
         } else {
             $hasilJnshama = '';
         }
-        // array list jenis penyakit
+        // array list jenis penyakit bawang
         if (!empty($request->input('jnsPenyakit'))) {
             $arrJnspenyakit = $request->input('jnsPenyakit');
             $hasilJnspenyakit = join(',', $arrJnspenyakit);
