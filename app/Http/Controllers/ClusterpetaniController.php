@@ -217,12 +217,15 @@ class ClusterpetaniController extends Controller
             ]
         ]);
         $data_body = $res->getBody();
-        if ($data_body == [0]) {
-            $data_body = "anda tidak memenuhi";
+        $obj = json_decode($data_body);
+        if ($obj->Cluster == [0]) {
+            $datacluster = "anda tidak memenuhi";
+        } elseif ($obj->Cluster == [1]) {
+            $datacluster = "anda memenuhi";
         } else {
-            $data_body = "anda memenuhi";
+            $datacluster = "tidak valid";
         }
-        return view('/pages/clusterpetani/tampildatajson', ['data_body' => $data_body]);
+        return view('/pages/clusterpetani/tampildatajson', ['datacluster' => $datacluster]);
     }
 
     public function tampildatajson()
