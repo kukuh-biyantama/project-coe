@@ -15,6 +15,8 @@ class reportiotclient extends Controller
     // $url = 'http://compute.dinus.ac.id:900/api/get/reportiotssawah/3';
     $response = Http::get($url);
     $data = json_decode($response, true);
-    return view('pages/ssensorsawah/datassensorsawah', compact('data'));
+    $sswahpage = view('pages/ssensorsawah/datassensorsawah', compact('data'));
+    // $sswahhome = view('layouts/headers/cards', compact('data'));
+    return $sswahpage; 
     }
 }
