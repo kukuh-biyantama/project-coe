@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 use App\Models\clusterpetani;
 use GuzzleHttp\Client;
 use PhpParser\Node\Expr\Cast\Double;
-use Auth;
+use Illuminate\Support\Facades\Auth;
+use phpDocumentor\Reflection\Types\Null_;
+use PhpOption\None;
 
 class ClusterpetaniController extends Controller
 {
@@ -19,7 +21,7 @@ class ClusterpetaniController extends Controller
     {
         $currentuserid = Auth::user()->id;
         $client = new Client();
-        $api_url = "http://compute.dinus.ac.id:6001/predict";
+        $api_url = "http://127.0.0.1:5000/predict";
         //konversi luas lahan (meter)
         $satuanLuas_lahan = $request->input('stnluasLahan');
         $dataLuas_lahan = $request->input('inptLuaslahan');
@@ -74,6 +76,114 @@ class ClusterpetaniController extends Controller
         } else {
             $dataHasilrataratapanen = $dataHasilrataratapanen;
         }
+
+        // array list status kepemilikan lahan
+        if (!empty($request->input('status_kpLahan'))) {
+            $arrStatuskplahan = $request->input('status_kpLahan');
+            $hasilStatuskplahan = join(',', $arrStatuskplahan);
+        } else {
+            $hasilStatuskplahan = '';
+        }
+
+
+        // array list sumber modal
+        if (!empty($request->input('smbrModal'))) {
+            $arrSmbrmodal = $request->input('smbrModal');
+            $hasilSmbrmodal = join(',', $arrSmbrmodal);
+        } else {
+            $hasilSmbrmodal = '';
+        }
+        // array list bulan tanam bawang
+        if (!empty($request->input('blnTanambawang'))) {
+            $arrBulantanambawang = $request->input('blnTanambawang');
+            $hasilBulantanambawang = join(',', $arrBulantanambawang);
+        } else {
+            $hasilBulantanambawang = '';
+        }
+        // array list bulan tanam bawang
+        if (!empty($request->input('blnTanambawang'))) {
+            $arrBulantanambawang = $request->input('blnTanambawang');
+            $hasilBulantanambawang = join(',', $arrBulantanambawang);
+        } else {
+            $hasilBulantanambawang = '';
+        }
+        // array list varietas bawang merah
+        if (!empty($request->input('vrtsBawang'))) {
+            $arrVarietasbawang = $request->input('vrtsBawang');
+            $hasilVarietasbawang = join(',', $arrVarietasbawang);
+        } else {
+            $hasilVarietasbawang = '';
+        }
+        // array list jenis pupuk
+        if (!empty($request->input('jnsPupuk'))) {
+            $arrJnspupuk = $request->input('jnsPupuk');
+            $hasilJnspupuk = join(',', $arrJnspupuk);
+        } else {
+            $hasilJnspupuk = '';
+        }
+        // array list sumber pupuk organik
+        if (!empty($request->input('smbrPupukorganik'))) {
+            $arrSmbrpupukorganik = $request->input('smbrPupukorganik');
+            $hasilSmbrpupukorganik = join(',', $arrSmbrpupukorganik);
+        } else {
+            $hasilSmbrpupukorganik = '';
+        }
+        // array list sumber pupuk anorganik
+        if (!empty($request->input('smbrPupukanorganik'))) {
+            $arrSmbrpupukanorganik = $request->input('smbrPupukanorganik');
+            $hasilSmbrpupukanorganik = join(',', $arrSmbrpupukanorganik);
+        } else {
+            $hasilSmbrpupukanorganik = '';
+        }
+        // array list merek pupuk
+        if (!empty($request->input('mrkPupuk'))) {
+            $arrMrkpupuk = $request->input('mrkPupuk');
+            $hasilMrkpupuk = join(',', $arrMrkpupuk);
+        } else {
+            $hasilMrkpupuk = '';
+        }
+        // array list jenis hama
+        if (!empty($request->input('jnsHama'))) {
+            $arrJnshama = $request->input('jnsHama');
+            $hasilJnshama = join(',', $arrJnshama);
+        } else {
+            $hasilJnshama = '';
+        }
+        // array list jenis penyakit bawang
+        if (!empty($request->input('jnsPenyakit'))) {
+            $arrJnspenyakit = $request->input('jnsPenyakit');
+            $hasilJnspenyakit = join(',', $arrJnspenyakit);
+        } else {
+            $hasilJnspenyakit = '';
+        }
+        // array list tempat membeli pestisida
+        if (!empty($request->input('tmptbeliPestisida'))) {
+            $arrTmptbelipestisida = $request->input('tmptbeliPestisida');
+            $hasilTmptbelipestisida = join(',', $arrTmptbelipestisida);
+        } else {
+            $hasilTmptbelipestisida = '';
+        }
+        // array list sumber pengairan
+        if (!empty($request->input('smbrPengairan'))) {
+            $arrSmbrpengairan = $request->input('smbrPengairan');
+            $hasilSmbrpengairan = join(',', $arrSmbrpengairan);
+        } else {
+            $hasilSmbrpengairan = '';
+        }
+        // array list setelah panen
+        if (!empty($request->input('stlhPanen'))) {
+            $arrStlhpanen = $request->input('stlhPanen');
+            $hasilStlhpanen = join(',', $arrStlhpanen);
+        } else {
+            $hasilStlhpanen = '';
+        }
+        // array list tempat menjual
+        if (!empty($request->input('tmptmenjualPanen'))) {
+            $arrTmptmenjualpanen = $request->input('tmptmenjualPanen');
+            $hasilTmptmenjualpanen = join(',', $arrTmptmenjualpanen);
+        } else {
+            $hasilTmptmenjualpanen = '';
+        }
         $res = $client->post($api_url, [
             'json' => [
                 "id" => $currentuserid,
@@ -83,8 +193,8 @@ class ClusterpetaniController extends Controller
                 "pendidikan" => $request->input('pendidikan'),
                 "kabupaten" => $request->input('kabupaten'),
                 "anggota kelompok tani" => $request->input('kelompok'),
-                "status kepemilikan lahan" => $request->only(["status_kpLahan"]),
-                "sumber modal" => $request->only(["smbrModal"]),
+                "status kepemilikan lahan" => $hasilStatuskplahan,
+                "sumber modal" => $hasilSmbrmodal,
                 "tanam permusim" => $request->input("tnmPermusim"),
                 "luas lahan" => (string)$dataHasilluaslahan,
                 "lama menjadi petani" => $request->input("lmmnjdPetani"),
@@ -92,18 +202,18 @@ class ClusterpetaniController extends Controller
                 "bibit" => (string)$dataHasiljumlahbibit,
                 "pupuk" => (string)$dataHasiljumlahpupuk,
                 "rata rata hasil panen" => (string)$dataHasilrataratapanen,
-                "bulan tanam bawang" => $request->only(["blnTanambawang"]),
-                "varietas bawang merah" => $request->only(["vrtsBawang"]),
-                "jenis pupuk" => $request->only(["jnsPupuk"]),
-                "sumber pupuk organik" => $request->only(["smbrPupukorganik"]),
-                "sumber pupuk anorganik" => $request->only(["smbrPupukanorganik"]),
-                "merek pupuk" => $request->only(["mrkPupuk"]),
-                "jenis hama" => $request->only(["jnsHama"]),
-                "jenis penyakit" => $request->only(["jnsPenyakit"]),
-                "tempat membeli pestisida" => $request->only(["tmptbeliPestisida"]),
-                "sumber pengairan" => $request->only(["smbrPengairan"]),
-                "setelah panen" => $request->only(["stlhPanen"]),
-                "tempat menjual hasil panen" => $request->only(["tmptmenjualPanen"])
+                "bulan tanam bawang" => $hasilBulantanambawang,
+                "varietas bawang merah" => $hasilVarietasbawang,
+                "jenis pupuk" => $hasilJnspupuk,
+                "sumber pupuk organik" => $hasilSmbrpupukorganik,
+                "sumber pupuk anorganik" => $hasilSmbrpupukanorganik,
+                "merek pupuk" => $hasilMrkpupuk,
+                "jenis hama" => $hasilJnshama,
+                "jenis penyakit" => $hasilJnspenyakit,
+                "tempat membeli pestisida" => $hasilTmptbelipestisida,
+                "sumber pengairan" => $hasilSmbrpengairan,
+                "setelah panen" => $hasilStlhpanen,
+                "tempat menjual hasil panen" => $hasilTmptmenjualpanen
             ]
         ]);
         $data_body = $res->getBody();
