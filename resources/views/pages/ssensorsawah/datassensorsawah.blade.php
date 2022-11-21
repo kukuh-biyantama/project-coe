@@ -9,6 +9,11 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    {{-- <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"> --}}
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js">
+   </script>
     {{-- auto refresh 10 detik --}}
     <meta http-equiv="refresh" content="10" > 
 
@@ -106,13 +111,58 @@
                 <div class="col-lg-5 mb-3"><a href="/home"><button type="button" class="btn btn-primary">Kembali</button></a></div>
             </div>
             @endforeach
-            
+            <div class="col-lg-6 mb-7" style="width: 800, height: 600">
+                <canvas id="bar-chart">
+                </canvas>
+             </div>
+          <script>
+             getData();
+             async function getData() {
+                const response = await fetch('http:compute.dinus.ac.id:900/api/get/showchart/3');
+                const data = await response.json();
+                console.log(index);
+                length = index.tanggal;
+                console.log(tanggal);
+                labels = [];
+                values = [];
+                for (i = 0; i < length; i++) {
+                   labels.push(data.index[i].alamat);
+                   values.push(data.index[i].datasuhuudara);
+                }
+                new Chart(document.getElementById("bar-chart"), {
+                   type: 'bar',
+                   {
+                      labels: labels,
+                      datasets: [
+                         {
+                            label: "Population (millions)",
+                            backgroundColor: ["#3a90cd",
+                               "#8e5ea2",
+                               "#3bba9f",
+                               "#e8c3b9",
+                               "#c45850",
+                               "#CD9C5C",
+                               "#40E0D0"],
+                            data: values
+                         }
+                      ]
+                   },
+                   options: {
+                      legend: { display: false },
+                      title: {
+                         display: true,
+                         text: 'U.S population'
+                      }
+                   }
+                });
+             }
+          </script>
             <footer class="bg-white sticky-footer">
                 <div class="container my-auto">
                 </div>
             </footer>
     </div>
-    
+   
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/chart.min.js"></script>
     <script src="assets/js/bs-init.js"></script>
