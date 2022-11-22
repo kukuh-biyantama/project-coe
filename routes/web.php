@@ -9,7 +9,7 @@ use App\Http\Controllers\KsPestisidaController;
 use App\Http\Controllers\KsPupukController;
 use App\Http\Controllers\LokasiSawahController;
 use App\Http\Controllers\PanenController;
-use App\Http\Controllers\PenanamanBawangController;		
+use App\Http\Controllers\PenanamanBawangController;
 use App\Http\Controllers\PenyakitController;
 use App\Http\Controllers\SsensorsawahController;
 use App\Http\Controllers\SummaryclusterController;
