@@ -112,6 +112,7 @@
                         {{-- </a> --}}
                     </div>
                 </div>
+               
                 <div class="col-xl-4 col-lg-6 pt-2">
                     <div class="card card-stats bg-white mb-4 mb-xl-0 btn btn-secondary">
                         <div class="card-body">
@@ -120,24 +121,26 @@
                                     <h3 class="mb-0 text-black text-center">Perkiraan Cuaca</h3>
                                 </div>
                             </div>
+
                             <div class="row pt-4">
                                 <div class="col">
                                     <h3 class="mb-0 text-black text-center">Suhu</h3>
-                                    <h2 class="card-title text-uppercase text-black mb-0 wrap-text">39
+                                    <h2 class="card-title text-uppercase text-black mb-0 wrap-text">#
                                         <span>&#8451;</span>
                                     </h2>
                                 </div>
                                 <div class="col">
                                     <h3 class="mb-0 text-black text-center">Kelembapan</h3>
-                                    <h2 class="card-title text-uppercase text-black mb-0 wrap-text">109%</h2>
+                                    <h2 class="card-title text-uppercase text-black mb-0 wrap-text">#</h2>
                                 </div>
                                 <div class="col">
                                     <h3 class="mb-0 text-black text-center">Ph Tanah</h3>
-                                    <h2 class="card-title text-uppercase text-black mb-0 wrap-text">9
+                                    <h2 class="card-title text-uppercase text-black mb-0 wrap-text">#
                                         <span>&#13271;</span>
                                     </h2>
                                 </div>
                             </div>
+                            {{-- @endforeach --}}
                             <div class="card card-stats mb-4 mb-xl-0 btn btn-secondary">
                                 <a href="/datassensorsawah">
                                     <div class="card-body">

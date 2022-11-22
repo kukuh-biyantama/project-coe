@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\reportiotclient;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClusterpetaniController;
 use App\Http\Controllers\DataClusterController;
@@ -73,7 +74,7 @@ Route::get('/datapupuk', [KsPupukController::class, 'index'])->name('datapupuk')
 Route::get('/tambahdatapupuk', [KsPupukController::class, 'tambahdatapupuk'])->name('tambahdatapupuk');
 
 // Data sensor sawah (IoT)
-Route::get('datassensorsawah', [SsensorsawahController::class, 'index'])->name('datassensorsawah');
+Route::get('datassensorsawah', [reportiotclient::class, 'reportdataiot'])->name('datassensorsawah');
 
 // Form Panen
 Route::get('/datapanen', [PanenController::class, 'index'])->name('datapanen');
@@ -86,6 +87,7 @@ Route::get('/tambahdatahama', [HamaController::class, 'tambahdatahama'])->name('
 // Form Penyakit
 Route::get('/datapenyakit', [PenyakitController::class, 'index'])->name('datapenyakit');
 Route::get('/tambahdatapenyakit', [PenyakitController::class, 'tambahdatapenyakit'])->name('tambahdatapenyakit');
+Route::get('/test2', [reportiotclient::class, 'reportdataiot']);
 
 // Cluster Petani
 Route::get('/clusterpetani', [ClusterpetaniController::class, 'index'])->name('clusterpetani');
