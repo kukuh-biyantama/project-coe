@@ -162,7 +162,7 @@
                 </div>
                 <div class="container-xl-4 col-lg-4 pt-2">
                     <div class="card card-stats mb-4 mb-xl-0 btn btn-secondary">
-                        <a href="/formpenanamanbawang/">
+                        <a href="/datapenanamanbawang/">
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col">

@@ -61,17 +61,26 @@ Route::get('/formlokasisawah', [LokasiSawahController::class, 'index'])->name('f
 Route::post('/kirimlokasi', [LokasiSawahController::class, 'tambahlokasi'])->name(' tambahlokasi');
 // Route::get('/getDataLokasiSawah', [LokasiSawahController::class, 'getDataLokasiSawah'])->name('getDataLokasiSawah');
 
-// Form Penanaman Bawang
-Route::get('/formpenanamanbawang', [PenanamanBawangController::class, 'index'])->name('formpenanamanbawang');
+// Penanaman Bawang
+Route::get('/datapenanamanbawang', [PenanamanBawangController::class, 'datapenanamanbawang'])->name('datapenanamanbawang');
+Route::get('/tambahdatapenanamanbawang', [PenanamanBawangController::class, 'tambahdatapenanamanbawang'])->name('tambahdatapenanamanbawang');
+Route::post('/insertdatapenanamanbawang', [PenanamanBawangController::class, 'insertdatapenanamanbawang'])->name('insertdatapenanamanbawang');
+Route::get('/tampildatapenanamanbawang/{id}', [PenanamanBawangController::class, 'tampildatapenanamanbawang'])->name('tampildatapenanamanbawang');
+Route::post('/updatedatapenanamanbawang/{id}', [PenanamanBawangController::class, 'updatedatapenanamanbawang'])->name('updatedatapenanamanbawang');
 
-// Form Pestisida
-Route::get('/datapestisida', [KsPestisidaController::class, 'index'])->name('datapestisida');
+// Pestisida
+Route::get('/datapestisida', [KsPestisidaController::class, 'datapestisida'])->name('datapestisida');
 Route::get('/tambahdatapestisida', [KsPestisidaController::class, 'tambahdatapestisida'])->name('tambahdatapestisida');
 Route::post('/insertdatapestisida', [KsPestisidaController::class, 'insertdatapestisida'])->name('insertdatapestisida');
+Route::get('/tampildatapestisida/{id}', [KsPestisidaController::class, 'tampildatapestisida'])->name('tampildatapestisida');
+Route::post('/updatedatapestisida/{id}', [KsPestisidaController::class, 'updatedatapestisida'])->name('updatedatapestisida');
 
-// Form Pupuk
-Route::get('/datapupuk', [KsPupukController::class, 'index'])->name('datapupuk');
+// Pupuk
+Route::get('/datapupuk', [KsPupukController::class, 'datapupuk'])->name('datapupuk');
 Route::get('/tambahdatapupuk', [KsPupukController::class, 'tambahdatapupuk'])->name('tambahdatapupuk');
+Route::post('/insertdatapupuk', [KsPupukController::class, 'insertdatapupuk'])->name('insertdatapupuk');
+Route::get('/tampildatapupuk/{id}', [KsPupukController::class, 'tampildatapupuk'])->name('tampildatapupuk');
+Route::post('/updatedatapupuk/{id}', [KsPupukController::class, 'updatedatapupuk'])->name('updatedatapupuk');
 
 // Data sensor sawah (IoT)
 Route::get('datassensorsawah', [reportiotclient::class, 'reportdataiot'])->name('datassensorsawah');

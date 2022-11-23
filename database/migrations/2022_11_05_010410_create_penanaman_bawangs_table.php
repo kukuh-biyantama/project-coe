@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('penanaman_bawangs', function (Blueprint $table) {
-            $table->id('ks_id');
+            $table->id();
             $table->string('ks_metode_pengairan');
             $table->string('ks_modal');
             $table->float('ks_luas_lahan');

@@ -14,9 +14,9 @@ return new class extends Migration
     public function up()
     {
         Schema::create('ks_pestisidas', function (Blueprint $table) {
-            $table->id('ks_pestisida_id');
-            $table->string('lokasi_keterangan');
+            $table->id();
             $table->string('ks_pestisida_nama');
+            $table->string('ks_pestisida_tempat_membeli');
             $table->date('ks_pestisida_tgl_semprot');
             $table->float('ks_pestisida_jumlah_takaran');
             $table->string('ks_pestisida_keterangan');

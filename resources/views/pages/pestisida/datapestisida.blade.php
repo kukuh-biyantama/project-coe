@@ -24,30 +24,27 @@
             </div>
            
             <div class="row">
-                <table class="table">
+                <table class="table table-bordered">
                     <thead>
                         <tr>
-                            <th scope="col">Pestisida ID</th>
-                            <th scope="col">Lokasi</th>
                             <th scope="col">Nama Pestisida</th>
+                            <th scope="col">Tempat Membeli Pestisida</th>
                             <th scope="col">Tanggal Semprot Pestisida</th>
-                            <th scope="col">Jumlah Takaran Pestisida</th>
-                            <th scope="col">Keterangan</th>
+                            <th scope="col">Jumlah Takaran Pestisida (liter)</th>
+                            <th scope="col">Keterangan Kegiatan</th>
                             <th scope="col">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($data as $row)
                             <tr>
-                                <td>{{ $row-> ks_pestisida_id }}</td>
-                                <td>{{ $row-> lokasi_keterangan }}</td>
                                 <td>{{ $row-> ks_pestisida_nama }}</td>
+                                <td>{{ $row-> ks_pestisida_tempat_membeli }}</td>
                                 <td>{{ $row-> ks_pestisida_tgl_semprot }}</td>
-                                <td>{{ $row-> ks_pestisida_jumlah_takaran }} liter</td>
+                                <td>{{ $row-> ks_pestisida_jumlah_takaran }}</td>
                                 <td>{{ $row-> ks_pestisida_keterangan }}</td>
                                 <td>
-                                    <a href="" class="btn btn-warning">Edit</a>
-                                    <a href="#" class="btn btn-danger delete">Delete</a>
+                                    <a href="/tampildatapestisida/{{ $row->id }}" class="btn btn-warning">Edit</a>
                                 </td>
                             </tr>
                         @endforeach
@@ -76,35 +73,11 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
     -->
   </body>
-  <!-- script untuk konfirmasi menghapus data -->
-  <script>
-    $('.delete').click( function(){
-        // var hamaid = $(this).attr('data-id');
-        // var hamanama = $(this).attr('data-hama_nama');
-        swal({
-            title: "Yakin?",
-            text: "Anda akan menghapus data pestisida dengan nama ...",
-            icon: "warning",
-            buttons: true,
-            dangerMode: true,
-            })
-            .then((willDelete) => {
-            if (willDelete) {
-                // window.location = "/deletedatahama/"+hamaid+""
-                swal("Data pestisida berhasil dihapus", {
-                icon: "success",
-                });
-            } else {
-                swal("Data pestisida tidak jadi dihapus");
-            }
-        });
-    });
-  </script>
 
   <!-- script toastr untuk menampilkan notifikasi jika data telah berhasil dieksekusi -->
-  <!-- <script>
+  <script>
     @if (Session::has('success'))
         toastr.success("{{Session::get('success')}}")
     @endif
-  </script> -->
+  </script>
 </html>
