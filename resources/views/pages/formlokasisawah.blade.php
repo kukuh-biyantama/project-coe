@@ -17,7 +17,7 @@
         IOT Add Data Peta
     </div>
     <div class="card-body">
-      <form name="tambahlokasi" id="tambahlokasi" method="post" action="{{url('kirimlokasi')}}">
+      <form name="tambahlokasi" id="tambahlokasi" method="post" action="{{url('lokasiterkirim')}}">
        @csrf
         <div class="form-group">
             <label for="exampleInputEmail1">Latitude</label>
