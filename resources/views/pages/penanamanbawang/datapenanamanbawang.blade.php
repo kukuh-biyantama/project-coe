@@ -31,7 +31,7 @@
                             <th scope="col">Metode Pengairan</th>
                             <th scope="col">Sumber Modal</th>
                             <th scope="col">Luas Lahan (m<sup>2</sup>)</th>
-                            <th scope="col">Bibit (kg)</th>
+                            <th scope="col">Jumlah Bibit (kg)</th>
                             <th scope="col">Waktu Tanam</th>
                             <th scope="col">Status Lahan</th>
                             <th scope="col">Jumlah Modal (Rp)</th>

@@ -20,6 +20,17 @@ class PenanamanBawangController extends Controller
     // INSERT DATA
     public function insertdatapenanamanbawang(Request $request){
 
+        // Form Validasi
+        $this->validate($request, [
+            'ks_metode_pengairan' => 'required|min:1',
+            'ks_modal' => 'required|min:1',
+            'ks_luas_lahan' => 'required',
+            'ks_bibit' => 'required',
+            'ks_waktu_tanam' => 'required',
+            'ks_status_lahan' => 'required',
+            'ks_jumlah_modal' => 'required',
+        ]);
+
         // data array metode pengairan
         $ks_metode_pengairan = isset($_POST['ks_metode_pengairan']) && is_array($_POST['ks_metode_pengairan']) ? $_POST['ks_metode_pengairan'] : [];
         $input_ks_metode_pengairan = implode(', ', $ks_metode_pengairan);

@@ -167,6 +167,15 @@ return [
     */
 
     'attributes' => [
+        // penanaman bawang 
+        'ks_metode_pengairan' => 'metode pengairan',
+        'ks_modal' => 'sumber modal',
+        'ks_luas_lahan' => 'luas lahan',
+        'ks_bibit' => 'jumlah bibit',
+        'ks_waktu_tanam' => 'waktu tanam',
+        'ks_status_lahan' => 'status lahan',
+        'ks_jumlah_modal' => 'jumlah modal',
+
         // pestisida
         'ks_pestisida_nama' => 'nama pestisida',
         'ks_pestisida_tempat_membeli' => 'tempat membeli pestisida',

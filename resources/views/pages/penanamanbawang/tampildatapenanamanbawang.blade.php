@@ -88,7 +88,7 @@
 
                                 <!-- Bibit -->
                                 <div class="mb-3">
-                                    <label for="bibit" class="form-label">Bibit</label><br>
+                                    <label for="bibit" class="form-label">Jumlah Bibit</label><br>
                                     <input type="number" name="ks_bibit" style="width:100%" class="form-control" value="{{ $data->ks_bibit }}">
                                     <div class="form-check">
                                         <div class="">
