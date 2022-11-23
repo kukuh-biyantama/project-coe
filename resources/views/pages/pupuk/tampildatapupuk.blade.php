@@ -11,10 +11,10 @@
     <!-- Link CSS -->
     <link rel="stylesheet" href="{!! asset('assets/css/style.css') !!}">
 
-    <title>Form Tambah Data Pupuk</title>
+    <title>Form Edit Data Pupuk</title>
   </head>
   <body>
-    <h2 class="text-center mb-4 mt-3">Form Tambah Data Pupuk</h2>
+    <h2 class="text-center mb-4 mt-3">Form Edit Data Pupuk</h2>
 
         <!-- dev container untuk mengatur jarak tampilan -->
         <div class="container">
