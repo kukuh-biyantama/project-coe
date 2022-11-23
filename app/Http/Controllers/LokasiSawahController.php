@@ -15,6 +15,7 @@ class LokasiSawahController extends Controller
     {
         return view('/pages/formlokasisawah');
     }
+<<<<<<< HEAD
 
     public function tambahlokasi(request $request)
     {
@@ -58,4 +59,6 @@ class LokasiSawahController extends Controller
             return redirect('tambahlokasi')->with(['success' => 'Data Berhasil Terinput']);}
             // return redirect('tambahlokasi')->with(['success' => 'Pesan Berhasil']);
 >>>>>>> parent of 482db7f (bew)
+=======
+>>>>>>> parent of cb4a62c (tambahlokasi)
 }

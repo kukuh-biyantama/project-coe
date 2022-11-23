@@ -106,6 +106,7 @@ Route::get('/getData', [ClusterpetaniController::class, 'getData'])->name('getDa
 // Summary Cluster 
 Route::get('/summarycluster', [SummaryclusterController::class, 'index'])->name('summarycluster');
 
+<<<<<<< HEAD
 //
 
 // Route::get('tambahlokasi', [clientcontroller::class, 'index']);
@@ -119,6 +120,8 @@ Route::get('/summarycluster', [SummaryclusterController::class, 'index'])->name(
 
 
 
+=======
+>>>>>>> parent of cb4a62c (tambahlokasi)
 // test api
 // Route::post('/test', [DataClusterController::class, 'store']);
 
