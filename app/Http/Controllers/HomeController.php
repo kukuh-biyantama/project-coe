@@ -48,6 +48,6 @@ class HomeController extends Controller
             $namaPetani = "belum terisi";
             $petanicluster = "tidak input data";
         }
-        return view('dashboard');
+        return view('dashboard', ['petanicluster' => $petanicluster], ['namapetani' => $namaPetani]);
     }
 }
