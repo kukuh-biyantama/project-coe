@@ -46,7 +46,7 @@ class HomeController extends Controller
             $namaPetani = $obj->nama;
         } else {
             $namaPetani = "belum terisi";
-            $petanicluster = "kosong";
+            $petanicluster = "belum ada";
         }
         return view('dashboard', ['petanicluster' => $petanicluster], ['namapetani' => $namaPetani]);
     }
