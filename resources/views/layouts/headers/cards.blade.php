@@ -112,7 +112,7 @@
                         {{-- </a> --}}
                     </div>
                 </div>
-               
+
                 <div class="col-xl-4 col-lg-6 pt-2">
                     <div class="card card-stats bg-white mb-4 mb-xl-0 btn btn-secondary">
                         <div class="card-body">
@@ -257,7 +257,8 @@
                         <div class="card-body">
                             <div class="row align-items-center">
                                 <div class="col">
-                                    <h2 class="mb-0 text-black text-center">Saat ini Anda Berada Di Cluster 1</h2>
+                                    <h2 class="mb-0 text-black text-center">Saat ini Anda Berada Di Cluster {{$petanicluster}}</h2>
+                                    <h2> Petani {{ $namapetani }}</h2>
                                 </div>
                             </div>
                             {{-- <div class="col">
