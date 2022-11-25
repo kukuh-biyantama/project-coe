@@ -19,6 +19,8 @@ class ClusterpetaniController extends Controller
 
     public function clusterpetanijson(Request $request)
     {
+        date_default_timezone_set('Asia/Jakarta');
+        $setWaktu = date('d-m-Y H:i:s');
         $currentuserid = Auth::user()->id;
         $client = new Client();
         $api_url = "compute.dinus.ac.id:908/predict";
@@ -187,6 +189,7 @@ class ClusterpetaniController extends Controller
         $res = $client->post($api_url, [
             'json' => [
                 "id" => $currentuserid,
+                "waktu" => $setWaktu,
                 "nama" => $request->input('nama'),
                 "usia" => $request->input('usia'),
                 "jenis kelamin" => $request->input('jenisKelamin'),
