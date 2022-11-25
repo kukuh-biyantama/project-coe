@@ -106,6 +106,19 @@ Route::get('/getData', [ClusterpetaniController::class, 'getData'])->name('getDa
 // Summary Cluster 
 Route::get('/summarycluster', [SummaryclusterController::class, 'index'])->name('summarycluster');
 
+//
+
+// Route::get('tambahlokasi', [clientcontroller::class, 'index']);
+// Route::post('lokasiterkirim', [clientcontroller::class, 'tambahlokasi']);
+
+
+// Route::get('tambahlokasi', [clientcontroller::class, 'index']);
+// Route::post('lokasiterkirim', [clientcontroller::class, 'tambahlokasi']);
+
+
+
+
+
 // test api
 // Route::post('/test', [DataClusterController::class, 'store']);
 

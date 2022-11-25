@@ -26,7 +26,7 @@ class LokasiSawahController extends Controller
         $lokasi_keterangan = $request->input('lokasi_keterangan');
         $id_iot = $request->input('id_iot');
     
-        $post = Http::post('http://compute.dinus.ac.id:900/api/post/location/', [
+        $post = Http::post('http://compute.dinus.ac.id:900/api/post/location/'.$currentuserid, [
     
                 'lokasi_latitude' => $lokasi_latitude,
                 'lokasi_longitude' => $lokasi_longitude,
