@@ -6,12 +6,11 @@ use Illuminate\Http\Request;
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Auth;
 use PhpParser\Comment\Doc;
-
 use function GuzzleHttp\Promise\all;
 
 class SummaryclusterController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $currentuserid = Auth::user()->id;
         $api_url = 'http://couchadmin:petaniMerdeka2022@compute.dinus.ac.id:907/databaseasesmentpetani/_all_docs?include_docs=true';
@@ -24,18 +23,21 @@ class SummaryclusterController extends Controller
             $idPetani = $obj->id_user;
             $clusterHasil = $obj->cluster;
         }
-        // data cluster
         $x = json_encode($clusterHasil);
         $z = json_decode($x);
-        if ($idPetani == $currentuserid and $z == [0]) {
-            $petanicluster = "kosong";
-            $namaPetani = $obj->nama;
-        } elseif ($idPetani == $currentuserid and $z == [1]) {
-            $petanicluster = "satu";
-            $namaPetani = $obj->nama;
+        if ($request->session()->has("user")) {
+            if ($idPetani == $currentuserid and $z == [0]) {
+                $petanicluster = "kosong";
+                $namaPetani = $obj->nama;
+            } elseif ($idPetani == $currentuserid and $z == [1]) {
+                $petanicluster = "satu";
+                $namaPetani = $obj->nama;
+            } else {
+                $namaPetani = "belum terisi";
+                $petanicluster = "belum ada";
+            }
         } else {
-            $namaPetani = "belum terisi";
-            $petanicluster = "tidak input data";
+            echo 'Tidak ada data dalam session.';
         }
         return view('/pages/summarycluster/summarycluster', ['petanicluster' => $petanicluster], ['namapetani' => $namaPetani]);
     }
