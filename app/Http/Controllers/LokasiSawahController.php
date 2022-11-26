@@ -35,6 +35,6 @@ class LokasiSawahController extends Controller
                 'id_iot' => $id_iot,
             ]);
            
-            return redirect('tambahlokasi')->with(['success' => 'Data Berhasil Terinput']);
+            return back()->with('success', 'We have received your message and would like to thank you for writing to us.');
         }
 }

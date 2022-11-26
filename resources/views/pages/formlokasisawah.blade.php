@@ -5,20 +5,17 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-  <div class="container mt-4">
-    @if ($message = Session::get('success'))
-    <div class="alert alert-success alert-block">
-      <button type="button" class="close" data-dismiss="alert">×</button>	
-        <strong>{{ $message }}</strong>
-    </div>
-  @endif
-  <div class="card">
-    <div class="card-header text-center font-weight-bold">
-        IOT Add Data Peta
-    </div>
-    <div class="card-body">
-      <form name="tambahlokasi" id="tambahlokasi" method="post" action="{{url('lokasiterkirim')}}">
-       @csrf
+  <div class="container mt-5">
+    <!-- Success message -->
+    @if(Session::has('success'))
+        <div class="alert alert-success">
+            {{Session::get('success')}}
+        </div>
+    @endif
+    <form action="" method="post" action="{{ route('location.store') }}">
+        <!-- CROSS Site Request Forgery Protection -->
+        @csrf
+
         <div class="form-group">
             <label for="exampleInputEmail1">Latitude</label>
             <input type="text" id="lokasi_latitude" name="lokasi_latitude" class="form-control" required="">
@@ -41,7 +38,7 @@
           </div>
           
        
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" name="send" class="btn btn-primary">Submit</button>
       </form>
     </div>
   </div>
