@@ -258,6 +258,7 @@
                             <div class="row align-items-center">
                                 <div class="col">
                                     <h2 class="mb-0 text-black text-center">Saat ini Anda Berada Di Cluster {{$petanicluster}}</h2>
+                                    <h2 class="mb-0 text-black text-center">Tn {{$namapetani}}</h2>
                                 </div>
                             </div>
                             {{-- <div class="col">
