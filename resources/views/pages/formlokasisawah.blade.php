@@ -12,7 +12,7 @@
             {{Session::get('success')}}
         </div>
     @endif
-    <form action="" method="post" action="{{ route('location.store') }}">
+    <form action="" method="post" action="{{ url('post/kirimlokasi') }}">
         <!-- CROSS Site Request Forgery Protection -->
         @csrf
 
