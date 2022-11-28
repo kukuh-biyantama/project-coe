@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\reportiotclient;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClusterpetaniController;
@@ -56,8 +57,10 @@ Route::group(['middleware' => 'auth'], function () {
 });
 
 // Form Lokasi Sawah
-Route::get('/formlokasisawah', [LokasiSawahController::class, 'index']);
-Route::post('/formlokasisawah', [LokasiSawahController::class, 'tambahlokasi'])->name('location.store');
+// Route::get('/datalokasisawah', [LokasiSawahController::class, 'index']);
+// Route::post('/post/kirimlokasi', [LokasiSawahController::class, 'tambahlokasi']);
+Route::get('add-blog-post-form', [PostController::class, 'index']);
+Route::post('store-form', [PostController::class, 'store']);
 // Route::get('/getDataLokasiSawah', [LokasiSawahController::class, 'getDataLokasiSawah'])->name('getDataLokasiSawah');
 
 // Penanaman Bawang
