@@ -13,29 +13,53 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"> --}}
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js">
+ 
    </script>
     {{-- auto refresh 10 detik --}}
     <meta http-equiv="refresh" content="10" > 
+    {{-- <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
 
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Tanggal', 'Sales'],
+          
+          @foreach['{{ $item['waktu'] }}',  1000]
+          
+        ]);
+
+        var options = {
+          title: 'Company Performance',
+          curveType: 'function',
+          legend: { position: 'bottom' }
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+        chart.draw(data, options);
+      }
+    {{-- </script> --}}
 </head>
 <body>
-            
-                     @foreach ($data as $item);
+    @foreach ($data as $item);
+                     
                         <div class="col-lg-5 col-xl-4 col-xxl-6">
                             <div class="row">
                                 <div class="col-lg-6 mb-4">
                                     <div class="card text-white bg-primary shadow">
                                         <div class="card-body">
                                             <p class="m-0">ID_IOT<br></p>
-                                            <p class="text-white-50 small m-0">{{ $item['id_iot'] }}</p>
+                                            <p class="text-white-100 small m-0">{{ $item['id_iot'] }}</p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-6 mb-4">
                                     <div class="card text-white bg-success shadow">
                                         <div class="card-body">
-                                            <p class="m-0">iD Petani<br></p>
-                                            <p class="text-white-50 small m-0">{{ $item['alamat'] }}</p>
+                                            <p class="m-0">Alamat Sensor IoT<br></p>
+                                            <p class="text-white-100 small m-0">{{ $item['alamat'] }}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -44,7 +68,7 @@
                                     <div class="card text-white bg-success shadow">
                                         <div class="card-body">
                                             <p class="m-0">DATA KECEPATAN ANGIN<br></p>
-                                            <p class="text-white-50 small m-0">{{ $item['datakecepatanangin'] }}</p>
+                                            <p class="text-white-100 small m-0">{{ $item['datakecepatanangin'] }} KM/H</p>
                                         </div>
                                     </div>
                                 </div>
@@ -52,7 +76,7 @@
                                     <div class="card text-white bg-info shadow">
                                         <div class="card-body">
                                             <p class="m-0">DATA SUHU UDARA<br></p>
-                                            <p class="text-white-50 small m-0">{{ $item['datasuhuudara'] }}</p>
+                                            <p class="text-white-100 small m-0">{{ $item['datasuhuudara'] }}<sup>C</sup></p>
                                         </div>
                                     </div>
                                 </div>
@@ -60,7 +84,7 @@
                                     <div class="card text-white bg-warning shadow">
                                         <div class="card-body">
                                             <p class="m-0">Data Kelembaban Udara<br></p>
-                                            <p class="text-white-50 small m-0">{{ $item['datakelembabanudara'] }}</p>
+                                            <p class="text-white-100 small m-0">{{ $item['datakelembabanudara'] }}<sup>C</sup></p>
                                         </div>
                                     </div>
                                 </div>
@@ -68,7 +92,7 @@
                                     <div class="card text-white bg-danger shadow">
                                         <div class="card-body">
                                             <p class="m-0">Data Ph Tanah<br></p>
-                                            <p class="text-white-50 small m-0">{{ $item['dataphtanah'] }}</p>
+                                            <p class="text-white-100 small m-0">{{ $item['dataphtanah'] }}p<sup>H</sup></p>
                                         </div>
                                     </div>
                                 </div>
@@ -76,7 +100,7 @@
                                     <div class="card text-white bg-secondary shadow">
                                         <div class="card-body">
                                             <p class="m-0">Data Kelembaban Tanah<br></p>
-                                            <p class="text-white-50 small m-0">{{ $item['datakelembabantanah'] }}</p>
+                                            <p class="text-white-100 small m-0">{{ $item['datakelembabantanah'] }}<sup>C</sup></p>
                                         </div>
                                     </div>
                                 </div>
@@ -84,7 +108,7 @@
                                     <div class="card text-white bg-warning shadow">
                                         <div class="card-body">
                                             <p class="m-0">Data Suhu Tanah<br></p>
-                                            <p class="text-white-50 small m-0">{{ $item['datasuhutanah'] }}</p>
+                                            <p class="text-white-100 small m-0">{{ $item['datasuhutanah'] }}<sup>C</sup></p>
                                         </div>
                                     </div>
                                 </div>
@@ -92,15 +116,33 @@
                                     <div class="card text-white bg-success shadow">
                                         <div class="card-body">
                                             <p class="m-0">Status Alat<br></p>
-                                            <p class="text-white-50 small m-0">{{ $item['statusalat'] }}</p>
+                                            @if($item['statusalat'] == [1]){
+                                                <p class="text-white-100 small m-0">Mati</p>
+
+                                            }else{
+                                                <p class="text-white-100 small m-0">Hidup</p>
+
+                                            }
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-6 mb-4">
+                                {{-- <div class="col-lg-6 mb-4">
                                     <div class="card text-white bg-success shadow">
                                         <div class="card-body">
                                             <p class="m-0">Waktu<br></p>
-                                            <p class="text-white-50 small m-0">{{ $item['tanggal'] }}</p>
+                                            <p class="text-white-50 small m-0">{{ $item['waktu'] }}</p>
+                                        </div>
+                                    </div>
+                                </div> --}}
+                                <div class="col-lg-6 mb-4">
+                                    <div class="card text-white bg-success shadow">
+                                        <div class="card-body">
+                                            <p class="m-0">tanggal<br></p>
+                                            <p class="text-white-50 small m-0">
+                                            
+                                            
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
@@ -111,57 +153,8 @@
                 <div class="col-lg-5 mb-3"><a href="/home"><button type="button" class="btn btn-primary">Kembali</button></a></div>
             </div>
             @endforeach
-            <div class="col-lg-6 mb-7" style="width: 800, height: 600">
-                <canvas id="bar-chart">
-                </canvas>
-             </div>
-          <script>
-             getData();
-             async function getData() {
-                const response = await fetch('http:compute.dinus.ac.id:900/api/get/showchart/3');
-                const data = await response.json();
-                console.log(index);
-                length = index.tanggal;
-                console.log(tanggal);
-                labels = [];
-                values = [];
-                for (i = 0; i < length; i++) {
-                   labels.push(data.index[i].alamat);
-                   values.push(data.index[i].datasuhuudara);
-                }
-                new Chart(document.getElementById("bar-chart"), {
-                   type: 'bar',
-                   {
-                      labels: labels,
-                      datasets: [
-                         {
-                            label: "Population (millions)",
-                            backgroundColor: ["#3a90cd",
-                               "#8e5ea2",
-                               "#3bba9f",
-                               "#e8c3b9",
-                               "#c45850",
-                               "#CD9C5C",
-                               "#40E0D0"],
-                            data: values
-                         }
-                      ]
-                   },
-                   options: {
-                      legend: { display: false },
-                      title: {
-                         display: true,
-                         text: 'U.S population'
-                      }
-                   }
-                });
-             }
-          </script>
-            <footer class="bg-white sticky-footer">
-                <div class="container my-auto">
-                </div>
-            </footer>
-    </div>
+            <div id="curve_chart" style="width: 900px; height: 500px"></div>
+
    
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/chart.min.js"></script>
