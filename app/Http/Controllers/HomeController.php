@@ -25,7 +25,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        //api get couchdb
         $currentuserid = Auth::user()->id;
         $currentuserid = auth::user()->id;
         $response = Http::withHeaders([
