@@ -55,7 +55,7 @@ class HomeController extends Controller
                 $petanicluster = "satu";
             } else {
                 $namaPetani = "belum ada";
-                $petanicluster = "";
+                $petanicluster = "tidak ada";
             }
         }
         return view('dashboard', ['petanicluster' => $petanicluster], ['namapetani' => $namaPetani]);
