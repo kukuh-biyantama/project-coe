@@ -56,3 +56,5 @@ class HomeController extends Controller
         return view('dashboard', ['petanicluster' => $petanicluster], ['namapetani' => $namaPetani]);
     }
 }
+
+

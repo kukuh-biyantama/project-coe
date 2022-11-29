@@ -20,5 +20,3 @@ class reportiotclient extends Controller
     return $sswahpage; 
     }
 }
-
-    
