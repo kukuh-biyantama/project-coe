@@ -124,7 +124,7 @@
                         {{-- </a> --}}
                     </div>
                 </div>
-                <div class="col-xl-4 col-lg-6 pt-2">
+                <div class="container-xl-4 col-lg-4 pt-2">
                     <div class="card card-stats bg-white mb-4 mb-xl-0 btn btn-secondary">
                         <div class="card-body">
                             <div class="row align-items-center">
@@ -168,9 +168,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="container-xl-4 col-lg-4 pt-2">
-                    <div class="card card-stats mb-4 mb-xl-0 btn btn-secondary">
+                    <div class="card card-stats mb-4 mb-xl-0 mt-2 btn btn-secondary">
                         <a href="/formpenanamanbawang/">
                             <div class="card-body">
                                 <div class="row">
@@ -186,7 +184,9 @@
                             </div>
                         </a>
                     </div>
-                    <div class="container-xl-4 row-lg-4 pt-3">
+                </div>
+                <div class="container-xl-4 col-lg-4 pt-2">
+                    <div class="container-xl-4 row-lg-4">
                         <div class="card card-stats bg-white mb-4 mb-xl-0 btn btn-secondary">
                             <div class="card-body">
                                 <div class="row align-items-center">
@@ -223,7 +223,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="container-xl-4 row-lg-4 pt-3">
+                    <div class="container-xl-4 row-lg-4 mt-2">
                         <div class="card card-stats bg-white mb-4 mb-xl-0 btn btn-secondary">
                             <div class="card-body">
                                 <div class="row align-items-center">
@@ -257,6 +257,41 @@
                                         </div>
                                     </a>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card card-stats bg-white mb-4 mb-xl-0 mt-2 btn btn-secondary">
+                        <div class="card-body">
+                            <div class="row align-items-center">
+                                <div class="col">
+                                    <h3 class="mb-0 text-black text-center">Perkiraan Hasil Panen</h3>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="icon icon-shape text-black rounded-circle shadow">
+                                    <i class="ni ni-basket" style="width 100px, height 100px" ></i>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <h2 class="card-title text-uppercase text-black mb-0 wrap-text">2 Ton</h2>
+                                </div>
+                            </div>
+                            <div class="card card-stats mb-4 mb-xl-0 btn btn-secondary">
+                                <a href="/datapanen/">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col">
+                                                <h2 class="card-title text-uppercase text-muted mb-0">Masukan Hasil Panen</h2>
+                                            </div>
+                                            {{-- <div class="col">
+                                                <div class="icon icon-shape bg-info text-white rounded-circle shadow">
+                                                    <i class="ni ni-basket"></i>
+                                                </div>
+                                            </div> --}}
+                                        </div>
+                                    </div>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -314,6 +349,22 @@
                                 </div>
                             </a>
                         </div>
+                    </div>
+                    <div class="card card-stats mb-0 mb-xl-0 mt-2 btn btn-secondary">
+                        <a href="/summarycluster/">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col">
+                                        <h2 class="card-title text-uppercase text-muted mb-0">Riwayat Penanaman Bawang</h2>
+                                    </div>
+                                    <div class="col mt-2">
+                                        <div class="icon icon-shape bg-info text-white rounded-circle shadow">
+                                            <i class="fa fa-history"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
                     </div>
                 </div>
                 {{-- <div class="col-xl-3 col-lg-6">
