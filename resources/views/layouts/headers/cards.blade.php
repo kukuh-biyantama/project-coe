@@ -90,7 +90,7 @@
             <div class="row pt-2">
                 <div class="container-xl-4 col-lg-4">
                     <div class="card card-stats mb-4 mb-xl-0 btn btn-secondary" >
-                        <a href="/formlokasisawah/">
+                        <a href="/add-blog-post-form/">
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col">
