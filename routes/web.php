@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\reportiotclient;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClusterpetaniController;
 use App\Http\Controllers\DataClusterController;
@@ -35,7 +37,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Auth::routes();
 
 Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('home');
-
 Route::group(['middleware' => 'auth'], function () {
 	Route::resource('user', 'App\Http\Controllers\UserController', ['except' => ['show']]);
 	Route::get('profile', ['as' => 'profile.edit', 'uses' => 'App\Http\Controllers\ProfileController@edit']);
@@ -56,23 +57,35 @@ Route::group(['middleware' => 'auth'], function () {
 });
 
 // Form Lokasi Sawah
-Route::get('/formlokasisawah', [LokasiSawahController::class, 'index'])->name('formlokasisawah');
+// Route::get('/datalokasisawah', [LokasiSawahController::class, 'index']);
+// Route::post('/post/kirimlokasi', [LokasiSawahController::class, 'tambahlokasi']);
+Route::get('add-blog-post-form', [PostController::class, 'index']);
+Route::post('store-form', [PostController::class, 'store']);
+// Route::get('/getDataLokasiSawah', [LokasiSawahController::class, 'getDataLokasiSawah'])->name('getDataLokasiSawah');
 
-// Form Penanaman Bawang
-Route::get('/formpenanamanbawang', [PenanamanBawangController::class, 'index'])->name('formpenanamanbawang');
+// Penanaman Bawang
+Route::get('/datapenanamanbawang', [PenanamanBawangController::class, 'datapenanamanbawang'])->name('datapenanamanbawang');
+Route::get('/tambahdatapenanamanbawang', [PenanamanBawangController::class, 'tambahdatapenanamanbawang'])->name('tambahdatapenanamanbawang');
+Route::post('/insertdatapenanamanbawang', [PenanamanBawangController::class, 'insertdatapenanamanbawang'])->name('insertdatapenanamanbawang');
+Route::get('/tampildatapenanamanbawang/{id}', [PenanamanBawangController::class, 'tampildatapenanamanbawang'])->name('tampildatapenanamanbawang');
+Route::post('/updatedatapenanamanbawang/{id}', [PenanamanBawangController::class, 'updatedatapenanamanbawang'])->name('updatedatapenanamanbawang');
 
-// Form Pestisida
-Route::get('/datapestisida', [KsPestisidaController::class, 'index'])->name('datapestisida');
+// Pestisida
+Route::get('/datapestisida', [KsPestisidaController::class, 'datapestisida'])->name('datapestisida');
 Route::get('/tambahdatapestisida', [KsPestisidaController::class, 'tambahdatapestisida'])->name('tambahdatapestisida');
 Route::post('/insertdatapestisida', [KsPestisidaController::class, 'insertdatapestisida'])->name('insertdatapestisida');
+Route::get('/tampildatapestisida/{id}', [KsPestisidaController::class, 'tampildatapestisida'])->name('tampildatapestisida');
+Route::post('/updatedatapestisida/{id}', [KsPestisidaController::class, 'updatedatapestisida'])->name('updatedatapestisida');
 
-// Form Pupuk
-Route::get('/datapupuk', [KsPupukController::class, 'index'])->name('datapupuk');
+// Pupuk
+Route::get('/datapupuk', [KsPupukController::class, 'datapupuk'])->name('datapupuk');
 Route::get('/tambahdatapupuk', [KsPupukController::class, 'tambahdatapupuk'])->name('tambahdatapupuk');
+Route::post('/insertdatapupuk', [KsPupukController::class, 'insertdatapupuk'])->name('insertdatapupuk');
+Route::get('/tampildatapupuk/{id}', [KsPupukController::class, 'tampildatapupuk'])->name('tampildatapupuk');
+Route::post('/updatedatapupuk/{id}', [KsPupukController::class, 'updatedatapupuk'])->name('updatedatapupuk');
 
 // Data sensor sawah (IoT)
-Route::get('datassensorsawah', [SsensorsawahController::class, 'index'])->name('datassensorsawah');
-
+Route::get('datassensorsawah', [reportiotclient::class, 'reportdataiot'])->name('datassensorsawah');
 // Form Panen
 Route::get('/datapanen', [PanenController::class, 'index'])->name('datapanen');
 Route::get('/tambahdatapanen', [PanenController::class, 'tambahdatapanen'])->name('tambahdatapanen');
@@ -84,6 +97,7 @@ Route::get('/tambahdatahama', [HamaController::class, 'tambahdatahama'])->name('
 // Form Penyakit
 Route::get('/datapenyakit', [PenyakitController::class, 'index'])->name('datapenyakit');
 Route::get('/tambahdatapenyakit', [PenyakitController::class, 'tambahdatapenyakit'])->name('tambahdatapenyakit');
+Route::get('/test2', [reportiotclient::class, 'reportdataiot']);
 
 // Cluster Petani
 Route::get('/clusterpetani', [ClusterpetaniController::class, 'index'])->name('clusterpetani');
@@ -92,6 +106,19 @@ Route::get('/tampildatajson', [ClusterpetaniController::class, 'tampildatajson']
 Route::get('/getData', [ClusterpetaniController::class, 'getData'])->name('getData');
 // Summary Cluster 
 Route::get('/summarycluster', [SummaryclusterController::class, 'index'])->name('summarycluster');
+
+//
+
+// Route::get('tambahlokasi', [clientcontroller::class, 'index']);
+// Route::post('lokasiterkirim', [clientcontroller::class, 'tambahlokasi']);
+
+
+// Route::get('tambahlokasi', [clientcontroller::class, 'index']);
+// Route::post('lokasiterkirim', [clientcontroller::class, 'tambahlokasi']);
+
+
+
+
 
 // test api
 // Route::post('/test', [DataClusterController::class, 'store']);

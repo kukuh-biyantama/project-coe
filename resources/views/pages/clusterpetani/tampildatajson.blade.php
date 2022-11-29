@@ -16,7 +16,7 @@
 </head>
 
 <body>
-  <h2 class="text-center mb-4">{{$data_body}}</h2>
+  <h2 class="text-center mb-4">{{$datacluster}}</h2>
   <!-- -alert untuk menampilkan notifikasi -->
   <!-- @if ($message = Session::get('success'))
         <div class="alert alert-success" role="alert">

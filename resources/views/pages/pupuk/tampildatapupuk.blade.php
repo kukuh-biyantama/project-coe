@@ -11,10 +11,10 @@
     <!-- Link CSS -->
     <link rel="stylesheet" href="{!! asset('assets/css/style.css') !!}">
 
-    <title>Form Tambah Data Pupuk</title>
+    <title>Form Edit Data Pupuk</title>
   </head>
   <body>
-    <h2 class="text-center mb-4 mt-3">Form Tambah Data Pupuk</h2>
+    <h2 class="text-center mb-4 mt-3">Form Edit Data Pupuk</h2>
 
         <!-- dev container untuk mengatur jarak tampilan -->
         <div class="container">
@@ -22,7 +22,7 @@
                 <div class="col-8">
                     <div class="card">
                         <div class="card-body">
-                            <form action="/insertdatapupuk" method="POST" enctype="multipart/form-data">
+                            <form action="/updatedatapupuk/{{ $data->id }}" method="POST" enctype="multipart/form-data">
                                 @csrf
 
                                 <a href="/datapupuk" type="button" class="btn btn-primary mb-4">Kembali</a>
@@ -193,13 +193,13 @@
                                 <!-- Tanggal Rabuk Pupuk -->
                                 <div class="mb-3">
                                     <label for="tglRabukPupuk" class="form-label">Tanggal Rabuk Pupuk</label>
-                                    <input type="date" name="ks_pupuk_tgl_rabuk" class="form-control" id="tglRabukPupuk" aria-describedby="tglRabukPupuk">
+                                    <input type="date" name="ks_pupuk_tgl_rabuk" class="form-control" id="tglRabukPupuk" aria-describedby="tglRabukPupuk" value="{{ $data->ks_pupuk_tgl_rabuk }}">
                                 </div>
 
                                 <!-- Jumlah Takaran Pupuk -->
                                 <div class="mb-3">
                                     <label for="jmlTakaranPupuk" class="form-label">Jumlah Takaran Pupuk</label><br>
-                                    <input type="decimal" name="ks_pupuk_jumlah_takaran" style="width:100%" class="form-control">
+                                    <input type="decimal" name="ks_pupuk_jumlah_takaran" style="width:100%" class="form-control" value="{{ $data->ks_pupuk_jumlah_takaran }}">
                                     <div class="form-check">
                                         <div class="">
                                           <input class="inputan" type="radio" id="kilogram" name="stnPupuk" value="Kilogram">
@@ -219,7 +219,7 @@
                                 <!-- Pupuk Keterangan -->
                                     <div class="mb-3">
                                     <label for="PupukKeterangan" class="form-label">Keterangan Kegiatan</label>
-                                    <input type="text" name="ks_pupuk_keterangan" style="width:100%" class="form-control">
+                                    <input type="text" name="ks_pupuk_keterangan" style="width:100%" class="form-control" value="{{ $data->ks_pupuk_keterangan }}">
                                 </div>
 
                                 <!-- Button Submit dan Cancel -->

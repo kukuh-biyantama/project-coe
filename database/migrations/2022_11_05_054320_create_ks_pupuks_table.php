@@ -15,9 +15,10 @@ return new class extends Migration
     {
         Schema::create('ks_pupuks', function (Blueprint $table) {
             $table->id();
-            $table->string('lokasi_keterangan');
-            $table->string('ks_pupuk_nama');
             $table->string('ks_pupuk_jenis');
+            $table->string('ks_pupuk_sumber_organik');
+            $table->string('ks_pupuk_sumber_anorganik');
+            $table->string('ks_pupuk_merk');
             $table->date('ks_pupuk_tgl_rabuk');
             $table->float('ks_pupuk_jumlah_takaran');
             $table->string('ks_pupuk_keterangan');

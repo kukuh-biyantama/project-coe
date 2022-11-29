@@ -115,7 +115,7 @@ return [
     'prohibited_unless' => 'The :attribute field is prohibited unless :other is in :values.',
     'prohibits' => 'The :attribute field prohibits :other from being present.',
     'regex' => 'The :attribute format is invalid.',
-    'required' => 'The :attribute field is required.',
+    'required' => ':attribute wajib diisi.',
     'required_array_keys' => 'The :attribute field must contain entries for: :values.',
     'required_if' => 'The :attribute field is required when :other is :value.',
     'required_unless' => 'The :attribute field is required unless :other is in :values.',
@@ -166,6 +166,21 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        // penanaman bawang 
+        'ks_metode_pengairan' => 'metode pengairan',
+        'ks_modal' => 'sumber modal',
+        'ks_luas_lahan' => 'luas lahan',
+        'ks_bibit' => 'jumlah bibit',
+        'ks_waktu_tanam' => 'waktu tanam',
+        'ks_status_lahan' => 'status lahan',
+        'ks_jumlah_modal' => 'jumlah modal',
+
+        // pestisida
+        'ks_pestisida_nama' => 'nama pestisida',
+        'ks_pestisida_tempat_membeli' => 'tempat membeli pestisida',
+        'ks_pestisida_tgl_semprot' => 'tanggal semprot pestisida',
+        'ks_pestisida_jumlah_takaran' => 'jumlah takaran pestisida',
+    ],
 
 ];

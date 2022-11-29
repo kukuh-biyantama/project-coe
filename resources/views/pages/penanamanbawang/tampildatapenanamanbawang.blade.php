@@ -11,10 +11,10 @@
     <!-- Link CSS -->
     <link rel="stylesheet" href="{!! asset('assets/css/style.css') !!}">
 
-    <title>Form Penanaman Bawang</title>
+    <title>Form Edit Data Penanaman Bawang</title>
   </head>
   <body>
-    <h2 class="text-center mb-4 mt-3">Form Penanaman Bawang</h2>
+    <h2 class="text-center mb-4 mt-3">Form Edit Data Penanaman Bawang</h2>
 
         <!-- dev container untuk mengatur jarak tampilan -->
         <div class="container">
@@ -22,34 +22,38 @@
                 <div class="col-8">
                     <div class="card">
                         <div class="card-body">
-                            <form action="" method="POST" enctype="multipart/form-data">
-                                <!-- @csrf -->
-                                <a href="/home" type="button" class="btn btn-primary mb-4">Kembali</a>
+                            <form action="/updatedatapenanamanbawang/ {{ $data->id }}" method="POST" enctype="multipart/form-data">
+                                @csrf
+                                <a href="/datapenanamanbawang" type="button" class="btn btn-primary mb-4">Kembali</a>
+
+                                <!-- Lokasi -->
+                                <!-- <div class="mb-3">
+                                  <label for="" class="form-label">Lokasi</label>
+                                  <select class="form-select" name="lokasi_keterangan" aria-label="Default select example">
+                                      <option selected disabled>Pilih</option>
+                                      <option value="1">Sawah pak Ridho</option>
+                                  </select>
+                                </div> -->
 
                                 <!-- Metode Pengairan -->
                                 <div class="mb-3">
                                     <label for="metodePengairan" class="form-label">Metode Pengairan</label>
                                     <div class="form-check">
                                         <div class="">
-                                          <input class="" type="checkbox" name="">
-                                          <label>Sumur</label>
+                                          <input class="" type="checkbox" name="ks_metode_pengairan[]" value="Sumur"> Sumur<br>
                                         </div>
                                         <div class="">
-                                            <input class="" type="checkbox" name="">
-                                            <label>irigasi</label>
+                                          <input class="" type="checkbox" name="ks_metode_pengairan[]"  value="Irigasi"> Irigasi<br>
                                         </div>
                                         <div class="">
-                                            <input class="" type="checkbox" name="">
-                                            <label>Tadah Hujan</label>
+                                          <input class="" type="checkbox" name="ks_metode_pengairan[]"  value="Tadah Hujan"> Tadah Hujan<br>
                                         </div>
                                         <div class="">
-                                            <input class="" type="checkbox" name="">
-                                            <label>Mata Air</label>
+                                          <input class="" type="checkbox" name="ks_metode_pengairan[]"  value="Mata Air"> Mata Air<br>
                                         </div>
                                         <div class="">
-                                            <input class="" type="checkbox" name="">
-                                            <label>Sungai</label>
-                                        </div>
+                                          <input class="" type="checkbox" name="ks_metode_pengairan[]"  value="Sungai"> Sungai<br>
+                                        </div>                        
                                     </div>
                                 </div>
 
@@ -58,12 +62,10 @@
                                     <label for="sumberModal" class="form-label">Sumber Modal</label>
                                     <div class="form-check">
                                         <div class="">
-                                          <input class="inputan" type="checkbox" name="">
-                                          <label>Sendiri</label>
+                                          <input class="ksModal" type="checkbox" name="ks_modal[]" value="Sendiri"> Sendiri<br>
                                         </div>
                                         <div class="">
-                                          <input class="inputan" type="checkbox" name="">
-                                          <label>Pinjam</label>
+                                          <input class="ksModal" type="checkbox" name="ks_modal[]" value="Pinjam"> Pinjam<br>
                                         </div>
                                     </div>
                                 </div>
@@ -71,14 +73,14 @@
                                 <!-- Luas Lahan -->
                                 <div class="mb-3">
                                     <label for="luasLahan" class="form-label">Luas Lahan</label><br>
-                                    <input type="number" style="width:100%" class="form-control">
+                                    <input type="number" style="width:100%" class="form-control" name="ks_luas_lahan" value="{{ $data->ks_luas_lahan }}">
                                     <div class="form-check">
                                         <div class="">
-                                          <input class="inputan" type="radio" id="meter" name="luas_lahan" value="Meter">
+                                          <input class="inputan" type="radio" id="meter" name="stnLuasLahan" value="Meter">
                                           <label>Meter</label>
                                         </div>
                                         <div class="">
-                                          <input class="inputan" type="radio" id="hektar" name="luas_lahan" value="Hektar">
+                                          <input class="inputan" type="radio" id="hektar" name="stnLuasLahan" value="Hektar">
                                           <label>Hektar</label>
                                         </div>
                                     </div>
@@ -86,19 +88,19 @@
 
                                 <!-- Bibit -->
                                 <div class="mb-3">
-                                    <label for="bibit" class="form-label">Bibit</label><br>
-                                    <input type="number" style="width:100%" class="form-control">
+                                    <label for="bibit" class="form-label">Jumlah Bibit</label><br>
+                                    <input type="number" name="ks_bibit" style="width:100%" class="form-control" value="{{ $data->ks_bibit }}">
                                     <div class="form-check">
                                         <div class="">
-                                          <input class="inputan" type="radio" id="kilogram" name="bibit" value="Kilogram">
+                                          <input class="inputan" type="radio" id="kilogram" name="stnBibit" value="Kilogram">
                                           <label>Kilogram</label>
                                         </div>
                                         <div class="">
-                                            <input class="inputan" type="radio" id="kuintal" name="bibit" value="Kuintal">
+                                            <input class="inputan" type="radio" id="kuintal" name="stnBibit" value="Kuintal">
                                             <label>Kuintal</label>
                                         </div>
                                         <div class="">
-                                            <input class="inputan" type="radio" id="ton" name="bibit" value="Ton">
+                                            <input class="inputan" type="radio" id="ton" name="stnBibit" value="Ton">
                                             <label>Ton</label>
                                         </div>
                                     </div>
@@ -107,40 +109,28 @@
                                 <!-- Waktu Tanam -->
                                 <div class="mb-3">
                                     <label for="waktuTanam" class="form-label">Waktu Tanam</label>
-                                    <input type="date" name="waktu_tanam" class="form-control" id="waktuTanam" aria-describedby="waktuTanam">
-                                </div>
-
-                                <!-- Lokasi -->
-                                <div class="mb-3">
-                                    <label for="" class="form-label">Lokasi</label>
-                                    <select class="form-select" name="" aria-label="Default select example">
-                                        <option selected disabled>Pilih</option>
-                                        <option value="1">Sawah pak Ridho</option>
-                                    </select>
+                                    <input type="date" name="ks_waktu_tanam" class="form-control" id="waktuTanam" aria-describedby="waktuTanam" value="{{ $data->ks_waktu_tanam }}" >
                                 </div>
 
                                 <!-- Status Lahan -->
                                 <div class="mb-3">
-                                    <label for="metodePengairan" class="form-label">Status Lahan</label>
+                                    <label for="" class="form-label">Status Lahan</label>
                                     <div class="form-check">
                                         <div class="">
-                                          <input class="" type="checkbox" name="">
-                                          <label>Sewa</label>
+                                          <input class="" type="checkbox" name="ks_status_lahan[]" value="Sewa"> Sewa<br>
                                         </div>
                                         <div class="">
-                                            <input class="" type="checkbox" name="">
-                                            <label>Milik Sendiri</label>
+                                          <input class="" type="checkbox" name="ks_status_lahan[]" value="Milik Sendiri"> Milik Sendiri<br>
                                         </div>
                                         <div class="">
-                                            <input class="" type="checkbox" name="">
-                                            <label>Bagi Hasil</label>
+                                          <input class="" type="checkbox" name="ks_status_lahan[]" value="Bagi Hasil"> Bagi Hasil<br>
                                         </div>
                                     </div>
                                 </div>
 
                                 <!-- Jumlah Modal -->
                                 <label for="jumlahModal" class="form-label">Jumlah Modal</label><br>
-                                <input type="number" style="width:100%" class="form-control">
+                                <input type="number" name="ks_jumlah_modal" style="width:100%" class="form-control" value="{{ $data->ks_jumlah_modal }}">
 
                                 <!-- Button Submit dan Cancel -->
                                 <div class="mb-4 mt-5 text-center">

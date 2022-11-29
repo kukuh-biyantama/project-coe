@@ -1,120 +1,164 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Laporan IoT sawah</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    {{-- <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"> --}}
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js">
+ 
+   </script>
+    {{-- auto refresh 10 detik --}}
+    <meta http-equiv="refresh" content="10" > 
+    {{-- <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Tanggal', 'Sales'],
+          
+          @foreach['{{ $item['waktu'] }}',  1000]
+          
+        ]);
 
-    <!-- toastr -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        var options = {
+          title: 'Company Performance',
+          curveType: 'function',
+          legend: { position: 'bottom' }
+        };
 
-    <!-- Link CSS -->
-    <link rel="stylesheet" href="style.css">
+        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
 
+        chart.draw(data, options);
+      }
+    {{-- </script> --}}
+</head>
+<body>
+    @foreach ($data as $item);
+                     
+                        <div class="col-lg-5 col-xl-4 col-xxl-6">
+                            <div class="row">
+                                <div class="col-lg-6 mb-4">
+                                    <div class="card text-white bg-primary shadow">
+                                        <div class="card-body">
+                                            <p class="m-0">ID_IOT<br></p>
+                                            <p class="text-white-100 small m-0">{{ $item['id_iot'] }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 mb-4">
+                                    <div class="card text-white bg-success shadow">
+                                        <div class="card-body">
+                                            <p class="m-0">Alamat Sensor IoT<br></p>
+                                            <p class="text-white-100 small m-0">{{ $item['alamat'] }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-lg-6 mb-4">
+                                    <div class="card text-white bg-success shadow">
+                                        <div class="card-body">
+                                            <p class="m-0">DATA KECEPATAN ANGIN<br></p>
+                                            <p class="text-white-100 small m-0">{{ $item['datakecepatanangin'] }} KM/H</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 mb-4">
+                                    <div class="card text-white bg-info shadow">
+                                        <div class="card-body">
+                                            <p class="m-0">DATA SUHU UDARA<br></p>
+                                            <p class="text-white-100 small m-0">{{ $item['datasuhuudara'] }}<sup>C</sup></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 mb-4">
+                                    <div class="card text-white bg-warning shadow">
+                                        <div class="card-body">
+                                            <p class="m-0">Data Kelembaban Udara<br></p>
+                                            <p class="text-white-100 small m-0">{{ $item['datakelembabanudara'] }}<sup>C</sup></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 mb-4">
+                                    <div class="card text-white bg-danger shadow">
+                                        <div class="card-body">
+                                            <p class="m-0">Data Ph Tanah<br></p>
+                                            <p class="text-white-100 small m-0">{{ $item['dataphtanah'] }}p<sup>H</sup></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 mb-4">
+                                    <div class="card text-white bg-secondary shadow">
+                                        <div class="card-body">
+                                            <p class="m-0">Data Kelembaban Tanah<br></p>
+                                            <p class="text-white-100 small m-0">{{ $item['datakelembabantanah'] }}<sup>C</sup></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 mb-4">
+                                    <div class="card text-white bg-warning shadow">
+                                        <div class="card-body">
+                                            <p class="m-0">Data Suhu Tanah<br></p>
+                                            <p class="text-white-100 small m-0">{{ $item['datasuhutanah'] }}<sup>C</sup></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 mb-4">
+                                    <div class="card text-white bg-success shadow">
+                                        <div class="card-body">
+                                            <p class="m-0">Status Alat<br></p>
+                                            @if($item['statusalat'] == [1]){
+                                                <p class="text-white-100 small m-0">Mati</p>
 
-    <title>Data IOT</title>
-  </head>
-  <body>
-    <h2 class="text-center mb-4 mt-4">Data Sensor Sawah (IoT)</h2>
+                                            }else{
+                                                <p class="text-white-100 small m-0">Hidup</p>
 
-        <!-- dev container untuk mengatur jarak tampilan -->
-        <div class="container">
-            <a href="/home" type="button" class="btn btn-primary mb-4">Kembali</a>
-
-            <!-- Lokasi -->
-            <!-- <div class="row">
-                <div class="col-5 mb-4">
-                    <label for="" class="form-label" style="font-weight: 500;">Lokasi</label>
-                    <select class="form-select" name="" aria-label="Default select example">
-                        <option selected disabled>Pilih</option>
-                        <option value="1">Sawah pak Ridho</option>
-                    </select>
+                                            }
+                                            @endif
+                                        </div>
+                                    </div>
+                                </div>
+                                {{-- <div class="col-lg-6 mb-4">
+                                    <div class="card text-white bg-success shadow">
+                                        <div class="card-body">
+                                            <p class="m-0">Waktu<br></p>
+                                            <p class="text-white-50 small m-0">{{ $item['waktu'] }}</p>
+                                        </div>
+                                    </div>
+                                </div> --}}
+                                <div class="col-lg-6 mb-4">
+                                    <div class="card text-white bg-success shadow">
+                                        <div class="card-body">
+                                            <p class="m-0">tanggal<br></p>
+                                            <p class="text-white-50 small m-0">
+                                            
+                                            
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div> -->
-            <div class="row">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th scope="col">IoT ID</th>
-                            <th scope="col">Alamat</th>
-                            <th scope="col">Kecepatan Angin</th>
-                            <th scope="col">Suhu Udara</th>
-                            <th scope="col">Kelembapan Udara</th>
-                            <th scope="col">Ph Tanah</th>
-                            <th scope="col">Kelembapan Tanah</th>
-                            <th scope="col">Suhu Tanah</th>
-                            <th scope="col">Status alat</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Brebes</td>
-                            <td>40</td>
-                            <td>28</td>
-                            <td>109</td>
-                            <td>7</td>
-                            <td>109</td>
-                            <td>49</td>
-                            <td>Aktif</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="col-lg-5 mb-3"><a href="/home"><button type="button" class="btn btn-primary">Kembali</button></a></div>
             </div>
-        </div>
+            @endforeach
+            <div id="curve_chart" style="width: 900px; height: 500px"></div>
 
-    <!-- Optional JavaScript; choose one of the two! -->
-
-    <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-
-    <!-- script jquery cdn -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-
-    <!-- script sweetalert -->
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
-    <!-- script toastr -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-    <!-- Option 2: Separate Popper and Bootstrap JS -->
-    <!--
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
-    -->
-  </body>
-  <!-- script untuk konfirmasi menghapus data -->
-  <script>
-    $('.delete').click( function(){
-        // var iotid = $(this).attr('data-id');
-        // var iotnama = $(this).attr('data-iot_nama');
-        swal({
-            title: "Yakin?",
-            text: "Anda akan menghapus data IoT dengan ID ...",
-            icon: "warning",
-            buttons: true,
-            dangerMode: true,
-            })
-            .then((willDelete) => {
-            if (willDelete) {
-                // window.location = "/deletedataiot/"+iotid+""
-                swal("Data IOT berhasil dihapus", {
-                icon: "success",
-                });
-            } else {
-                swal("Data IOT tidak jadi dihapus");
-            }
-        });
-    });
-  </script>
-
-  <!-- script toastr untuk menampilkan notifikasi jika data telah berhasil dieksekusi -->
-  <!-- <script>
-    @if (Session::has('success'))
-        toastr.success("{{Session::get('success')}}")
-    @endif
-  </script> -->
+   
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/chart.min.js"></script>
+    <script src="assets/js/bs-init.js"></script>
+    <script src="assets/js/theme.js"></script>
+</body>
 </html>

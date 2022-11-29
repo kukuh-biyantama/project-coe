@@ -11,10 +11,10 @@
     <!-- Link CSS -->
     <link rel="stylesheet" href="{!! asset('assets/css/style.css') !!}">
 
-    <title>Form Tambah Data Pestisida</title>
+    <title>Form Edit Data Pestisida</title>
   </head>
   <body>
-    <h2 class="text-center mb-4 mt-3">Form Tambah Data Pestisida</h2>
+    <h2 class="text-center mb-4 mt-3">Form Edit Data Pestisida</h2>
 
         <!-- dev container untuk mengatur jarak tampilan -->
         <div class="container">
@@ -22,7 +22,8 @@
                 <div class="col-8">
                     <div class="card">
                         <div class="card-body">
-                            <form action="/insertdatapestisida" method="POST" enctype="multipart/form-data">
+
+                            <form action="/updatedatapestisida/{{ $data->id }}" method="POST" enctype="multipart/form-data">
                                 @csrf
 
                                 <a href="/datapestisida" type="button" class="btn btn-primary mb-4">Kembali</a>
@@ -39,49 +40,32 @@
                                 <!-- Nama Pestisida -->
                                 <div class="mb-3">
                                     <label for="namaPestisida" class="form-label">Nama Pestisida</label>
-
-                                    <input type="text" name="ks_pestisida_nama" style="width:100%" class="form-control @error('ks_pestisida_nama') is-invalid @enderror" value="{{ old('ks_pestisida_nama') }}">
-
-                                    @error('ks_pestisida_nama')
-                                    <div class="invalid-feedback">{{ $message }}</div>
-                                    @enderror
+                                    <input type="text" name="ks_pestisida_nama" style="width:100%" class="form-control" value="{{ $data->ks_pestisida_nama }}">
                                 </div>
 
                                 <!-- Tempat Membeli Pestisida -->
                                 <div class="mb-3">
                                     <label for="tempatMembeliPestisida" class="form-label">Tempat Membeli Pestisida</label>
-
-                                    <div class="form-check @error('ks_pestisida_tempat_membeli') is-invalid @enderror" value="{{ old('ks_pestisida_tempat_membeli[]') }}">
-                                        <div class="tempatMembeliPestisida">
-                                          <input class="inputTempatMembeliPestisida" type="checkbox" name="ks_pestisida_tempat_membeli[]" value="Toko Obat Pertanian"> Toko Obat Pertanian<br>
+                                    <div class="form-check">
+                                        <div class="">
+                                          <input class="" type="checkbox" name="ks_pestisida_tempat_membeli[]" value="Toko Obat Pertanian"> Toko Obat Pertanian<br>
                                         </div>
-                                        <div class="inputTempatMembeliPestisida">
+                                        <div class="">
                                           <input class="" type="checkbox" name="ks_pestisida_tempat_membeli[]" value="Kelompok Tani"> Kelompok Tani<br>
                                         </div>
                                     </div>
-
-                                    @error('ks_pestisida_tempat_membeli')
-                                    <div class="invalid-feedback">{{ $message }}</div>
-                                    @enderror
                                 </div>
 
                                 <!-- Tanggal Semprot Pestisida -->
                                 <div class="mb-3">
                                     <label for="tglSemprotPestisida" class="form-label">Tanggal Semprot Pestisida</label>
-
-                                    <input type="date" name="ks_pestisida_tgl_semprot" class="form-control @error('ks_pestisida_tgl_semprot') is-invalid @enderror" value="{{ old('ks_pestisida_tgl_semprot') }}">
-
-                                    @error('ks_pestisida_tgl_semprot')
-                                    <div class="invalid-feedback">{{ $message }}</div>
-                                    @enderror
+                                    <input type="date" name="ks_pestisida_tgl_semprot" class="form-control" id="tglSemprotPestisida" aria-describedby="tglSemprotPestisida" value="{{ $data->ks_pestisida_tgl_semprot }}">
                                 </div>
 
                                 <!-- Jumlah Takaran Pestisida -->
                                 <div class="mb-3">
                                     <label for="jmlTakaranPestisida" class="form-label">Jumlah Takaran Pestisida</label><br>
-
-                                    <input type="decimal" style="width:100%" class="form-control  @error('ks_pestisida_jumlah_takaran') is-invalid @enderror" name="ks_pestisida_jumlah_takaran" value="{{ old('ks_pestisida_jumlah_takaran') }}">
-
+                                    <input type="decimal" style="width:100%" class="form-control" name="ks_pestisida_jumlah_takaran" value="{{ $data->ks_pestisida_jumlah_takaran }}">
                                     <div class="form-check">
                                         <div class="">
                                           <input class="inputan" type="radio" id="liter" name="stnJumlahTakaranPestisida" value="Liter">
@@ -92,17 +76,12 @@
                                           <label>Mililiter</label>
                                         </div>
                                     </div>
-
-                                    @error('ks_pestisida_jumlah_takaran')
-                                    <div class="invalid-feedback">{{ $message }}</div>
-                                    @enderror
-                                    
                                 </div>
 
                                 <!-- Pestisida Keterangan -->
                                 <div class="mb-3">
-                                    <label for="pestisidaKeterangan" class="form-label">Keterangan Kegiatan</label>
-                                    <input type="text" name="ks_pestisida_keterangan" style="width:100%" class="form-control">
+                                    <label for="pestisidaKeterangan" class="form-label">Keterangan</label>
+                                    <input type="text" name="ks_pestisida_keterangan" style="width:100%" class="form-control" value="{{ $data->ks_pestisida_keterangan }}">
                                 </div>
 
                                 <!-- Button Submit dan Cancel -->

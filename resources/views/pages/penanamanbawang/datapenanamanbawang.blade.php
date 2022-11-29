@@ -11,44 +11,53 @@
     <!-- toastr -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <title>Data Pupuk</title>
+    <title>Data Penanaman Bawang</title>
   </head>
   <body>
-    <h2 class="text-center mb-4 mt-4">Data Pupuk</h2>
+    <h2 class="text-center mb-4 mt-4">Data Penanaman Bawang</h2>
 
         <!-- dev container untuk mengatur jarak tampilan -->
         <div class="container">
             <div class="mb-4 mt-5">
-                <a href="/tambahdatapupuk" type="button" class="btn btn-success" style="float: right;">Tambah Data</a>
+                <a href="/tambahdatapenanamanbawang" type="button" class="btn btn-success" style="float: right;">Tambah Data</a>
                 <a href="/home" type="button" class="btn btn-primary">Kembali</a>
             </div>
-           
             <div class="row">
                 <table class="table table-bordered">
                     <thead>
                         <tr>
-                            <th scope="col">Jenis Pupuk</th>
-                            <th scope="col">Sumber Pupuk Organik</th>
-                            <th scope="col">Sumber Pupuk Anorganik</th>
-                            <th scope="col">Merk Pupuk</th>
-                            <th scope="col">Tanggal Rabuk Pupuk</th>
-                            <th scope="col">Jumlah Takaran Pupuk (kg)</th>
-                            <th scope="col">Keterangan Kegiatan</th>
+                            <!-- <th scope="col">Penanaman ID</th> -->
+                            <!-- <th scope="col">Lokasi Keterangan</th> -->
+                            <th scope="col">Metode Pengairan</th>
+                            <th scope="col">Sumber Modal</th>
+                            <th scope="col">Luas Lahan (m<sup>2</sup>)</th>
+                            <th scope="col">Jumlah Bibit (kg)</th>
+                            <th scope="col">Waktu Tanam</th>
+                            <th scope="col">Status Lahan</th>
+                            <th scope="col">Jumlah Modal (Rp)</th>
                             <th scope="col">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($data as $row)
                             <tr>
-                                <td>{{ $row-> ks_pupuk_jenis }}</td>
-                                <td>{{ $row-> ks_pupuk_sumber_organik }}</td>
-                                <td>{{ $row-> ks_pupuk_sumber_anorganik }}</td>
-                                <td>{{ $row-> ks_pupuk_merk }}</td>
-                                <td>{{ $row-> ks_pupuk_tgl_rabuk }}</td>
-                                <td>{{ $row-> ks_pupuk_jumlah_takaran }}</td>
-                                <td>{{ $row-> ks_pupuk_keterangan }}</td>
+                                <!-- <td>{{ $row->id }}</td> -->
+                                <!-- <td>{{ $row->lokasi_sawah_id }}</td> -->
+                                <td>{{ $row->ks_metode_pengairan }}</td>
+                                <td>{{ $row->ks_modal }}</td>
                                 <td>
-                                    <a href="/tampildatapupuk/{{ $row->id }}" class="btn btn-warning">Edit</a>
+                                    <?php echo number_format($row->ks_luas_lahan, 0,',','.') ?>
+                                </td>
+                                <td>
+                                    <?php echo number_format($row->ks_bibit, 0,',','.') ?>
+                                </td>
+                                <td>{{ $row->ks_waktu_tanam }}</td>
+                                <td>{{ $row->ks_status_lahan }}</td>
+                                <td>
+                                    <?php echo number_format($row->ks_jumlah_modal, 0,',','.') ?>
+                                </td>
+                                <td>
+                                    <a href="/tampildatapenanamanbawang/{{ $row-> id }}" class="btn btn-warning">Edit</a>
                                 </td>
                             </tr>
                         @endforeach
