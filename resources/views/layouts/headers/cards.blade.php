@@ -355,7 +355,7 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col">
-                                        <h2 class="card-title text-uppercase text-muted mb-0">Riwayat Penanaman Bawang</h2>
+                                        <h2 class="card-title text-uppercase text-muted mb-0">Riwayat Penanaman Bawang Test</h2>
                                     </div>
                                     <div class="col mt-2">
                                         <div class="icon icon-shape bg-info text-white rounded-circle shadow">
