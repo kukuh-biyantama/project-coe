@@ -43,21 +43,27 @@ class HomeController extends Controller
         $response_data = json_decode($response);
         $user_data = $response_data->docs;
         $user_data = array_slice($user_data, 0);
-        foreach ($user_data as $user) {
-            $hasilcluster = $user->cluster;
-            $x = json_encode($hasilcluster);
-            $z = json_decode($x);
-            if ($z == [0]) {
-                $namaPetani = $user->nama;
-                $petanicluster = "kosong";
-            } elseif ($z == [1]) {
-                $namaPetani = $user->nama;
-                $petanicluster = "satu";
-            } else {
-                $namaPetani = "belum ada";
-                $petanicluster = "tidak ada";
+        if ($user_data == null) {
+            $namaPetani = "belum ada";
+            $petanicluster = "tidak ada";
+            return view('dashboard', ['petanicluster' => $petanicluster], ['namapetani' => $namaPetani]);
+        } else {
+            foreach ($user_data as $user) {
+                $hasilcluster = $user->cluster;
+                $x = json_encode($hasilcluster);
+                $z = json_decode($x);
+                if ($z == [0]) {
+                    $namaPetani = $user->nama;
+                    $petanicluster = "kosong";
+                } elseif ($z == [1]) {
+                    $namaPetani = $user->nama;
+                    $petanicluster = "satu";
+                } else {
+                    $namaPetani = "belum ada";
+                    $petanicluster = "tidak ada";
+                }
             }
+            return view('dashboard', ['petanicluster' => $petanicluster], ['namapetani' => $namaPetani]);
         }
-        return view('dashboard', ['petanicluster' => $petanicluster], ['namapetani' => $namaPetani]);
     }
 }
