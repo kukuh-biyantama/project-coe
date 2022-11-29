@@ -12,17 +12,28 @@
   <!-- toastr -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-  <title>Coba Hasil JSON</title>
+  <title>Hasil Cluster</title>
 </head>
 
 <body>
-  <h2 class="text-center mb-4">{{$datacluster}}</h2>
-  <!-- -alert untuk menampilkan notifikasi -->
-  <!-- @if ($message = Session::get('success'))
-        <div class="alert alert-success" role="alert">
-            {{ $message }}
+  <div class="shadow-none p-3 mb-5 bg-light rounded">
+    <div class="container-fluid">
+      <div class="border border p-2 mb-2 border-opacity-25">
+        <div>
+          <p class="fs-2" style="text-align: center;"><b>Terimakasih Data Sudah Terisi</b></p>
         </div>
-    @endif -->
+        <div class="container text-center">
+          <p class="fs-2" style="text-align: center;">Terimakasih sudah mengisi form prediksi cluster petani
+            silahkan klik kembali untuk masuk ke halaman utama.</p>
+          <p class="fs-4" style="text-align: center;">Kemudian untuk melihat laporan cluster petani anda silahkan
+            klik laporan petani pada halaman utama.</p>
+        </div>
+        <div class="d-grid gap-2 d-md-block" style="text-align: center;">
+          <a href="/home" type="button" class="btn btn-info">Kembali</a>
+        </div>
+      </div>
+    </div>
+  </div>
 
 
   <!-- Option 1: Bootstrap Bundle with Popper -->
