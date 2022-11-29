@@ -23,7 +23,7 @@ class ClusterpetaniController extends Controller
         $setWaktu = date('d-m-Y H:i:s');
         $currentuserid = Auth::user()->id;
         $client = new Client();
-        $api_url = "compute.dinus.ac.id:908/predict";
+        $api_url = "http://compute.dinus.ac.id:908/predict";
         //konversi luas lahan (meter)
         $satuanLuas_lahan = $request->input('stnluasLahan');
         $dataLuas_lahan = $request->input('inptLuaslahan');
@@ -221,14 +221,14 @@ class ClusterpetaniController extends Controller
         ]);
         $data_body = $res->getBody();
         $obj = json_decode($data_body);
-        if ($obj->Cluster == [0]) {
-            $datacluster = "anda tidak memenuhi";
-        } elseif ($obj->Cluster == [1]) {
-            $datacluster = "anda memenuhi";
-        } else {
-            $datacluster = "tidak valid";
-        }
-        return view('/pages/clusterpetani/tampildatajson', ['datacluster' => $datacluster]);
+        // if ($obj->Cluster == [0]) {
+        //     $datacluster = "anda tidak memenuhi";
+        // } elseif ($obj->Cluster == [1]) {
+        //     $datacluster = "anda memenuhi";
+        // } else {
+        //     $datacluster = "tidak valid";
+        // }
+        return view('/pages/clusterpetani/tampildatajson');
     }
 
     public function tampildatajson()

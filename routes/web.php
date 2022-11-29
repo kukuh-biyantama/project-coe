@@ -86,7 +86,6 @@ Route::post('/updatedatapupuk/{id}', [KsPupukController::class, 'updatedatapupuk
 
 // Data sensor sawah (IoT)
 Route::get('datassensorsawah', [reportiotclient::class, 'reportdataiot'])->name('datassensorsawah');
-
 // Form Panen
 Route::get('/datapanen', [PanenController::class, 'index'])->name('datapanen');
 Route::get('/tambahdatapanen', [PanenController::class, 'tambahdatapanen'])->name('tambahdatapanen');
