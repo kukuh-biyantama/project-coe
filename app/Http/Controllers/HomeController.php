@@ -18,7 +18,7 @@ class HomeController extends Controller
     }
 
     /**
-     * Show the application dashboard.aqs
+     * Show the application dashboard
      *
      * @return \Illuminate\View\View
      */
