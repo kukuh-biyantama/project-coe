@@ -38,6 +38,6 @@ class LokasiSawahController extends Controller
                 'id_iot' => $id_iot
             ]);
            
-            return redirect('datalokasisawah')->with('success', 'Data Telah Terkirim');
+            response()->json(['massage'=> 'insert data success', 'data' => $tambahlokasi]);
         }
 }
