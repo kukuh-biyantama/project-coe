@@ -32,9 +32,9 @@ class SummaryclusterController extends Controller
         $user_data = $response_data->docs;
         $user_data = array_slice($user_data, 0);
         if ($user_data == null) {
-            $namaPetani = "belum ada";
-            $petanicluster = "tidak ada";
-            return view('/pages/summarycluster/summarycluster', ['petanicluster' => $petanicluster], ['namapetani' => $namaPetani]);
+            $namaPetani = "Belum mengisi data nama";
+            $petanicluster = "Tidak ada data cluster";
+            return view('/pages/summarycluster/summaryclusternothing', ['petanicluster' => $petanicluster], ['namapetani' => $namaPetani]);
         } else {
             foreach ($user_data as $user) {
                 $hasilcluster = $user->cluster;
@@ -43,15 +43,17 @@ class SummaryclusterController extends Controller
                 if ($z == [0]) {
                     $namaPetani = $user->nama;
                     $petanicluster = "kosong";
+                    return view('/pages/summarycluster/summaryclusterkosong', ['petanicluster' => $petanicluster], ['namapetani' => $namaPetani]);
                 } elseif ($z == [1]) {
                     $namaPetani = $user->nama;
                     $petanicluster = "satu";
+                    return view('/pages/summarycluster/summaryclustersatu', ['petanicluster' => $petanicluster], ['namapetani' => $namaPetani]);
                 } else {
-                    $namaPetani = "belum ada";
-                    $petanicluster = "tidak ada";
+                    $namaPetani = "Belum mengisi data nama";
+                    $petanicluster = "Tidak ada data cluster";
+                    return view('/pages/summarycluster/summaryclusternothing', ['petanicluster' => $petanicluster], ['namapetani' => $namaPetani]);
                 }
             }
-            return view('/pages/summarycluster/summarycluster', ['petanicluster' => $petanicluster], ['namapetani' => $namaPetani]);
         }
     }
 }

@@ -8,7 +8,6 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
     <title>Hasil cluster</title>
 </head>
 
@@ -19,13 +18,17 @@
                 <div>
                     <p class="fs-2" style="text-align: center;"><b>Laporan Hasil Cluster</b></p>
                 </div>
-                <div class="container text-center">
-                    <p class="fs-2" style="text-align: center;">Petani {{$namapetani}}</p>
-                    <p class="fs-4" style="text-align: center;">Cluster {{$petanicluster}}</p>
+                <div>
+                    <p class="fs-2" style="text-align: justify;"><b>Nama petani :</b> {{$namapetani}}</p>
+                    <p class="fs-4" style="text-align: justify;"><b>Cluster :</b> {{$petanicluster}}</p>
                 </div>
-                <h1>fab fa-markdown</h1>
-
-
+                <div>
+                    <p class="fs-2" style="text-align: justify;"><b>Keterangan :</b> Anda saat ini berada pada cluster satu</p>
+                </div>
+                <div style="text-align: center;">
+                    <p class="fs-2" style="text-align: center;"><b>Laporan bibit, pupuk dan kabupaten</b></p>
+                    <img src="" alt="" title="" />
+                </div>
                 <div class="d-grid gap-2 d-md-block" style="text-align: center;">
                     <a href="/home" type="button" class="btn btn-info">Kembali</a>
                 </div>
