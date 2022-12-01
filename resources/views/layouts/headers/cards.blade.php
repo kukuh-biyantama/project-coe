@@ -112,7 +112,8 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col">
-                                        <h2 class="card-title text-uppercase text-muted mb-3">Lokasi Pak Farhan</h2>
+                                        <h2 class="mb-0 text-sm  font-weight-bold">Lokasi, {{ auth()->user()->name }}</h2>
+                                        {{-- <h2 class="card-title text-uppercase text-muted mb-3">Lokasi Pak Farhan</h2> --}}
                                     </div>
                                     {{-- <div class="col">
                                         <div class="icon icon-shape bg-info text-white rounded-circle shadow">

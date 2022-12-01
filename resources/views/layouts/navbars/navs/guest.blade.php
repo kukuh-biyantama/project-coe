@@ -1,7 +1,7 @@
-<nav class="navbar navbar-top navbar-horizontal navbar-expand-md navbar-dark">
-    <div class="container px-4">
+<nav class="navbar navbar-top navbar-horizontal navbar-expand-md navbar-dark pb-5">
+    <div class="container px-4 ">
         <a class="navbar-brand" href="{{ route('home') }}">
-            <img src="{{ asset('argon') }}/img/brand/white.png" />
+            <img width="200px" height="60px" src="{{ asset('argon') }}/img/brand/icon-bawang.png"/>
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapse-main" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -12,7 +12,7 @@
                 <div class="row">
                     <div class="col-6 collapse-brand">
                         <a href="{{ route('home') }}">
-                            <img src="{{ asset('argon') }}/img/brand/blue.png">
+                            <img width="100px" height="300px" src="{{ asset('argon') }}/img/brand/bawang2.png">
                         </a>
                     </div>
                     <div class="col-6 collapse-close">
