@@ -135,20 +135,20 @@
 
                             <div class="row pt-4">
                                 <div class="col">
-                                    <h3 class="mb-0 text-black text-center">Suhu</h3>
+                                    {{-- <h3 class="mb-0 text-black text-center">Suhu</h3>
                                     <h2 class="card-title text-uppercase text-black mb-0 wrap-text">#
                                         <span>&#8451;</span>
-                                    </h2>
+                                    </h2> --}}
                                 </div>
                                 <div class="col">
-                                    <h3 class="mb-0 text-black text-center">Kelembapan</h3>
-                                    <h2 class="card-title text-uppercase text-black mb-0 wrap-text">#</h2>
+                                    {{-- <h3 class="mb-0 text-black text-center">Kelembapan</h3>
+                                    <h2 class="card-title text-uppercase text-black mb-0 wrap-text">#</h2> --}}
                                 </div>
                                 <div class="col">
-                                    <h3 class="mb-0 text-black text-center">Ph Tanah</h3>
+                                    {{-- <h3 class="mb-0 text-black text-center">Ph Tanah</h3>
                                     <h2 class="card-title text-uppercase text-black mb-0 wrap-text">#
                                         <span>&#13271;</span>
-                                    </h2>
+                                    </h2> --}}
                                 </div>
                             </div>
                             {{-- @endforeach --}}

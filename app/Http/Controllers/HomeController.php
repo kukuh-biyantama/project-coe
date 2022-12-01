@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Http;
 
 class HomeController extends Controller
 {
@@ -26,45 +25,54 @@ class HomeController extends Controller
     public function index()
     {
         $currentuserid = Auth::user()->id;
-        $currentuserid = auth::user()->id;
-        $response = Http::withHeaders([
-            'Accept' => 'application/json'
-        ])->post('http://couchadmin:petaniMerdeka2022@compute.dinus.ac.id:907/databaseasesmentpetani/_find', [
-            'selector' => [
-                'id_user' => $currentuserid
-            ],
-            'fields' => [
-                "nama",
-                "cluster"
-            ],
-            'skip' => 0,
-            'execution_stats' => true
-        ]);
-        $response_data = json_decode($response);
-        $user_data = $response_data->docs;
+        //session
+        // $request->session()->put("user", $currentuserid);
+        $api_url = 'http://couchadmin:petaniMerdeka2022@compute.dinus.ac.id:907/databaseasesmentpetani/_all_docs?include_docs=true';
+        $json_data = file_get_contents($api_url);
+        $response_data = json_decode($json_data);
+        $user_data = $response_data->rows;
         $user_data = array_slice($user_data, 0);
-        if ($user_data == null) {
-            $namaPetani = "belum ada";
-            $petanicluster = "tidak ada";
-            return view('dashboard', ['petanicluster' => $petanicluster], ['namapetani' => $namaPetani]);
-        } else {
-            foreach ($user_data as $user) {
-                $hasilcluster = $user->cluster;
-                $x = json_encode($hasilcluster);
-                $z = json_decode($x);
-                if ($z == [0]) {
-                    $namaPetani = $user->nama;
-                    $petanicluster = "kosong";
-                } elseif ($z == [1]) {
-                    $namaPetani = $user->nama;
-                    $petanicluster = "satu";
-                } else {
-                    $namaPetani = "belum ada";
-                    $petanicluster = "tidak ada";
-                }
+        foreach ($user_data as $user) {
+            //get doc in list
+            $obj = $user->doc;
+            $clusterHasil = $obj->cluster;
+            $x = json_encode($clusterHasil);
+            $z = json_decode($x);
+            if ($obj->id_user == $currentuserid and  $z == [0]) {
+                $petanicluster = "kosong";
+                $namaPetani = $obj->nama;
+            } elseif ($obj->id_user == $currentuserid and  $z == [1]) {
+                $petanicluster = "satu";
+                $namaPetani = $obj->nama;
+            } else {
+                $namaPetani = "belum terisi";
+                $petanicluster = "belum ada";
             }
-            return view('dashboard', ['petanicluster' => $petanicluster], ['namapetani' => $namaPetani]);
         }
+        // $x = json_encode($clusterHasil);
+        // $z = json_decode($x);
+        // if (Auth::check()) {
+        //     if ($idPetani == $currentuserid and $z == [0]) {
+        //         $petanicluster = "kosong";
+        //         $namaPetani = $obj->nama;
+        //     } elseif ($idPetani == $currentuserid and $z == [1]) {
+        //         $petanicluster = "satu";
+        //         $namaPetani = $obj->nama;
+        //     } else {
+        //         $namaPetani = "belum terisi";
+        //         $petanicluster = "belum ada";
+        //     }
+        // } else {
+        //     echo 'Tidak ada data dalam session.';
+        // }
+        // foreach ($obj as $value) {
+        //     $hasil_cluster = $value->nama;
+        //     var_dump($hasil_cluster);
+        // }
+        // var_dump($obj);
+        // // var_dump($currentuserid);
+        return view('dashboard', ['petanicluster' => $petanicluster], ['namapetani' => $namaPetani]);
+        // return view('dashboard');
     }
 }
 

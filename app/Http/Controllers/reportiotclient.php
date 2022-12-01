@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use auth;
 use Illuminate\Support\Facades\Http;
 
 
@@ -15,8 +15,10 @@ class reportiotclient extends Controller
     // $url = 'http://compute.dinus.ac.id:900/api/get/reportiotssawah/3';
     $response = Http::get($url);
     $data = json_decode($response, true);
-    
-    $sswahpage = view('pages/ssensorsawah/datassensorsawah', compact('data'));
-    return $sswahpage; 
+   
+        $sswahpage = view('pages/ssensorsawah/datassensorsawah',compact('data'));
+        return $sswahpage; 
     }
+    
 }
+
