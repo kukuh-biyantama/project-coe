@@ -26,7 +26,6 @@ class HomeController extends Controller
     public function index()
     {
         $currentuserid = Auth::user()->id;
-        $currentuserid = auth::user()->id;
         $response = Http::withHeaders([
             'Accept' => 'application/json'
         ])->post('http://couchadmin:petaniMerdeka2022@compute.dinus.ac.id:907/databaseasesmentpetani/_find', [
@@ -46,7 +45,7 @@ class HomeController extends Controller
         if ($user_data == null) {
             $namaPetani = "belum ada";
             $petanicluster = "tidak ada";
-            return view('/pages/summarycluster/summarycluster', ['petanicluster' => $petanicluster], ['namapetani' => $namaPetani]);
+            return view('dashboard', ['petanicluster' => $petanicluster], ['namapetani' => $namaPetani]);
         } else {
             foreach ($user_data as $user) {
                 $hasilcluster = $user->cluster;
