@@ -8,8 +8,8 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
-    <title>Hello, world!</title>
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+    <title>Hasil cluster</title>
 </head>
 
 <body>
@@ -23,6 +23,9 @@
                     <p class="fs-2" style="text-align: center;">Petani {{$namapetani}}</p>
                     <p class="fs-4" style="text-align: center;">Cluster {{$petanicluster}}</p>
                 </div>
+                <h1>fab fa-markdown</h1>
+
+
                 <div class="d-grid gap-2 d-md-block" style="text-align: center;">
                     <a href="/home" type="button" class="btn btn-info">Kembali</a>
                 </div>
