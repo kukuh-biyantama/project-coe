@@ -228,11 +228,11 @@ class ClusterpetaniController extends Controller
         // } else {
         //     $datacluster = "tidak valid";
         // }
-        return view('/pages/clusterpetani/tampildatajson');
+        return view('/pages/clusterpetani/keterangancluster');
     }
 
     public function tampildatajson()
     {
-        return view('/pages/clusterpetani/tampildatajson');
+        return view('/pages/clusterpetani/keterangancluster');
     }
 }
