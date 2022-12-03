@@ -7,16 +7,15 @@ use App\Models\lokasi_sawah;
 use Illuminate\Http\Request;
 use PhpParser\Node\Expr\Cast\Double;
 use Illuminate\Support\Facades\Http;
-use auth;
+use Illuminate\Support\Facades\Auth;
 
 class LokasiSawahController extends Controller
 {
     public function index()
     {
         $currentuserid = Auth::user()->id;
-         echo($currentuserid);
+        echo ($currentuserid);
         return view('/pages/formlokasisawah');
-        
     }
 
 
