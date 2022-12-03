@@ -219,15 +219,6 @@ class ClusterpetaniController extends Controller
                 "tempat menjual hasil panen" => $hasilTmptmenjualpanen
             ]
         ]);
-        $data_body = $res->getBody();
-        $obj = json_decode($data_body);
-        // if ($obj->Cluster == [0]) {
-        //     $datacluster = "anda tidak memenuhi";
-        // } elseif ($obj->Cluster == [1]) {
-        //     $datacluster = "anda memenuhi";
-        // } else {
-        //     $datacluster = "tidak valid";
-        // }
         return view('/pages/clusterpetani/keterangancluster');
     }
 

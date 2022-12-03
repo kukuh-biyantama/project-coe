@@ -26,7 +26,6 @@ class HomeController extends Controller
     public function index()
     {
         $currentuserid = Auth::user()->id;
-        $currentuserid = auth::user()->id;
         $response = Http::withHeaders([
             'Accept' => 'application/json'
         ])->post('http://couchadmin:petaniMerdeka2022@compute.dinus.ac.id:907/databaseasesmentpetani/_find', [
