@@ -102,7 +102,7 @@ Route::get('/test2', [reportiotclient::class, 'reportdataiot']);
 // Cluster Petani
 Route::get('/clusterpetani', [ClusterpetaniController::class, 'index'])->name('clusterpetani');
 Route::post('/clusterpetanijson', [ClusterpetaniController::class, 'clusterpetanijson'])->name(' clusterpetanijson');
-Route::get('/tampildatajson', [ClusterpetaniController::class, 'tampildatajson'])->name('tampildatajson');
+Route::get('/keterangancluster', [ClusterpetaniController::class, 'tampildatajson'])->name('tampildatajson');
 Route::get('/getData', [ClusterpetaniController::class, 'getData'])->name('getData');
 // Summary Cluster 
 Route::get('/summarycluster', [SummaryclusterController::class, 'index'])->name('summarycluster');
