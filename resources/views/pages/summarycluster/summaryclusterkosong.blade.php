@@ -16,24 +16,40 @@
         <div class="container-fluid">
             <div class="border border p-2 mb-2 border-opacity-25">
                 <div>
-                    <p class="fs-2" style="text-align: center;"><b>Laporan Hasil Cluster</b></p>
-                </div>
-                <div class="container text-center">
-                    <p class="fs-2" style="text-align: center;">Petani {{$namapetani}}</p>
-                    <p class="fs-4" style="text-align: center;">Cluster {{$petanicluster}}</p>
+                    <h1 class="fs-2" style="text-align: center;"><b>Laporan Hasil Cluster</b></h1>
                 </div>
                 <div>
-                    <p class="fs-2" style="text-align: justify;"><b>Keterangan :</b></p>
-                    <p class="fs-2" style="text-align: justify;"><b>saat ini anda berada di cluster 0</b></p>
+                    <p class="fs-2" style="text-align: justify;"><b>Nama petani :</b> {{$namapetani}}</p>
+                    <p class="fs-4" style="text-align: justify;"><b>Cluster :</b> {{$petanicluster}}</p>
                 </div>
                 <div>
-                    <p class="fs-2" style="text-align: justify;"><b>Keterangan :</b></p>
-                    <p class="fs-2" style="text-align: justify;"><b>saat ini anda berada di cluster 0</b></p>
+                    <p class="fs-2" style="text-align: justify;"><b>Keterangan :</b> Anda saat ini berada pada cluster 0</p>
                 </div>
-                <div>
-
+                <div style="text-align: center;">
+                    <p class="fs-2" style="text-align: center;"><b>Laporan bibit, pupuk dan kabupaten</b></p>
+                    <img src="{{ url('storage/images/bibit_pupuk_kabupaten.png') }}" class="img-fluid" alt="Responsive image" />
                 </div>
-                <div class="d-grid gap-2 d-md-block" style="text-align: center;">
+                <div style="text-align: center;" class="mt-5">
+                    <p class="fs-2" style="text-align: center;"><b>Laporan bibit panen lahan</b></p>
+                    <img src="{{ url('storage/images/bibit_panen_lahan.png') }}" class="img-fluid" alt="Responsive image" />
+                </div>
+                <div style="text-align: center;" class="mt-5">
+                    <p class="fs-2" style="text-align: center;"><b>laporan seed land area dan district</b></p>
+                    <img src="{{ url('storage/images/seed_land_area.png') }}" class="img-fluid" alt="Responsive image" />
+                </div>
+                <div style="text-align: center;" class="mt-5">
+                    <p class="fs-2" style="text-align: center;"><b>laporan seed land harvest district</b></p>
+                    <img src="{{ url('storage/images/seed_land_harvest.png') }}" class="img-fluid" alt="Responsive image" />
+                </div>
+                <div style="text-align: center;" class="mt-5">
+                    <p class="fs-2" style="text-align: center;"><b>laporan seed harvest kabupaten pupuk</b></p>
+                    <img src="{{ url('storage/images/seed_harvest_kabupaten_pupuk.png') }}" class="img-fluid" alt="Responsive image" />
+                </div>
+                <div style="text-align: center;" class="mt-5">
+                    <p class="fs-2" style="text-align: center;"><b>laporan distribusi penjualan -> harvest - district - sell to</b></p>
+                    <img src="{{ url('storage/images/harvest _district _sell_to.png') }}" class="img-fluid" alt="Responsive image" />
+                </div>
+                <div class="d-grid gap-2 d-md-block mt-5" style="text-align: center;">
                     <a href="/home" type="button" class="btn btn-info">Kembali</a>
                 </div>
             </div>
