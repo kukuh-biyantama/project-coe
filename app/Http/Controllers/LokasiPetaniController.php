@@ -20,7 +20,7 @@ class LokasiPetaniController extends Controller
 
         //mengambil data lokasi 
         foreach ($user_data as $data) {
-            $alamatPetani = $data['alamat'];
+            $alamatPetani = $data['kabupaten'];
         }
         return $alamatPetani;
     }
