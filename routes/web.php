@@ -14,6 +14,7 @@ use App\Http\Controllers\PenanamanBawangController;
 use App\Http\Controllers\PenyakitController;
 use App\Http\Controllers\SsensorsawahController;
 use App\Http\Controllers\SummaryclusterController;
+use App\Http\Controllers\LokasiPetaniController;
 use GuzzleHttp\Client;
 
 /*
