@@ -12,9 +12,10 @@ class LokasiPetaniController extends Controller
     public function index()
     {
         $currentuserid = Auth::user()->id;
-        $response = Http::get('http://example.com/users', [
+        $response = Http::get('http://compute.dinus.ac.id:900/api/get/showiotuser/', [
             'id' => $currentuserid,
         ]);
+        $response->object();
+        return $response;
     }
-
 }
