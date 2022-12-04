@@ -3,16 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\clusterpetani;
-use GuzzleHttp\Client;
-use PhpParser\Node\Expr\Cast\Double;
 use Illuminate\Support\Facades\Auth;
-use phpDocumentor\Reflection\Types\Null_;
-use PhpOption\None;
+use Illuminate\Support\Facades\Http;
 
 class LokasiPetaniController extends Controller
 {
     public function index()
     {
+        $currentuserid = Auth::user()->id;
+        $response = Http::get('http://example.com/users', [
+            'id' => $currentuserid,
+        ]);
     }
 }
