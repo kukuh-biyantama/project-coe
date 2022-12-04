@@ -17,31 +17,19 @@
 
                     fjs.parentNode.insertBefore(js, fjs);
                 })(document, 'script', 'tomorrow-sdk');
-                </script>
+            </script>
 
-                <div class="tomorrow"
-                   data-location-id="056965"
-                   data-language="EN"
-                   data-unit-system="METRIC"
-                   data-skin="light"
-                   data-widget-type="aqiPollen"
-                   style="padding-bottom:22px;position:relative;"
-                >
-                  <a
-                    href="https://www.tomorrow.io/weather/"
-                    rel="nofollow noopener noreferrer"
-                    target="_blank"
-                    style="position: absolute; bottom: 0; transform: translateX(-50%); left: 50%;"
-                  >
-                  </a>
-                </div>
-                {{-- <div class="container">
+            <div class="tomorrow" data-location-id="056965" data-language="EN" data-unit-system="METRIC" data-skin="light" data-widget-type="aqiPollen" style="padding-bottom:22px;position:relative;">
+                <a href="https://www.tomorrow.io/weather/" rel="nofollow noopener noreferrer" target="_blank" style="position: absolute; bottom: 0; transform: translateX(-50%); left: 50%;">
+                </a>
+            </div>
+            {{-- <div class="container">
                     <div class="row">
                       <div class="col-4">.col-4<br>Since 9 + 4 = 13 &gt; 12, this 4-column-wide div gets wrapped onto a new line as one contiguous unit.</div>
                       <div class="col-6">.col-6<br>Subsequent columns continue along the new line.</div>
                     </div>
                 </div> --}}
-                {{-- <div class="col-xl-4 col-lg-6 pt-2">
+            {{-- <div class="col-xl-4 col-lg-6 pt-2">
                     <div class="card card-stats bg-white mb-4 mb-xl-0 btn btn-secondary">
                         <div class="card-body pb-2">
                             <div class="row align-items-center">
@@ -89,7 +77,7 @@
                 </div> --}}
             <div class="row pt-2">
                 <div class="container-xl-4 col-lg-4">
-                    <div class="card card-stats mb-4 mb-xl-0 btn btn-secondary" >
+                    <div class="card card-stats mb-4 mb-xl-0 btn btn-secondary">
                         <a href="/add-blog-post-form/">
                             <div class="card-body">
                                 <div class="row">
@@ -108,12 +96,11 @@
                 </div>
                 <div class="container-xl-8 col-lg-8">
                     <div class="card card-stats mb-2 mb-xl-0 btn btn-secondary">
-                        {{-- <a href="/formpenanamanbawang/"> --}}
+                        <a href="/lokasipetani">
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col">
                                         <h2 class="mb-0 text-sm  font-weight-bold">Lokasi, {{ auth()->user()->name }}</h2>
-                                        {{-- <h2 class="card-title text-uppercase text-muted mb-3">Lokasi Pak Farhan</h2> --}}
                                     </div>
                                     {{-- <div class="col">
                                         <div class="icon icon-shape bg-info text-white rounded-circle shadow">
@@ -122,7 +109,7 @@
                                     </div> --}}
                                 </div>
                             </div>
-                        {{-- </a> --}}
+                            {{-- </a> --}}
                     </div>
                 </div>
                 <div class="container-xl-4 col-lg-4 pt-2">
@@ -199,7 +186,7 @@
                                 </div>
                                 <div class="col">
                                     <div class="icon icon-shape text-black rounded-circle shadow">
-                                        <i class="fas fa-calendar" style="width 100px, height 100px" ></i>
+                                        <i class="fas fa-calendar" style="width 100px, height 100px"></i>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -236,7 +223,7 @@
                                 </div>
                                 <div class="col">
                                     <div class="icon icon-shape text-black rounded-circle shadow">
-                                        <i class="fas fa-calendar" style="width 100px, height 100px" ></i>
+                                        <i class="fas fa-calendar" style="width 100px, height 100px"></i>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -272,7 +259,7 @@
                             </div>
                             <div class="col">
                                 <div class="icon icon-shape text-black rounded-circle shadow">
-                                    <i class="ni ni-basket" style="width 100px, height 100px" ></i>
+                                    <i class="ni ni-basket" style="width 100px, height 100px"></i>
                                 </div>
                             </div>
                             <div class="row">
