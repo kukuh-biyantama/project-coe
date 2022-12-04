@@ -28,15 +28,15 @@ class LokasiSawahController extends Controller
         $lokasi_keterangan = $request->input('lokasi_keterangan');
         $id_iot = $request->input('id_iot');
         $post = Http::post('http://compute.dinus.ac.id:900/api/post/location/', [
-
-            'id_user' => $currentuserid,
-            'lokasi_latitude' => $lokasi_latitude,
-            'lokasi_longitude' => $lokasi_longitude,
-            'kabupaten' => $kabupaten,
-            'lokasi_keterangan' => $lokasi_keterangan,
-            'id_iot' => $id_iot
-        ]);
-
-        return redirect('datalokasisawah')->with('success', 'Data Telah Terkirim');
-    }
+    
+                'id' => $currentuserid,
+                'lokasi_latitude' => $lokasi_latitude,
+                'lokasi_longitude' => $lokasi_longitude,
+                'kabupaten' => $kabupaten,
+                'lokasi_keterangan' => $lokasi_keterangan,
+                'id_iot' => $id_iot
+            ]);
+           
+            response()->json(['massage'=> 'insert data success', 'data' => $tambahlokasi]);
+        }
 }

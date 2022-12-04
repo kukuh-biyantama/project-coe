@@ -8,8 +8,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
-    <title>Hello, world!</title>
+    <title>Hasil cluster</title>
 </head>
 
 <body>
@@ -19,9 +18,16 @@
                 <div>
                     <p class="fs-2" style="text-align: center;"><b>Laporan Hasil Cluster</b></p>
                 </div>
-                <div class="container text-center">
-                    <p class="fs-2" style="text-align: center;">Petani {{$namapetani}}</p>
-                    <p class="fs-4" style="text-align: center;">Cluster {{$petanicluster}}</p>
+                <div>
+                    <p class="fs-2" style="text-align: justify;"><b>Nama petani</b> {{$namapetani}}</p>
+                    <p class="fs-4" style="text-align: justify;"><b>Cluster</b> {{$petanicluster}}</p>
+                </div>
+                <div>
+                    <p class="fs-2" style="text-align: justify;"><b>Keterangan :</b></p>
+                    <p class="fs-2" style="text-align: justify;"><b>Anda belum mengisi data cluster</b></p>
+                </div>
+                <div>
+
                 </div>
                 <div class="d-grid gap-2 d-md-block" style="text-align: center;">
                     <a href="/home" type="button" class="btn btn-info">Kembali</a>
