@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Http;
 
 class LokasiPetaniController extends Controller
 {
+
     public function index()
     {
         $currentuserid = Auth::user()->id;
@@ -15,4 +16,5 @@ class LokasiPetaniController extends Controller
             'id' => $currentuserid,
         ]);
     }
+
 }
