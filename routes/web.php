@@ -108,42 +108,4 @@ Route::get('/getData', [ClusterpetaniController::class, 'getData'])->name('getDa
 Route::get('/summarycluster', [SummaryclusterController::class, 'index'])->name('summarycluster');
 
 //lokasi
-
-// Route::get('tambahlokasi', [clientcontroller::class, 'index']);
-// Route::post('lokasiterkirim', [clientcontroller::class, 'tambahlokasi']);
-
-
-// Route::get('tambahlokasi', [clientcontroller::class, 'index']);
-// Route::post('lokasiterkirim', [clientcontroller::class, 'tambahlokasi']);
-
-
-
-
-
-// test api
-// Route::post('/test', [DataClusterController::class, 'store']);
-
-//  Coba API ke Python
-Route::get('/Api-Post-Data', function () {
-	$client = new Client();
-	$api_url = "http://127.0.0.1:5000/api";
-	$res = $client->post($api_url, [
-		'json' => [
-			'name' => 'eduarena',
-			'education' => 'Computer Science',
-			'age' => '24',
-			'email' => 'eduarena@gmail.com'
-		]
-	]);
-	$data_body = $res->getBody();
-	echo $data_body;
-});
-
-Route::get('/Api-Get-Data', function () {
-	$client = new Client();
-	$data = $client->get('http://127.0.0.1:5000/Getdata');
-	$data_body = $data->getBody();
-
-	$api = $data_body;
-	return $api;
-});
+Route::get('/lokasipetani', [LokasiPetaniController::class, 'index'])->name('lokasipetani');
