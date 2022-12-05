@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>How to Add Google Map in Laravel? - ItSolutionStuff.com</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
     <style type="text/css">
         #map {
@@ -14,16 +15,16 @@
 </head>
 
 <body>
-    <div class="container mt-5">
-        <h2>How to Add Google Map in Laravel? - ItSolutionStuff.com</h2>
+    <div>
+        <h2>Lokasi Petani</h2>
         <div id="map"></div>
     </div>
 
     <script type="text/javascript">
         function initMap() {
             const myLatLng = {
-                lat: 22.2734719,
-                lng: 70.7512559
+                lat: -6.87212200,
+                lng: 109.04312600
             };
             const map = new google.maps.Map(document.getElementById("map"), {
                 zoom: 5,
@@ -39,6 +40,10 @@
 
         window.initMap = initMap;
     </script>
+
+    <div class="d-grid gap-2 d-md-block mt-5" style="text-align: center;">
+        <a href="/home" type="button" class="btn btn-info">Kembali</a>
+    </div>
 
     <script type="text/javascript" src="https://maps.google.com/maps/api/js?key={{ env('GOOGLE_MAP_KEY') }}&callback=initMap"></script>
 </body>

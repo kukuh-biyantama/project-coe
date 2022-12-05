@@ -96,7 +96,7 @@
                 </div>
                 <div class="container-xl-8 col-lg-8">
                     <div class="card card-stats mb-2 mb-xl-0 btn btn-secondary">
-                        <a href="/lokasipetani">
+                        <a href="/maps">
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col">
