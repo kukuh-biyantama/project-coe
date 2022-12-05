@@ -15,8 +15,8 @@
 </head>
 
 <body>
-    <div>
-        <h2>Lokasi Petani</h2>
+    <div style="text-align: center;">
+        <h2>Lokasi Petani {{$alamatPetani}}</h2>
         <div id="map"></div>
     </div>
 
