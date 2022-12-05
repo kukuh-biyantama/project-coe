@@ -15,6 +15,7 @@ use App\Http\Controllers\PenyakitController;
 use App\Http\Controllers\SsensorsawahController;
 use App\Http\Controllers\SummaryclusterController;
 use App\Http\Controllers\GooglemapsController;
+use App\Http\Controllers\LokasiPetaniController;
 use GuzzleHttp\Client;
 
 /*
