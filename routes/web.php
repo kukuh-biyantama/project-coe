@@ -14,6 +14,7 @@ use App\Http\Controllers\PenanamanBawangController;
 use App\Http\Controllers\PenyakitController;
 use App\Http\Controllers\SsensorsawahController;
 use App\Http\Controllers\SummaryclusterController;
+use App\Http\Controllers\GooglemapsController;
 use App\Http\Controllers\LokasiPetaniController;
 use GuzzleHttp\Client;
 
@@ -110,3 +111,6 @@ Route::get('/summarycluster', [SummaryclusterController::class, 'index'])->name(
 
 //lokasi
 Route::get('/lokasipetani', [LokasiPetaniController::class, 'index'])->name('lokasipetani');
+
+//maps
+Route::get('/maps', [GooglemapsController::class, 'index'])->name('maps');
