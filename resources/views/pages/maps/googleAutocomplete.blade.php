@@ -16,18 +16,22 @@
 
 <body>
     <div style="text-align: center;">
-        <h2>Lokasi Petani {{$alamatPetani}}</h2>
+        <p class="text-capitalize">CapiTaliZed text.</p>
+        <h2 class="text-capitalize">Lokasi Petani {{$alamatPetani}}</h2>
+        <h2>IOT {{$namaiot}}</h2>
         <div id="map"></div>
     </div>
 
     <script type="text/javascript">
         function initMap() {
+            let latitude = <?php echo json_decode($latitude); ?>;
+            let longitude = <?php echo json_decode($longitude); ?>;
             const myLatLng = {
-                lat: -6.87212200,
-                lng: 109.04312600
+                lat: latitude,
+                lng: longitude
             };
             const map = new google.maps.Map(document.getElementById("map"), {
-                zoom: 5,
+                zoom: 15,
                 center: myLatLng,
             });
 

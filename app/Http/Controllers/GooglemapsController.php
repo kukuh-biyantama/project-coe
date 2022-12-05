@@ -19,7 +19,7 @@ class GooglemapsController extends Controller
     {
         //get Api Lokasi petani
         $currentuserid = Auth::user()->id;
-        $url =   $url = "http://compute.dinus.ac.id:900/api/get/showiotuser/" . $currentuserid;
+        $url = "http://compute.dinus.ac.id:900/api/get/showiotuser/" . $currentuserid;
         $response = Http::get($url);
         $data = json_decode($response, true);
         if ($data == null) {
@@ -31,8 +31,11 @@ class GooglemapsController extends Controller
             //mengambil data lokasi 
             foreach ($user_data as $data) {
                 $alamatPetani = $data['kabupaten'];
+                $latitude = $data['latitude'];
+                $longitude = $data['longitude'];
+                $namaiot = $data['nama_iot'];
             }
-            return view('/pages/maps/googleAutocomplete', ['alamatPetani' => $alamatPetani]);
+            return view('/pages/maps/googleAutocomplete', ['alamatPetani' => $alamatPetani],  compact('latitude', 'longitude', 'namaiot'));
         }
     }
 }
