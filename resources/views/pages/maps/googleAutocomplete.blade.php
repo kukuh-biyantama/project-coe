@@ -9,14 +9,13 @@
     <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
     <style type="text/css">
         #map {
-            height: 400px;
+            height: 600px;
         }
     </style>
 </head>
 
 <body>
-    <div style="text-align: center;">
-        <p class="text-capitalize">CapiTaliZed text.</p>
+    <div style="text-align: center;" class="mt-5">
         <h2 class="text-capitalize">Lokasi Petani {{$alamatPetani}}</h2>
         <h2>IOT {{$namaiot}}</h2>
         <div id="map"></div>
@@ -26,19 +25,19 @@
         function initMap() {
             let latitude = <?php echo json_decode($latitude); ?>;
             let longitude = <?php echo json_decode($longitude); ?>;
+            let namaiot = <?php echo json_encode($namaiot); ?>;
             const myLatLng = {
                 lat: latitude,
                 lng: longitude
             };
             const map = new google.maps.Map(document.getElementById("map"), {
-                zoom: 15,
+                zoom: 8,
                 center: myLatLng,
             });
-
             new google.maps.Marker({
                 position: myLatLng,
                 map,
-                title: "Hello Rajkot!",
+                title: namaiot,
             });
         }
 
