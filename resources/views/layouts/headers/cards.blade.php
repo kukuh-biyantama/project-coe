@@ -160,7 +160,7 @@
                         </div>
                     </div>
                     <div class="card card-stats mb-4 mb-xl-0 mt-2 btn btn-secondary">
-                        <a href="/datapenanamanbawang/">
+                        <a href="/viewpenanamanbawang">
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col">

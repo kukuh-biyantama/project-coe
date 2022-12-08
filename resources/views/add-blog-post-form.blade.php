@@ -27,7 +27,7 @@
         </div> --}}
           <div class="form-group">
             <label for="exampleInputEmail1">id_iot</label>
-            <input type="id_iot" id="id_iot" name="id_iot" class="form-control" required="">
+            <input type="id_iot" id="id_iot" name="id_iot" class="form-control">
           </div>
           <div class="form-group">
             <label for="exampleInputEmail1">kabupaten</label>

@@ -41,6 +41,7 @@ Auth::routes();
 
 Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('home');
 Route::group(['middleware' => 'auth'], function () {
+	Route::get('/tambahdatapenanamanbawang', [PenanamanBawangController::class, 'tambahdatapenanamanbawang'])->name('tambahdatapenanamanbawang');
 	Route::resource('user', 'App\Http\Controllers\UserController', ['except' => ['show']]);
 	Route::get('profile', ['as' => 'profile.edit', 'uses' => 'App\Http\Controllers\ProfileController@edit']);
 	Route::put('profile', ['as' => 'profile.update', 'uses' => 'App\Http\Controllers\ProfileController@update']);
@@ -73,10 +74,11 @@ Route::post('storedatakegiatansawah', [KegiatansawahController::class, 'store'])
 
 // Penanaman Bawang
 Route::get('/datapenanamanbawang', [PenanamanBawangController::class, 'datapenanamanbawang'])->name('datapenanamanbawang');
-Route::get('/tambahdatapenanamanbawang', [PenanamanBawangController::class, 'tambahdatapenanamanbawang'])->name('tambahdatapenanamanbawang');
 Route::post('/insertdatapenanamanbawang', [PenanamanBawangController::class, 'insertdatapenanamanbawang'])->name('insertdatapenanamanbawang');
 Route::get('/tampildatapenanamanbawang/{id}', [PenanamanBawangController::class, 'tampildatapenanamanbawang'])->name('tampildatapenanamanbawang');
 Route::post('/updatedatapenanamanbawang/{id}', [PenanamanBawangController::class, 'updatedatapenanamanbawang'])->name('updatedatapenanamanbawang');
+Route::get('/viewpenanamanbawang', [PenanamanBawangController::class, 'viewpenanaman'])->name('viewpenanaman');
+
 
 // Pestisida
 Route::get('/datapestisida', [KsPestisidaController::class, 'datapestisida'])->name('datapestisida');
@@ -112,6 +114,8 @@ Route::get('/clusterpetani', [ClusterpetaniController::class, 'index'])->name('c
 Route::post('/clusterpetanijson', [ClusterpetaniController::class, 'clusterpetanijson'])->name(' clusterpetanijson');
 Route::get('/keterangancluster', [ClusterpetaniController::class, 'tampildatajson'])->name('tampildatajson');
 Route::get('/getData', [ClusterpetaniController::class, 'getData'])->name('getData');
+
+
 // Summary Cluster 
 Route::get('/summarycluster', [SummaryclusterController::class, 'index'])->name('summarycluster');
 

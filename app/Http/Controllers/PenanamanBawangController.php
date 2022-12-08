@@ -4,21 +4,41 @@ namespace App\Http\Controllers;
 
 use App\Models\penanaman_bawang;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Http;
 
 class PenanamanBawangController extends Controller
 {
-    public function datapenanamanbawang(){
+    public function datapenanamanbawang()
+    {
         $data = penanaman_bawang::all();
         return view('/pages/penanamanbawang/datapenanamanbawang', compact('data'));
     }
 
-    public function tambahdatapenanamanbawang(){
-        return view('/pages/penanamanbawang/tambahdatapenanamanbawang');
+    //view penanaman bawang
+    public function viewpenanaman()
+    {
+        //get data lokasi API
+        $currentuserid = Auth::user()->id;
+        $url = "http://compute.dinus.ac.id:900/api/get/showiotuser/" . $currentuserid;
+        $response = Http::get($url);
+        $data = json_decode($response, true);
+        if ($data == null) {
+            return view('/pages/responslokasi/responslokasi');
+        } else {
+            $object = penanaman_bawang::all();
+            return view('/pages/penanamanbawang/datapenanamanbawang', compact('object', 'currentuserid'));
+        }
+    }
 
+    public function tambahdatapenanamanbawang()
+    {
+        return view('/pages/penanamanbawang/tambahdatapenanamanbawang');
     }
 
     // INSERT DATA
-    public function insertdatapenanamanbawang(Request $request){
+    public function insertdatapenanamanbawang(Request $request)
+    {
 
         // Form Validasi
         $this->validate($request, [
@@ -72,20 +92,38 @@ class PenanamanBawangController extends Controller
         // jumlah modal
         $ks_jumlah_modal = $request->input('ks_jumlah_modal');
 
+        //get data iot
+        $currentuserid = Auth::user()->id;
+        $url = "http://compute.dinus.ac.id:900/api/get/showiotuser/" . $currentuserid;
+        $response = Http::get($url);
+        $data = json_decode($response, true);
+
+        $user_data = $data;
+        $user_data = array_slice($user_data, 0);
+
+        //mengambil kabupaten dari API 
+        foreach ($user_data as $iot) {
+            $kabupaten = $iot['kabupaten'];
+            $alamat =   $iot['lokasi_keterangan'];
+        }
         penanaman_bawang::create([
+            'id_user' => $currentuserid,
             'ks_metode_pengairan' => $input_ks_metode_pengairan,
             'ks_modal' => $input_ks_modal,
             'ks_luas_lahan' => $dataHasilluaslahan,
             'ks_bibit' => $dataHasiljumlahbibit,
             'ks_waktu_tanam' => $ks_waktu_tanam,
             'ks_status_lahan' => $input_ks_status_lahan,
-            'ks_jumlah_modal' => $ks_jumlah_modal
+            'ks_jumlah_modal' => $ks_jumlah_modal,
+            'kabupaten' => $kabupaten,
+            'alamat' => $alamat
         ]);
 
-        return redirect()->route('datapenanamanbawang')->with('success', 'Data Penanaman Bawang telah berhasil ditambahkan');
+        return redirect()->route('viewpenanaman')->with('success', 'Data Penanaman Bawang telah berhasil ditambahkan');
     }
 
-    public function tampildatapenanamanbawang($id){
+    public function tampildatapenanamanbawang($id)
+    {
         $data = penanaman_bawang::find($id);
         // dd($data);
         return view('/pages/penanamanbawang/tampildatapenanamanbawang', compact('data'));
@@ -93,7 +131,8 @@ class PenanamanBawangController extends Controller
 
 
     // UPDATE DATA
-    public function updatedatapenanamanbawang(Request $request, $id){
+    public function updatedatapenanamanbawang(Request $request, $id)
+    {
         // data array metode pengairan
         $ks_metode_pengairan = isset($_POST['ks_metode_pengairan']) && is_array($_POST['ks_metode_pengairan']) ? $_POST['ks_metode_pengairan'] : [];
         $input_ks_metode_pengairan = implode(', ', $ks_metode_pengairan);
@@ -145,6 +184,8 @@ class PenanamanBawangController extends Controller
             'ks_status_lahan' => $input_ks_status_lahan,
             'ks_jumlah_modal' => $ks_jumlah_modal
         ]);
+
+
 
         return redirect()->route('datapenanamanbawang')->with('success', 'Data Penanaman Bawang telah berhasil diupdate');
     }
