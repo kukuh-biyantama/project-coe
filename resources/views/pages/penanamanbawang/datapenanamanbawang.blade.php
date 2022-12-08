@@ -39,6 +39,7 @@
                         <th scope="col">Jumlah Modal (Rp)</th>
                         <th scope="col">Kabupaten</th>
                         <th scope="col">Alamat</th>
+                        <th scope="col">Panen</th>
                         <th scope="col">Aksi</th>
                     </tr>
                 </thead>
@@ -57,6 +58,8 @@
                             echo "<td>" . ($view->ks_jumlah_modal) . "</td>";
                             echo "<td>" . ($view->kabupaten) . "</td>";
                             echo "<td>" . ($view->alamat) . "</td>";
+                            echo "<td>" . ($view->ks_panen) . "</td>";
+                            echo "<td>" . "<a href='/tampildatapenanamanbawang/{{ $view-> id }} ' class='btn btn-warning'>Link</a>" . "</td>";
                             echo "</tr>";
                         }
                     }
