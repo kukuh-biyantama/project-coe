@@ -40,11 +40,10 @@
                 title: namaiot,
             });
         }
-
         window.initMap = initMap;
     </script>
 
-    <div class="d-grid gap-2 d-md-block mt-5" style="text-align: center;">
+    <div class="d-grid gap-2 d-md-block mt-3 mb-5" style="text-align: center;">
         <a href="/home" type="button" class="btn btn-info">Kembali</a>
     </div>
 
