@@ -100,7 +100,8 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col">
-                                        <h2 class="mb-0 text-sm  font-weight-bold">Lokasi, {{ auth()->user()->name }}</h2>
+                                        <!-- <h2 class="mb-0 text-sm  font-weight-bold">Lokasi, {{ auth()->user()->name }}</h2> -->
+                                        <h2 class="mb-0 text-sm  font-weight-bold">Klik disini untuk melihat lokasi peta sawah Anda</h2>
                                     </div>
                                     {{-- <div class="col">
                                         <div class="icon icon-shape bg-info text-white rounded-circle shadow">
@@ -163,7 +164,7 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col">
-                                        <h2 class="card-title text-uppercase text-muted mb-4">Penanaman Bibit Bawang</h2>
+                                        <h2 class="card-title text-uppercase text-muted mb-4">Kegiatan Pertanian Bawang</h2>
                                     </div>
                                     <div class="col">
                                         <div class="icon icon-shape bg-info text-white rounded-circle shadow">

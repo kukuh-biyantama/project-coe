@@ -11,24 +11,22 @@
     <!-- toastr -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <title>Data Penanaman Bawang</title>
+    <title>Data Kegiatan Pertanian Bawang</title>
   </head>
   <body>
-    <h2 class="text-center mb-4 mt-4">Data Penanaman Bawang</h2>
+    <h2 class="text-center mb-4 mt-4">Data Kegiatan Pertanian Bawang</h2>
 
         <!-- dev container untuk mengatur jarak tampilan -->
         <div class="container">
             <div class="mb-4 mt-5">
-                <a href="/tambahdatapenanamanbawang" type="button" class="btn btn-success" style="float: right;">Tambah Data</a>
+                <a href="/tambahdatakegiatansawah" type="button" class="btn btn-success" style="float: right;">Tambah Data</a>
                 <a href="/home" type="button" class="btn btn-primary">Kembali</a>
             </div>
             <div class="row">
                 <table class="table table-bordered">
                     <thead>
                         <tr>
-                            <!-- <th scope="col">Penanaman ID</th> -->
-                            <th scope="col">User ID</th>
-                            <th scope="col">Lokasi Keterangan</th>
+                            <th scope="col">Lokasi Sawah</th>
                             <th scope="col">Metode Pengairan</th>
                             <th scope="col">Sumber Modal</th>
                             <th scope="col">Luas Lahan (m<sup>2</sup>)</th>
@@ -41,29 +39,6 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($data as $row)
-                            <tr>
-                                <td>{{ $row->user_id }}</td>
-                                <td>{{ $row->lokasisawah_id }}</td>
-                                <td>{{ $row->ks_metode_pengairan }}</td>
-                                <td>{{ $row->ks_sumber_modal }}</td>
-                                <td>
-                                    <?php echo number_format($row->ks_luas_lahan, 0,',','.') ?>
-                                </td>
-                                <td>
-                                    <?php echo number_format($row->ks_bibit_jumlah, 0,',','.') ?>
-                                </td>
-                                <td>{{ $row->ks_waktu_tanam }}</td>
-                                <td>{{ $row->ks_status_lahan }}</td>
-                                <td>
-                                    <?php echo number_format($row->ks_jumlah_modal, 0,',','.') ?>
-                                </td>
-                                <td>{{ $row->ks_panen }}</td>
-                                <td>
-                                    <a href="/tampildatapenanamanbawang/{{ $row-> id }}" class="btn btn-warning">Edit</a>
-                                </td>
-                            </tr>
-                        @endforeach
                     </tbody>
                 </table>
             </div>

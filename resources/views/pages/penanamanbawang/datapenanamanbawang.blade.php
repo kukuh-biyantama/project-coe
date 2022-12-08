@@ -11,10 +11,10 @@
     <!-- toastr -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <title>Data Penanaman Bawang</title>
+    <title>Data Kegiatan Penanaman Bawang</title>
   </head>
   <body>
-    <h2 class="text-center mb-4 mt-4">Data Penanaman Bawang</h2>
+    <h2 class="text-center mb-4 mt-4">Data Kegiatan Penanaman Bawang</h2>
 
         <!-- dev container untuk mengatur jarak tampilan -->
         <div class="container">

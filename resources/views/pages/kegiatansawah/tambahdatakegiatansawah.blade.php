@@ -11,39 +11,40 @@
     <!-- Link CSS -->
     <link rel="stylesheet" href="{!! asset('assets/css/style.css') !!}">
 
-    <title>Form Kegiatan Penanaman Bawang</title>
+    <title>Form Kegiatan Pertanian Bawang</title>
   </head>
   <body>
-    <h2 class="text-center mb-4 mt-3">Form Kegiatan Penanaman Bawang</h2>
+    <h2 class="text-center mb-4 mt-3">Form Kegiatan Pertanian Bawang</h2>
 
         <!-- dev container untuk mengatur jarak tampilan -->
         <div class="container">
+          <div class="row justify-content-center mb-4">
+            <div class="col-8">
+                <div class="card justify-content-center">
+                  <center>
+                    <p>Form ini digunakan untuk memulai aktivitas penanaman bawang Bapak/Ibu</p>
+                    <p>Silahkan mengisi form berikut, agar sistem dapat memberikan rekomendasi terbaik untuk kegiatan pertanian Bapak/Ibu</p>
+                    <p>Untuk kembali ke Dashboard utama, silahkan klik tombol Kembali</p>
+                  </center>
+                </div>
+                <div class="card">
+                  <a href="/datakegiatansawah" type="button" class="btn btn-primary mb-4"  >Kembali</a>
+                </div>
+            </div>
+          </div>
             <div class="row justify-content-center">
                 <div class="col-8">
-                  <div class="card justify-content-center">
-                    <center>
-                      <p>Form ini digunakan untuk memulai aktivitas penanaman bawang Bapak/Ibu</p>
-                      <p>Silahkan mengisi form berikut, agar sistem dapat memberikan rekomendasi terbaik untuk kegiatan pertanian Bapak/Ibu</p>
-                      <p>Untuk kembali ke Dashboard utama, silahkan klik tombol Kembali</p>
-                    </center>
-                  </div>
-                  <div class="card">
-                    <a href="/datapenanamanbawang" type="button" class="btn btn-primary mb-4"  >Kembali</a>
-                  </div>
                     <div class="card">
                         <div class="card-body">
-                            <form action="/insertdatapenanamanbawang" method="POST" enctype="multipart/form-data">
+                            <form action="{{url('storedatakegiatansawah')}}" method="POST" enctype="multipart/form-data">
                                 @csrf
-                                <a href="/datapenanamanbawang" type="button" class="btn btn-primary mb-4">Kembali</a>
+                                <!-- <a href="/datakegiatansawah" type="button" class="btn btn-primary mb-4">Kembali</a> -->
 
-                                <!-- Lokasi -->
-                                <!-- <div class="mb-3">
-                                  <label for="" class="form-label">Lokasi</label>
-                                  <select class="form-select" name="lokasi_keterangan" aria-label="Default select example">
-                                      <option selected disabled>Pilih</option>
-                                      <option value="1">Sawah pak Ridho</option>
-                                  </select>
-                                </div> -->
+                                @if(session('status'))
+                                  <div class="alert alert-success">
+                                    {{ session('status') }}
+                                  </div>
+                                @endif
 
                                 <!-- Metode Pengairan -->
                                 <div class="mb-3">
@@ -76,16 +77,16 @@
                                 <div class="mb-3">
                                     <label for="sumberModal" class="form-label">Sumber Modal</label>
 
-                                    <div class="form-check @error('ks_modal') is-invalid @enderror" value="{{ old('ks_modal') }}">
+                                    <div class="form-check @error('ks_sumber_modal') is-invalid @enderror" value="{{ old('ks_sumber_modal') }}">
                                         <div class="">
-                                          <input class="ksModal" type="checkbox" name="ks_modal[]" value="Sendiri"> Sendiri<br>
+                                          <input class="ksModal" type="checkbox" name="ks_sumber_modal[]" value="Sendiri"> Sendiri<br>
                                         </div>
                                         <div class="">
-                                          <input class="ksModal" type="checkbox" name="ks_modal[]" value="Pinjam"> Pinjam<br>
+                                          <input class="ksModal" type="checkbox" name="ks_sumber_modal[]" value="Pinjam"> Pinjam<br>
                                         </div>
                                     </div>
 
-                                    @error('ks_modal')
+                                    @error('ks_sumber_modal')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
@@ -115,7 +116,7 @@
                                 <div class="mb-3">
                                     <label for="bibit" class="form-label">Jumlah Bibit</label><br>
 
-                                    <input type="decimal" name="ks_bibit" style="width:100%" class="form-control @error('ks_bibit') is-invalid @enderror" value="{{ old('ks_bibit') }}">
+                                    <input type="decimal" name="ks_bibit_jumlah" style="width:100%" class="form-control @error('ks_bibit_jumlah') is-invalid @enderror" value="{{ old('ks_bibit_jumlah') }}">
                                     <div class="form-check">
                                         <div class="">
                                           <input class="inputan" type="radio" id="kilogram" name="stnBibit" value="Kilogram">
@@ -131,7 +132,7 @@
                                         </div>
                                     </div>
 
-                                    @error('ks_bibit')
+                                    @error('ks_bibit_jumlah')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
@@ -169,7 +170,7 @@
                                 </div>
 
                                 <!-- Jumlah Modal -->
-                                <label for="jumlahModal" class="form-label">Jumlah Modal</label><br>
+                                <label for="jumlahModal" class="form-label">Jumlah Modal (Rp)</label><br>
 
                                 <input type="number" name="ks_jumlah_modal" style="width:100%" class="form-control @error('ks_jumlah_modal') is-invalid @enderror" value="{{ old('ks_jumlah_modal') }}">
 
