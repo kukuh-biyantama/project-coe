@@ -22,6 +22,8 @@ return new class extends Migration
             $table->date('ks_waktu_tanam');
             $table->string('ks_status_lahan');
             $table->bigInteger('ks_jumlah_modal');
+            $table->integer('ks_panen');
+            $table->integer('id_iot');
             $table->timestamps();
         });
 
