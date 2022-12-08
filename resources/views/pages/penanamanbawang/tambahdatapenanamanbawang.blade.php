@@ -20,21 +20,22 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-8">
-                  <div class="card justify-content-center">
+                  <div class="card mt-2">
+                    <div class="card-body">
                     <center>
                       <p>Form ini digunakan untuk memulai aktivitas penanaman bawang Bapak/Ibu</p>
                       <p>Silahkan mengisi form berikut, agar sistem dapat memberikan rekomendasi terbaik untuk kegiatan pertanian Bapak/Ibu</p>
-                      <p>Untuk kembali ke Dashboard utama, silahkan klik tombol Kembali</p>
                     </center>
+                    </div>
                   </div>
-                  <div class="card">
+                  <!-- <div class="card">
                     <a href="/datapenanamanbawang" type="button" class="btn btn-primary mb-4"  >Kembali</a>
-                  </div>
-                    <div class="card">
+                  </div> -->
+                    <div class="card mt-5">
                         <div class="card-body">
                             <form action="/insertdatapenanamanbawang" method="POST" enctype="multipart/form-data">
                                 @csrf
-                                <a href="/datapenanamanbawang" type="button" class="btn btn-primary mb-4">Kembali</a>
+                                <!-- <a href="/datapenanamanbawang" type="button" class="btn btn-primary mb-4">Kembali</a> -->
 
                                 <!-- Lokasi -->
                                 <!-- <div class="mb-3">
