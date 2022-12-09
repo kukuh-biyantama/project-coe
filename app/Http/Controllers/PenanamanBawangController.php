@@ -22,20 +22,39 @@ class PenanamanBawangController extends Controller
     {
         //get data lokasi API
         $currentuserid = Auth::user()->id;
-        $url = "http://compute.dinus.ac.id:900/api/get/showiotuser/" . $currentuserid;
+        $url = "http://compute.dinus.ac.id:900/api/get/lokasi/" . $currentuserid;
         $response = Http::get($url);
+
+        $data = json_decode($response, true);
+        $user_data = $data;
+        $user_data = array_slice($user_data, 0);
+        if ($data == null) {
+            return view('/pages/responslokasi/responslokasi');
+        } else {
+            //mengambil kabupaten dari API 
+            $object = penanaman_bawang::all();
+            return view('/pages/penanamanbawang/datapenanamanbawang', compact('object', 'currentuserid'));
+
         $object = json_decode($response, true);
         if ($object == null) {
             return view('/pages/responslokasi/responslokasi');
         } else {
             $data = penanaman_bawang::all();
             return view('/pages/penanamanbawang/datapenanamanbawang', compact('data', 'currentuserid'));
+
         }
     }
 
     public function tambahdatapenanamanbawang()
     {
-        return view('/pages/penanamanbawang/tambahdatapenanamanbawang');
+        $currentuserid = Auth::user()->id;
+        $url = "http://compute.dinus.ac.id:900/api/get/lokasi/" . $currentuserid;
+        $response = Http::get($url);
+        $data = json_decode($response, true);
+        $user_data = $data;
+        $user_data = array_slice($user_data, 0);
+
+        return view('/pages/penanamanbawang/tambahdatapenanamanbawang', compact('user_data'));
     }
 
     // INSERT DATA
@@ -53,7 +72,7 @@ class PenanamanBawangController extends Controller
             'ks_jumlah_modal' => 'required',
         ]);
 
-        // data array metode pengairan
+        // data array metode pengairann
         $ks_metode_pengairan = isset($_POST['ks_metode_pengairan']) && is_array($_POST['ks_metode_pengairan']) ? $_POST['ks_metode_pengairan'] : [];
         $input_ks_metode_pengairan = implode(', ', $ks_metode_pengairan);
 
@@ -96,7 +115,7 @@ class PenanamanBawangController extends Controller
 
         //get data iot
         $currentuserid = Auth::user()->id;
-        $url = "http://compute.dinus.ac.id:900/api/get/showiotuser/" . $currentuserid;
+        $url = "http://compute.dinus.ac.id:900/api/get/lokasi/" . $currentuserid;
         $response = Http::get($url);
         $data = json_decode($response, true);
 

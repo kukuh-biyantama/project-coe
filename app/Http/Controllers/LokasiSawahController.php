@@ -37,6 +37,6 @@ class LokasiSawahController extends Controller
             'id_iot' => $id_iot
         ]);
 
-        return redirect('datalokasisawah')->with('success', 'Data Telah Terkirim');
+        return redirect('/home');
     }
 }

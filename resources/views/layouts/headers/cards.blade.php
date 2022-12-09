@@ -2,6 +2,11 @@
     <div class="container-fluid">
         <div class="header-body">
             <!-- Card stats -->
+            @if(session('status'))
+            <div class="alert alert-success">
+              {{ session('status') }}
+            </div>
+            @endif
             <script>
                 (function(d, s, id) {
                     if (d.getElementById(id)) {
@@ -192,7 +197,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col">
-                                        <h2 class="card-title text-uppercase text-black mb-0 wrap-text">14 November 2022</h2>
+                                        <h2 class="card-title text-uppercase text-black mb-0 wrap-text">15 Januari 2023</h2>
                                     </div>
                                 </div>
                                 <div class="card card-stats mb-4 mb-xl-0 btn btn-info text-balck pt-2">
@@ -229,7 +234,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col">
-                                        <h2 class="card-title text-uppercase text-black mb-0 wrap-text">14 November 2022</h2>
+                                        <h2 class="card-title text-uppercase text-black mb-0 wrap-text">10 Januari 2023</h2>
                                     </div>
                                 </div>
                                 <div class="card card-stats mb-4 mb-xl-0 btn btn-info text-balck pt-2">
@@ -472,3 +477,4 @@
         </div>
     </div>
 </div>
+

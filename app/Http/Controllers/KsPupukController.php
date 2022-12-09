@@ -8,9 +8,14 @@ use DB;
 
 class KsPupukController extends Controller
 {
+
+    public function datapupuk(){
+        $data = ks_pupuk::orderBy('ks_pupuk_tgl_rabuk', 'DESC')->get();
+
     public function datapupuk()
     {
         $data = ks_pupuk::all();
+
         return view('/pages/pupuk/datapupuk', compact('data'));
     }
 

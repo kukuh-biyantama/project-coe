@@ -25,7 +25,7 @@ return new class extends Migration
             $table->bigInteger('ks_jumlah_modal');
             $table->integer('ks_panen')->nullable();
             $table->string('kabupaten');
-            $table->string('alamat');
+            $table->string('id_lokasisawah');
             $table->timestamps();
         });
 
