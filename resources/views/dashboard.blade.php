@@ -256,7 +256,7 @@
             </div>
         </div> --}}
 
-        @include('layouts.footers.auth')
+        {{-- @include('layouts.footers.auth') --}}
     </div>
 @endsection
 

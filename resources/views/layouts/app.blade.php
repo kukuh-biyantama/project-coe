@@ -51,6 +51,6 @@
 
 </html>
 <footer>
-    @include('layouts.footers.guest')
+    {{-- @include('layouts.footers.auth') --}}
 </footer>
 </div>
