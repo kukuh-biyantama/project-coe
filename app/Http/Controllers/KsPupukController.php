@@ -9,15 +9,18 @@ use DB;
 class KsPupukController extends Controller
 {
 
-    public function datapupuk(){
-        $data = ks_pupuk::orderBy('ks_pupuk_tgl_rabuk', 'DESC')->get();
-
     public function datapupuk()
     {
-        $data = ks_pupuk::all();
-
+        $data = ks_pupuk::orderBy('ks_pupuk_tgl_rabuk', 'DESC')->get();
         return view('/pages/pupuk/datapupuk', compact('data'));
     }
+
+    // public function datapupuk()
+    // {
+    //     $data = ks_pupuk::all();
+
+    //     return view('/pages/pupuk/datapupuk', compact('data'));
+    // }
 
     // public function datapupuk(){
     //     $data = DB::table('barang')->join('detail_barang', 'detail_barang.id_barang', '=', 'barang.id_barang')->get();
