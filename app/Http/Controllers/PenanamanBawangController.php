@@ -13,7 +13,7 @@ class PenanamanBawangController extends Controller
     public function datapenanamanbawang()
     {
         $currentuserid = Auth::user()->id;
-        $data = penanaman_bawang::all();
+        $data = penanaman_bawang::where('ks_panen', 0)->get();
         return view('/pages/penanamanbawang/datapenanamanbawang', compact('data', 'currentuserid'));
     }
 
@@ -128,7 +128,7 @@ class PenanamanBawangController extends Controller
             'ks_status_lahan' => $input_ks_status_lahan,
             'ks_jumlah_modal' => $ks_jumlah_modal,
             'kabupaten' => $kabupaten,
-            'alamat' => $alamat
+            'id_lokasisawah' => $alamat
         ]);
 
         return redirect()->route('viewpenanaman')->with('success', 'Data Penanaman Bawang telah berhasil ditambahkan');
