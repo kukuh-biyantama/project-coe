@@ -45,21 +45,23 @@
                 </thead>
                 <tbody>
                     <?php
-                    foreach ($object as $view) {
+                    foreach ($data as $view) {
                         $verify = $currentuserid;
                         if ($view->id_user == $verify) {
                             echo "<tr>";
                             echo "<td>" . ($view->ks_metode_pengairan) . "</td>";
                             echo "<td>" . ($view->ks_modal) . "</td>";
                             echo "<td>" . ($view->ks_luas_lahan) . "</td>";
-                            echo "<td>" . ($view->ks_jumlah_modal) . "</td>";
+                            echo "<td>" . ($view->ks_bibit) . "</td>";
                             echo "<td>" . ($view->ks_waktu_tanam) . "</td>";
                             echo "<td>" . ($view->ks_status_lahan) . "</td>";
                             echo "<td>" . ($view->ks_jumlah_modal) . "</td>";
                             echo "<td>" . ($view->kabupaten) . "</td>";
                             echo "<td>" . ($view->alamat) . "</td>";
                             echo "<td>" . ($view->ks_panen) . "</td>";
-                            echo "<td>" . "<a href='/tampildatapenanamanbawang/{{ $view-> id }} ' class='btn btn-warning'>Link</a>" . "</td>";
+                            echo "<td>" .
+                                "<a href='/tampildatapenanamanbawang/$view->id' class='btn btn-warning'>Edit</a>" .
+                                "</td>";
                             echo "</tr>";
                         }
                     }
