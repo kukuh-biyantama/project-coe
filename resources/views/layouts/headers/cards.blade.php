@@ -483,3 +483,10 @@
         </div>
     </div>
 </div>
+<<<<<<< Updated upstream
+=======
+
+<footer class="footer">
+    @include('layouts.footers.nav')
+</footer>
+>>>>>>> Stashed changes
