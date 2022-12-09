@@ -129,7 +129,7 @@ class PenanamanBawangController extends Controller
             'ks_status_lahan' => $input_ks_status_lahan,
             'ks_jumlah_modal' => $ks_jumlah_modal,
             'kabupaten' => $kabupaten,
-            'alamat' => $alamat
+            'id_lokasisawah' => $alamat
         ]);
 
         return redirect()->route('viewpenanaman')->with('success', 'Data Penanaman Bawang telah berhasil ditambahkan');
