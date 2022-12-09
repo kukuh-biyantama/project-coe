@@ -61,18 +61,23 @@ Route::group(['middleware' => 'auth'], function () {
 });
 
 // Form Lokasi Sawah
-// Route::get('/datalokasisawah', [LokasiSawahController::class, 'index']);
+Route::get('/datalokasisawah', [LokasiSawahController::class, 'datalokasisawah']);
+Route::get('/formtambahdatalokasisawah', [LokasiSawahController::class, 'formtambahdatalokasisawah']);
+Route::post('/insertdatalokasisawah', [LokasiSawahController::class, 'insertdatalokasisawah']);
+Route::post('/tampildatalokasisawah', [LokasiSawahController::class, 'tampildatalokasisawah']);
+
+
 // Route::post('/post/kirimlokasi', [LokasiSawahController::class, 'tambahlokasi']);
 Route::get('add-blog-post-form', [PostController::class, 'index']);
 Route::post('store-form', [PostController::class, 'store']);
 // Route::get('/getDataLokasiSawah', [LokasiSawahController::class, 'getDataLokasiSawah'])->name('getDataLokasiSawah');
 
 // Kegiatan Sawah
-Route::get('datakegiatansawah', [KegiatansawahController::class, 'index']);
-Route::get('tambahdatakegiatansawah', [KegiatansawahController::class, 'tambahdatakegiatansawah']);
-Route::post('storedatakegiatansawah', [KegiatansawahController::class, 'store']);
+// Route::get('datakegiatansawah', [KegiatansawahController::class, 'index']);
+// Route::get('tambahdatakegiatansawah', [KegiatansawahController::class, 'tambahdatakegiatansawah']);
+// Route::post('storedatakegiatansawah', [KegiatansawahController::class, 'store']);
 
-// Penanaman Bawang
+// Kegiatan Penanaman Bawang
 Route::get('/datapenanamanbawang', [PenanamanBawangController::class, 'datapenanamanbawang'])->name('datapenanamanbawang');
 Route::post('/insertdatapenanamanbawang', [PenanamanBawangController::class, 'insertdatapenanamanbawang'])->name('insertdatapenanamanbawang');
 Route::get('/tampildatapenanamanbawang/{id}', [PenanamanBawangController::class, 'tampildatapenanamanbawang'])->name('tampildatapenanamanbawang');
