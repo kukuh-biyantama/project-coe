@@ -14,6 +14,9 @@ use App\Http\Controllers\PenanamanBawangController;
 use App\Http\Controllers\PenyakitController;
 use App\Http\Controllers\SsensorsawahController;
 use App\Http\Controllers\SummaryclusterController;
+use App\Http\Controllers\GooglemapsController;
+use App\Http\Controllers\KegiatansawahController;
+use App\Http\Controllers\LokasiPetaniController;
 use GuzzleHttp\Client;
 
 /*
@@ -38,6 +41,7 @@ Auth::routes();
 
 Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('home');
 Route::group(['middleware' => 'auth'], function () {
+	Route::get('/tambahdatapenanamanbawang', [PenanamanBawangController::class, 'tambahdatapenanamanbawang'])->name('tambahdatapenanamanbawang');
 	Route::resource('user', 'App\Http\Controllers\UserController', ['except' => ['show']]);
 	Route::get('profile', ['as' => 'profile.edit', 'uses' => 'App\Http\Controllers\ProfileController@edit']);
 	Route::put('profile', ['as' => 'profile.update', 'uses' => 'App\Http\Controllers\ProfileController@update']);
@@ -63,12 +67,18 @@ Route::get('add-blog-post-form', [PostController::class, 'index']);
 Route::post('store-form', [PostController::class, 'store']);
 // Route::get('/getDataLokasiSawah', [LokasiSawahController::class, 'getDataLokasiSawah'])->name('getDataLokasiSawah');
 
+// Kegiatan Sawah
+Route::get('datakegiatansawah', [KegiatansawahController::class, 'index']);
+Route::get('tambahdatakegiatansawah', [KegiatansawahController::class, 'tambahdatakegiatansawah']);
+Route::post('storedatakegiatansawah', [KegiatansawahController::class, 'store']);
+
 // Penanaman Bawang
 Route::get('/datapenanamanbawang', [PenanamanBawangController::class, 'datapenanamanbawang'])->name('datapenanamanbawang');
-Route::get('/tambahdatapenanamanbawang', [PenanamanBawangController::class, 'tambahdatapenanamanbawang'])->name('tambahdatapenanamanbawang');
 Route::post('/insertdatapenanamanbawang', [PenanamanBawangController::class, 'insertdatapenanamanbawang'])->name('insertdatapenanamanbawang');
 Route::get('/tampildatapenanamanbawang/{id}', [PenanamanBawangController::class, 'tampildatapenanamanbawang'])->name('tampildatapenanamanbawang');
 Route::post('/updatedatapenanamanbawang/{id}', [PenanamanBawangController::class, 'updatedatapenanamanbawang'])->name('updatedatapenanamanbawang');
+Route::get('/viewpenanamanbawang', [PenanamanBawangController::class, 'viewpenanaman'])->name('viewpenanaman');
+
 
 // Pestisida
 Route::get('/datapestisida', [KsPestisidaController::class, 'datapestisida'])->name('datapestisida');
@@ -102,48 +112,15 @@ Route::get('/test2', [reportiotclient::class, 'reportdataiot']);
 // Cluster Petani
 Route::get('/clusterpetani', [ClusterpetaniController::class, 'index'])->name('clusterpetani');
 Route::post('/clusterpetanijson', [ClusterpetaniController::class, 'clusterpetanijson'])->name(' clusterpetanijson');
-Route::get('/tampildatajson', [ClusterpetaniController::class, 'tampildatajson'])->name('tampildatajson');
+Route::get('/keterangancluster', [ClusterpetaniController::class, 'tampildatajson'])->name('tampildatajson');
 Route::get('/getData', [ClusterpetaniController::class, 'getData'])->name('getData');
+
+
 // Summary Cluster 
 Route::get('/summarycluster', [SummaryclusterController::class, 'index'])->name('summarycluster');
 
-//
+//lokasi
+Route::get('/lokasipetani', [LokasiPetaniController::class, 'index'])->name('lokasipetani');
 
-// Route::get('tambahlokasi', [clientcontroller::class, 'index']);
-// Route::post('lokasiterkirim', [clientcontroller::class, 'tambahlokasi']);
-
-
-// Route::get('tambahlokasi', [clientcontroller::class, 'index']);
-// Route::post('lokasiterkirim', [clientcontroller::class, 'tambahlokasi']);
-
-
-
-
-
-// test api
-// Route::post('/test', [DataClusterController::class, 'store']);
-
-//  Coba API ke Python
-Route::get('/Api-Post-Data', function () {
-	$client = new Client();
-	$api_url = "http://127.0.0.1:5000/api";
-	$res = $client->post($api_url, [
-		'json' => [
-			'name' => 'eduarena',
-			'education' => 'Computer Science',
-			'age' => '24',
-			'email' => 'eduarena@gmail.com'
-		]
-	]);
-	$data_body = $res->getBody();
-	echo $data_body;
-});
-
-Route::get('/Api-Get-Data', function () {
-	$client = new Client();
-	$data = $client->get('http://127.0.0.1:5000/Getdata');
-	$data_body = $data->getBody();
-
-	$api = $data_body;
-	return $api;
-});
+//maps
+Route::get('/maps', [GooglemapsController::class, 'index'])->name('maps');

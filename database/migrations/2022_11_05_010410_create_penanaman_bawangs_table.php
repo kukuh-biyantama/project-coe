@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('penanaman_bawangs', function (Blueprint $table) {
             $table->id();
+            $table->integer('id_user');
             $table->string('ks_metode_pengairan');
             $table->string('ks_modal');
             $table->float('ks_luas_lahan');
@@ -22,6 +23,9 @@ return new class extends Migration
             $table->date('ks_waktu_tanam');
             $table->string('ks_status_lahan');
             $table->bigInteger('ks_jumlah_modal');
+            $table->integer('ks_panen')->nullable();
+            $table->string('kabupaten');
+            $table->string('alamat');
             $table->timestamps();
         });
 
