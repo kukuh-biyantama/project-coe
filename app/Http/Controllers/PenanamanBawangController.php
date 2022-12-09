@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\penanaman_bawang;
+use Encore\Admin\Form\Field\Id;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
@@ -11,17 +12,19 @@ class PenanamanBawangController extends Controller
 {
     public function datapenanamanbawang()
     {
+        $currentuserid = Auth::user()->id;
         $data = penanaman_bawang::all();
-        return view('/pages/penanamanbawang/datapenanamanbawang', compact('data'));
+        return view('/pages/penanamanbawang/datapenanamanbawang', compact('data', 'currentuserid'));
     }
 
     //view penanaman bawang
-    public function viewpenanaman()
+    public function viewpenanamanbawang()
     {
         //get data lokasi API
         $currentuserid = Auth::user()->id;
         $url = "http://compute.dinus.ac.id:900/api/get/lokasi/" . $currentuserid;
         $response = Http::get($url);
+
         $data = json_decode($response, true);
         $user_data = $data;
         $user_data = array_slice($user_data, 0);
@@ -31,6 +34,14 @@ class PenanamanBawangController extends Controller
             //mengambil kabupaten dari API 
             $object = penanaman_bawang::all();
             return view('/pages/penanamanbawang/datapenanamanbawang', compact('object', 'currentuserid'));
+
+        $object = json_decode($response, true);
+        if ($object == null) {
+            return view('/pages/responslokasi/responslokasi');
+        } else {
+            $data = penanaman_bawang::all();
+            return view('/pages/penanamanbawang/datapenanamanbawang', compact('data', 'currentuserid'));
+
         }
     }
 
@@ -135,7 +146,6 @@ class PenanamanBawangController extends Controller
     public function tampildatapenanamanbawang($id)
     {
         $data = penanaman_bawang::find($id);
-        // dd($data);
         return view('/pages/penanamanbawang/tampildatapenanamanbawang', compact('data'));
     }
 
@@ -194,9 +204,7 @@ class PenanamanBawangController extends Controller
             'ks_status_lahan' => $input_ks_status_lahan,
             'ks_jumlah_modal' => $ks_jumlah_modal
         ]);
-
-
-
         return redirect()->route('datapenanamanbawang')->with('success', 'Data Penanaman Bawang telah berhasil diupdate');
+        // return view('/pages/penanamanbawang/datapenanamanbawang', compact('currentuserid'));
     }
 }

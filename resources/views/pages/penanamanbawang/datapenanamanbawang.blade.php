@@ -4,6 +4,7 @@
     <div class="container-fluid mt--7">
         <h2 class="text-center mb-4 mt-4">Data Kegiatan Penanaman Bawang</h2>
 
+
         <!-- dev container untuk mengatur jarak tampilan -->
         <div class="container-fluid">
             <div class="mb-4 mt-5">
@@ -50,6 +51,70 @@
                                 echo '<td>' . "<a href='/tampildatapenanamanbawang/{{ $view-> id }} ' class='btn btn-warning'>Link</a>" . '</td>';
                                 echo '</tr>';
                             }
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <!-- toastr -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <title>Data Kegiatan Penanaman Bawang</title>
+</head>
+
+<body>
+    <h2 class="text-center mb-4 mt-4">Data Kegiatan Penanaman Bawang</h2>
+
+    <!-- dev container untuk mengatur jarak tampilan -->
+    <div class="container">
+        <div class="mb-4 mt-5">
+            <a href="/tambahdatapenanamanbawang" type="button" class="btn btn-success" style="float: right;">Tambah Data</a>
+            <a href="/home" type="button" class="btn btn-primary">Kembali</a>
+        </div>
+        <div class="row">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <!-- <th scope="col">Penanaman ID</th> -->
+                        <!-- <th scope="col">Lokasi Keterangan</th> -->
+                        <th scope="col">Metode Pengairan</th>
+                        <th scope="col">Sumber Modal</th>
+                        <th scope="col">Luas Lahan (m<sup>2</sup>)</th>
+                        <th scope="col">Jumlah Bibit (kg)</th>
+                        <th scope="col">Waktu Tanam</th>
+                        <th scope="col">Status Lahan</th>
+                        <th scope="col">Jumlah Modal (Rp)</th>
+                        <th scope="col">Kabupaten</th>
+                        <th scope="col">Alamat</th>
+                        <th scope="col">Panen</th>
+                        <th scope="col">Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    foreach ($data as $view) {
+                        $verify = $currentuserid;
+                        if ($view->id_user == $verify) {
+                            echo "<tr>";
+                            echo "<td>" . ($view->ks_metode_pengairan) . "</td>";
+                            echo "<td>" . ($view->ks_modal) . "</td>";
+                            echo "<td>" . ($view->ks_luas_lahan) . "</td>";
+                            echo "<td>" . ($view->ks_bibit) . "</td>";
+                            echo "<td>" . ($view->ks_waktu_tanam) . "</td>";
+                            echo "<td>" . ($view->ks_status_lahan) . "</td>";
+                            echo "<td>" . ($view->ks_jumlah_modal) . "</td>";
+                            echo "<td>" . ($view->kabupaten) . "</td>";
+                            echo "<td>" . ($view->alamat) . "</td>";
+                            echo "<td>" . ($view->ks_panen) . "</td>";
+                            echo "<td>" .
+                                "<a href='/tampildatapenanamanbawang/$view->id' class='btn btn-warning'>Edit</a>" .
+                                "</td>";
+                            echo "</tr>";
+
                         }
                         ?>
                     </tbody>

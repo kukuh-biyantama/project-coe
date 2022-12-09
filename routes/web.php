@@ -77,7 +77,7 @@ Route::get('/datapenanamanbawang', [PenanamanBawangController::class, 'datapenan
 Route::post('/insertdatapenanamanbawang', [PenanamanBawangController::class, 'insertdatapenanamanbawang'])->name('insertdatapenanamanbawang');
 Route::get('/tampildatapenanamanbawang/{id}', [PenanamanBawangController::class, 'tampildatapenanamanbawang'])->name('tampildatapenanamanbawang');
 Route::post('/updatedatapenanamanbawang/{id}', [PenanamanBawangController::class, 'updatedatapenanamanbawang'])->name('updatedatapenanamanbawang');
-Route::get('/viewpenanamanbawang', [PenanamanBawangController::class, 'viewpenanaman'])->name('viewpenanaman');
+Route::get('/viewpenanamanbawang', [PenanamanBawangController::class, 'viewpenanamanbawang'])->name('viewpenanaman');
 
 
 // Pestisida

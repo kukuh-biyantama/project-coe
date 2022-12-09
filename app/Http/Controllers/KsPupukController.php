@@ -4,19 +4,33 @@ namespace App\Http\Controllers;
 
 use App\Models\ks_pupuk;
 use Illuminate\Http\Request;
+use DB;
 
 class KsPupukController extends Controller
 {
+
     public function datapupuk(){
         $data = ks_pupuk::orderBy('ks_pupuk_tgl_rabuk', 'DESC')->get();
+
+    public function datapupuk()
+    {
+        $data = ks_pupuk::all();
+
         return view('/pages/pupuk/datapupuk', compact('data'));
     }
 
-    public function tambahdatapupuk(){
+    // public function datapupuk(){
+    //     $data = DB::table('barang')->join('detail_barang', 'detail_barang.id_barang', '=', 'barang.id_barang')->get();
+    //     return view('/pages/pupuk/datapupuk', compact('data'));
+    // }
+
+    public function tambahdatapupuk()
+    {
         return view('/pages/pupuk/tambahdatapupuk');
     }
 
-    public function insertdatapupuk(Request $request){
+    public function insertdatapupuk(Request $request)
+    {
         // data array jenis pupuk
         $ks_pupuk_jenis = isset($_POST['ks_pupuk_jenis']) && is_array($_POST['ks_pupuk_jenis']) ? $_POST['ks_pupuk_jenis'] : [];
         $input_ks_pupuk_jenis = implode(', ', $ks_pupuk_jenis);
@@ -65,12 +79,14 @@ class KsPupukController extends Controller
         return redirect()->route('datapupuk')->with('success', 'Data Pupuk telah berhasil ditambahkan');
     }
 
-    public function tampildatapupuk($id){
+    public function tampildatapupuk($id)
+    {
         $data = ks_pupuk::find($id);
         return view('/pages/pupuk/tampildatapupuk', compact('data'));
     }
 
-    public function updatedatapupuk(Request $request, $id) {
+    public function updatedatapupuk(Request $request, $id)
+    {
         // data array jenis pupuk
         $ks_pupuk_jenis = isset($_POST['ks_pupuk_jenis']) && is_array($_POST['ks_pupuk_jenis']) ? $_POST['ks_pupuk_jenis'] : [];
         $input_ks_pupuk_jenis = implode(', ', $ks_pupuk_jenis);
@@ -118,6 +134,5 @@ class KsPupukController extends Controller
         ]);
 
         return redirect()->route('datapupuk')->with('success', 'Data Pupuk telah berhasil diupdate');
-
     }
 }
