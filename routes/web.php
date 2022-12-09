@@ -16,6 +16,7 @@ use App\Http\Controllers\SsensorsawahController;
 use App\Http\Controllers\SummaryclusterController;
 use App\Http\Controllers\GooglemapsController;
 use App\Http\Controllers\KegiatansawahController;
+use App\Http\Controllers\LokasiController;
 use App\Http\Controllers\LokasiPetaniController;
 use GuzzleHttp\Client;
 
@@ -61,11 +62,12 @@ Route::group(['middleware' => 'auth'], function () {
 });
 
 // Form Lokasi Sawah
-Route::get('/datalokasisawah', [LokasiSawahController::class, 'datalokasisawah']);
-Route::get('/formtambahdatalokasisawah', [LokasiSawahController::class, 'formtambahdatalokasisawah']);
-Route::post('/insertdatalokasisawah', [LokasiSawahController::class, 'insertdatalokasisawah']);
-Route::post('/tampildatalokasisawah', [LokasiSawahController::class, 'tampildatalokasisawah']);
-
+Route::get('/datalokasisawah', [LokasiController::class, 'datalokasisawah'])->name('datalokasisawah');
+Route::get('/formtambahdatalokasisawah', [LokasiController::class, 'formtambahdatalokasisawah'])->name('formtambahdatalokasisawah');
+Route::post('/insertdatalokasisawah', [LokasiController::class, 'insertdatalokasisawah'])->name('insertdatalokasisawah');
+Route::get('/formeditdatalokasisawah/{id}', [LokasiController::class, 'formeditdatalokasisawah'])->name('formeditdatalokasisawah');
+Route::post('/updatedatalokasisawah/{id}', [LokasiController::class, 'updatedatalokasisawah'])->name('updatedatalokasisawah');
+Route::get('/deletedatalokasisawah/{id}', [LokasiController::class, 'deletedatalokasisawah'])->name('deletedatalokasisawah');
 
 // Route::post('/post/kirimlokasi', [LokasiSawahController::class, 'tambahlokasi']);
 Route::get('add-blog-post-form', [PostController::class, 'index']);
