@@ -44,7 +44,7 @@ class PostController extends Controller
                 'lokasi_keterangan' => $lokasi_keterangan  
             ]
             );
-            return redirect('add-blog-post-form')->with('status', 'Data Telah Terkirim');
+            return redirect('/home')->with('status', 'Data Telah Terkirim');
     }
 
     /**

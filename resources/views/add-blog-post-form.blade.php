@@ -37,11 +37,14 @@
                   <label for="exampleInputEmail1">lokasi_longitude</label>
                   <input type="lokasi_longitude" id="lokasi_longitude" name="lokasi_longitude" class="form-control">
                 </div>
-                <div class="form-group">
-                  <label for="exampleInputEmail1">lokasi Keterangan</label>
-                  <input type="lokasi_keterangan" id="lokasi_keterangan" name="lokasi_keterangan" class="form-control" required="">
-                </div>
-      
+                <label for="exampleInputEmail1">lokasi Keterangan</label>
+                <select name="lokasi_keterangan" id="lokasi_keterangan">
+                  <option value="1">sawah 1</option>
+                  <option value="2">sawah 2</option>
+                  <option value="3">sawah 3</option>
+                  <option value="4">sawah 4</option>
+                </select>
+                <br><br>
                 <button type="submit" class="btn btn-primary">Submit</button>
               </form>
             </div>

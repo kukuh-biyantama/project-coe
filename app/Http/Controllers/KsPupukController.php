@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class KsPupukController extends Controller
 {
     public function datapupuk(){
-        $data = ks_pupuk::all();
+        $data = ks_pupuk::orderBy('ks_pupuk_tgl_rabuk', 'DESC')->get();
         return view('/pages/pupuk/datapupuk', compact('data'));
     }
 

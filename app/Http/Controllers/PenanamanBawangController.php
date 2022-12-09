@@ -20,12 +20,15 @@ class PenanamanBawangController extends Controller
     {
         //get data lokasi API
         $currentuserid = Auth::user()->id;
-        $url = "http://compute.dinus.ac.id:900/api/get/showiotuser/" . $currentuserid;
+        $url = "http://compute.dinus.ac.id:900/api/get/lokasi/" . $currentuserid;
         $response = Http::get($url);
         $data = json_decode($response, true);
+        $user_data = $data;
+        $user_data = array_slice($user_data, 0);
         if ($data == null) {
             return view('/pages/responslokasi/responslokasi');
         } else {
+             //mengambil kabupaten dari API 
             $object = penanaman_bawang::all();
             return view('/pages/penanamanbawang/datapenanamanbawang', compact('object', 'currentuserid'));
         }
@@ -33,7 +36,14 @@ class PenanamanBawangController extends Controller
 
     public function tambahdatapenanamanbawang()
     {
-        return view('/pages/penanamanbawang/tambahdatapenanamanbawang');
+        $currentuserid = Auth::user()->id;
+        $url = "http://compute.dinus.ac.id:900/api/get/lokasi/" . $currentuserid;
+        $response = Http::get($url);
+        $data = json_decode($response, true);
+        $user_data = $data;
+        $user_data = array_slice($user_data, 0);
+        
+        return view('/pages/penanamanbawang/tambahdatapenanamanbawang', compact('user_data'));
     }
 
     // INSERT DATA
@@ -94,7 +104,7 @@ class PenanamanBawangController extends Controller
 
         //get data iot
         $currentuserid = Auth::user()->id;
-        $url = "http://compute.dinus.ac.id:900/api/get/showiotuser/" . $currentuserid;
+        $url = "http://compute.dinus.ac.id:900/api/get/lokasi/" . $currentuserid;
         $response = Http::get($url);
         $data = json_decode($response, true);
 

@@ -5,35 +5,47 @@
         <h2 class="text-center mb-4 mt-4">Data Pestisida</h2>
 
         <!-- dev container untuk mengatur jarak tampilan -->
-        <div class="container">
+        {{-- < class="container"> --}}
             <div class="mb-4 mt-5">
                 <a href="/tambahdatapestisida" type="button" class="btn btn-success" style="float: right;">Tambah Data</a>
                 <a href="/home" type="button" class="btn btn-primary">Kembali</a>
             </div>
-
+        <div>
+            @if(session('status'))
+            <div class="alert alert-success">
+              {{ session('status') }}
+            </div>
+            @endif
+            </div>
             <div class="row">
                 <table class="table table-bordered">
                     <thead>
                         <tr>
+                            <th scope="col">Tanggal Semprot Pestisida</th>
                             <th scope="col">Nama Pestisida</th>
                             <th scope="col">Tempat Membeli Pestisida</th>
-                            <th scope="col">Tanggal Semprot Pestisida</th>
+                            
                             <th scope="col">Jumlah Takaran Pestisida (liter)</th>
                             <th scope="col">Keterangan Kegiatan</th>
-                            <th scope="col">Aksi</th>
+                            <th scope="col">Ubah Data</th>
+                            <th scope="col">Hapus Data</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($data as $row)
                             <tr>
+                                <td>{{ $row->ks_pestisida_tgl_semprot }}</td>
                                 <td>{{ $row->ks_pestisida_nama }}</td>
                                 <td>{{ $row->ks_pestisida_tempat_membeli }}</td>
-                                <td>{{ $row->ks_pestisida_tgl_semprot }}</td>
+                                
                                 <td>{{ $row->ks_pestisida_jumlah_takaran }}</td>
                                 <td>{{ $row->ks_pestisida_keterangan }}</td>
                                 <td>
                                     <a href="/tampildatapestisida/{{ $row->id }}" class="btn btn-warning">Edit</a>
                                 </td>
+                            <td>
+                                <a href="/tampildatapestisida/{{ $row->id }}" class="btn btn-warning">Hapus</a>
+                            </td>
                             </tr>
                         @endforeach
                     </tbody>
@@ -73,30 +85,9 @@
     </body>
 
     <!-- script toastr untuk menampilkan notifikasi jika data telah berhasil dieksekusi -->
-    <script>
-        @if (Session::has('success'))
-            toastr.success("{{ Session::get('success') }}")
-        @endif
-    </script>
+   
     </div>
 @endsection
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
-</script>
-
-<!-- script jquery cdn -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"
-    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-
-<!-- script sweetalert -->
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
-<!-- script toastr -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
-    integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-
 <footer class="py-5 bg-gradient-primary">
 </footer>
 

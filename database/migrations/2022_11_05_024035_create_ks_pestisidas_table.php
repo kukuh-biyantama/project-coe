@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('ks_pestisida_tempat_membeli');
             $table->date('ks_pestisida_tgl_semprot');
             $table->float('ks_pestisida_jumlah_takaran');
-            $table->string('ks_pestisida_keterangan');
+            $table->string('ks_pestisida_keterangan')->nullable();
             $table->timestamps();
         });
     }

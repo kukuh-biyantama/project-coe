@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('ks_pupuk_merk');
             $table->date('ks_pupuk_tgl_rabuk');
             $table->float('ks_pupuk_jumlah_takaran');
-            $table->string('ks_pupuk_keterangan');
+            $table->string('ks_pupuk_keterangan')->nullable();
             $table->timestamps();
         });
     }

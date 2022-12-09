@@ -12,6 +12,7 @@
                 <a href="/home" type="button" class="btn btn-primary">Kembali</a>
             </div>
             <div class="row">
+                
                 <table class="table table-bordered">
                     <thead>
                         <tr>

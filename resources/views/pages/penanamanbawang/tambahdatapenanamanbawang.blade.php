@@ -26,15 +26,23 @@
                               <!-- <a href="/datapenanamanbawang" type="button" class="btn btn-primary mb-4">Kembali</a> -->
 
                               <!-- Lokasi -->
-                              <!-- <div class="mb-3">
+                              {{-- @foreach ($user_data as $iot) --}}
+      
+                            
+                           <div class="mb-3">
                                 <label for="" class="form-label">Lokasi</label>
                                 <select class="form-select" name="lokasi_keterangan" aria-label="Default select example">
                                     <option selected disabled>Pilih</option>
-                                    <option value="1">Sawah pak Ridho</option>
-                                </select>
-                              </div> -->
-
+                                    @foreach ($user_data as $iot)
+                                    <option value="{{$iot['lokasi_keterangan']}}">Sawah Ke  {{$iot['lokasi_keterangan']}}</option>
+                                    @endforeach
+                                
+                                  </select>
+                                  
+                              </div> 
+                             
                               <!-- Metode Pengairan -->
+                              
                               <div class="mb-3">
                                   <label for="metodePengairan" class="form-label">Metode Pengairan</label>
 

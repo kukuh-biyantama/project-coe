@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('panens', function (Blueprint $table) {
             $table->id();
             $table->string('lokasi_keterangan');
+            $table->date('panen_tanggal');
             $table->float('panen_hasil_produksi');
             $table->float('panen_kualitas_a');
             $table->float('panen_kualitas_b');

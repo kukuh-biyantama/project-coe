@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class KsPestisidaController extends Controller
 {
     public function datapestisida(){
-        $data = ks_pestisida::all();
+        $data = ks_pestisida::orderBy('ks_pestisida_tgl_semprot', 'DESC')->get();
         return view('/pages/pestisida/datapestisida', compact('data'));
     }
 
@@ -55,6 +55,9 @@ class KsPestisidaController extends Controller
             'ks_pestisida_jumlah_takaran' => $dataHasilJumlahTakaranPestisida,
             'ks_pestisida_keterangan' => $input_ks_pestisida_keterangan
         ]);
+
+        
+
 
         return redirect()->route('datapestisida')->with('success', 'Data Pestisida telah berhasil ditambahkan');
     }

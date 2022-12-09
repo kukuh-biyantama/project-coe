@@ -17,6 +17,7 @@
                     <tr>
                         <th scope="col">Panen ID</th>
                         <th scope="col">Lokasi</th>
+                        <th scope="col">Tanggal Panen</th>
                         <th scope="col">Hasil Produksi</th>
                         <th scope="col">Kualitas A</th>
                         <th scope="col">Kualitas B</th>
@@ -28,6 +29,7 @@
                     <tr>
                         <td>1</td>
                         <td>Sawah pak Ridho</td>
+                        <td>2022-10-11</td>
                         <td>3000 Kg</td>
                         <td>1000 Kg</td>
                         <td>1000 Kg</td>

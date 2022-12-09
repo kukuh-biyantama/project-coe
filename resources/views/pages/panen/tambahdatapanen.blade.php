@@ -34,6 +34,13 @@
                                     </select>
                                 </div>
 
+                                <!-- Tanggal Panen -->
+                                <div class="mb-3">
+                                <label for="" class="form-label">Tanggal Panen</label>
+                                <input type="date" name="panen_tanggal" class="form-control">
+                                </div>
+                                    
+
                                 <!-- Hasil Produksi Panen -->
                                 <div class="mb-3">
                                     <label for="hasilProduksiPanen" class="form-label">Hasil Produksi Panen</label><br>
