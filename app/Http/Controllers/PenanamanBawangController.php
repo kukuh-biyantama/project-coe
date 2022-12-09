@@ -103,6 +103,7 @@ class PenanamanBawangController extends Controller
 
         // jumlah modal
         $ks_jumlah_modal = $request->input('ks_jumlah_modal');
+        $ks_panen = $request->input('ks_panen');
 
         //get data iot
         $currentuserid = Auth::user()->id;
@@ -128,7 +129,7 @@ class PenanamanBawangController extends Controller
             'ks_status_lahan' => $input_ks_status_lahan,
             'ks_jumlah_modal' => $ks_jumlah_modal,
             'kabupaten' => $kabupaten,
-            'id_lokasisawah' => $alamat
+            'alamat' => $alamat
         ]);
 
         return redirect()->route('viewpenanaman')->with('success', 'Data Penanaman Bawang telah berhasil ditambahkan');

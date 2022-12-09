@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class lokasi_sawah extends Model
 {
     use HasFactory;
+
+    protected $guarded = [];
 }

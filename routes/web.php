@@ -16,6 +16,7 @@ use App\Http\Controllers\SsensorsawahController;
 use App\Http\Controllers\SummaryclusterController;
 use App\Http\Controllers\GooglemapsController;
 use App\Http\Controllers\KegiatansawahController;
+use App\Http\Controllers\LokasiController;
 use App\Http\Controllers\LokasiPetaniController;
 use GuzzleHttp\Client;
 
@@ -61,18 +62,24 @@ Route::group(['middleware' => 'auth'], function () {
 });
 
 // Form Lokasi Sawah
-// Route::get('/datalokasisawah', [LokasiSawahController::class, 'index']);
+Route::get('/datalokasisawah', [LokasiController::class, 'datalokasisawah'])->name('datalokasisawah');
+Route::get('/formtambahdatalokasisawah', [LokasiController::class, 'formtambahdatalokasisawah'])->name('formtambahdatalokasisawah');
+Route::post('/insertdatalokasisawah', [LokasiController::class, 'insertdatalokasisawah'])->name('insertdatalokasisawah');
+Route::get('/formeditdatalokasisawah/{id}', [LokasiController::class, 'formeditdatalokasisawah'])->name('formeditdatalokasisawah');
+Route::post('/updatedatalokasisawah/{id}', [LokasiController::class, 'updatedatalokasisawah'])->name('updatedatalokasisawah');
+Route::get('/deletedatalokasisawah/{id}', [LokasiController::class, 'deletedatalokasisawah'])->name('deletedatalokasisawah');
+
 // Route::post('/post/kirimlokasi', [LokasiSawahController::class, 'tambahlokasi']);
 Route::get('add-blog-post-form', [PostController::class, 'index']);
 Route::post('store-form', [PostController::class, 'store']);
 // Route::get('/getDataLokasiSawah', [LokasiSawahController::class, 'getDataLokasiSawah'])->name('getDataLokasiSawah');
 
 // Kegiatan Sawah
-Route::get('datakegiatansawah', [KegiatansawahController::class, 'index']);
-Route::get('tambahdatakegiatansawah', [KegiatansawahController::class, 'tambahdatakegiatansawah']);
-Route::post('storedatakegiatansawah', [KegiatansawahController::class, 'store']);
+// Route::get('datakegiatansawah', [KegiatansawahController::class, 'index']);
+// Route::get('tambahdatakegiatansawah', [KegiatansawahController::class, 'tambahdatakegiatansawah']);
+// Route::post('storedatakegiatansawah', [KegiatansawahController::class, 'store']);
 
-// Penanaman Bawang
+// Kegiatan Penanaman Bawang
 Route::get('/datapenanamanbawang', [PenanamanBawangController::class, 'datapenanamanbawang'])->name('datapenanamanbawang');
 Route::post('/insertdatapenanamanbawang', [PenanamanBawangController::class, 'insertdatapenanamanbawang'])->name('insertdatapenanamanbawang');
 Route::get('/tampildatapenanamanbawang/{id}', [PenanamanBawangController::class, 'tampildatapenanamanbawang'])->name('tampildatapenanamanbawang');

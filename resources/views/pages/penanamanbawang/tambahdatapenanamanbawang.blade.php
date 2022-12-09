@@ -40,6 +40,10 @@
                                   </select>
                                   
                               </div> 
+
+                            <!-- Default panen -->
+                            <input type="hidden" value="0" name="ks_panen">
+
                              
                               <!-- Metode Pengairan -->
                               

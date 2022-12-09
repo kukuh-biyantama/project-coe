@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('ks_pupuks', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('kegiatansawah_id')->constrained('penanaman_bawangs')->onDelete('cascade')->onUpdate('cascade');
             $table->string('ks_pupuk_jenis');
             $table->string('ks_pupuk_sumber_organik');
             $table->string('ks_pupuk_sumber_anorganik');
