@@ -22,7 +22,7 @@ class PenanamanBawangController extends Controller
     {
         //get data lokasi API
         $currentuserid = Auth::user()->id;
-        $url = "http://compute.dinus.ac.id:900/api/get/lokasi/" . $currentuserid;
+        $url = "http://compute.dinus.ac.id:900/api/get/showiotuser/" . $currentuserid;
         $response = Http::get($url);
         $data = json_decode($response, true);
         $user_data = $data;
@@ -39,7 +39,7 @@ class PenanamanBawangController extends Controller
     public function tambahdatapenanamanbawang()
     {
         $currentuserid = Auth::user()->id;
-        $url = "http://compute.dinus.ac.id:900/api/get/lokasi/" . $currentuserid;
+        $url = "http://compute.dinus.ac.id:900/api/get/showiotuser/" . $currentuserid;
         $response = Http::get($url);
         $data = json_decode($response, true);
         $user_data = $data;

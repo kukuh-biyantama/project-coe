@@ -26,25 +26,26 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-            
-            // $id = $request->input('id');
-            $currentuserid = Auth::user()->id;
-            $id_iot = $request->input('id_iot');
-            $kabupaten = $request->input('kabupaten');
-            $lokasi_latitude = $request->input('lokasi_latitude');
-            $lokasi_longitude = $request->input('lokasi_longitude');
-            $lokasi_keterangan = $request->input('lokasi_keterangan');
-            $response = Http::post('http://compute.dinus.ac.id:900/api/post/location', 
+
+        // $id = $request->input('id');
+        $currentuserid = Auth::user()->id;
+        $id_iot = $request->input('id_iot');
+        $kabupaten = $request->input('kabupaten');
+        $lokasi_latitude = $request->input('lokasi_latitude');
+        $lokasi_longitude = $request->input('lokasi_longitude');
+        $lokasi_keterangan = $request->input('lokasi_keterangan');
+        $response = Http::post(
+            'http://compute.dinus.ac.id:900/api/post/location',
             [
-                'id' => $currentuserid,
+                'id' => $currentuserid, //user_id
                 'id_iot' => $id_iot,
                 'kabupaten' => $kabupaten,
                 'lokasi_latitude' => $lokasi_latitude,
                 'lokasi_longitude' => $lokasi_longitude,
-                'lokasi_keterangan' => $lokasi_keterangan  
+                'lokasi_keterangan' => $lokasi_keterangan
             ]
-            );
-            return redirect('/home')->with('status', 'Data Telah Terkirim');
+        );
+        return redirect('/home')->with('status', 'Data Telah Terkirim');
     }
 
     /**
