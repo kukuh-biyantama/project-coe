@@ -22,7 +22,7 @@ class PanenController extends Controller
 
         // panen hasil produksi
         $panenhasil = $request->input('panen_hasil_produksi');
-        $stnpanenhasil = $request->input('stnBibit');
+        $stnpanenhasil = $request->input('stnpanenhasil');
         $resulthasilpanen = $panenhasil;
         if ($stnpanenhasil == "Kuintal") {
             $resulthasilpanen = $resulthasilpanen * 100;
@@ -53,15 +53,35 @@ class PanenController extends Controller
         if ($stnpanenkualitas_b == "Kuintal") {
             $resultpanenkualitas_b = $resultpanenkualitas_b * 100;
         }
-        if ($stnpanenkualitas_a == "Ton") {
+        if ($stnpanenkualitas_b == "Ton") {
             $resultpanenkualitas_b = $resultpanenkualitas_b * 1000;
         } else {
             $resultpanenkualitas_b = $resultpanenkualitas_b;
         }
 
+        // panen kualitas c 
+        $panenkualitas_c = $request->input('panen_kualitas_c');
+        $stnpanenkualitas_c = $request->input('stnpanenkualitas_c');
+        $resultpanenkualitas_c = $panenkualitas_c;
+        if ($stnpanenkualitas_c == "Kuintal") {
+            $resultpanenkualitas_c = $resultpanenkualitas_c * 100;
+        }
+        if ($stnpanenkualitas_c == "Ton") {
+            $resultpanenkualitas_c = $resultpanenkualitas_c * 1000;
+        } else {
+            $resultpanenkualitas_c = $resultpanenkualitas_c;
+        }
 
-        $panen_kualitas_b = $request->input('pbnen_kualitas_b');
-        $panen_kualitas_c = $request->input('panen_kualitas_c');
+        panen::create([
+            'panen_tanggal' => $panen_tanggal,
+            'panen_hasil_produksi' => $resulthasilpanen,
+            'panen_kualitas_a' => $resultpanenkualitas_a,
+            'panen_kualitas_b' => $resultpanenkualitas_b,
+            'panen_kualitas_c' => $resultpanenkualitas_c
+        ]);
+
+        return redirect()->route('datapanen')->with('success', 'Data Panen telah berhasil ditambahkan');
+        
     }
 
 }

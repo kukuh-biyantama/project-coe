@@ -22,17 +22,17 @@
                 <div class="col-8">
                     <div class="card">
                         <div class="card-body">
-                            <form action="" method="POST" enctype="multipart/form-data">
-                                <!-- @csrf -->
+                            <form action="/insertdatapanen" method="POST" enctype="multipart/form-data">
+                                @csrf
                                 
                                 <!-- Lokasi -->
-                                <div class="mb-3">
+                                <!-- <div class="mb-3">
                                     <label for="" class="form-label">Lokasi</label>
                                     <select class="form-select" name="" aria-label="Default select example">
                                         <option selected disabled>Pilih</option>
                                         <option value="1">Sawah pak Ridho</option>
                                     </select>
-                                </div>
+                                </div> -->
 
                                 <!-- Tanggal Panen -->
                                 <div class="mb-3">
@@ -44,18 +44,20 @@
                                 <!-- Hasil Produksi Panen -->
                                 <div class="mb-3">
                                     <label for="hasilProduksiPanen" class="form-label">Hasil Produksi Panen</label><br>
-                                    <input type="number" style="width:100%" class="form-control">
+
+                                    <input type="decimal" name="panen_hasil_produksi" style="width:100%" class="form-control">
+
                                     <div class="form-check">
                                         <div class="">
-                                            <input class="inputan" type="radio" id="kilogram" name="hasil_produksi_panen" value="Kilogram">
+                                            <input class="inputan" type="radio" id="kilogram" name="stnpanenhasil" value="Kilogram">
                                             <label>Kilogram</label>
                                         </div>
                                         <div class="">
-                                            <input class="inputan" type="radio" id="Kuintal" name="hasil_produksi_panen" value="kuintal">
+                                            <input class="inputan" type="radio" id="Kuintal" name="stnpanenhasil" value="Kuintal">
                                             <label>Kuintal</label>
                                         </div>
                                         <div class="">
-                                            <input class="inputan" type="radio" id="ton" name="hasil_produksi_panen" value="ton">
+                                            <input class="inputan" type="radio" id="ton" name="stnpanenhasil" value="Ton">
                                             <label>Ton</label>
                                         </div>
                                     </div>
@@ -64,18 +66,20 @@
                                 <!-- Kualitas A -->
                                 <div class="mb-3">
                                     <label for="kualitas_a" class="form-label">Panen Kualitas A</label><br>
-                                    <input type="number" style="width:100%" class="form-control">
+
+                                    <input type="decimal" style="width:100%" name="panen_kualitas_a" class="form-control">
+
                                     <div class="form-check">
                                         <div class="">
-                                            <input class="inputan" type="radio" id="kilogram" name="kualitas_a" value="Kilogram">
+                                            <input class="inputan" type="radio" id="kilogram" name="stnpanenkualitas_a" value="Kilogram">
                                             <label>Kilogram</label>
                                         </div>
                                         <div class="">
-                                            <input class="inputan" type="radio" id="Kuintal" name="kualitas_a" value="kuintal">
+                                            <input class="inputan" type="radio" id="Kuintal" name="stnpanenkualitas_a" value="Kuintal">
                                             <label>Kuintal</label>
                                         </div>
                                         <div class="">
-                                            <input class="inputan" type="radio" id="ton" name="kualitas_a" value="ton">
+                                            <input class="inputan" type="radio" id="ton" name="stnpanenkualitas_a" value="Ton">
                                             <label>Ton</label>
                                         </div>
                                     </div>
@@ -84,18 +88,20 @@
                                 <!-- Kualitas B -->
                                 <div class="mb-3">
                                     <label for="kualitas_b" class="form-label">Panen Kualitas B</label><br>
-                                    <input type="number" style="width:100%" class="form-control">
+
+                                    <input type="decimal" name="panen_kualitas_b" style="width:100%" class="form-control">
+
                                     <div class="form-check">
                                         <div class="">
-                                            <input class="inputan" type="radio" id="kilogram" name="kualitas_b" value="Kilogram">
+                                            <input class="inputan" type="radio" id="kilogram" name="stnpanenkualitas_b" value="Kilogram">
                                             <label>Kilogram</label>
                                         </div>
                                         <div class="">
-                                            <input class="inputan" type="radio" id="Kuintal" name="kualitas_b" value="kuintal">
+                                            <input class="inputan" type="radio" id="Kuintal" name="stnpanenkualitas_b" value="kuintal">
                                             <label>Kuintal</label>
                                         </div>
                                         <div class="">
-                                            <input class="inputan" type="radio" id="ton" name="kualitas_b" value="ton">
+                                            <input class="inputan" type="radio" id="ton" name="stnpanenkualitas_b" value="Ton">
                                             <label>Ton</label>
                                         </div>
                                     </div>
@@ -103,19 +109,21 @@
 
                                 <!-- Kualitas C -->
                                 <div class="mb-3">
-                                    <label for="kualitas_c" class="form-label">Panen Kualitas C</label><br>
-                                    <input type="number" style="width:100%" class="form-control">
+                                    <label for="kualitas_c" class="form-label">Panen Kualitas B</label><br>
+
+                                    <input type="decimal" name="panen_kualitas_c" style="width:100%" class="form-control">
+
                                     <div class="form-check">
                                         <div class="">
-                                            <input class="inputan" type="radio" id="kilogram" name="kualitas_c" value="Kilogram">
+                                            <input class="inputan" type="radio" id="kilogram" name="stnpanenkualitas_c" value="Kilogram">
                                             <label>Kilogram</label>
                                         </div>
                                         <div class="">
-                                            <input class="inputan" type="radio" id="Kuintal" name="kualitas_c" value="kuintal">
+                                            <input class="inputan" type="radio" id="Kuintal" name="stnpanenkualitas_c" value="kuintal">
                                             <label>Kuintal</label>
                                         </div>
                                         <div class="">
-                                            <input class="inputan" type="radio" id="ton" name="kualitas_c" value="ton">
+                                            <input class="inputan" type="radio" id="ton" name="stnpanenkualitas_c" value="Ton">
                                             <label>Ton</label>
                                         </div>
                                     </div>

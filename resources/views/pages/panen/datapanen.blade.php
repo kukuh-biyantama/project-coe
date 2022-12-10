@@ -8,14 +8,14 @@
     <!-- dev container untuk mengatur jarak tampilan -->
     <div class="container">
         <div class="mb-4 mt-6">
-            <a href="/tambahdatapanen" type="button" class="btn btn-success" style="float: right;">Tambah Data</a>
+            <a href="/formtambahdatapanen" type="button" class="btn btn-success" style="float: right;">Tambah Data</a>
             <a href="/home" type="button" class="btn btn-primary">Kembali</a>
         </div>
         <div class="row">
             <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <th scope="col">Lokasi Keterangan</th>
+                        <!-- <th scope="col">Lokasi Keterangan</th> -->
                         <th scope="col">Tanggal Panen</th>
                         <th scope="col">Hasil Produksi</th>
                         <th scope="col">Kualitas A</th>
@@ -26,20 +26,22 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Sawah pak Ridho</td>
-                        <td>2022-10-11</td>
-                        <td>3000 Kg</td>
-                        <td>1000 Kg</td>
-                        <td>1000 Kg</td>
-                        <td>1000 Kg</td>
-                        <td>
-                            <a href="" class="btn btn-warning">Edit</a>
-                        </td>
-                        <td>
-                            <a href="#" class="btn btn-danger delete">Delete</a>
-                        </td>
-                    </tr>
+                    @foreach ($data as $row)
+                        <tr>
+                            <!-- <td>Sawah pak Ridho</td> -->
+                            <td>{{ $row->panen_tanggal }}</td>
+                            <td>{{ $row->panen_hasil_produksi }}</td>
+                            <td>{{ $row->panen_kualitas_a }}</td>
+                            <td>{{ $row->panen_kualitas_b }}</td>
+                            <td>{{ $row->panen_kualitas_c }}</td>
+                            <td>
+                                <a href="#" class="btn btn-warning">Edit</a>
+                            </td>
+                            <td>
+                                <a href="#" class="btn btn-warning">Hapus</a>
+                            </td>
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>
