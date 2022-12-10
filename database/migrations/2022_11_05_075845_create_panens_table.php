@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('panens', function (Blueprint $table) {
             $table->id();
             // $table->string('lokasi_keterangan');
-            $table->foreignId('kegiatansawah_id')->constrained('penanaman_bawangs')->onDelete('cascade')->onUpdate('cascade');
+            // $table->foreignId('kegiatansawah_id')->constrained('penanaman_bawangs')->onDelete('cascade')->onUpdate('cascade');
             $table->date('panen_tanggal');
             $table->float('panen_hasil_produksi');
             $table->float('panen_kualitas_a');

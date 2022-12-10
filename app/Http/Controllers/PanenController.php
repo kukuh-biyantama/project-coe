@@ -2,15 +2,66 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\panen;
 use Illuminate\Http\Request;
 
 class PanenController extends Controller
 {
-    public function index(){
-        return view('/pages/panen/datapanen');
+    public function datapanen(){
+        $data = panen::all();
+        return view('/pages/panen/datapanen', compact('data'));
     }
 
-    public function tambahdatapanen(){
-        return view('/pages/panen/tambahdatapanen');
+    public function formtambahdatapanen(){
+        return view('/pages/panen/formtambahdatapanen');
     }
+
+    public function insertdatapanen(Request $request){
+        // tanggal panen
+        $panen_tanggal = $request->input('panen_tanggal');
+
+        // panen hasil produksi
+        $panenhasil = $request->input('panen_hasil_produksi');
+        $stnpanenhasil = $request->input('stnBibit');
+        $resulthasilpanen = $panenhasil;
+        if ($stnpanenhasil == "Kuintal") {
+            $resulthasilpanen = $resulthasilpanen * 100;
+        }
+        if ($stnpanenhasil == "Ton") {
+            $resulthasilpanen = $resulthasilpanen * 1000;
+        } else {
+            $resulthasilpanen = $resulthasilpanen;
+        }
+        
+        // panen kualitas a
+        $panenkualitas_a = $request->input('panen_kualitas_a');
+        $stnpanenkualitas_a = $request->input('stnpanenkualitas_a');
+        $resultpanenkualitas_a = $panenkualitas_a;
+        if ($stnpanenkualitas_a == "Kuintal") {
+            $resultpanenkualitas_a = $resultpanenkualitas_a * 100;
+        }
+        if ($stnpanenkualitas_a == "Ton") {
+            $resultpanenkualitas_a = $resultpanenkualitas_a * 1000;
+        } else {
+            $resultpanenkualitas_a = $resultpanenkualitas_a;
+        }
+
+        // panen kualitas b
+        $panenkualitas_b = $request->input('panen_kualitas_b');
+        $stnpanenkualitas_b = $request->input('stnpanenkualitas_b');
+        $resultpanenkualitas_b = $panenkualitas_b;
+        if ($stnpanenkualitas_b == "Kuintal") {
+            $resultpanenkualitas_b = $resultpanenkualitas_b * 100;
+        }
+        if ($stnpanenkualitas_a == "Ton") {
+            $resultpanenkualitas_b = $resultpanenkualitas_b * 1000;
+        } else {
+            $resultpanenkualitas_b = $resultpanenkualitas_b;
+        }
+
+
+        $panen_kualitas_b = $request->input('pbnen_kualitas_b');
+        $panen_kualitas_c = $request->input('panen_kualitas_c');
+    }
+
 }

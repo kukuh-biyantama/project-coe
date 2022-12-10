@@ -21,42 +21,37 @@
                         <form action="/insertdatapestisida" method="POST" enctype="multipart/form-data">
                             @csrf
                             <!-- Lokasi -->
-                            <!-- <div class="mb-3">
-                                <label for="" class="form-label">Lokasi</label>
-                                <select class="form-select" name="" aria-label="Default select example">
-                                    <option selected disabled>Pilih</option>
-                                    <option value="1">Sawah pak Ridho</option>
-                                </select>
-                            </div> -->
+                            <div class="mb-3">
+                                <div class="form-group">
+                                    <label for="exampleFormControlSelect1" style="font-weight: 600;">Lokasi</label>
+                                    <select class="form-control" name="ks_pestisida_nama" id="exampleFormControlSelect1">
+                                        <option selected disabled>Pilih</option>
+                                        <option value="1">Sawah pak Ridho</option>
+                                    </select>
+                                </div>
+                            </div>
 
                             <!-- Nama Pestisida -->
-                            <!-- <div class="mb-3">
-                                <label for="namaPestisida" class="form-label" style="font-weight: 600;">Nama Pestisida</label>
-
-                                <input type="text" name="ks_pestisida_nama" style="width:100%" class="form-control @error('ks_pestisida_nama') is-invalid @enderror" value="{{ old('ks_pestisida_nama') }}">
-
-                                @error('ks_pestisida_nama')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
-                            </div> -->
                             <div class="mb-3">
-                                <label for="" class="form-label">Nama Pestisida</label>
-                                <select class="form-select" name="ks_pestisida_nama" aria-label="Default select example">
-                                    <option selected disabled>Pilih</option>
-                                    <option value="Emacel">Emacel</option>
-                                    <option value="Matador">Matador</option>
-                                    <option value="Fenite">Fenite</option>
-                                    <option value="Tenano">Curacron</option>
-                                    <option value="Preza">Starelle</option>
-                                    <option value="Prima-Cel">Prima-Cel</option>
-                                    <option value="Brofreya">Brofreya</option>
-                                    <option value="Meurtier">Meurtier</option>
-                                    <option value="Ulate">Ulate</option>
-                                    <option value="Biowasil">Biowasil</option>
-                                    <option value="Promojoss">Promojoss</option>
-                                    <option value="Marshal">Marshal</option>
-                                    <option value="Lainnya">Lainnya</option>
-                                </select>
+                                <div class="form-group">
+                                    <label for="exampleFormControlSelect1" style="font-weight: 600;">Nama Pestisida</label>
+                                    <select class="form-control" name="ks_pestisida_nama" id="exampleFormControlSelect1">
+                                        <option selected disabled>Pilih</option>
+                                        <option value="Emacel">Emacel</option>
+                                        <option value="Matador">Matador</option>
+                                        <option value="Fenite">Fenite</option>
+                                        <option value="Tenano">Curacron</option>
+                                        <option value="Preza">Starelle</option>
+                                        <option value="Prima-Cel">Prima-Cel</option>
+                                        <option value="Brofreya">Brofreya</option>
+                                        <option value="Meurtier">Meurtier</option>
+                                        <option value="Ulate">Ulate</option>
+                                        <option value="Biowasil">Biowasil</option>
+                                        <option value="Promojoss">Promojoss</option>
+                                        <option value="Marshal">Marshal</option>
+                                        <option value="Lainnya">Lainnya</option>
+                                    </select>
+                                </div>
                             </div>
 
                             <!-- Tempat Membeli Pestisida -->

@@ -3,31 +3,30 @@
 @section('content')
 <div class="container-fluid mt--7">
 
-    <h2 class="text-center mb-4 mt-4">Laporan Data Panen</h2>
+    <h2 class="text-center mb-4 mt-4" style="color: white;">Laporan Data Panen</h2>
 
     <!-- dev container untuk mengatur jarak tampilan -->
     <div class="container">
-        <div class="mb-4 mt-5">
+        <div class="mb-4 mt-6">
             <a href="/tambahdatapanen" type="button" class="btn btn-success" style="float: right;">Tambah Data</a>
             <a href="/home" type="button" class="btn btn-primary">Kembali</a>
         </div>
         <div class="row">
-            <table class="table">
+            <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <th scope="col">Panen ID</th>
-                        <th scope="col">Lokasi</th>
+                        <th scope="col">Lokasi Keterangan</th>
                         <th scope="col">Tanggal Panen</th>
                         <th scope="col">Hasil Produksi</th>
                         <th scope="col">Kualitas A</th>
                         <th scope="col">Kualitas B</th>
                         <th scope="col">Kualitas C</th>
-                        <th scope="col">Aksi</th>
+                        <th scope="col">Edit Data</th>
+                        <th scope="col">Hapus Data</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>1</td>
                         <td>Sawah pak Ridho</td>
                         <td>2022-10-11</td>
                         <td>3000 Kg</td>
@@ -36,6 +35,8 @@
                         <td>1000 Kg</td>
                         <td>
                             <a href="" class="btn btn-warning">Edit</a>
+                        </td>
+                        <td>
                             <a href="#" class="btn btn-danger delete">Delete</a>
                         </td>
                     </tr>

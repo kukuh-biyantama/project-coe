@@ -104,9 +104,14 @@ Route::post('/updatedatapupuk/{id}', [KsPupukController::class, 'updatedatapupuk
 
 // Data sensor sawah (IoT)
 Route::get('datassensorsawah', [reportiotclient::class, 'reportdataiot'])->name('datassensorsawah');
+
 // Form Panen
-Route::get('/datapanen', [PanenController::class, 'index'])->name('datapanen');
-Route::get('/tambahdatapanen', [PanenController::class, 'tambahdatapanen'])->name('tambahdatapanen');
+Route::get('/datapanen', [PanenController::class, 'datapanen'])->name('datapanen');
+Route::get('/formtambahdatapanen', [PanenController::class, 'formtambahdatapanen'])->name('formtambahdatapanen');
+Route::post('/insertdatapanen', [PanenController::class, 'insertdatapanen'])->name('insertdatapanen');
+Route::get('/formeditdatapanen', [PanenController::class, 'formeditdatapanen'])->name('formeditdatapanen');
+Route::post('/updatedatapanen', [PanenController::class, 'updatedatapanen'])->name('updatedatapanen');
+Route::get('/deletedatapanen', [PanenController::class, 'deletedatapanen'])->name('deletedatapanen');
 
 // Form Hama
 Route::get('/datahama', [HamaController::class, 'index'])->name('datahama');

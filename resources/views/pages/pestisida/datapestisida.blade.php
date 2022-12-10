@@ -22,6 +22,7 @@
             <table class="table table-bordered table-responsive">
                 <thead>
                     <tr>
+                        <th scope="col">Lokasi Keterangan</th>
                         <th scope="col">Tanggal Semprot Pestisida</th>
                         <th scope="col">Nama Pestisida</th>
                         <th scope="col">Tempat Membeli Pestisida</th>
@@ -34,6 +35,7 @@
                 <tbody>
                     @foreach ($data as $row)
                         <tr>
+                            <td>Sawah pak Ridho</td>
                             <td>{{ $row->ks_pestisida_tgl_semprot }}</td>
                             <td>{{ $row->ks_pestisida_nama }}</td>
                             <td>{{ $row->ks_pestisida_tempat_membeli }}</td>
