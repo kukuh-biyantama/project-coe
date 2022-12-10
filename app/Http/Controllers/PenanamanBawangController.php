@@ -14,7 +14,7 @@ class PenanamanBawangController extends Controller
     {
         $currentuserid = Auth::user()->id;
         $data = penanaman_bawang::where('ks_panen', 0)->get();
-        // return view('/pages/penanamanbawang/datapenanamanbawang', compact('data', 'currentuserid'));
+        return view('/pages/penanamanbawang/datapenanamanbawang', compact('data', 'currentuserid'));
     }
 
     //view penanaman bawang
@@ -22,7 +22,7 @@ class PenanamanBawangController extends Controller
     {
         //get data lokasi API
         $currentuserid = Auth::user()->id;
-        $url = "http://compute.dinus.ac.id:900/api/get/lokasi/" . $currentuserid;
+        $url = "http://103.30.1.54:900/api/get/lokasi/" . $currentuserid;
         $response = Http::get($url);
         $data = json_decode($response, true);
         $user_data = $data;
@@ -38,12 +38,11 @@ class PenanamanBawangController extends Controller
     public function tambahdatapenanamanbawang()
     {
         $currentuserid = Auth::user()->id;
-        $url = "http://compute.dinus.ac.id:900/api/get/lokasi/" . $currentuserid;
+        $url = "http://103.30.1.54:900/api/get/lokasi/" . $currentuserid;
         $response = Http::get($url);
         $data = json_decode($response, true);
         $user_data = $data;
         $user_data = array_slice($user_data, 0);
-
         return view('/pages/penanamanbawang/tambahdatapenanamanbawang', compact('user_data'));
     }
 
@@ -95,6 +94,7 @@ class PenanamanBawangController extends Controller
 
         // waktu tanam
         $ks_waktu_tanam = $request->input('ks_waktu_tanam');
+        $datalokasi = $request->input('lokasi_keterangan');
 
         // data array status lahan
         $ks_status_lahan = isset($_POST['ks_status_lahan']) && is_array($_POST['ks_status_lahan']) ? $_POST['ks_status_lahan'] : [];
@@ -102,11 +102,12 @@ class PenanamanBawangController extends Controller
 
         // jumlah modal
         $ks_jumlah_modal = $request->input('ks_jumlah_modal');
-        $ks_panen = $request->input('ks_panen');
+        //panen
+        $panen = $request->input('ks_panen');
 
         //get data iot
         $currentuserid = Auth::user()->id;
-        $url = "http://compute.dinus.ac.id:900/api/get/lokasi/" . $currentuserid;
+        $url = "http://103.30.1.54:900/api/get/lokasi/" . $currentuserid;
         $response = Http::get($url);
         $data = json_decode($response, true);
 
@@ -116,19 +117,20 @@ class PenanamanBawangController extends Controller
         //mengambil kabupaten dari API 
         foreach ($user_data as $iot) {
             $kabupaten = $iot['kabupaten'];
-            $alamat =   $iot['lokasi_keterangan'];
+            $alamat = $iot['lokasi_keterangan'];
         }
         penanaman_bawang::create([
             'id_user' => $currentuserid,
             'ks_metode_pengairan' => $input_ks_metode_pengairan,
             'ks_modal' => $input_ks_modal,
+            'ks_panen' => $panen,
             'ks_luas_lahan' => $dataHasilluaslahan,
             'ks_bibit' => $dataHasiljumlahbibit,
             'ks_waktu_tanam' => $ks_waktu_tanam,
             'ks_status_lahan' => $input_ks_status_lahan,
             'ks_jumlah_modal' => $ks_jumlah_modal,
             'kabupaten' => $kabupaten,
-            'id_lokasisawah' => $alamat
+            'id_lokasisawah' => $datalokasi
         ]);
 
         return redirect()->route('viewpenanaman')->with('success', 'Data Penanaman Bawang telah berhasil ditambahkan');

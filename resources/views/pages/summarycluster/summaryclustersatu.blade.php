@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="container-fluid mt--7">
-    <h2 class="text-center mb-4 mt-4 text-light">Form Kirim Lokasi</h2>
+    <h2 class="text-center mb-4 mt-4 text-light">Hasil Cluster</h2>
 
     <div class="container mt-4">
         @if(session('status'))
