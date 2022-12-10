@@ -26,7 +26,7 @@
           <div class="card-body">
             <form action="/updatedatapenanamanbawang/ {{ $data->id }}" method="POST" enctype="multipart/form-data">
               @csrf
-              <a href="/datapenanamanbawang" type="button" class="btn btn-primary mb-4">Kembali</a>
+              <a href="/viewpenanamanbawang" type="button" class="btn btn-primary mb-4">Kembali</a>
 
               <!-- Lokasi -->
               <!-- <div class="mb-3">

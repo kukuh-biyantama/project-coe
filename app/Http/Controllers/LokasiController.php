@@ -11,12 +11,23 @@ class LokasiController extends Controller
 {
     public function datalokasisawah()
     {
-        $data = lokasi_sawah::all();
-        return view('/pages/lokasi/datalokasisawah', compact('data'));
+        $currentuserid = Auth::user()->id;
+        $url = "http://compute.dinus.ac.id:900/api/get/lokasi/" . $currentuserid;
+        $response = Http::get($url);
+        $data = json_decode($response, true);
+        $user_data = $data;
+        $user_data = array_slice($user_data, 0);
+
+        if ($data == null) {
+            return view('/pages/lokasi/formtambahdatalokasisawah');
+        } else {
+            return view('/pages/lokasi/datalokasisawah', compact('user_data', 'currentuserid'));
+        }
     }
 
     public function formtambahdatalokasisawah()
     {
+
         return view('/pages/lokasi/formtambahdatalokasisawah');
     }
 

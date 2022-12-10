@@ -12,8 +12,9 @@ class penanaman_bawang extends Model
 
     protected $guarded = [];
 
-    public function verifikasipanen(){
+    public function verifikasipanen()
+    {
         return DB::table('penanaman_bawangs')
-        -> select('*')
+            ->select('*');
     }
 }
