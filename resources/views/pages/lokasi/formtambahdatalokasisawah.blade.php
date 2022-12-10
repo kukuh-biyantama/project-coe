@@ -58,9 +58,16 @@
                                 </div>
 
                                 <!-- Keterangan -->
-                                <div class="mb-3 pt-2">
-                                    <label for="lokasiKeterangan" class="form-label">Lokasi Keterangan</label>
-                                    <input type="text" name="lokasi_keterangan" class="form-control" id="lokasiKeterangan" aria-describedby="lokasiKeterangan">
+                                <div class="mb-3">
+                                    <label for="" class="form-label">Lokasi Keterangan</label>
+                                    <select class="form-select" name="lokasi_keterangan" aria-label="Default select example">
+                                        <option selected disabled>Pilih</option>
+                                        <option value="1">Sawah 1</option>
+                                        <option value="2">Sawah 2</option>
+                                        <option value="3">Sawah 3</option>
+                                        <option value="4">Sawah 4</option>
+                                        <option value="5">Sawah 5</option>
+                                    </select>
                                 </div>
 
                                 <!-- Button Submit dan Cancel -->

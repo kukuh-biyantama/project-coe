@@ -2,11 +2,11 @@
 {{-- @include('layouts.navbars.navbar') --}}
 @section('content')
     <div class="container-fluid mt--7">
-        <h2 class="text-center mb-4 mt-4">Data Pestisida</h2>
+        <h2 class="text-center mb-4 mt-4" style="color: white;">Data Pestisida</h2>
 
         <!-- dev container untuk mengatur jarak tampilan -->
         {{-- < class="container"> --}}
-            <div class="mb-4 mt-5">
+            <div class="mb-4 mt-7">
                 <a href="/tambahdatapestisida" type="button" class="btn btn-success" style="float: right;">Tambah Data</a>
                 <a href="/home" type="button" class="btn btn-primary">Kembali</a>
             </div>
