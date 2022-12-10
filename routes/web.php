@@ -67,7 +67,8 @@ Route::get('/formtambahdatalokasisawah', [LokasiController::class, 'formtambahda
 Route::post('/insertdatalokasisawah', [LokasiController::class, 'insertdatalokasisawah'])->name('insertdatalokasisawah');
 Route::get('/formeditdatalokasisawah/{id}', [LokasiController::class, 'formeditdatalokasisawah'])->name('formeditdatalokasisawah');
 Route::post('/updatedatalokasisawah/{id}', [LokasiController::class, 'updatedatalokasisawah'])->name('updatedatalokasisawah');
-Route::get('/deletedatalokasisawah/{id}', [LokasiController::class, 'deletedatalokasisawah'])->name('deletedatalokasisawah');
+// Route::get('/deletedatalokasisawah/{id}', [LokasiController::class, 'deletedatalokasisawah'])->name('deletedatalokasisawah');
+Route::post('/deletedatalokasisawah/{userid}/{lokasi_keterangan}', [LokasiController::class, 'deletedatalokasisawah'])->name('deletedatalokasisawah');
 
 // Route::post('/post/kirimlokasi', [LokasiSawahController::class, 'tambahlokasi']);
 Route::get('add-blog-post-form', [PostController::class, 'index']);

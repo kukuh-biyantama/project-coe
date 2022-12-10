@@ -43,6 +43,7 @@
                         $verify = $currentuserid;
                         if ($data['user_id'] == $verify) {
                             $id = $data['id'];
+                            $userid = $data['user_id'];
                             echo "<tr>";
                             echo "<td>" . ($data['id_iot']) . "</td>";
                             echo "<td>" . ($data['lokasi_latitude']) . "</td>";
@@ -53,7 +54,7 @@
                                 "<a href='/formeditdatalokasisawah/$id' class='btn btn-warning'>Edit</a>" .
                                 "</td>";
                             echo "<td>" .
-                                "<a href='/deletedatalokasisawah/$id' class='btn btn-warning'>Delete</a>" .
+                                "<a href='/deletedatalokasisawah/$id/$userid' class='btn btn-warning'>Delete</a>" .
                                 "</td>";
                             echo "</tr>";
                         }

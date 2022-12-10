@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\lokasi_sawah;
+use App\Models\penanaman_bawang;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class LokasiController extends Controller
 {
@@ -79,10 +81,21 @@ class LokasiController extends Controller
         return redirect()->route('datalokasisawah')->with('success', 'Data Lokasi Sawah telah berhasil diupdate');
     }
 
-    public function deletedatalokasisawah($id)
+    public function deletedatalokasisawah($userid, $lokasi_keterangan)
     {
-        $data = lokasi_sawah::find($id);
-        $data->delete();
-        return redirect()->route('datalokasisawah')->with('success', 'Data Lokasi Sawah telah berhasil dihapus');
+        $data_tanam = penanaman_bawang::all();
+        foreach ($data_tanam as $datatanambase) {
+            $tanamverify = $datatanambase->id_lokasisawah;
+        }
+        if ($tanamverify == $lokasi_keterangan) {
+            $url_response = "compute.dinus.ac.id:900/api/delete/lokasi" . '/' . $userid . '/' . $lokasi_keterangan;
+            $postgree = DB::table('penanaman_bawangs')->where('id_lokasisawah', $lokasi_keterangan)->delete();
+            $response = Http::post($url_response);
+            return redirect()->route('datalokasisawah')->with('success', 'Data Lokasi Sawah telah berhasil dihapus');
+        } else {
+            $url_response = "compute.dinus.ac.id:900/api/delete/lokasi" . '/' . $userid . '/' . $lokasi_keterangan;
+            $response = Http::post($url_response);
+            return redirect()->route('datalokasisawah')->with('success', 'Data Lokasi Sawah telah berhasil dihapus');
+        }
     }
 }

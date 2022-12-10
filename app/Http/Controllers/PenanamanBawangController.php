@@ -14,7 +14,7 @@ class PenanamanBawangController extends Controller
     {
         $currentuserid = Auth::user()->id;
         $data = penanaman_bawang::where('ks_panen', 0)->get();
-        return view('/pages/penanamanbawang/datapenanamanbawang', compact('data', 'currentuserid'));
+        // return view('/pages/penanamanbawang/datapenanamanbawang', compact('data', 'currentuserid'));
     }
 
     //view penanaman bawang
@@ -30,7 +30,6 @@ class PenanamanBawangController extends Controller
         if ($data == null) {
             return view('/pages/responslokasi/responslokasi');
         } else {
-
             $data = penanaman_bawang::all();
             return view('/pages/penanamanbawang/datapenanamanbawang', compact('data', 'currentuserid'));
         }
@@ -140,7 +139,6 @@ class PenanamanBawangController extends Controller
         $data = penanaman_bawang::find($id);
         return view('/pages/penanamanbawang/tampildatapenanamanbawang', compact('data'));
     }
-
 
     // UPDATE DATA
     public function updatedatapenanamanbawang(Request $request, $id)
