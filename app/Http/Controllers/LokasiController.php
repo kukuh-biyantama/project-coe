@@ -17,7 +17,19 @@ class LokasiController extends Controller
     }
 
     public function insertdatalokasisawah(Request $request){
-        lokasi_sawah::create($request->all());
+        $lokasi_latitude = $request->input('lokasi_latitude');
+        $lokasi_longitude = $request->input('lokasi_longitude');
+        $kabupaten = $request->input('kabupaten');
+        $lokasi_keterangan = $request->input('lokasi_keterangan'); 
+        $id_iot = $request->input('id_iot'); 
+
+        lokasi_sawah::create([
+            'lokasi_latitude' => $lokasi_latitude,
+            'lokasi_longitude' => $lokasi_longitude,
+            'kabupaten' => $kabupaten,
+            'lokasi_keterangan' => $lokasi_keterangan,
+            'id_iot' => $id_iot
+        ]);
         return redirect()->route('datalokasisawah')->with('success', 'Data Lokasi Sawah telah berhasil ditambahkan');
     }
 
@@ -28,8 +40,20 @@ class LokasiController extends Controller
     }
 
     public function updatedatalokasisawah(Request $request, $id){
+        $lokasi_latitude = $request->input('lokasi_latitude');
+        $lokasi_longitude = $request->input('lokasi_longitude');
+        $kabupaten = $request->input('kabupaten');
+        $lokasi_keterangan = $request->input('lokasi_keterangan'); 
+        $id_iot = $request->input('id_iot'); 
+
         $data = lokasi_sawah::find($id);
-        $data->update($request->all());
+        $data->update([
+            'lokasi_latitude' => $lokasi_latitude,
+            'lokasi_longitude' => $lokasi_longitude,
+            'kabupaten' => $kabupaten,
+            'lokasi_keterangan' => $lokasi_keterangan,
+            'id_iot' => $id_iot
+        ]);
         return redirect()->route('datalokasisawah')->with('success', 'Data Lokasi Sawah telah berhasil diupdate');
     }
 
