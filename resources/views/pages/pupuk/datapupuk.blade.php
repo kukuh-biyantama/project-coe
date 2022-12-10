@@ -2,7 +2,7 @@
 {{-- @include('layouts.navbars.navbar') --}}
 @section('content')
     <div class="container-fluid mt--7">
-        <h2 class="text-center mb-4 mt-4 text-light">Data Pupuk</h2>
+        <h2 class="text-center mb-4 mt-4" style="color: white;">Data Pupuk</h2>
 
         <!-- dev container untuk mengatur jarak tampilan -->
         <div class="mb-5 mt-7">

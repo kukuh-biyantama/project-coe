@@ -3,18 +3,26 @@
 @section('content')
 
     <div class="container-fluid mt--7">
-      <h2 class="text-center mb-4 mt-3">Form Tambah Data Pupuk</h2>
+      <h2 class="text-center mb-4 mt-3" style="color: white;">Form Tambah Data Pupuk</h2>
 
       <!-- dev container untuk mengatur jarak tampilan -->
       <div class="container">
           <div class="row justify-content-center">
               <div class="col-8">
-                  <div class="card">
+                <div class="card mt-5">
+                      <div class="card-body">
+                          <center>
+                              <p style="font-weight: 600;">Form ini digunakan untuk memulai aktivitas penanaman bawang Bapak/Ibu</p>
+                              <p style="font-weight: 600;">Silahkan mengisi form berikut, agar sistem dapat memberikan rekomendasi terbaik untuk kegiatan pertanian Bapak/Ibu</p>
+                          </center>
+                      </div>
+                  </div>
+                  <div class="card mt-3">
                       <div class="card-body">
                           <form action="/insertdatapupuk" method="POST" enctype="multipart/form-data">
                               @csrf
 
-                              <a href="/datapupuk" type="button" class="btn btn-primary mb-4">Kembali</a>
+                              <!-- <a href="/datapupuk" type="button" class="btn btn-primary mb-4">Kembali</a> -->
                               
                               <!-- Lokasi -->
                               <!-- <div class="mb-3">
@@ -27,7 +35,7 @@
 
                               <!-- Jenis Pupuk -->
                               <div class="mb-3">
-                                  <label for="jenisPupuk" class="form-label">Jenis Pupuk</label>
+                                  <label for="jenisPupuk" class="form-label" style="font-weight: 600;">Jenis Pupuk</label>
                                   <div class="form-check">
                                       <div class="">
                                         <input class="" type="checkbox" name="ks_pupuk_jenis[]" value="Organik"> Organik<br>
@@ -40,7 +48,7 @@
 
                               <!-- Sumber Pupuk Organik -->
                               <div class="mb-3">
-                                  <label for="sumberPupukOrganik" class="form-label">Sumber Pupuk Organik</label>
+                                  <label for="sumberPupukOrganik" class="form-label" style="font-weight: 600;">Sumber Pupuk Organik</label>
                                   <div class="form-check">
                                       <div class="">
                                         <input class="" type="checkbox" name="ks_pupuk_sumber_organik[]" value="Bantuan Pemerintah"> Bantuan Pemerintah<br>
@@ -77,7 +85,7 @@
                               
                               <!-- Sumber Pupuk Anorganik -->
                               <div class="mb-3">
-                                  <label for="sumberPupukAnorganik" class="form-label">Sumber Pupuk Anorganik</label>
+                                  <label for="sumberPupukAnorganik" class="form-label" style="font-weight: 600;">Sumber Pupuk Anorganik</label>
                                   <div class="form-check">
                                       <div class="">
                                         <input class="" type="checkbox" name="ks_pupuk_sumber_anorganik[]" value="Toko Pertanian"> Toko Pertanian<br>
@@ -93,7 +101,7 @@
 
                               <!-- Merk Pupuk -->
                               <div class="mb-3">
-                                  <label for="merkPupuk" class="form-label">Merk Pupuk</label>
+                                  <label for="merkPupuk" class="form-label" style="font-weight: 600;">Merk Pupuk</label>
                                   <div class="form-check">
                                       <div class="">
                                         <input class="" type="checkbox" name="ks_pupuk_merk[]" value="Bio to Grow"> Bio to Grow<br>
@@ -181,13 +189,13 @@
 
                               <!-- Tanggal Rabuk Pupuk -->
                               <div class="mb-3">
-                                  <label for="tglRabukPupuk" class="form-label">Tanggal Rabuk Pupuk</label>
+                                  <label for="tglRabukPupuk" class="form-label" style="font-weight: 600;">Tanggal Rabuk Pupuk</label>
                                   <input type="date" name="ks_pupuk_tgl_rabuk" class="form-control" id="tglRabukPupuk" aria-describedby="tglRabukPupuk">
                               </div>
 
                               <!-- Jumlah Takaran Pupuk -->
                               <div class="mb-3">
-                                  <label for="jmlTakaranPupuk" class="form-label">Jumlah Takaran Pupuk</label><br>
+                                  <label for="jmlTakaranPupuk" class="form-label" style="font-weight: 600;">Jumlah Takaran Pupuk</label><br>
                                   <input type="decimal" name="ks_pupuk_jumlah_takaran" style="width:100%" class="form-control">
                                   <div class="form-check">
                                       <div class="">
@@ -206,7 +214,7 @@
                               </div>
 
                               <!-- Pupuk Keterangan -->
-                                  <div class="mb-3">
+                                  <div class="mb-3" style="font-weight: 600;">
                                   <label for="PupukKeterangan" class="form-label">Keterangan Kegiatan</label>
                                   <input type="text" name="ks_pupuk_keterangan" style="width:100%" class="form-control">
                               </div>
