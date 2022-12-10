@@ -39,9 +39,8 @@
                     @foreach ($data as $row)
                         <tr>
                             <td>{{ $row->id_lokasisawah }}</td>
+                            {{-- <td></td> --}}
                             <td>{{ $row->ks_pupuk_tgl_rabuk }}</td>
-                            <td>{{ $row->ks_pupuk_tgl_rabuk }}</td>
-
                             <td>{{ $row->ks_pupuk_jenis }}</td>
                             <td>{{ $row->ks_pupuk_sumber_organik }}</td>
                             <td>{{ $row->ks_pupuk_sumber_anorganik }}</td>

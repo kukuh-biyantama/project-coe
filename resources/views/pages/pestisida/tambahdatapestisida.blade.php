@@ -22,6 +22,14 @@
                             @csrf
                             <!-- Lokasi -->
                             <div class="mb-3">
+                                <label for="" class="form-label">Lokasi</label>
+                                <select class="form-select" name="lokasi_keterangan" aria-label="Default select example">
+                                  <option selected disabled>Pilih</option>
+                                  @foreach ($user_data as $iot)
+                                  <option value="{{$iot['lokasi_keterangan']}}">Sawah Ke {{$iot['lokasi_keterangan']}}</option>
+                                  @endforeach
+                                  
+                            <div class="mb-3">
                                 <div class="form-group">
                                     <label for="exampleFormControlSelect1" style="font-weight: 600;">Lokasi</label>
                                     <select class="form-control" name="ks_pestisida_nama" id="exampleFormControlSelect1">
