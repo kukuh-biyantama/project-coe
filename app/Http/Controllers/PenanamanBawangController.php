@@ -30,7 +30,7 @@ class PenanamanBawangController extends Controller
         if ($data == null) {
             return view('/pages/responslokasi/responslokasi');
         } else {
-            $data = penanaman_bawang::all();
+            $data = penanaman_bawang::where('ks_panen', 0)->get();
             return view('/pages/penanamanbawang/datapenanamanbawang', compact('data', 'currentuserid'));
         }
     }
