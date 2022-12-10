@@ -17,7 +17,7 @@ class SummaryclusterController extends Controller
         $currentuserid = auth::user()->id;
         $response = Http::withHeaders([
             'Accept' => 'application/json'
-        ])->post('http://couchadmin:petaniMerdeka2022@compute.dinus.ac.id:907/databaseasesmentpetani/_find', [
+        ])->post('http://couchadmin:petaniMerdeka2022@103.30.1.54:907/databaseasesmentpetani/_find', [
             'selector' => [
                 'id_user' => $currentuserid
             ],
