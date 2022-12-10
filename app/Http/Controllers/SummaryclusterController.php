@@ -13,6 +13,7 @@ class SummaryclusterController extends Controller
 {
     public function index()
     {
+        //test
         $currentuserid = Auth::user()->id;
         $currentuserid = auth::user()->id;
         $response = Http::withHeaders([
