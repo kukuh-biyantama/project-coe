@@ -22,6 +22,7 @@
             <table class="table table-bordered table-responsive">
                 <thead>
                     <tr>
+                        <th scope="col">Lokasi Sawah</th>
                         <th scope="col">Tanggal Rabuk Pupuk</th>
 
                         <th scope="col">Jenis Pupuk</th>
@@ -37,6 +38,8 @@
                 <tbody>
                     @foreach ($data as $row)
                         <tr>
+                            <td>{{ $row->id_lokasisawah }}</td>
+                            <td>{{ $row->ks_pupuk_tgl_rabuk }}</td>
                             <td>{{ $row->ks_pupuk_tgl_rabuk }}</td>
 
                             <td>{{ $row->ks_pupuk_jenis }}</td>

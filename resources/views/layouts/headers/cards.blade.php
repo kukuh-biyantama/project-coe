@@ -349,7 +349,7 @@
                         </div>
                     </div>
                     <div class="card card-stats mb-0 mb-xl-0 mt-2 btn btn-secondary">
-                        <a href="/summarycluster/">
+                        <a href="/riwayatpanen">
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col">

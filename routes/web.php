@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\reportiotclient;
+use App\Http\Controllers\RiwayatController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClusterpetaniController;
 use App\Http\Controllers\DataClusterController;
@@ -137,3 +138,7 @@ Route::get('/lokasipetani', [LokasiPetaniController::class, 'index'])->name('lok
 
 //maps
 Route::get('/maps', [GooglemapsController::class, 'index'])->name('maps');
+Route::get('/lokasipetani', [LokasiPetaniController::class, 'index'])->name('lokasipetani');
+
+
+Route::get('/riwayatpanen', [RiwayatController::class, 'index'])->name('riwayatPanen');
