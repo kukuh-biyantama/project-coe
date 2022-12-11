@@ -117,7 +117,6 @@ class PenanamanBawangController extends Controller
         //mengambil kabupaten dari API 
         foreach ($user_data as $iot) {
             $kabupaten = $iot['kabupaten'];
-            $alamat = $iot['lokasi_keterangan'];
         }
         penanaman_bawang::create([
             'id_user' => $currentuserid,
@@ -197,6 +196,5 @@ class PenanamanBawangController extends Controller
             'ks_jumlah_modal' => $ks_jumlah_modal
         ]);
         return redirect()->route('datapenanamanbawang')->with('success', 'Data Penanaman Bawang telah berhasil diupdate');
-        // return view('/pages/penanamanbawang/datapenanamanbawang', compact('currentuserid'));
     }
 }

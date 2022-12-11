@@ -102,6 +102,8 @@ Route::get('/tambahdatapupuk', [KsPupukController::class, 'tambahdatapupuk'])->n
 Route::post('/insertdatapupuk', [KsPupukController::class, 'insertdatapupuk'])->name('insertdatapupuk');
 Route::get('/tampildatapupuk/{id}', [KsPupukController::class, 'tampildatapupuk'])->name('tampildatapupuk');
 Route::post('/updatedatapupuk/{id}', [KsPupukController::class, 'updatedatapupuk'])->name('updatedatapupuk');
+//delete
+Route::get('/deletepupuk/{id}', [KsPupukController::class, 'deletepupuk'])->name('deletepupuk');
 
 // Data sensor sawah (IoT)
 Route::get('datassensorsawah', [reportiotclient::class, 'reportdataiot'])->name('datassensorsawah');

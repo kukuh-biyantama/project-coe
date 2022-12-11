@@ -4,32 +4,41 @@ namespace App\Http\Controllers;
 
 use App\Models\ks_pupuk;
 use Illuminate\Http\Request;
-use DB;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Http;
 
 class KsPupukController extends Controller
 {
 
     public function datapupuk()
     {
-        $data = ks_pupuk::orderBy('ks_pupuk_tgl_rabuk', 'DESC')->get();
-        return view('/pages/pupuk/datapupuk', compact('data'));
+        // $data = ks_pupuk::orderBy('ks_pupuk_tgl_rabuk', 'DESC')->get();
+        // return view('/pages/pupuk/datapupuk', compact('data'));
+        // get api lokasi
+        $currentuserid = Auth::user()->id;
+        $url = "http://103.30.1.54:900/api/get/lokasi/" . $currentuserid;
+        $response = Http::get($url);
+        $data = json_decode($response, true);
+        $user_data = $data;
+        $user_data = array_slice($user_data, 0);
+        if ($data == null) {
+            return view('/pages/responslokasi/responslokasi');
+        } else {
+            $data = DB::table('penanaman_bawangs')->join('ks_pupuks', 'penanaman_bawangs.id_lokasisawah', '=', 'ks_pupuks.id_lokasisawah')
+                ->where('penanaman_bawangs.id_user', $currentuserid)->where('penanaman_bawangs.ks_panen', 0)->get();
+            return view('/pages/pupuk/datapupuk', compact('data'));
+        }
     }
-
-    // public function datapupuk()
-    // {
-    //     $data = ks_pupuk::all();
-
-    //     return view('/pages/pupuk/datapupuk', compact('data'));
-    // }
-
-    // public function datapupuk(){
-    //     $data = DB::table('barang')->join('detail_barang', 'detail_barang.id_barang', '=', 'barang.id_barang')->get();
-    //     return view('/pages/pupuk/datapupuk', compact('data'));
-    // }
-
     public function tambahdatapupuk()
     {
-        return view('/pages/pupuk/tambahdatapupuk');
+        $currentuserid = Auth::user()->id;
+        $url = "http://103.30.1.54:900/api/get/lokasi/" . $currentuserid;
+        $response = Http::get($url);
+        $data = json_decode($response, true);
+        $user_data = $data;
+        $user_data = array_slice($user_data, 0);
+        return view('/pages/pupuk/tambahdatapupuk', compact('user_data'));
     }
 
     public function insertdatapupuk(Request $request)
@@ -66,10 +75,15 @@ class KsPupukController extends Controller
             $dataHasiljumlahPupuk = $dataHasiljumlahPupuk;
         }
 
+        $currentuserid = Auth::user()->id;
+        $datalokasi = $request->input('lokasi_keterangan');
+
         // keterangan pupuk
         $input_ks_pupuk_keterangan = $request->input('ks_pupuk_keterangan');
 
         ks_pupuk::create([
+            'id_user' => $currentuserid,
+            'id_lokasisawah' => $datalokasi,
             'ks_pupuk_jenis' => $input_ks_pupuk_jenis,
             'ks_pupuk_sumber_organik' => $input_ks_pupuk_sumber_organik,
             'ks_pupuk_sumber_anorganik' => $input_ks_pupuk_sumber_anorganik,
@@ -82,11 +96,11 @@ class KsPupukController extends Controller
         return redirect()->route('datapupuk')->with('success', 'Data Pupuk telah berhasil ditambahkan');
     }
 
-    public function tampildatapupuk($id)
-    {
-        $data = ks_pupuk::find($id);
-        return view('/pages/pupuk/tampildatapupuk', compact('data'));
-    }
+    // public function tampildatapupuk($id)
+    // {
+    //     $data = ks_pupuk::find($id);
+    //     return view('/pages/pupuk/tampildatapupuk', compact('data'));
+    // }
 
     public function updatedatapupuk(Request $request, $id)
     {
@@ -137,5 +151,9 @@ class KsPupukController extends Controller
         ]);
 
         return redirect()->route('datapupuk')->with('success', 'Data Pupuk telah berhasil diupdate');
+    }
+
+    public function deletepupuk($id)
+    {
     }
 }
