@@ -37,7 +37,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($data as $row)
+                <!-- @foreach ($data as $row)
                 <tr>
                     <td>{{ $row->id_lokasisawah }}</td>
                     {{-- <td></td> --}}
@@ -52,10 +52,30 @@
                         <a href="/tampildatapupuk/$row->id" class="btn btn-warning">Edit</a>
                     </td>
                     <td>
-                        <a href="/tampildatapupuk/$row->id" class="btn btn-warning">Hapus</a>
+                        <a href="/deletepupuk/$row->id" class="btn btn-warning">Hapus</a>
                     </td>
                 </tr>
-                @endforeach
+                @endforeach -->
+                <?php
+                foreach ($data as $row) {
+                    echo "<tr>";
+                    echo "<td>" .  $row->id_lokasisawah . "</td>";
+                    echo "<td>" . $row->ks_pupuk_tgl_rabuk . "</td>";
+                    echo "<td>" . $row->ks_pupuk_jenis . "</td>";
+                    echo "<td>" . $row->ks_pupuk_sumber_organik . "</td>";
+                    echo "<td>" . $row->ks_pupuk_sumber_anorganik . "</td>";
+                    echo "<td>" . $row->ks_pupuk_merk  . "</td>";
+                    echo "<td>" . $row->ks_pupuk_jumlah_takaran . "</td>";
+                    echo "<td>" . $row->ks_pupuk_keterangan . "</td>";
+                    echo "<td>" .
+                        "<a href='/formeditdatalokasisawah/$row->id' class='btn btn-warning'>Edit</a>" .
+                        "</td>";
+                    echo "<td>" .
+                        "<a href='/deletepupuk/$row->id' class='btn btn-warning'>Delete</a>" .
+                        "</td>";
+                    echo "</tr>";
+                }
+                ?>
             </tbody>
         </table>
     </div>

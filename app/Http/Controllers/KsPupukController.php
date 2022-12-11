@@ -155,5 +155,7 @@ class KsPupukController extends Controller
 
     public function deletepupuk($id)
     {
+        $delete = DB::table('ks_pupuks')->where('id', $id)->delete();
+        return redirect()->route('datapupuk')->with('success', 'Data Pupuk telah  dihapus');
     }
 }
