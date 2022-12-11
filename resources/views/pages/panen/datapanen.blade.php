@@ -15,20 +15,20 @@
             <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <!-- <th scope="col">Lokasi Keterangan</th> -->
+                        <th scope="col">Lokasi Sawah</th>
                         <th scope="col">Tanggal Panen</th>
-                        <th scope="col">Hasil Produksi</th>
-                        <th scope="col">Kualitas A</th>
-                        <th scope="col">Kualitas B</th>
-                        <th scope="col">Kualitas C</th>
+                        <th scope="col">Hasil Produksi (kg)</th>
+                        <th scope="col">Kualitas A (kg)</th>
+                        <th scope="col">Kualitas B (kg)</th>
+                        <th scope="col">Kualitas C (kg)</th>
                         <th scope="col">Edit Data</th>
                         <th scope="col">Hapus Data</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($data as $row)
+                    <!-- @foreach ($data as $row)
                         <tr>
-                            <!-- <td>Sawah pak Ridho</td> -->
+                            <td>{{ $row->id_lokasisawah }}</td>
                             <td>{{ $row->panen_tanggal }}</td>
                             <td>{{ $row->panen_hasil_produksi }}</td>
                             <td>{{ $row->panen_kualitas_a }}</td>
@@ -41,7 +41,25 @@
                                 <a href="#" class="btn btn-warning">Hapus</a>
                             </td>
                         </tr>
-                    @endforeach
+                    @endforeach -->
+                    <?php
+                        foreach ($data as $row) {
+                            echo "<tr>";
+                            echo "<td>" .  $row->id_lokasisawah . "</td>";
+                            echo "<td>" . $row->panen_tanggal . "</td>";
+                            echo "<td>" . $row->panen_hasil_produksi . "</td>";
+                            echo "<td>" . $row->panen_kualitas_a . "</td>";
+                            echo "<td>" . $row->panen_kualitas_b . "</td>";
+                            echo "<td>" . $row->panen_kualitas_c . "</td>";
+                            echo "<td>" .
+                            "<a href='/formeditdatapanen/$row->id' class='btn btn-warning'>Edit</a>" .
+                            "</td>";
+                        echo "<td>" .
+                            "<a href='/deletedatapanen/$row->id' class='btn btn-danger'>Hapus</a>" .
+                            "</td>";
+                        echo "</tr>";
+                        }
+                    ?>
                 </tbody>
             </table>
         </div>

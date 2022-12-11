@@ -11,10 +11,10 @@
     <!-- Link CSS -->
     <link rel="stylesheet" href="{!! asset('assets/css/style.css') !!}">
 
-    <title>Form Tambah Data Panen</title>
+    <title>Form Edit Data Panen</title>
   </head>
   <body>
-    <h2 class="text-center mb-4 mt-3">Form Tambah Data Panen</h2>
+    <h2 class="text-center mb-4 mt-3">Form Edit Data Panen</h2>
 
         <!-- dev container untuk mengatur jarak tampilan -->
         <div class="container">
@@ -22,23 +22,13 @@
                 <div class="col-8">
                     <div class="card">
                         <div class="card-body">
-                            <form action="/insertdatapanen" method="POST" enctype="multipart/form-data">
+                            <form action="/updatedatapanen/{{ $data->id }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 
-                                <div class="mb-3">
-                                    <label for="" class="form-label">Lokasi</label>
-                                        <select class="form-select" name="lokasi_keterangan" aria-label="Default select example">
-                                        <option selected disabled>Pilih</option>
-                                        @foreach ($user_data as $iot)
-                                        <option value="{{$iot['lokasi_keterangan']}}">Sawah Ke {{$iot['lokasi_keterangan']}}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-
                                 <!-- Tanggal Panen -->
                                 <div class="mb-3">
                                 <label for="" class="form-label">Tanggal Panen</label>
-                                <input type="date" name="panen_tanggal" class="form-control">
+                                <input type="date" name="panen_tanggal" class="form-control" value="{{ $data->panen_tanggal }}">
                                 </div>
                                     
 
@@ -46,7 +36,7 @@
                                 <div class="mb-3">
                                     <label for="hasilProduksiPanen" class="form-label">Hasil Produksi Panen</label><br>
 
-                                    <input type="decimal" name="panen_hasil_produksi" style="width:100%" class="form-control">
+                                    <input type="decimal" name="panen_hasil_produksi" style="width:100%" class="form-control" value="{{ $data->panen_hasil_produksi }}">
 
                                     <div class="form-check">
                                         <div class="">
@@ -68,7 +58,7 @@
                                 <div class="mb-3">
                                     <label for="kualitas_a" class="form-label">Panen Kualitas A</label><br>
 
-                                    <input type="decimal" style="width:100%" name="panen_kualitas_a" class="form-control">
+                                    <input type="decimal" style="width:100%" name="panen_kualitas_a" class="form-control" value="{{ $data->panen_kualitas_a }}">
 
                                     <div class="form-check">
                                         <div class="">
@@ -90,7 +80,7 @@
                                 <div class="mb-3">
                                     <label for="kualitas_b" class="form-label">Panen Kualitas B</label><br>
 
-                                    <input type="decimal" name="panen_kualitas_b" style="width:100%" class="form-control">
+                                    <input type="decimal" name="panen_kualitas_b" style="width:100%" class="form-control" value="{{ $data->panen_kualitas_b }}">
 
                                     <div class="form-check">
                                         <div class="">
@@ -112,7 +102,7 @@
                                 <div class="mb-3">
                                     <label for="kualitas_c" class="form-label">Panen Kualitas C</label><br>
 
-                                    <input type="decimal" name="panen_kualitas_c" style="width:100%" class="form-control">
+                                    <input type="decimal" name="panen_kualitas_c" style="width:100%" class="form-control" value="{{ $data->panen_kualitas_c }}">
 
                                     <div class="form-check">
                                         <div class="">
