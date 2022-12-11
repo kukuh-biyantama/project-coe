@@ -12,12 +12,23 @@ class KsPestisidaController extends Controller
 {
     public function datapestisida(){
         // $data = ks_pestisida::orderBy('ks_pestisida_tgl_semprot', 'DESC')->get();
+        
+
         $currentuserid = Auth::user()->id;
-        $data = DB::table('ks_pestisidas')->from('penanaman_bawangs')->join('ks_pestisidas', 'penanaman_bawangs.id_lokasisawah', '=', 'ks_pestisidas.id_lokasisawah')
+        $url = "http://103.30.1.54:900/api/get/lokasi/" . $currentuserid;
+        $response = Http::get($url);
+        $data = json_decode($response, true);
+        $user_data = $data;
+        $user_data = array_slice($user_data, 0);
+        if ($data == null) {
+            return view('/pages/responslokasi/responslokasi');
+        } else {
+            $data = DB::table('ks_pestisidas')->from('penanaman_bawangs')->join('ks_pestisidas', 'penanaman_bawangs.id_lokasisawah', '=', 'ks_pestisidas.id_lokasisawah')
             ->WHERE('penanaman_bawangs.id_user', $currentuserid)
             ->where('penanaman_bawangs.ks_panen', 0)
             ->get();
-        return view('pages.pestisida.datapestisida',compact('data'));
+            return view('pages.pestisida.datapestisida',compact('data'));
+        }
 
     }
 
