@@ -3,16 +3,16 @@
 @section('content')
 
 <div class="container-fluid mt--7">
-    <h2 class="text-center mb-4 mt-4">Data Kegiatan Penanaman Bawang</h2>
+    <h2 class="text-center mb-4 mt-4" style="color: white;">Data Kegiatan Penanaman Bawang</h2>
 
     <!-- dev container untuk mengatur jarak tampilan -->
     <div class="container">
-        <div class="mb-4 mt-5">
+        <div class="mb-4 mt-6">
             <a href="/tambahdatapenanamanbawang" type="button" class="btn btn-success" style="float: right;">Tambah Data</a>
             <a href="/home" type="button" class="btn btn-primary">Kembali</a>
         </div>
         <div class="row">
-            <table class="table table-bordered">
+            <table class="table table-bordered table-responsive">
                 <thead>
                     <tr>
                         <!-- <th scope="col">Penanaman ID</th> -->
@@ -26,7 +26,7 @@
                         <th scope="col" colspan="4">Jumlah Modal (Rp)</th>
                         <th scope="col" colspan="4">Kabupaten</th>
                         <th scope="col" colspan="4">Alamat</th>
-                        <th scope="col" colspan="4">Aksi</th>
+                        <th scope="col" colspan="4">Edit Data</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -38,11 +38,11 @@
                             echo "<tr>";
                             echo "<td colspan='4'>" . ($view->ks_metode_pengairan) . "</td>";
                             echo "<td colspan='4' >" . ($view->ks_modal) . "</td>";
-                            echo "<td colspan='4'>" . ($view->ks_luas_lahan) . "</td>";
-                            echo "<td colspan='4'>" . ($view->ks_bibit) . "</td>";
+                            echo "<td colspan='4'>" .  number_format($view->ks_luas_lahan, 0,',','.') . "</td>";
+                            echo "<td colspan='4'>" . number_format($view->ks_bibit, 0,',','.') . "</td>";
                             echo "<td colspan='4'>" . ($view->ks_waktu_tanam) . "</td>";
                             echo "<td colspan='4'>" . ($view->ks_status_lahan) . "</td>";
-                            echo "<td colspan='4'>" . ($view->ks_jumlah_modal) . "</td>";
+                            echo "<td colspan='4'>" . number_format($view->ks_jumlah_modal, 0,',','.')  . "</td>";
                             echo "<td colspan='4'>" . ($view->kabupaten) . "</td>";
                             echo "<td colspan='4'>" . "sawah" . " " . ($view->id_lokasisawah) . "</td>";
                             echo "<td colspan='4'>" .

@@ -20,7 +20,7 @@
                         <th scope="col">Lokasi Longitude</th>
                         <th scope="col">Kabupaten</th>
                         <th scope="col">Lokasi Keterangan</th>
-                        <th scope="col">Edit Data</th>
+                        <!-- <th scope="col">Edit Data</th> -->
                         <th scope="col">Hapus Data</th>
                     </tr>
                 </thead>
@@ -37,9 +37,9 @@
                             echo "<td>" . ($data['lokasi_longitude']) . "</td>";
                             echo "<td>" . ($data['kabupaten']) . "</td>";
                             echo "<td>" . ($data['lokasi_keterangan']) . "</td>";
-                            echo "<td>" .
-                                "<a href='/formeditdatalokasisawah/$id' class='btn btn-warning'>Edit</a>" .
-                                "</td>";
+                            // echo "<td>" .
+                            //     "<a href='/formeditdatalokasisawah/$id' class='btn btn-warning'>Edit</a>" .
+                            //     "</td>";
                             echo "<td>" .
                                 "<a href='/deletedatalokasisawah/$id/$lokasi' class='btn btn-danger'>Delete</a>" .
                                 "</td>";
