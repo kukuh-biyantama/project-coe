@@ -12,7 +12,7 @@
         <div class="card mt-5">
           <div class="card-body">
             <center>
-              <p style="font-weight: 600;">Form ini digunakan untuk memulai aktivitas penanaman bawang Bapak/Ibu</p>
+              <p style="font-weight: 600;">Form ini digunakan untuk memulai aktivitas pemupukan Bapak/Ibu</p>
               <p style="font-weight: 600;">Silahkan mengisi form berikut, agar sistem dapat memberikan rekomendasi terbaik untuk kegiatan pertanian Bapak/Ibu</p>
             </center>
           </div>
@@ -38,8 +38,8 @@
 
 
               <div class="mb-3">
-                <label for="" class="form-label">Lokasi</label>
-                <select class="form-select" name="lokasi_keterangan" aria-label="Default select example">
+                <label for="" class="form-label" style="font-weight: 600;">Lokasi</label>
+                <select class="form-control" name="lokasi_keterangan" aria-label="Default select example">
                   <option selected disabled>Pilih</option>
                   @foreach ($user_data as $iot)
                   <option value="{{$iot['lokasi_keterangan']}}">Sawah Ke {{$iot['lokasi_keterangan']}}</option>

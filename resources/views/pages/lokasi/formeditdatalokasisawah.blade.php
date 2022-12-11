@@ -22,7 +22,7 @@
                 <div class="col-8">
                     <div class="card">
                         <div class="card-body">
-                            <form action="/updatedatalokasisawah/{{ $data-> id }}" method="POST" enctype="multipart/form-data">
+                            <form action="/updatedatalokasisawah/{{ $data['id'] }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <a href="/datalokasisawah" type="button" class="btn btn-primary mb-4">Kembali</a>
 

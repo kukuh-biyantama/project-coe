@@ -3,11 +3,11 @@
 @section('content')
 
 <div class="container-fluid mt--7">
-    <h2 class="text-center mb-4 mt-4">History Panen</h2>
+    <h2 class="text-center mb-4 mt-4" style="color: white">History Panen</h2>
 
     <!-- dev container untuk mengatur jarak tampilan -->
     <div class="container-fluid">
-        <div class="mb-4 mt-5">
+        <div class="mb-4 mt-6">
             <a href="/home" type="button" class="btn btn-primary">Kembali</a>
         </div>
         <div class="row">
