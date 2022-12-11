@@ -36,11 +36,37 @@
                                         <option value="1">Sawah pak Ridho</option>
                                     </select>
                                 </div> -->
-
+                                {{-- <div class="mb-3">
+                                <label for="" class="form-label">Lokasi</label>
+                                <select class="form-control" name="lokasi" aria-label="Default select example">
+                                    <option selected disabled>Pilih</option>
+                                        <option value="{{ $data->id_lokasisawah }}">Sawah Ke
+                                            {{ $data->id_lokasisawah }}</option>
+                                </select>
+                                </div> --}}
                                 <!-- Nama Pestisida -->
                                 <div class="mb-3">
-                                    <label for="namaPestisida" class="form-label">Nama Pestisida</label>
-                                    <input type="text" name="ks_pestisida_nama" style="width:100%" class="form-control" value="{{ $data->ks_pestisida_nama }}">
+                                    <div class="form-group">
+                                        <label for="exampleFormControlSelect1" style="font-weight: 600;">Nama
+                                            Pestisida</label>
+                                        <select class="form-control" name="ks_pestisida_nama"
+                                            id="exampleFormControlSelect1">
+                                            <option selected disabled>Pilih</option>
+                                            <option value="Emacel">Emacel</option>
+                                            <option value="Matador">Matador</option>
+                                            <option value="Fenite">Fenite</option>
+                                            <option value="Tenano">Curacron</option>
+                                            <option value="Preza">Starelle</option>
+                                            <option value="Prima-Cel">Prima-Cel</option>
+                                            <option value="Brofreya">Brofreya</option>
+                                            <option value="Meurtier">Meurtier</option>
+                                            <option value="Ulate">Ulate</option>
+                                            <option value="Biowasil">Biowasil</option>
+                                            <option value="Promojoss">Promojoss</option>
+                                            <option value="Marshal">Marshal</option>
+                                            <option value="Lainnya">Lainnya</option>
+                                        </select>
+                                    </div>
                                 </div>
 
                                 <!-- Tempat Membeli Pestisida -->

@@ -35,14 +35,14 @@
                 <tbody>
                     @foreach ($data as $row)
                         <tr>
-                            <td>Sawah pak Ridho</td>
+                            <td>Sawah Ke {{ $row->id_lokasisawah }}</td>
                             <td>{{ $row->ks_pestisida_tgl_semprot }}</td>
                             <td>{{ $row->ks_pestisida_nama }}</td>
                             <td>{{ $row->ks_pestisida_tempat_membeli }}</td>
                             <td>{{ $row->ks_pestisida_jumlah_takaran }}</td>
                             <td>{{ $row->ks_pestisida_keterangan }}</td>
                             <td>
-                                <a href="/tampildatapestisida{{ $row->id }}" class="btn btn-warning">Edit</a>
+                                <a href="/tampildatapestisida/{{ $row->id }}" class="btn btn-warning">Edit</a>
                             </td>
                             <td>
                                 <a href="/hapusdatapestisida/{{ $row->id }}" class="btn btn-danger">Hapus</a>
