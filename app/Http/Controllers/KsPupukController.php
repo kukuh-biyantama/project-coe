@@ -15,12 +15,21 @@ class KsPupukController extends Controller
     {
         // $data = ks_pupuk::orderBy('ks_pupuk_tgl_rabuk', 'DESC')->get();
         // return view('/pages/pupuk/datapupuk', compact('data'));
-        // get api lokasi
-        public function deletepupuk($id)
-    {
-        $delete = DB::table('ks_pupuks')->where('id', $id)->delete();
-        return redirect()->route('datapupuk')->with('success', 'Data Pupuk telah  dihapus');
-    }
+        $currentuserid = Auth::user()->id;
+        $url = "http://103.30.1.54:900/api/get/lokasi/" . $currentuserid;
+        $response = Http::get($url);
+        $data = json_decode($response, true);
+        $user_data = $data;
+        $user_data = array_slice($user_data, 0);
+        if ($data == null) {
+            return view('/pages/responslokasi/responslokasi');
+        } else {
+            $data = DB::table('ks_pupuks')->from('penanaman_bawangs')->join('ks_pupuks', 'penanaman_bawangs.id_lokasisawah', '=', 'ks_pupuks.id_lokasisawah')
+                ->WHERE('penanaman_bawangs.id_user', $currentuserid)
+                ->where('penanaman_bawangs.ks_panen', 0)
+                ->get();
+            return view('pages.pupuk.datapupuk', compact('data'));
+        }
     }
     public function tambahdatapupuk()
     {
