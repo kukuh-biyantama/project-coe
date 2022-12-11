@@ -141,9 +141,9 @@ class KsPestisidaController extends Controller
 
         return redirect()->route('datapestisida')->with('success', 'Data Pestisida telah berhasil diupdate');
     }
-    public function deletepupuk($id)
+    public function deletepestisida($id)
     {
-        $delete = DB::table('ks_pupuks')->where('id', $id)->delete();
-        return redirect()->route('datapupuk')->with('success', 'Data Pupuk telah  dihapus');
+        $delete = DB::table('ks_pestisidas')->where('id', $id)->delete();
+        return redirect()->route('datapestisida')->with('success', 'Data Pupuk telah  dihapus');
     }
 }

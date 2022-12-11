@@ -45,7 +45,7 @@
                                 <a href="/tampildatapestisida/{{ $row->id }}" class="btn btn-warning">Edit</a>
                             </td>
                             <td>
-                                <a href="/hapusdatapestisida/{{ $row->id }}" class="btn btn-danger">Hapus</a>
+                                <a href="/deletepestisida/{{ $row->id }}" class="btn btn-danger">Hapus</a>
                             </td>
                         </tr>
                     @endforeach
