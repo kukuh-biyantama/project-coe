@@ -24,10 +24,10 @@
 
 <body class="{{ $class ?? '' }}">
     @auth()
-        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-            @csrf
-        </form>
-        @include('layouts.navbars.sidebar')
+    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+        @csrf
+    </form>
+    @include('layouts.navbars.sidebar')
     @endauth
 
     <div class="main-content">
@@ -51,6 +51,7 @@
 
 </html>
 <footer>
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
     {{-- @include('layouts.footers.auth') --}}
 </footer>
 </div>

@@ -5,21 +5,11 @@
     <h2 class="text-center mb-4 mt-4" style="color: white;">Data Pupuk</h2>
 
     <!-- dev container untuk mengatur jarak tampilan -->
+
     <div class="mb-5 mt-7">
         <a href="/tambahdatapupuk" type="button" class="btn btn-success" style="float: right;">Tambah Data</a>
         <a href="/home" type="button" class="btn btn-primary">Kembali</a>
     </div>
-    <script>
-        @if(session('status')) <
-            div class = "alert alert-success" > {
-                {
-                    session('status')
-                }
-            } <
-            /div>
-        @endif
-    </script>
-
     <div class="container-fluid">
         <table class="table table-bordered table-responsive">
             <thead>
@@ -37,25 +27,6 @@
                 </tr>
             </thead>
             <tbody>
-                <!-- @foreach ($data as $row)
-                <tr>
-                    <td>{{ $row->id_lokasisawah }}</td>
-                    {{-- <td></td> --}}
-                    <td>{{ $row->ks_pupuk_tgl_rabuk }}</td>
-                    <td>{{ $row->ks_pupuk_jenis }}</td>
-                    <td>{{ $row->ks_pupuk_sumber_organik }}</td>
-                    <td>{{ $row->ks_pupuk_sumber_anorganik }}</td>
-                    <td>{{ $row->ks_pupuk_merk }}</td>
-                    <td>{{ $row->ks_pupuk_jumlah_takaran }}</td>
-                    <td>{{ $row->ks_pupuk_keterangan }}</td>
-                    <td>
-                        <a href="/tampildatapupuk/$row->id" class="btn btn-warning">Edit</a>
-                    </td>
-                    <td>
-                        <a href="/deletepupuk/$row->id" class="btn btn-warning">Hapus</a>
-                    </td>
-                </tr>
-                @endforeach -->
                 <?php
                 foreach ($data as $row) {
                     echo "<tr>";
@@ -68,7 +39,7 @@
                     echo "<td>" . $row->ks_pupuk_jumlah_takaran . "</td>";
                     echo "<td>" . $row->ks_pupuk_keterangan . "</td>";
                     echo "<td>" .
-                        "<a href='/formeditdatalokasisawah/$row->id' class='btn btn-warning'>Edit</a>" .
+                        "<a href='/tampildatapupuk/$row->id' class='btn btn-primary'>Edit</a>" .
                         "</td>";
                     echo "<td>" .
                         "<a href='/deletepupuk/$row->id' class='btn btn-warning'>Delete</a>" .
@@ -79,24 +50,6 @@
             </tbody>
         </table>
     </div>
-
-    <!-- Optional JavaScript; choose one of the two! -->
-
-    <!-- Option 1: Bootstrap Bundle with Popper -->
-
-
-    <!-- Option 2: Separate Popper and Bootstrap JS -->
-    <!--
-            <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
-                integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous">
-            </script>
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
-                integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous">
-            </script>
-            -->
-
-    <!-- script toastr untuk menampilkan notifikasi jika data telah berhasil dieksekusi -->
-
 </div>
 @endsection
 </body>
@@ -112,8 +65,17 @@
 <!-- script toastr -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
+@if(Session::has('success'))
+toastr.success("{{Session::get('success')}}")
+@endif
+</script>
 
 <footer class="py-5 bg-gradient-primary">
 </footer>
+<script>
+    @if(Session::has('success'))
+    toastr.success("{{Session::get('success')}}")
+    @endif
+</script>
 
 </html>

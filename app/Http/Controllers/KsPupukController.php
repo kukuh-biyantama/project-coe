@@ -96,11 +96,11 @@ class KsPupukController extends Controller
         return redirect()->route('datapupuk')->with('success', 'Data Pupuk telah berhasil ditambahkan');
     }
 
-    // public function tampildatapupuk($id)
-    // {
-    //     $data = ks_pupuk::find($id);
-    //     return view('/pages/pupuk/tampildatapupuk', compact('data'));
-    // }
+    public function tampildatapupuk($id)
+    {
+        $data = ks_pupuk::find($id);
+        return view('/pages/pupuk/tampildatapupuk', compact('data'));
+    }
 
     public function updatedatapupuk(Request $request, $id)
     {
