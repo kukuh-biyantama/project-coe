@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="container-fluid mt--7">
-  <h2 class="text-center mb-4 mt-3" style="color: white;">Form Edit Data Pupuk</h2>
+  <h2 class="text-center mb-4 mt-3" style="color: white;">Form Tambah Data Lokasi</h2>
 
   <!-- dev container untuk mengatur jarak tampilan -->
   <div class="container">

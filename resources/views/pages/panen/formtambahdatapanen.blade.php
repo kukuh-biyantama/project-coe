@@ -25,7 +25,7 @@
                         
                         <div class="mb-3">
                             <label for="" class="form-label">Lokasi</label>
-                                <select class="form-select" name="lokasi_keterangan" aria-label="Default select example">
+                                <select class="form-control" name="lokasi_keterangan" aria-label="Default select example">
                                 <option selected disabled>Pilih</option>
                                 @foreach ($user_data as $iot)
                                 <option value="{{$iot['lokasi_keterangan']}}">Sawah Ke {{$iot['lokasi_keterangan']}}</option>

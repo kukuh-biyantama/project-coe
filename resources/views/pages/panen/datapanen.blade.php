@@ -45,7 +45,7 @@
                     <?php
                         foreach ($data as $row) {
                             echo "<tr>";
-                            echo "<td>" .  $row->id_lokasisawah . "</td>";
+                            echo "<td>" .  "Sawah ".$row->id_lokasisawah . "</td>";
                             echo "<td>" . $row->panen_tanggal . "</td>";
                             echo "<td>" . $row->panen_hasil_produksi . "</td>";
                             echo "<td>" . $row->panen_kualitas_a . "</td>";
