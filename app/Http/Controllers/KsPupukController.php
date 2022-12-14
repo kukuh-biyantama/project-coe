@@ -24,7 +24,7 @@ class KsPupukController extends Controller
         if ($data == null) {
             return view('/pages/responslokasi/responslokasi');
         } else {
-            $data = DB::table('ks_pupuks')->from('penanaman_bawangs')->join('ks_pupuks', 'penanaman_bawangs.id_lokasisawah', '=', 'ks_pupuks.id_lokasisawah')
+            $data = DB::table('ks_pupuks')->from('penanaman_bawangs')->join('ks_pupuks', 'penanaman_bawangs.id_user', '=', 'ks_pupuks.id_user')
                 ->WHERE('penanaman_bawangs.id_user', $currentuserid)
                 ->where('penanaman_bawangs.ks_panen', 0)
                 ->get();
