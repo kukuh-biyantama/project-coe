@@ -11,7 +11,7 @@
                 .dot {
                     height: 50px;
                     width: 50px;
-                    background-color: #bbb;
+                    background-color: #5e72e4;
                     border-radius: 50%;
                     display: inline-block;
                 }
@@ -178,6 +178,7 @@
                         <a href="/viewpenanamanbawang">
                             <div class="card-body">
                                 <div class="row">
+                                    <h1 class="dot">2</h1>
                                     <div class="col">
                                         <h2 class="card-title text-uppercase text-muted mb-4">Kegiatan Pertanian Bawang</h2>
                                     </div>
@@ -196,6 +197,7 @@
                         <div class="card card-stats bg-white mb-4 mb-xl-0 btn btn-secondary">
                             <div class="card-body">
                                 <div class="row align-items-center">
+                                    <h1 class="dot">3</h1>
                                     <div class="col">
                                         <h3 class="mb-0 text-black text-center">Kapan Pestisida</h3>
                                     </div>
@@ -233,6 +235,7 @@
                         <div class="card card-stats bg-white mb-4 mb-xl-0 btn btn-secondary">
                             <div class="card-body">
                                 <div class="row align-items-center">
+                                    <h1 class="dot">4</h1>
                                     <div class="col">
                                         <h3 class="mb-0 text-black text-center">Kapan Pupuk</h3>
                                     </div>
@@ -269,6 +272,7 @@
                     <div class="card card-stats bg-white mb-4 mb-xl-0 mt-2 btn btn-secondary">
                         <div class="card-body">
                             <div class="row align-items-center">
+                                <h1 class="dot">5</h1>
                                 <div class="col">
                                     <h3 class="mb-0 text-black text-center">Perkiraan Hasil Panen</h3>
                                 </div>
@@ -362,6 +366,7 @@
                         <a href="/riwayatpanen">
                             <div class="card-body">
                                 <div class="row">
+                                    <h1 class="dot">6</h1>
                                     <div class="col">
                                         <h2 class="card-title text-uppercase text-muted mb-0">Riwayat Penanaman Bawang</h2>
                                     </div>
