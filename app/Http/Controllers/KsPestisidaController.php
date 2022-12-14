@@ -4,15 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Models\ks_pestisida;
 use Illuminate\Http\Request;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 
 class KsPestisidaController extends Controller
 {
-    public function datapestisida(){
+    public function datapestisida()
+    {
         // $data = ks_pestisida::orderBy('ks_pestisida_tgl_semprot', 'DESC')->get();
-        
+
 
         $currentuserid = Auth::user()->id;
         $url = "http://103.30.1.54:900/api/get/lokasi/" . $currentuserid;
@@ -24,15 +25,15 @@ class KsPestisidaController extends Controller
             return view('/pages/responslokasi/responslokasi');
         } else {
             $data = DB::table('ks_pestisidas')->from('penanaman_bawangs')->join('ks_pestisidas', 'penanaman_bawangs.id_user', '=', 'ks_pestisidas.id_user')
-            ->WHERE('penanaman_bawangs.id_user', $currentuserid)
-            ->where('penanaman_bawangs.ks_panen', 0)
-            ->get();
-            return view('pages.pestisida.datapestisida',compact('data'));
+                ->WHERE('penanaman_bawangs.id_user', $currentuserid)
+                ->where('penanaman_bawangs.ks_panen', 0)
+                ->get();
+            return view('pages.pestisida.datapestisida', compact('data'));
         }
-
     }
 
-    public function tambahdatapestisida(){
+    public function tambahdatapestisida()
+    {
         $currentuserid = Auth::user()->id;
         $url = "http://103.30.1.54:900/api/get/lokasi/" . $currentuserid;
         $response = Http::get($url);
@@ -43,7 +44,8 @@ class KsPestisidaController extends Controller
         // return view('/pages/pestisida/tambahdatapestisida');
     }
 
-    public function insertdatapestisida(Request $request){
+    public function insertdatapestisida(Request $request)
+    {
         // Form Validasi
         $currentuserid = Auth::user()->id;
         $datalokasi = $request->input('lokasi_keterangan');
@@ -87,20 +89,22 @@ class KsPestisidaController extends Controller
             'ks_pestisida_keterangan' => $input_ks_pestisida_keterangan
         ]);
 
-        
+
 
 
         return redirect()->route('datapestisida')->with('success', 'Data Pestisida telah berhasil ditambahkan');
     }
 
-    public function tampildatapestisida($id){
-     
+    public function tampildatapestisida($id)
+    {
+
         // return view('pages.pestisida.tambahdatapestisida', compact('user_data'));
         $data = ks_pestisida::find($id);
         return view('/pages/pestisida/tampildatapestisida', compact('data'));
     }
 
-    public function updatedatapestisida(Request $request, $id){
+    public function updatedatapestisida(Request $request, $id)
+    {
         // $currentuserid = Auth::user()->id;
         // $datalokasi = $request->input('lokasi');
         // nama pestisida
