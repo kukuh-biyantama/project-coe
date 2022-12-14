@@ -23,7 +23,7 @@ class KsPestisidaController extends Controller
         if ($data == null) {
             return view('/pages/responslokasi/responslokasi');
         } else {
-            $data = DB::table('ks_pestisidas')->from('penanaman_bawangs')->join('ks_pestisidas', 'penanaman_bawangs.id_lokasisawah', '=', 'ks_pestisidas.id_lokasisawah')
+            $data = DB::table('ks_pestisidas')->from('penanaman_bawangs')->join('ks_pestisidas', 'penanaman_bawangs.id_user', '=', 'ks_pestisidas.id_user')
             ->WHERE('penanaman_bawangs.id_user', $currentuserid)
             ->where('penanaman_bawangs.ks_panen', 0)
             ->get();
