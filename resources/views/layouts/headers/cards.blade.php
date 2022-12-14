@@ -95,7 +95,7 @@
                         <a href="/datalokasisawah/">
                             <div class="card-body">
                                 <div class="row">
-                                    <h1 class="dot">1</h1>
+                                        <h1 class="dot">1</h1>
                                     <div class="col">
                                         <h2 class="card-title text-uppercase text-muted mb-0">Lokasi</h2>
                                     </div>

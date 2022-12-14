@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\panen;
 use App\Models\penanaman_bawang;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -19,15 +20,16 @@ class RiwayatController extends Controller
     {
         //get data lokasi API
         $currentuserid = Auth::user()->id;
-        $url = "http://103.30.1.54:900/api/get/lokasi/" . $currentuserid;
-        $response = Http::get($url);
-        $data = json_decode($response, true);
+        // $url = "http://103.30.1.54:900/api/get/lokasi/" . $currentuserid;
+        // $response = Http::get($url);
+        // $data = json_decode($response, true);
+        $data = panen::where('id_user', $currentuserid);
         $user_data = $data;
-        $user_data = array_slice($user_data, 0);
+        // $user_data = array_slice($user_data, 0);
         if ($data == null) {
             return view('/pages/responslokasi/responslokasi');
         } else {
-            $data = penanaman_bawang::where('ks_panen', 1)->get();
+            $data = penanaman_bawang::where('ks_panen', 1)->where('id_user', $currentuserid)->get();
             return view('pages.riwayat.riwayat', compact('data', 'currentuserid'));
         }
     }   
