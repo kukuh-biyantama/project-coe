@@ -18,7 +18,8 @@ class KegiatansawahController extends Controller
         return view('/pages/kegiatansawah/datakegiatansawah');
     }
 
-    public function tambahdatakegiatansawah(){
+    public function tambahdatakegiatansawah()
+    {
         return view('/pages/kegiatansawah/tambahdatakegiatansawah');
     }
 
@@ -74,7 +75,7 @@ class KegiatansawahController extends Controller
         } else {
             $dataHasiljumlahbibit = $dataHasiljumlahbibit;
         }
-        
+
         // waktu tanam
         $ks_waktu_tanam = $request->input('ks_waktu_tanam');
 
@@ -89,18 +90,19 @@ class KegiatansawahController extends Controller
         // $ks_panen = $request->input('ks_panen');
 
         // response API
-        $response = Http::post('http://compute.dinus.ac.id:900/api/post/kegiatansawah', 
-        [
-            'id' => $currentuserid,
-            'ks_metode_pengairan' => $input_ks_metode_pengairan,
-            'ks_sumber_modal' => $input_ks_sumber_modal,
-            'ks_luas_lahan' => $dataHasilluaslahan,
-            'ks_bibit_jumlah' => $dataHasiljumlahbibit,
-            'ks_waktu_tanam' =>  $ks_waktu_tanam,
-            'ks_status_lahan' => $input_ks_status_lahan,
-            'ks_jumlah_modal' => $ks_jumlah_modal
-            // 'ks_panen' => $ks_panen
-        ]
+        $response = Http::post(
+            'http://compute.dinus.ac.id:900/api/post/kegiatansawah',
+            [
+                'id' => $currentuserid,
+                'ks_metode_pengairan' => $input_ks_metode_pengairan,
+                'ks_sumber_modal' => $input_ks_sumber_modal,
+                'ks_luas_lahan' => $dataHasilluaslahan,
+                'ks_bibit_jumlah' => $dataHasiljumlahbibit,
+                'ks_waktu_tanam' =>  $ks_waktu_tanam,
+                'ks_status_lahan' => $input_ks_status_lahan,
+                'ks_jumlah_modal' => $ks_jumlah_modal
+                // 'ks_panen' => $ks_panen
+            ]
         );
         // $resrf = Http::post('http://compute.dinus.ac.id:900/api/post/kegiatansawah', 
         // [
@@ -110,14 +112,13 @@ class KegiatansawahController extends Controller
         //     'ks_luas_lahan' => $dataHasilluaslahan,
         //     'ks_bibit_jumlah' => $dataHasiljumlahbibit,
         //     'ks_waktu_tanam' =>  $ks_waktu_tanam,
-        //     'ks_status_lahan' => $input_ks_status_lahan,
+        //     'ks_status_lahan' => $input_ks_status_lahan,1e3e
         //     'ks_jumlah_modal' => $ks_jumlah_modal
         //     // 'ks_panen' => $ks_panen
         // ]
         // );
         // return redirect()->route('datakegiatansawah')->with('success', 'Data Kegiatan Sawah telah berhasil ditambahkan');
         return redirect('tambahdatakegiatansawah')->with('status', 'Data Kegiatan Sawah Telah Berhasil Ditambahkan');
-
     }
 
     /**
