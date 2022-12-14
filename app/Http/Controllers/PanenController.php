@@ -22,8 +22,9 @@ class PanenController extends Controller
         if ($data == null) {
             return view('/pages/responslokasi/responslokasi');
         } else {
-            $data = DB::table('panens')->from('penanaman_bawangs')->join('panens', 'penanaman_bawangs.id_user', '=', 'panens.id_user')
+            $data = DB::table('panens')->from('penanaman_bawangs')->join('panens', 'penanaman_bawangs.id', '=', 'panens.id')
                 ->WHERE('penanaman_bawangs.id_user', $currentuserid)
+               ->WHERE('penanaman_bawangs.ks_panen', 1)
                 ->get();
             return view('pages.panen.datapanen', compact('data'));
 
