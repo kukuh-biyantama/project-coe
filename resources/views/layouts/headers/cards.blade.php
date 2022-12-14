@@ -4,9 +4,18 @@
             <!-- Card stats -->
             @if(session('status'))
             <div class="alert alert-success">
-              {{ session('status') }}
+                {{ session('status') }}
             </div>
             @endif
+            <style>
+                .dot {
+                    height: 50px;
+                    width: 50px;
+                    background-color: #bbb;
+                    border-radius: 50%;
+                    display: inline-block;
+                }
+            </style>
             <script>
                 (function(d, s, id) {
                     if (d.getElementById(id)) {
@@ -86,6 +95,7 @@
                         <a href="/datalokasisawah/">
                             <div class="card-body">
                                 <div class="row">
+                                    <h1 class="dot">1</h1>
                                     <div class="col">
                                         <h2 class="card-title text-uppercase text-muted mb-0">Lokasi</h2>
                                     </div>
@@ -477,4 +487,3 @@
         </div>
     </div>
 </div>
-
