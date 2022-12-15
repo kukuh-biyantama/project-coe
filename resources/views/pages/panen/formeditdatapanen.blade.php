@@ -30,29 +30,6 @@
                     <label for="" class="form-label">Tanggal Panen</label>
                     <input type="date" name="panen_tanggal" class="form-control" value="{{ $data->panen_tanggal }}">
                     </div>
-                        
-
-                    <!-- Hasil Produksi Panen -->
-                    <div class="mb-3">
-                        <label for="hasilProduksiPanen" class="form-label">Hasil Produksi Panen</label><br>
-
-                        <input type="decimal" name="panen_hasil_produksi" style="width:100%" class="form-control" value="{{ $data->panen_hasil_produksi }}">
-
-                        <div class="form-check">
-                            <div class="">
-                                <input class="inputan" type="radio" id="kilogram" name="stnpanenhasil" value="Kilogram">
-                                <label>Kilogram</label>
-                            </div>
-                            <div class="">
-                                <input class="inputan" type="radio" id="Kuintal" name="stnpanenhasil" value="Kuintal">
-                                <label>Kuintal</label>
-                            </div>
-                            <div class="">
-                                <input class="inputan" type="radio" id="ton" name="stnpanenhasil" value="Ton">
-                                <label>Ton</label>
-                            </div>
-                        </div>
-                    </div>
 
                     <!-- Kualitas A -->
                     <div class="mb-3">

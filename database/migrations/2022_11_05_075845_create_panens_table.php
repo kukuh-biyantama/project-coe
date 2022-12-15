@@ -19,10 +19,10 @@ return new class extends Migration
             $table->string('id_lokasisawah');
             // $table->foreignId('id_kegiatansawah')->constrained('penanaman_bawangs')->onDelete('cascade')->onUpdate('cascade');
             $table->date('panen_tanggal');
-            $table->float('panen_hasil_produksi');
             $table->float('panen_kualitas_a');
             $table->float('panen_kualitas_b');
             $table->float('panen_kualitas_c');
+            $table->float('panen_jumlah');
             $table->timestamps();
         });
     }
