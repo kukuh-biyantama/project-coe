@@ -51,19 +51,6 @@ class PanenController extends Controller
 
         // tanggal panen
         $panen_tanggal = $request->input('panen_tanggal');
-
-        // panen hasil produksi
-        $panenhasil = $request->input('panen_hasil_produksi');
-        $stnpanenhasil = $request->input('stnpanenhasil');
-        $resulthasilpanen = $panenhasil;
-        if ($stnpanenhasil == "Kuintal") {
-            $resulthasilpanen = $resulthasilpanen * 100;
-        }
-        if ($stnpanenhasil == "Ton") {
-            $resulthasilpanen = $resulthasilpanen * 1000;
-        } else {
-            $resulthasilpanen = $resulthasilpanen;
-        }
         
         // panen kualitas a
         $panenkualitas_a = $request->input('panen_kualitas_a');
@@ -104,11 +91,16 @@ class PanenController extends Controller
             $resultpanenkualitas_c = $resultpanenkualitas_c;
         }
 
+        // panen hasil produksi
+        $panenhasil = $request->input('panen_jumlah');
+        $panenhasil =  $resultpanenkualitas_a +  $resultpanenkualitas_b +  $resultpanenkualitas_c;
+        $resulthasilpanen = $panenhasil;
+
         panen::create([
             'id_user' => $currentuserid,
             'id_lokasisawah' => $datalokasi,
             'panen_tanggal' => $panen_tanggal,
-            'panen_hasil_produksi' => $resulthasilpanen,
+            'panen_jumlah' => $resulthasilpanen,
             'panen_kualitas_a' => $resultpanenkualitas_a,
             'panen_kualitas_b' => $resultpanenkualitas_b,
             'panen_kualitas_c' => $resultpanenkualitas_c

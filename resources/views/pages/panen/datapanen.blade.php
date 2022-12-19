@@ -17,40 +17,24 @@
                     <tr>
                         <th scope="col">Lokasi Sawah</th>
                         <th scope="col">Tanggal Panen</th>
-                        <th scope="col">Hasil Produksi (kg)</th>
-                        <th scope="col">Kualitas A (kg)</th>
-                        <th scope="col">Kualitas B (kg)</th>
-                        <th scope="col">Kualitas C (kg)</th>
+                        <th scope="col">Kualitas A (Bagus)</th>
+                        <th scope="col">Kualitas B (Sedang)</th>
+                        <th scope="col">Kualitas C (Jelek)</th>
+                        <th scope="col">Jumlah Panen</th>
                         <th scope="col">Edit Data</th>
                         <th scope="col">Hapus Data</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- @foreach ($data as $row)
-                        <tr>
-                            <td>{{ $row->id_lokasisawah }}</td>
-                            <td>{{ $row->panen_tanggal }}</td>
-                            <td>{{ $row->panen_hasil_produksi }}</td>
-                            <td>{{ $row->panen_kualitas_a }}</td>
-                            <td>{{ $row->panen_kualitas_b }}</td>
-                            <td>{{ $row->panen_kualitas_c }}</td>
-                            <td>
-                                <a href="#" class="btn btn-warning">Edit</a>
-                            </td>
-                            <td>
-                                <a href="#" class="btn btn-warning">Hapus</a>
-                            </td>
-                        </tr>
-                    @endforeach -->
                     <?php
                         foreach ($data as $row) {
                             echo "<tr>";
                             echo "<td>" .  "Sawah ".$row->id_lokasisawah . "</td>";
                             echo "<td>" . $row->panen_tanggal . "</td>";
-                            echo "<td>" . $row->panen_hasil_produksi . "</td>";
-                            echo "<td>" . $row->panen_kualitas_a . "</td>";
-                            echo "<td>" . $row->panen_kualitas_b . "</td>";
-                            echo "<td>" . $row->panen_kualitas_c . "</td>";
+                            echo "<td>" . number_format($row->panen_kualitas_a, 0,',','.') . " kg" . "</td>";
+                            echo "<td>" . number_format($row->panen_kualitas_b, 0,',','.') . " kg" . "</td>";
+                            echo "<td>" . number_format($row->panen_kualitas_c, 0,',','.') . " kg" . "</td>";
+                            echo "<td>" . number_format($row->panen_jumlah, 0,',','.') . " kg" . "</td>";
                             echo "<td>" .
                             "<a href='/formeditdatapanen/$row->id' class='btn btn-warning'>Edit</a>" .
                             "</td>";
