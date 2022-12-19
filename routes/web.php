@@ -46,7 +46,14 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/tambahdatapenanamanbawang', [PenanamanBawangController::class, 'tambahdatapenanamanbawang'])->name('tambahdatapenanamanbawang');
 	Route::resource('user', 'App\Http\Controllers\UserController', ['except' => ['show']]);
 	Route::get('profile', ['as' => 'profile.edit', 'uses' => 'App\Http\Controllers\ProfileController@edit']);
+	// Route::get('addbiodata', ['as' => 'profile.addbiodata']);
+
 	Route::put('profile', ['as' => 'profile.update', 'uses' => 'App\Http\Controllers\ProfileController@update']);
+	
+	Route::get('/addbiodata', function () {
+		return view('profile.addbiodata');
+	});
+	
 	Route::get('upgrade', function () {
 		return view('pages.upgrade');
 	})->name('upgrade');

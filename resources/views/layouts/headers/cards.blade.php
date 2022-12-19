@@ -344,7 +344,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="container-xl-4 row-lg-4 pt-2">
+                    {{-- <div class="container-xl-4 row-lg-4 pt-2">
                         <div class="card card-stats mb-4 mb-xl-0 btn btn-secondary">
                             <a href="/clusterpetani/">
                                 <div class="card-body">
@@ -361,7 +361,7 @@
                                 </div>
                             </a>
                         </div>
-                    </div>
+                    </div> --}}
                     <div class="card card-stats mb-0 mb-xl-0 mt-2 btn btn-secondary">
                         <a href="/riwayatpanen">
                             <div class="card-body">
