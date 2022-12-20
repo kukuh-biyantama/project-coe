@@ -10,7 +10,8 @@ use Illuminate\Support\Facades\Http;
 
 class PanenController extends Controller
 {
-    public function datapanen(){
+    public function datapanen()
+    {
         // $data = panen::all();
         // return view('/pages/panen/datapanen', compact('data'));
         $currentuserid = Auth::user()->id;
@@ -22,17 +23,19 @@ class PanenController extends Controller
         if ($data == null) {
             return view('/pages/responslokasi/responslokasi');
         } else {
-            $data = DB::table('panens')->from('penanaman_bawangs')->join('panens', 'penanaman_bawangs.id', '=', 'panens.id')
-                ->WHERE('penanaman_bawangs.id_user', $currentuserid)
-               ->WHERE('penanaman_bawangs.ks_panen', 1)
+            // $data = DB::table('panens')->from('penanaman_bawangs')->join('panens', 'penanaman_bawangs.id', '=', 'panens.id')
+            //     ->WHERE('penanaman_bawangs.id_user', $currentuserid)
+            //     ->WHERE('penanaman_bawangs.ks_panen', 1)
+            //     ->get();
+            $users = DB::table('penanaman_bawangs')->where('penanaman_bawangs.id_user', $currentuserid)
                 ->get();
-            return view('pages.panen.datapanen', compact('data'));
-
-            // return dd($data);
+            return view('pages.panen.datapanen', compact('users'));
+            // return dd($users);
         }
     }
 
-    public function formtambahdatapanen(){
+    public function formtambahdatapanen()
+    {
         $currentuserid = Auth::user()->id;
         $url = "http://103.30.1.54:900/api/get/lokasi/" . $currentuserid;
         $response = Http::get($url);
@@ -42,7 +45,8 @@ class PanenController extends Controller
         return view('/pages/panen/formtambahdatapanen', compact('user_data'));
     }
 
-    public function insertdatapanen(Request $request){
+    public function insertdatapanen(Request $request)
+    {
         // current user
         $currentuserid = Auth::user()->id;
 
@@ -51,7 +55,7 @@ class PanenController extends Controller
 
         // tanggal panen
         $panen_tanggal = $request->input('panen_tanggal');
-        
+
         // panen kualitas a
         $panenkualitas_a = $request->input('panen_kualitas_a');
         $stnpanenkualitas_a = $request->input('stnpanenkualitas_a');
@@ -105,18 +109,19 @@ class PanenController extends Controller
             'panen_kualitas_b' => $resultpanenkualitas_b,
             'panen_kualitas_c' => $resultpanenkualitas_c
         ]);
-        $updatekspanen = DB::table('penanaman_bawangs')->where('id_user',$currentuserid)->where('id_lokasisawah',$datalokasi)->update(['ks_panen' =>'1']);
+        $updatekspanen = DB::table('penanaman_bawangs')->where('id_user', $currentuserid)->where('id_lokasisawah', $datalokasi)->update(['ks_panen' => '1']);
         return redirect()->route('datapanen')->with('success', 'Data Panen telah berhasil ditambahkan');
-        
     }
 
     public function formeditdatapanen($id)
     {
-        $data = panen::find($id);
+        // $data = panen::find($id);
+        $user = DB::table('penanaman_bawangs')->find($id);
         return view('/pages/panen/formeditdatapanen', compact('data'));
     }
 
-    public function updatedatapanen(Request $request, $id){
+    public function updatedatapanen(Request $request, $id)
+    {
         // tanggal panen
         $panen_tanggal = $request->input('panen_tanggal');
 
@@ -132,7 +137,7 @@ class PanenController extends Controller
         } else {
             $resulthasilpanen = $resulthasilpanen;
         }
-        
+
         // panen kualitas a
         $panenkualitas_a = $request->input('panen_kualitas_a');
         $stnpanenkualitas_a = $request->input('stnpanenkualitas_a');
@@ -182,9 +187,8 @@ class PanenController extends Controller
             'panen_kualitas_b' => $resultpanenkualitas_b,
             'panen_kualitas_c' => $resultpanenkualitas_c
         ]);
-       
-        return redirect()->route('datapanen')->with('success', 'Data Panen telah berhasil diupdate');
 
+        return redirect()->route('datapanen')->with('success', 'Data Panen telah berhasil diupdate');
     }
 
     public function deletedatapanen($id)
@@ -192,7 +196,4 @@ class PanenController extends Controller
         $delete = DB::table('panens')->where('id', $id)->delete();
         return redirect()->route('datapanen')->with('success', 'Data Panen telah dihapus');
     }
-
-
-
 }
