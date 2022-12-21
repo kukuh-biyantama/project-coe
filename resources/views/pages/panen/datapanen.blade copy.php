@@ -8,7 +8,7 @@
     <!-- dev container untuk mengatur jarak tampilan -->
     <div class="container">
         <div class="mb-4 mt-6">
-            <!-- <a href="/formtambahdatapanen" type="button" class="btn btn-success" style="float: right;">Tambah Data</a> -->
+            <a href="/formtambahdatapanen" type="button" class="btn btn-success" style="float: right;">Tambah Data</a>
             <a href="/home" type="button" class="btn btn-primary">Kembali</a>
         </div>
         <div class="row">
@@ -59,7 +59,7 @@
                                 "</td>";
                         };
                         echo "<td>" .
-                            "<a href='/formtambahdatapanen' class='btn btn-success'>Hasil Panen</a>" .
+                            "<a href='/formeditdatapanen/$row->id' class='btn btn-warning'>Hasil Panen</a>" .
                             "</td>";
                         echo "<td>" .
                             "<a href='/deletedatapanen/$row->id' class='btn btn-danger'>Hapus</a>" .
