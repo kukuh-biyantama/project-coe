@@ -49,9 +49,15 @@
 
     <!-- Argon JS -->
     <script src="{{ asset('argon') }}/js/argon.js?v=1.0.0"></script>
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
-</body>
+    <script language="JavaScript" type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
+    {{-- <script src="{{ asset('style/template/vendors/datatables.net-bs4/dataTables.bootstrap4.js') }}"></script> --}}
 
+</body>
+<script>
+    $(document).ready(function() {
+        $('#table').DataTable();
+    });
+</script>
 <div>
 
 </html>

@@ -16,16 +16,16 @@
                     <tr>
                         <!-- <th scope="col">Penanaman ID</th> -->
                         <!-- <th scope="col">Lokasi Keterangan</th> -->
-                        <th scope="col" colspan="4">Metode Pengairan</th>
-                        <th scope="col" colspan="4">Sumber Modal</th>
-                        <th scope="col" colspan="4">Luas Lahan (m<sup>2</sup>)</th>
-                        <th scope="col" colspan="4">Jumlah Bibit (kg)</th>
-                        <th scope="col" colspan="4">Waktu Tanam</th>
-                        <th scope="col" colspan="4">Status Lahan</th>
-                        <th scope="col" colspan="4">Jumlah Modal (Rp)</th>
-                        <th scope="col" colspan="4">Kabupaten</th>
-                        <th scope="col" colspan="4">Alamat</th>
-                        <th scope="col" colspan="4">Kondisi</th>
+                        <th>Metode Pengairan</th>
+                        <th>Sumber Modal</th>
+                        <th>Luas Lahan (m<sup>2</sup>)</th>
+                        <th>Jumlah Bibit (kg)</th>
+                        <th>Waktu Tanam</th>
+                        <th>Status Lahan</th>
+                        <th>Jumlah Modal (Rp)</th>
+                        <th>Kabupaten</th>
+                        <th>Alamat</th>
+                        <th>Kondisi</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -35,16 +35,16 @@
                         if ($view->id_user == $verify) {
                             $verifyPanen = $view->ks_panen;
                             echo "<tr>";
-                            echo "<td colspan='4'>" . ($view->ks_metode_pengairan) . "</td>";
-                            echo "<td colspan='4' >" . ($view->ks_modal) . "</td>";
-                            echo "<td colspan='4'>" . ($view->ks_luas_lahan) . "</td>";
-                            echo "<td colspan='4'>" . ($view->ks_bibit) . "</td>";
-                            echo "<td colspan='4'>" . ($view->ks_waktu_tanam) . "</td>";
-                            echo "<td colspan='4'>" . ($view->ks_status_lahan) . "</td>";
-                            echo "<td colspan='4'>" . ($view->ks_jumlah_modal) . "</td>";
-                            echo "<td colspan='4'>" . ($view->kabupaten) . "</td>";
-                            echo "<td colspan='4'>" . "sawah" . " " . ($view->id_lokasisawah) . "</td>";
-                            echo "<td colspan='4'>" . "Sudah Panen" . "</td>";
+                            echo "<td>" . ($view->ks_metode_pengairan) . "</td>";
+                            echo "<td>" . ($view->ks_modal) . "</td>";
+                            echo "<td>" . ($view->ks_luas_lahan) . "</td>";
+                            echo "<td>" . ($view->ks_bibit) . "</td>";
+                            echo "<td>" . ($view->ks_waktu_tanam) . "</td>";
+                            echo "<td>" . ($view->ks_status_lahan) . "</td>";
+                            echo "<td>" . ($view->ks_jumlah_modal) . "</td>";
+                            echo "<td>" . ($view->kabupaten) . "</td>";
+                            echo "<td>" . "sawah" . " " . ($view->id_lokasisawah) . "</td>";
+                            echo "<td>" . "Sudah Panen" . "</td>";
                         }
                     }
                     ?>
@@ -64,16 +64,12 @@
 
     <!-- script sweetalert -->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
+    
     <!-- script toastr -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH4jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     {{-- </body> --}}
 
-    <script>
-        $(document).ready(function() {
-            $('#table').DataTable();
-        });
-    </script>
+   
 </div>
 @endsection
 
