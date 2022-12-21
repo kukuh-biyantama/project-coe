@@ -23,15 +23,26 @@
                     <form action="/insertdatapanen" method="POST" enctype="multipart/form-data">
                         @csrf
                         
-                        <div class="mb-3">
-                            <label for="" class="form-label">Lokasi</label>
-                                <select class="form-control" name="lokasi_keterangan" aria-label="Default select example">
-                                <option selected disabled>Pilih</option>
-                                @foreach ($user_data as $iot)
-                                <option value="{{$iot['lokasi_keterangan']}}">Sawah Ke {{$iot['lokasi_keterangan']}}</option>
-                                @endforeach
-                            </select>
-                        </div>
+                        @foreach ($users as $row)
+                            <!-- Kabupaten -->
+                            <div class="mb-3">
+                                <label for="" class="form-label">Kabupaten</label>
+                                <input type="text" name="" style="width:100%" class="form-control" value="{{ $row->kabupaten }}" disabled>
+                            </div>
+                            
+                            <!-- Lokasi Sawah -->
+                            <div class="mb-3">
+                                <label for="" class="form-label">Lokasi Sawah</label>
+                                <input type="text" name="" style="width:100%" class="form-control" value="Sawah {{ $row->id_lokasisawah }}" disabled>
+                            </div>
+
+                            <!-- Waktu Tanam -->
+                            <div class="mb-3">
+                                <label for="" class="form-label">Waktu Tanam</label>
+                                <input type="text" name="" style="width:100%" class="form-control" value="{{ $row->ks_waktu_tanam }}" disabled>
+                            </div>
+                            
+                        @endforeach
 
                         <!-- Tanggal Panen -->
                         <div class="mb-3">

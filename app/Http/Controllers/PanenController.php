@@ -48,7 +48,11 @@ class PanenController extends Controller
         $data = json_decode($response, true);
         $user_data = $data;
         $user_data = array_slice($user_data, 0);
-        return view('/pages/panen/formtambahdatapanen', compact('user_data'));
+        // get data penanaman bawang table
+        $users = DB::table('penanaman_bawangs')->where('penanaman_bawangs.id_user', $currentuserid)->get();
+        return view('/pages/panen/formtambahdatapanen', compact('users'));
+        // end get data penanaman bawang table
+        // return view('/pages/panen/formtambahdatapanen', compact('user_data'));
     }
 
     public function insertdatapanen(Request $request)
