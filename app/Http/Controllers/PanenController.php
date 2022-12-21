@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\panen;
+use App\Models\penanaman_bawang;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -12,47 +13,34 @@ class PanenController extends Controller
 {
     public function datapanen()
     {
-        // $data = panen::all();
-        // return view('/pages/panen/datapanen', compact('data'));
         $currentuserid = Auth::user()->id;
-        // $url = "http://103.30.1.54:900/api/get/lokasi/" . $currentuserid;
-        // $response = Http::get($url);
-        $response = DB::table('penanaman_bawangs')->where('penanaman_bawangs.id_user', $currentuserid);
-        // $data = json_encode($response, true);
-        // $data = json_decode($response, True);
-        // $user_data = $response;
+        $response = DB::table('penanaman_bawangs')->where('penanaman_bawangs.id_user', $currentuserid)->get();
         $data = array($response);
-        // return dd($data);
-        if ($data >= 0 ) {
+        // return ($data);
+        if ($data == [[]]) {
+            return view('/pages/responslokasi/responslokasi');
+            // return dd($users);
+
+        } else {
             $users = DB::table('penanaman_bawangs')->where('penanaman_bawangs.id_user', $currentuserid)
                 ->get();
             return view('pages.panen.datapanen', compact('users'));
-            // return dd($users);
-           
-        } else {
-            return view('/pages/responslokasi/responslokasi');
-            // $data = DB::table('panens')->from('penanaman_bawangs')->join('panens', 'penanaman_bawangs.id', '=', 'panens.id')
+            // return view('/pages/responslokasi/responslokasi');
+            // // $data = DB::table('panens')->from('penanaman_bawangs')->join('panens', 'penanaman_bawangs.id', '=', 'panens.id')
             //     ->WHERE('penanaman_bawangs.id_user', $currentuserid)
             //     ->WHERE('penanaman_bawangs.ks_panen', 1)
             //     ->get();
-            
+
             // return dd($users);
         }
     }
 
-    public function formtambahdatapanen()
+    public function formtambahdatapanen($id)
     {
         $currentuserid = Auth::user()->id;
-        $url = "http://103.30.1.54:900/api/get/lokasi/" . $currentuserid;
-        $response = Http::get($url);
-        $data = json_decode($response, true);
-        $user_data = $data;
-        $user_data = array_slice($user_data, 0);
-        // get data penanaman bawang table
-        $users = DB::table('penanaman_bawangs')->where('penanaman_bawangs.id_user', $currentuserid)->get();
+        $users = penanaman_bawang::find($id);
+        // // $users = DB::table('penanaman_bawangs')->where('penanaman_bawangs.id_user', $currentuserid)->get();
         return view('/pages/panen/formtambahdatapanen', compact('users'));
-        // end get data penanaman bawang table
-        // return view('/pages/panen/formtambahdatapanen', compact('user_data'));
     }
 
     public function insertdatapanen(Request $request)

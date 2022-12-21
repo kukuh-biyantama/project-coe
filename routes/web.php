@@ -120,7 +120,7 @@ Route::get('datassensorsawah', [reportiotclient::class, 'reportdataiot'])->name(
 
 // Form Panen
 Route::get('/datapanen', [PanenController::class, 'datapanen'])->name('datapanen');
-Route::get('/formtambahdatapanen', [PanenController::class, 'formtambahdatapanen'])->name('formtambahdatapanen');
+Route::get('/formtambahdatapanen/{id}', [PanenController::class, 'formtambahdatapanen'])->name('formtambahdatapanen');
 Route::post('/insertdatapanen', [PanenController::class, 'insertdatapanen'])->name('insertdatapanen');
 Route::get('/formeditdatapanen/{id}', [PanenController::class, 'formeditdatapanen'])->name('formeditdatapanen');
 Route::post('/updatedatapanen/{id}', [PanenController::class, 'updatedatapanen'])->name('updatedatapanen');
