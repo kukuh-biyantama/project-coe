@@ -15,12 +15,13 @@ class PanenController extends Controller
         // $data = panen::all();
         // return view('/pages/panen/datapanen', compact('data'));
         $currentuserid = Auth::user()->id;
-        $url = "http://103.30.1.54:900/api/get/lokasi/" . $currentuserid;
-        $response = Http::get($url);
-        $data = json_decode($response, true);
-        $user_data = $data;
-        $user_data = array_slice($user_data, 0);
-        if ($data == null) {
+        // $url = "http://103.30.1.54:900/api/get/lokasi/" . $currentuserid;
+        // $response = Http::get($url);
+        $response = DB::table('penanaman_bawangs')->where('penanaman_bawangs.id_user', $currentuserid);
+        // $data = json_decode($response, true);
+        // $user_data = $data;
+        // $user_data = array_slice($user_data, 0);
+        if ($response == null) {
             return view('/pages/responslokasi/responslokasi');
         } else {
             // $data = DB::table('panens')->from('penanaman_bawangs')->join('panens', 'penanaman_bawangs.id', '=', 'panens.id')

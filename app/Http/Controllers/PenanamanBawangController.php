@@ -13,7 +13,7 @@ class PenanamanBawangController extends Controller
     public function datapenanamanbawang()
     {
         $currentuserid = Auth::user()->id;
-        $data = penanaman_bawang::where('ks_panen', 0)->get();
+        $data = penanaman_bawang::where('ks_panen', 0)->where('status_lokasi', 0)->get();
         return view('/pages/penanamanbawang/datapenanamanbawang', compact('data', 'currentuserid'));
     }
 
@@ -71,6 +71,8 @@ class PenanamanBawangController extends Controller
 
         // konversi luas lahan
         $satuanLuas_lahan = $request->input('stnLuasLahan');
+        $status_lokasi = 0;
+
         $dataLuas_lahan = $request->input('ks_luas_lahan');
         $dataHasilluaslahan = $dataLuas_lahan;
         if ($satuanLuas_lahan == "Hektar") {
@@ -129,6 +131,7 @@ class PenanamanBawangController extends Controller
             'ks_status_lahan' => $input_ks_status_lahan,
             'ks_jumlah_modal' => $ks_jumlah_modal,
             'kabupaten' => $kabupaten,
+            'status_lokasi' => $status_lokasi,
             'id_lokasisawah' => $datalokasi
         ]);
 

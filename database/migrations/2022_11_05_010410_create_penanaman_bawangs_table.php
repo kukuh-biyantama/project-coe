@@ -26,6 +26,7 @@ return new class extends Migration
             $table->integer('ks_panen')->nullable();
             $table->string('kabupaten');
             $table->string('id_lokasisawah');
+            $table->integer('status_lokasi');
             $table->timestamps();
         });
 
