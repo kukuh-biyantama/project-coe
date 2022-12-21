@@ -10,7 +10,7 @@
         <div class="mb-4 mt-6">
             <a href="/home" type="button" class="btn btn-primary">Kembali</a>
         </div>
-        <div class="row">
+        <div class="row table-responsive">
             <table class="table table-bordered table-responsive" id="table">
                 <thead>
                     <tr>
@@ -35,16 +35,16 @@
                         if ($view->id_user == $verify) {
                             $verifyPanen = $view->ks_panen;
                             echo "<tr>";
-                            echo "<td>" . ($view->ks_metode_pengairan) . "</td>";
-                            echo "<td>" . ($view->ks_modal) . "</td>";
-                            echo "<td>" . ($view->ks_luas_lahan) . "</td>";
-                            echo "<td>" . ($view->ks_bibit) . "</td>";
-                            echo "<td>" . ($view->ks_waktu_tanam) . "</td>";
-                            echo "<td>" . ($view->ks_status_lahan) . "</td>";
-                            echo "<td>" . ($view->ks_jumlah_modal) . "</td>";
-                            echo "<td>" . ($view->kabupaten) . "</td>";
-                            echo "<td>" . "sawah" . " " . ($view->id_lokasisawah) . "</td>";
-                            echo "<td>" . "Sudah Panen" . "</td>";
+                            echo "<td>". ($view->ks_metode_pengairan) . "</td>";
+                            echo "<td>". ($view->ks_modal) . "</td>";
+                            echo "<td>". ($view->ks_luas_lahan) . "</td>";
+                            echo "<td>". ($view->ks_bibit) . "</td>";
+                            echo "<td>". ($view->ks_waktu_tanam) . "</td>";
+                            echo "<td>". ($view->ks_status_lahan) . "</td>";
+                            echo "<td>". ($view->ks_jumlah_modal) . "</td>";
+                            echo "<td>". ($view->kabupaten) . "</td>";
+                            echo "<td>". "sawah" . " " . ($view->id_lokasisawah) . "</td>";
+                            echo "<td>". "Sudah Panen" . "</td>";
                         }
                     }
                     ?>
