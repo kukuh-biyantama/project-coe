@@ -11,7 +11,7 @@
             <a href="/home" type="button" class="btn btn-primary">Kembali</a>
         </div>
         <div class="row">
-            <table class="table table-bordered">
+            <table class="table table-bordered table-responsive" id="table">
                 <thead>
                     <tr>
                         <!-- <th scope="col">Penanaman ID</th> -->
@@ -43,9 +43,8 @@
                             echo "<td colspan='4'>" . ($view->ks_status_lahan) . "</td>";
                             echo "<td colspan='4'>" . ($view->ks_jumlah_modal) . "</td>";
                             echo "<td colspan='4'>" . ($view->kabupaten) . "</td>";
-                            echo "<td colspan='4'>" . "sawah" . " " . ($view->id_lokasisawah) . "</td>"; 
-                            echo "<td colspan='4'>" . "Sudah Panen". "</td>";  
- 
+                            echo "<td colspan='4'>" . "sawah" . " " . ($view->id_lokasisawah) . "</td>";
+                            echo "<td colspan='4'>" . "Sudah Panen" . "</td>";
                         }
                     }
                     ?>
@@ -69,6 +68,12 @@
     <!-- script toastr -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH4jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     {{-- </body> --}}
+
+    <script>
+        $(document).ready(function() {
+            $('#table').DataTable();
+        });
+    </script>
 </div>
 @endsection
 
