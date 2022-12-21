@@ -46,13 +46,11 @@
                         echo "<td>" . ($row->ks_waktu_tanam) . "</td>";
                         if ($dataPanen == 0) {
                             echo "<td>" .
-                                "<form id='formverify' action='/verifypetani' method='post' enctype='multipart/form-data'>
-                                @csrf
-                                <input type='hidden' id='idSawahpetani' name='custId' value=$idSawah>
-                                <input type='checkbox' id='verify-checkbox'  onclick='isChecked()' value=1/>
-                                <input type='submit' id='submit'/>
-                                <p id='message'>Belum panen</p>
-                                </form>" .
+                                "<form id='formverify' action='/verifypetani' method='post' enctype='multipart/form-data'>" . @csrf_field() .
+                                "<input type='hidden' id='idSawahpetani' name='custId' value=$idSawah>" .
+                                "<input type='checkbox' id='verify-checkbox'  onclick='isChecked()' value=1/>" .
+                                "<p id='message'>Belum panen</p>" .
+                                "</form>" .
                                 "</td>";
                         } else {
                             echo "<td>" .
