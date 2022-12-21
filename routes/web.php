@@ -6,6 +6,7 @@ use App\Http\Controllers\RiwayatController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClusterpetaniController;
 use App\Http\Controllers\DataClusterController;
+use App\Http\Controllers\GetpenanamanbawangBaseController;
 use App\Http\Controllers\HamaController;
 use App\Http\Controllers\KsPestisidaController;
 use App\Http\Controllers\KsPupukController;
@@ -49,11 +50,11 @@ Route::group(['middleware' => 'auth'], function () {
 	// Route::get('addbiodata', ['as' => 'profile.addbiodata']);
 
 	Route::put('profile', ['as' => 'profile.update', 'uses' => 'App\Http\Controllers\ProfileController@update']);
-	
+
 	Route::get('/addbiodata', function () {
 		return view('profile.addbiodata');
 	});
-	
+
 	Route::get('upgrade', function () {
 		return view('pages.upgrade');
 	})->name('upgrade');
@@ -124,6 +125,8 @@ Route::post('/insertdatapanen', [PanenController::class, 'insertdatapanen'])->na
 Route::get('/formeditdatapanen/{id}', [PanenController::class, 'formeditdatapanen'])->name('formeditdatapanen');
 Route::post('/updatedatapanen/{id}', [PanenController::class, 'updatedatapanen'])->name('updatedatapanen');
 Route::get('/deletedatapanen/{id}', [PanenController::class, 'deletedatapanen'])->name('deletedatapanen');
+Route::post('/verifypetani', [PanenController::class, 'verifypetani'])->name('verifypetani');
+// Route::post('/verifypetani', [GetpenanamanbawangBaseController::class, 'verifypetani'])->name('verifypetani');
 
 // Form Hama
 Route::get('/datahama', [HamaController::class, 'index'])->name('datahama');

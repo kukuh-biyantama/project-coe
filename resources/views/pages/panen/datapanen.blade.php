@@ -32,6 +32,8 @@
                 <tbody>
                     <?php
                     foreach ($users as $row) {
+                        $dataPanen = $row->ks_panen;
+                        $idSawah = $row->id;
                         echo "<tr>";
                         // echo "<td>" .  "Sawah " . $row->id_lokasisawah . "</td>";
                         // echo "<td>" . $row->panen_tanggal . "</td>";
@@ -42,8 +44,22 @@
                         echo "<td>" . ($row->kabupaten) . "</td>";
                         echo "<td>" . "sawah " . ($row->id_lokasisawah) . "</td>";
                         echo "<td>" . ($row->ks_waktu_tanam) . "</td>";
-                        echo "<td>" . "<input type='checkbox' id='verify-checkbox'  onclick='isChecked()' value='1'/>" .
-                            "<p id='message'>Belum panen</p>" . "</td>";
+                        if ($dataPanen == 0) {
+                            echo "<td>" .
+                                "<form id='formverify' action='/verifypetani' method='post' enctype='multipart/form-data'>
+                                @csrf
+                                <input type='hidden' id='idSawahpetani' name='custId' value=$idSawah>
+                                <input type='checkbox' id='verify-checkbox'  onclick='isChecked()' value=1/>
+                                <input type='submit' id='submit'/>
+                                <p id='message'>Belum panen</p>
+                                </form>" .
+                                "</td>";
+                        } else {
+                            echo "<td>" .
+                                "<input type='checkbox' id='verify-checkbox'  onclick='isChecked()' value='1' checked/>" .
+                                "<p id='message'>panen</p>" .
+                                "</td>";
+                        };
                         echo "<td>" .
                             "<a href='/formeditdatapanen/$row->id' class='btn btn-warning'>Hasil Panen</a>" .
                             "</td>";

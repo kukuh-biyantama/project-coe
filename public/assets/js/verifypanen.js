@@ -8,6 +8,9 @@ function isChecked(){
     }
 }
 
-function savedata(){
-    
-}
+// function savedata(){
+//     document.getElementById('formverify').submit();
+//     document.getElementById("verify-checkbox");
+//     document.getElementById("idSawahpetani");
+//     return false;
+// }

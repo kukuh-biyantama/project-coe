@@ -196,4 +196,15 @@ class PanenController extends Controller
         $delete = DB::table('panens')->where('id', $id)->delete();
         return redirect()->route('datapanen')->with('success', 'Data Panen telah dihapus');
     }
+
+    public function verifypetani(Request $request)
+    {
+        $id_Petani = $request->input('idSawahpetani');
+        $verifyPanen = $request->input('verify-checkbox');
+        // $currentuserid = Auth::user()->id;
+        $updatekspanen = DB::table('penanaman_bawangs')->where('id', $id_Petani)->update(['ks_panen' => $verifyPanen]);
+        return redirect()->route('datapanen')->with('success', 'Data Panen telah berhasil ditambahkan');
+        // $users = DB::table('penanaman_bawangs')->get();
+        // dd($users);
+    }
 }

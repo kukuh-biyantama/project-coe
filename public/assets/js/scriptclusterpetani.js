@@ -40,7 +40,7 @@ function nextPrev(n) {
     // ... the form gets submitted:
     // @ts-ignore
     document.getElementById("regForm").submit();
-    document.getElementsByName("nama")
+    document.getElementsByName("nama");
     document.getElementsByName("usia");
     document.getElementsByName("jenisKelamin");
     document.getElementsByName("pendidikan");
