@@ -1,6 +1,7 @@
 function isChecked(){
     if (document.getElementById("verify-checkbox").checked){
         alert ("apakah yakin sawah tersebut sudah panen");
+        document.getElementById('formverify').submit();
         document.getElementById("message").textContent = "Panen";
     }
     else{

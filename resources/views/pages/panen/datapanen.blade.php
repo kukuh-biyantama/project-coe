@@ -47,14 +47,14 @@
                         if ($dataPanen == 0) {
                             echo "<td>" .
                                 "<form id='formverify' action='/verifypetani' method='post' enctype='multipart/form-data'>" . @csrf_field() .
-                                "<input type='hidden' id='idSawahpetani' name='custId' value=$idSawah>" .
-                                "<input type='checkbox' id='verify-checkbox'  onclick='isChecked()' value=1/>" .
+                                "<input type='hidden' id='idSawahpetani' value=$idSawah name='idSawahpetani'>" .
+                                "<input type='checkbox' id='verify-checkbox' value=1 name='verify-checkbox' onclick='isChecked()' >" .
                                 "<p id='message'>Belum panen</p>" .
                                 "</form>" .
                                 "</td>";
                         } else {
                             echo "<td>" .
-                                "<input type='checkbox' id='verify-checkbox'  onclick='isChecked()' value='1' checked/>" .
+                                "<input type='checkbox' id='verify-checkbox'  onclick='isChecked()' value='1' checked disabled/>" .
                                 "<p id='message'>panen</p>" .
                                 "</td>";
                         };
