@@ -22,9 +22,9 @@ return new class extends Migration
             $table->float('panen_jumlah');
             $table->bigInteger('id_penebas');
             $table->float('panen_harga');
-            $table->float('panen_kualitas_a');
-            $table->float('panen_kualitas_b');
-            $table->float('panen_kualitas_c');
+            $table->float('panen_kualitas_a')->nullable();
+            $table->float('panen_kualitas_b')->nullable();
+            $table->float('panen_kualitas_c')->nullable();
             $table->timestamps();
         });
     }
