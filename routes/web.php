@@ -69,7 +69,7 @@ Route::group(['middleware' => 'auth'], function () {
 	})->name('table');
 	Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'App\Http\Controllers\ProfileController@password']);
 });
-
+Route::post('/autocomplete/fetch', 'PostController@fetch')->name('autocomplete.fetch');
 // Form Lokasi Sawah
 Route::get('/datalokasisawah', [LokasiController::class, 'datalokasisawah'])->name('datalokasisawah');
 Route::get('/formtambahdatalokasisawah', [LokasiController::class, 'formtambahdatalokasisawah'])->name('formtambahdatalokasisawah');
@@ -82,6 +82,8 @@ Route::get('/deletedatalokasisawah/{userid}/{lokasi_keterangan}', [LokasiControl
 // Route::post('/post/kirimlokasi', [LokasiSawahController::class, 'tambahlokasi']);
 Route::get('add-blog-post-form', [PostController::class, 'index']);
 Route::post('store-form', [PostController::class, 'store']);
+Route::post('readpenebas', [PostController::class, 'readpenebas']);
+
 // Route::get('/getDataLokasiSawah', [LokasiSawahController::class, 'getDataLokasiSawah'])->name('getDataLokasiSawah');
 
 // Kegiatan Sawah

@@ -48,10 +48,15 @@
                                 <input type="date" name="panen_tanggal" class="form-control">
                             </div>
                             <!-- nama penebas -->
-                            <div class="mb-3">
+                            {{-- <div class="mb-3">
                                 <label for="" class="form-label">Nama penebas</label>
                                 <input type="text" name="id_penebas" id="id_penebas" class="form-control">
+                            </div> --}}
+                            <div class="form-group">
+                                <input type="text" name="id_penebas" id="id_penebas" placeholder="Massukan Nama Penebas" />
+                                <div id="penebas_list"></div>
                             </div>
+                            {{ csrf_field() }}
                             <!-- nama penebas -->
                             <div class="mb-3">
                                 <label for="" class="form-label">Harga yang disepakati</label>

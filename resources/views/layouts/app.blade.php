@@ -59,6 +59,33 @@
     });
 </script>
 <div>
+    <script>
+        $(document).ready(function(){
+        
+         $('#id_penebas').keyup(function(){ 
+                var query = $(this).val();
+                if(query != '')
+                {
+                 var _token = $('input[name="_token"]').val();
+                 $.ajax({
+                  url:"{{ route('autocomplete.fetch') }}",
+                  method:"POST",
+                  data:{query:query, _token:_token},
+                  success:function(data){
+                   $('#penebas_list').fadeIn();  
+                            $('#penebas_list').html(data);
+                  }
+                 });
+                }
+            });
+        
+            $(document).on('click', 'li', function(){  
+                $('#name').val($(this).text());  
+                $('#penebas_list').fadeOut();  
+            });  
+        
+        });
+        </script>
 
 </html>
 <footer>

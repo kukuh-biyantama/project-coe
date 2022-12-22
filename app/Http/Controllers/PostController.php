@@ -81,4 +81,28 @@ class PostController extends Controller
     {
         //
     }
+    // public function penebas()
+    // {
+    //     $data = DB::table('biodatas')->where('nama')->get();
+    // }
+    function fetch(Request $request)
+    {
+     if($request->get('query'))
+     {
+      $query = $request->get('query');
+      $data = DB::table('biodatas')
+        ->where('nama', 'LIKE', "%{$query}%")
+        ->get();
+      $output = '<ul class="dropdown-menu" style="display:block; position:relative">';
+      foreach($data as $row)
+      {
+       $output .= '
+       <li><a href="#">'.$row->nama.'</a></li>
+       ';
+      }
+      $output .= '</ul>';
+      echo $output;
+     }
+    }
+
 }
