@@ -20,7 +20,7 @@ return new class extends Migration
             // $table->foreignId('id_kegiatansawah')->constrained('penanaman_bawangs')->onDelete('cascade')->onUpdate('cascade');
             $table->date('panen_tanggal');
             $table->float('panen_jumlah');
-            $table->bigInteger('id_penebas');
+            $table->string('id_penebas');
             $table->float('panen_harga');
             $table->float('panen_kualitas_a')->nullable();
             $table->float('panen_kualitas_b')->nullable();
