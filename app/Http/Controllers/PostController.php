@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Auth;
+use Illuminate\Support\Facades\DB;
 
 class PostController extends Controller
 {
@@ -85,24 +86,31 @@ class PostController extends Controller
     // {
     //     $data = DB::table('biodatas')->where('nama')->get();
     // }
-    function fetch(Request $request)
+    // function l(Request $request)
+    // {
+    //  if($request->get('query'))
+    //  {
+    //   $query = $request->get('query');
+    //   $data = DB::table('biodatas')
+    //     ->where('nama', 'LIKE', "%{$query}%")
+    //     ->get();
+    //   $output = '<ul class="dropdown-menu" style="display:block; position:relative">';
+    //   foreach($data as $row)
+    //   {
+    //    $output .= '
+    //    <li><a href="#">'.$row->nama.'</a></li>
+    //    ';
+    //   }
+    //   $output .= '</ul>';
+    //   echo $output;
+    //  }
+    // }
+    public function loadData(Request $request)
     {
-     if($request->get('query'))
-     {
-      $query = $request->get('query');
-      $data = DB::table('biodatas')
-        ->where('nama', 'LIKE', "%{$query}%")
-        ->get();
-      $output = '<ul class="dropdown-menu" style="display:block; position:relative">';
-      foreach($data as $row)
-      {
-       $output .= '
-       <li><a href="#">'.$row->nama.'</a></li>
-       ';
-      }
-      $output .= '</ul>';
-      echo $output;
-     }
+        if ($request->has('q')) {
+            $cari = $request->q;
+            $data = DB::table('biodatas')->select('id', 'nama')->where('nama', 'LIKE', '%' . $cari . '%')->get();
+            return response()->json($data);
+        }
     }
-
 }

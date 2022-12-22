@@ -47,18 +47,10 @@
                                 <label for="" class="form-label">Tanggal Panen</label>
                                 <input type="date" name="panen_tanggal" class="form-control">
                             </div>
-                            <!-- nama penebas -->
-                            {{-- <div class="mb-3">
-                                <label for="" class="form-label">Nama penebas</label>
-                                <input type="text" name="id_penebas" id="id_penebas" class="form-control">
-                            </div> --}}
-                            <div class="form-group">
-                                <input type="text" name="id_penebas" id="id_penebas" placeholder="Massukan Nama Penebas" />
-                                <div id="penebas_list"></div>
-                            </div>
+                            <select class="cari form-control" style="width:500px;" name="cari"></select>
                             {{ csrf_field() }}
                             <!-- nama penebas -->
-                            <div class="mb-3">
+                            <div class="mb-3 mt-5">
                                 <label for="" class="form-label">Harga yang disepakati</label>
                                 <input type="number" name="harga_sepakat" id="harga_sepakat" class="form-control">
                             </div>

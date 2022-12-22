@@ -21,6 +21,8 @@
     <!-- Argon CSS -->
     <link type="text/css" href="{{ asset('argon') }}/css/argon.css?v=1.0.0" rel="stylesheet">
     <link rel="stylesheet" href="toruskit.bundle.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+
 
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.css">
 
@@ -59,33 +61,58 @@
     });
 </script>
 <div>
-    <script>
-        $(document).ready(function(){
-        
-         $('#id_penebas').keyup(function(){ 
+    <!-- <script>
+        $(document).ready(function() {
+
+            $('#id_penebas').keyup(function() {
                 var query = $(this).val();
-                if(query != '')
-                {
-                 var _token = $('input[name="_token"]').val();
-                 $.ajax({
-                  url:"{{ route('autocomplete.fetch') }}",
-                  method:"POST",
-                  data:{query:query, _token:_token},
-                  success:function(data){
-                   $('#penebas_list').fadeIn();  
+                if (query != '') {
+                    var _token = $('input[name="_token"]').val();
+                    $.ajax({
+                        url: "{{ route('autocomplete.fetch') }}",
+                        method: "POST",
+                        data: {
+                            query: query,
+                            _token: _token
+                        },
+                        success: function(data) {
+                            $('#penebas_list').fadeIn();
                             $('#penebas_list').html(data);
-                  }
-                 });
+                        }
+                    });
                 }
             });
-        
-            $(document).on('click', 'li', function(){  
-                $('#name').val($(this).text());  
-                $('#penebas_list').fadeOut();  
-            });  
-        
+
+            $(document).on('click', 'li', function() {
+                $('#name').val($(this).text());
+                $('#penebas_list').fadeOut();
+            });
+
         });
-        </script>
+    </script> -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+    <script type="text/javascript">
+        $('.cari').select2({
+            placeholder: 'Cari...',
+            ajax: {
+                url: '/cari',
+                dataType: 'json',
+                delay: 250,
+                processResults: function(data) {
+                    return {
+                        results: $.map(data, function(item) {
+                            return {
+                                text: item.nama,
+                                id: item.id
+                            }
+                        })
+                    };
+                },
+                cache: true
+            }
+        });
+    </script>
 
 </html>
 <footer>
