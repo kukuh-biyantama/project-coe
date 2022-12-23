@@ -128,6 +128,7 @@ Route::get('/formeditdatapanen/{id}', [PanenController::class, 'formeditdatapane
 Route::post('/updatedatapanen/{id}', [PanenController::class, 'updatedatapanen'])->name('updatedatapanen');
 Route::get('/deletedatapanen/{id}', [PanenController::class, 'deletedatapanen'])->name('deletedatapanen');
 Route::post('/verifypetani', [PanenController::class, 'verifypetani'])->name('verifypetani');
+Route::get('/cari', [PostController::class, 'loaddata'])->name('loaddata');
 // Route::post('/verifypetani', [GetpenanamanbawangBaseController::class, 'verifypetani'])->name('verifypetani');
 
 // Form Hama
@@ -158,4 +159,3 @@ Route::get('/lokasipetani', [LokasiPetaniController::class, 'index'])->name('lok
 
 
 Route::get('/riwayatpanen', [RiwayatController::class, 'index'])->name('riwayatPanen');
-Route::get('/cari', [PostController::class, 'loaddata'])->name('loaddata');

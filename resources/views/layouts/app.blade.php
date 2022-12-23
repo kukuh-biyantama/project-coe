@@ -61,35 +61,6 @@
     });
 </script>
 <div>
-    <!-- <script>
-        $(document).ready(function() {
-
-            $('#id_penebas').keyup(function() {
-                var query = $(this).val();
-                if (query != '') {
-                    var _token = $('input[name="_token"]').val();
-                    $.ajax({
-                        url: "{{ route('autocomplete.fetch') }}",
-                        method: "POST",
-                        data: {
-                            query: query,
-                            _token: _token
-                        },
-                        success: function(data) {
-                            $('#penebas_list').fadeIn();
-                            $('#penebas_list').html(data);
-                        }
-                    });
-                }
-            });
-
-            $(document).on('click', 'li', function() {
-                $('#name').val($(this).text());
-                $('#penebas_list').fadeOut();
-            });
-
-        });
-    </script> -->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
     <script type="text/javascript">
@@ -104,7 +75,7 @@
                         results: $.map(data, function(item) {
                             return {
                                 text: item.nama,
-                                id: item.id
+                                id: item.nama
                             }
                         })
                     };

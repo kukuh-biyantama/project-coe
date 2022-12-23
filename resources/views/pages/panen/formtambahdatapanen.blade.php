@@ -25,12 +25,16 @@
                             <!-- Kabupaten -->
                             <div class="mb-3">
                                 <label for="" class="form-label">Kabupaten</label>
-                                <input type="text" name="" style="width:100%" class="form-control" value="{{ $users->kabupaten }}" disabled>
+                                <input type="text" name="kabupaten" style="width:100%" class="form-control" value="{{ $users->kabupaten }}" disabled>
                             </div>
                             <!-- idlokasi -->
                             <div class="mb-3">
                                 <label for="" class="form-label">Lokasi</label>
-                                <input type="text" name="" style="width:100%" class="form-control" value="Sawah {{ $users->id_lokasisawah }}" disabled>
+                                <input type="text" name="" id="" style="width:100%" class="form-control" value="Sawah {{ $users->id_lokasisawah }}" disabled>
+                            </div>
+                            <div class="mb-3">
+                                <label for="" class="form-label">Lokasi</label>
+                                <input type="hidden" name="lokasi" id="lokasi" style="width:100%" class="form-control" value="{{ $users->id_lokasisawah }}">
                             </div>
                             <!-- luas lahan -->
                             <div class="mb-3">
@@ -47,10 +51,18 @@
                                 <label for="" class="form-label">Tanggal Panen</label>
                                 <input type="date" name="panen_tanggal" class="form-control">
                             </div>
-                            <select class="cari form-control" style="width:500px;" name="cari"></select>
+                            <div class="mb-3">
+                                <label for="" class="form-label">Jumlah panen</label>
+                                <input type="number" name="panen_jumlah" class="form-control">
+                            </div>
+                            <div class="mb-3">
+                                <label for="" class="form-label">Nama penebas</label>
+                                <br>
+                                <select class="cari form-control" style="width:500px;" name="cari" id="id_penebas"></select>
+                            </div>
                             {{ csrf_field() }}
                             <!-- nama penebas -->
-                            <div class="mb-3 mt-5">
+                            <div class="mb-3 mt-4">
                                 <label for="" class="form-label">Harga yang disepakati</label>
                                 <input type="number" name="harga_sepakat" id="harga_sepakat" class="form-control">
                             </div>

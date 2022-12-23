@@ -42,12 +42,12 @@
                                 "</td>";
                         } else {
                             echo "<td>" .
-                                "<input type='checkbox' id='verify-checkbox'  onclick='isChecked()' value='1' checked disabled/>" .
+                                "<input type='checkbox' id='verify-checkbox'  onclick='isChecked()' checked disabled/>" .
                                 "<p id='message'>panen</p>" .
                                 "</td>";
                         }
                         echo "<td>" .
-                            "<a href='/formtambahdatapanen/$row->id' class='btn btn-success'>Hasil Panen</a>" .
+                            "<a href='/formtambahdatapanen/$row->id' class='btn btn-success' id='submit_panen' onclick='isSubmit()' >Hasil Panen</a>" .
                             "</td>";
                         echo "<td>" .
                             "<a href='/deletedatapanen/$row->id' class='btn btn-danger'>Hapus</a>" .

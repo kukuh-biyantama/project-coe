@@ -9,9 +9,8 @@ function isChecked(){
     }
 }
 
-// function savedata(){
-//     document.getElementById('formverify').submit();
-//     document.getElementById("verify-checkbox");
-//     document.getElementById("idSawahpetani");
-//     return false;
-// }
+function isSubmit(){
+    if(document.getElementById("submit_panen")){
+        alert("data panen adalah data valid anda, apakah anda yakin?")
+    }
+}
