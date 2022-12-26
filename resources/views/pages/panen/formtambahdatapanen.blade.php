@@ -44,7 +44,11 @@
                             <!-- waktu tanam -->
                             <div class="mb-3">
                                 <label for="" class="form-label">Waktu Tanam</label>
-                                <input type="text" name="" style="width:100%" class="form-control" value="{{ $users->ks_waktu_tanam }}" disabled>
+                                <input type="text" name="" id="" style="width:100%" class="form-control" value="{{ $users->ks_waktu_tanam }}" disabled>
+                            </div>
+                            <div class="mb-3">
+                                <label for="" class="form-label">Waktu Tanam</label>
+                                <input type="hidden" name="waktutanam" id="waktutanam" style="width:100%" class="form-control" value="{{ $users->ks_waktu_tanam }}">
                             </div>
                             <!-- Tanggal Panen -->
                             <div class="mb-3">

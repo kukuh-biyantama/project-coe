@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->bigInteger('id_user');
             $table->string('id_lokasisawah');
-            // $table->foreignId('id_kegiatansawah')->constrained('penanaman_bawangs')->onDelete('cascade')->onUpdate('cascade');
+            $table->date('ks_waktu_tanam');
             $table->date('panen_tanggal');
             $table->float('panen_jumlah');
             $table->string('id_penebas');
@@ -25,6 +25,7 @@ return new class extends Migration
             $table->float('panen_kualitas_a')->nullable();
             $table->float('panen_kualitas_b')->nullable();
             $table->float('panen_kualitas_c')->nullable();
+            $table->string('status')->nullable();
             $table->timestamps();
         });
     }

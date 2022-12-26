@@ -25,14 +25,15 @@ class PanenController extends Controller
         } else {
             $users = DB::table('penanaman_bawangs')->where('penanaman_bawangs.id_user', $currentuserid)
                 ->get();
-            return view('pages.panen.datapanen', compact('users'));
-            // return view('/pages/responslokasi/responslokasi');
-            // // $data = DB::table('panens')->from('penanaman_bawangs')->join('panens', 'penanaman_bawangs.id', '=', 'panens.id')
-            //     ->WHERE('penanaman_bawangs.id_user', $currentuserid)
-            //     ->WHERE('penanaman_bawangs.ks_panen', 1)
-            //     ->get();
-
-            // return dd($users);
+            // $panen = DB::table('panens')->where('panens.id_user', $currentuserid)->get();
+            $panen = DB::table('panens')
+                ->join('penanaman_bawangs', 'penanaman_bawangs.ks_waktu_tanam', '=', 'panens.ks_waktu_tanam')
+                ->where('panens.id_user', $currentuserid)
+                ->where('status', 'verify')
+                ->select('panens.id', 'panens.ks_waktu_tanam', 'panens.status')
+                ->get();
+            return view('pages.panen.datapanen', compact('users', 'panen', 'currentuserid'));
+            // dd($panen);
         }
     }
 
@@ -52,6 +53,7 @@ class PanenController extends Controller
         // data lokasi
         $kabupaten = $request->input('kabupaten');
         $lokasiSawah = $request->input('lokasi');
+        $waktutanam = $request->input('waktutanam');
         $tanggalPanen = $request->input('panen_tanggal');
         $panenJumlah = $request->input('panen_jumlah');
         $idPenebas = $request->input('cari');
@@ -59,14 +61,15 @@ class PanenController extends Controller
         panen::create([
             'id_user' => $currentuserid,
             'id_lokasisawah' => $lokasiSawah,
+            'ks_waktu_tanam' => $waktutanam,
             'panen_tanggal' => $tanggalPanen,
             'panen_jumlah' => $panenJumlah,
             'id_penebas' => $idPenebas,
-            'panen_harga' => $hargaJual
+            'panen_harga' => $hargaJual,
+            'status' => 'verify'
         ]);
-
         // $updatekspanen = DB::table('penanaman_bawangs')->where('id_user', $currentuserid)->where('id_lokasisawah', $datalokasi)->update(['ks_panen' => '1']);
-        return redirect()->route('datapanen')->with('success', 'Data Panen telah berhasil ditambahkan')->compact('');
+        return redirect()->route('datapanen')->with('success', 'Data Panen telah berhasil ditambahkan');
     }
 
     public function formeditdatapanen($id)
