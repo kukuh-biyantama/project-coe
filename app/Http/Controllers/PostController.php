@@ -86,7 +86,7 @@ class PostController extends Controller
     {
         if ($request->has('q')) {
             $cari = $request->q;
-            $data = DB::table('biodatapengepuls')->where('nama', 'LIKE', '%' . $cari . '%')->get();
+            $data = DB::table('daftarpengepuls')->where('nama', 'LIKE', '%' . $cari . '%')->get();
             return response()->json($data);
         }
     }

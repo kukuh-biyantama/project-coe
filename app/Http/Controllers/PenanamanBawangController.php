@@ -106,6 +106,7 @@ class PenanamanBawangController extends Controller
         $ks_jumlah_modal = $request->input('ks_jumlah_modal');
         //panen
         $panen = $request->input('ks_panen');
+        $namapetani = Auth::user()->name;
 
         //get data iot
         $currentuserid = Auth::user()->id;
@@ -122,6 +123,7 @@ class PenanamanBawangController extends Controller
         }
         penanaman_bawang::create([
             'id_user' => $currentuserid,
+            'namapetani' => $namapetani,
             'ks_metode_pengairan' => $input_ks_metode_pengairan,
             'ks_modal' => $input_ks_modal,
             'ks_panen' => $panen,
