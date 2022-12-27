@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('panens', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('id_user');
+            $table->string('namapetani');
             $table->string('id_lokasisawah');
             $table->date('ks_waktu_tanam');
             $table->date('panen_tanggal');
@@ -26,6 +27,7 @@ return new class extends Migration
             $table->float('panen_kualitas_b')->nullable();
             $table->float('panen_kualitas_c')->nullable();
             $table->string('status')->nullable();
+            $table->string('statusdaripengepul')->nullable();
             $table->timestamps();
         });
     }

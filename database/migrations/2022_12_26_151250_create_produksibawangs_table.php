@@ -14,11 +14,10 @@ return new class extends Migration
     public function up()
     {
         Schema::create('produksibawangs', function (Blueprint $table) {
-            $table->id();
-            $table->string('produksibawang_id');
+            $table->increments('produksibawang_id');
             $table->string('kab_id');
             $table->date('tgl');
-            $table->integer('integer');
+            $table->float('produksi');
             $table->timestamps();
         });
     }

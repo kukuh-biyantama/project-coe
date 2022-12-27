@@ -49,6 +49,7 @@ class PanenController extends Controller
     {
         // current user
         $currentuserid = Auth::user()->id;
+        $namapetani = Auth::user()->name;
 
         // data lokasi
         $kabupaten = $request->input('kabupaten');
@@ -58,15 +59,19 @@ class PanenController extends Controller
         $panenJumlah = $request->input('panen_jumlah');
         $idPenebas = $request->input('cari');
         $hargaJual = $request->input('harga_sepakat');
+        $statuspengepul = "0";
         panen::create([
             'id_user' => $currentuserid,
+            'namapetani' => $namapetani,
             'id_lokasisawah' => $lokasiSawah,
             'ks_waktu_tanam' => $waktutanam,
             'panen_tanggal' => $tanggalPanen,
             'panen_jumlah' => $panenJumlah,
             'id_penebas' => $idPenebas,
             'panen_harga' => $hargaJual,
+            'statusdaripengepul' => $statuspengepul,
             'status' => 'verify'
+            
         ]);
         // $updatekspanen = DB::table('penanaman_bawangs')->where('id_user', $currentuserid)->where('id_lokasisawah', $datalokasi)->update(['ks_panen' => '1']);
         return redirect()->route('datapanen')->with('success', 'Data Panen telah berhasil ditambahkan');
