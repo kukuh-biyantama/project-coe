@@ -71,6 +71,15 @@ class PanenController extends Controller
         $waktutanam = $request->input('waktutanam');
         $tanggalPanen = $request->input('panen_tanggal');
         $panenJumlah = $request->input('panen_jumlah');
+        $stnJumlahpanen = $request->input('stnJumlahpanen');
+        //konversi data panen ke kg
+        if ($stnJumlahpanen == "kg") {
+            $hasilsatuanJumlah = $panenJumlah;
+        } elseif ($stnJumlahpanen == "kwintal") {
+            $hasilsatuanJumlah = $panenJumlah * 100;
+        } elseif ($stnJumlahpanen == "Ton") {
+            $hasilsatuanJumlah = $panenJumlah * 1000;
+        }
         $idPenebas = $request->input('cari');
         $hargaJual = $request->input('harga_sepakat');
         $statuspengepul = "0";
@@ -80,7 +89,7 @@ class PanenController extends Controller
             'id_lokasisawah' => $lokasiSawah,
             'ks_waktu_tanam' => $waktutanam,
             'panen_tanggal' => $tanggalPanen,
-            'panen_jumlah' => $panenJumlah,
+            'panen_jumlah' => $hasilsatuanJumlah,
             'id_penebas' => $idPenebas,
             'panen_harga' => $hargaJual,
             'statusdaripengepul' => $statuspengepul,

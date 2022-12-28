@@ -55,6 +55,7 @@
     {{-- <script src="{{ asset('style/template/vendors/datatables.net-bs4/dataTables.bootstrap4.js') }}"></script> --}}
 
 </body>
+<script src="/assets/js/verifypanen.js"></script>
 <script>
     $(document).ready(function() {
         $('#table').DataTable();
