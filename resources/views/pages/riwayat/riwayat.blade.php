@@ -11,7 +11,7 @@
             <a href="/home" type="button" class="btn btn-primary">Kembali</a>
         </div>
         <div class="row table-responsive">
-            <table class="table table-bordered table-responsive" id="table">
+            <table class="table table-bordered" id="table">
                 <thead>
                     <tr>
                         <!-- <th scope="col">Penanaman ID</th> -->
