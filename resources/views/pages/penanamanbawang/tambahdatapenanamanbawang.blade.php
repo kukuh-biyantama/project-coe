@@ -29,11 +29,12 @@
               <div class="mb-3">
                 <label for="" class="form-label" style="font-weight: 600;">Lokasi</label>
                 <select class="form-control" name="lokasi_keterangan" aria-label="Default select example">
-                    <option selected disabled>Pilih</option>
-                    @foreach ($user_data as $iot)
-                        <option value="{{ $iot['lokasi_keterangan'] }}">Sawah Ke
-                            {{ $iot['lokasi_keterangan'] }}</option>
-                    @endforeach
+                  <option selected disabled>Pilih</option>
+                  @foreach ($user_data as $iot)
+                  <option value="{{ $iot['lokasi_keterangan'] }}">Sawah Ke
+                    {{ $iot['lokasi_keterangan'] }}
+                  </option>
+                  @endforeach
                 </select>
               </div>
 
@@ -168,7 +169,7 @@
               <!-- Jumlah Modal -->
               <label for="jumlahModal" class="form-label" style="font-weight: 600;">Jumlah Modal</label><br>
 
-              <input type="number" name="ks_jumlah_modal" style="width:100%" class="form-control @error('ks_jumlah_modal') is-invalid @enderror" value="{{ old('ks_jumlah_modal') }}">
+              <input type="number" name="ks_jumlah_modal" style="width:100%" class="form-control @error('ks_jumlah_modal') is-invalid @enderror" value="{{ old('ks_jumlah_modal') }}" min="1">
 
               @error('ks_jumlah_modal')
               <div class="invalid-feedback">{{ $message }}</div>
