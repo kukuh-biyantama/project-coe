@@ -39,10 +39,9 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Auth::routes();
 
-Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('home');
 Route::group(['middleware' => 'auth'], function () {
 	Route::get('/tambahdatapenanamanbawang', [PenanamanBawangController::class, 'tambahdatapenanamanbawang'])->name('tambahdatapenanamanbawang');
 	Route::resource('user', 'App\Http\Controllers\UserController', ['except' => ['show']]);
@@ -54,6 +53,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/addbiodata', function () {
 		return view('profile.addbiodata');
 	});
+	Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('home');
 
 	Route::get('upgrade', function () {
 		return view('pages.upgrade');
@@ -68,7 +68,7 @@ Route::group(['middleware' => 'auth'], function () {
 		return view('pages.tables');
 	})->name('table');
 	Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'App\Http\Controllers\ProfileController@password']);
-});
+	
 Route::post('/autocomplete/fetch', 'PostController@fetch')->name('autocomplete.fetch');
 // Form Lokasi Sawah
 Route::get('/datalokasisawah', [LokasiController::class, 'datalokasisawah'])->name('datalokasisawah');
@@ -159,3 +159,5 @@ Route::get('/lokasipetani', [LokasiPetaniController::class, 'index'])->name('lok
 
 
 Route::get('/riwayatpanen', [RiwayatController::class, 'index'])->name('riwayatPanen');
+
+});
