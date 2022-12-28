@@ -153,7 +153,7 @@ Route::group(['middleware' => 'auth'], function () {
 	//lokasi
 	Route::get('/lokasipetani', [LokasiPetaniController::class, 'index'])->name('lokasipetani');
 
-	//maps
+	//maps x
 	Route::get('/maps', [GooglemapsController::class, 'index'])->name('maps');
 	Route::get('/lokasipetani', [LokasiPetaniController::class, 'index'])->name('lokasipetani');
 
