@@ -68,16 +68,16 @@ Route::group(['middleware' => 'auth'], function () {
 		return view('pages.tables');
 	})->name('table');
 	Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'App\Http\Controllers\ProfileController@password']);
-});
-Route::post('/autocomplete/fetch', 'PostController@fetch')->name('autocomplete.fetch');
-// Form Lokasi Sawah
-Route::get('/datalokasisawah', [LokasiController::class, 'datalokasisawah'])->name('datalokasisawah');
-Route::get('/formtambahdatalokasisawah', [LokasiController::class, 'formtambahdatalokasisawah'])->name('formtambahdatalokasisawah');
-Route::post('/insertdatalokasisawah', [LokasiController::class, 'insertdatalokasisawah'])->name('insertdatalokasisawah');
-Route::get('/formeditdatalokasisawah/{id}', [LokasiController::class, 'formeditdatalokasisawah'])->name('formeditdatalokasisawah');
-Route::post('/updatedatalokasisawah/{id}', [LokasiController::class, 'updatedatalokasisawah'])->name('updatedatalokasisawah');
-// Route::get('/deletedatalokasisawah/{id}', [LokasiController::class, 'deletedatalokasisawah'])->name('deletedatalokasisawah');
-Route::get('/deletedatalokasisawah/{userid}/{lokasi_keterangan}', [LokasiController::class, 'deletedatalokasisawah'])->name('deletedatalokasisawah');
+
+	Route::post('/autocomplete/fetch', 'PostController@fetch')->name('autocomplete.fetch');
+	// Form Lokasi Sawah
+	Route::get('/datalokasisawah', [LokasiController::class, 'datalokasisawah'])->name('datalokasisawah');
+	Route::get('/formtambahdatalokasisawah', [LokasiController::class, 'formtambahdatalokasisawah'])->name('formtambahdatalokasisawah');
+	Route::post('/insertdatalokasisawah', [LokasiController::class, 'insertdatalokasisawah'])->name('insertdatalokasisawah');
+	Route::get('/formeditdatalokasisawah/{id}', [LokasiController::class, 'formeditdatalokasisawah'])->name('formeditdatalokasisawah');
+	Route::post('/updatedatalokasisawah/{id}', [LokasiController::class, 'updatedatalokasisawah'])->name('updatedatalokasisawah');
+	// Route::get('/deletedatalokasisawah/{id}', [LokasiController::class, 'deletedatalokasisawah'])->name('deletedatalokasisawah');
+	Route::get('/deletedatalokasisawah/{userid}/{lokasi_keterangan}', [LokasiController::class, 'deletedatalokasisawah'])->name('deletedatalokasisawah');
 
 	// Route::post('/post/kirimlokasi', [LokasiSawahController::class, 'tambahlokasi']);
 	Route::get('add-blog-post-form', [PostController::class, 'index']);
@@ -159,6 +159,4 @@ Route::get('/deletedatalokasisawah/{userid}/{lokasi_keterangan}', [LokasiControl
 
 
 	Route::get('/riwayatpanen', [RiwayatController::class, 'index'])->name('riwayatPanen');
-});
-
 });
