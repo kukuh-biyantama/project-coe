@@ -11,8 +11,8 @@
             <!-- <a href="/formtambahdatapanen" type="button" class="btn btn-success" style="float: right;">Tambah Data</a> -->
             <a href="/home" type="button" class="btn btn-primary">Kembali</a>
         </div>
-        <div class="row">
-            <table class="table table-bordered">
+        <div class="row table-responsive">
+            <table class="table table-bordered"id="table">
                 <thead>
                     <tr>
                         <th scope="col">Kabupaten</th>
