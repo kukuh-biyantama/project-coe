@@ -9,6 +9,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
+use Ramsey\Uuid\Type\Integer;
+
+use function PHPSTORM_META\type;
 
 class PanenController extends Controller
 {
@@ -27,9 +30,7 @@ class PanenController extends Controller
                 ->get();
             // $panen = DB::table('panens')->where('panens.id_user', $currentuserid)->get();
             $panen = DB::table('panens')
-                ->join('penanaman_bawangs', 'penanaman_bawangs.ks_waktu_tanam', '=', 'panens.ks_waktu_tanam')
-                ->where('panens.id_user', $currentuserid)
-                ->where('status', 'verify')
+                ->join('penanaman_bawangs', 'penanaman_bawangs.id', '=', 'panens.id_user')
                 ->select('panens.id', 'panens.ks_waktu_tanam', 'panens.status')
                 ->get();
             return view('pages.panen.datapanen', compact('users', 'panen', 'currentuserid'));
@@ -41,8 +42,20 @@ class PanenController extends Controller
     {
         $currentuserid = Auth::user()->id;
         $users = penanaman_bawang::find($id);
-        // // $users = DB::table('penanaman_bawangs')->where('penanaman_bawangs.id_user', $currentuserid)->get();
-        return view('/pages/panen/formtambahdatapanen', compact('users'));
+        $panens = DB::table('panens')->where('panens.id_user', $id)->get();
+        if ($panens == '[]') {
+            $reviewpanen = ("datakosong");
+            return view('/pages/panen/formtambahdatapanen', compact('users', 'reviewpanen', 'id'));
+        } else {
+            foreach ($panens as $datapanen) {
+                if ((int)($datapanen->id_user) == (int)$id) {
+                    $reviewpanen =  $panens;
+                } else {
+                    $reviewpanen = ("datakosong");
+                }
+                return view('/pages/panen/formtambahdatapanen', compact('users', 'reviewpanen', 'id'));
+            }
+        }
     }
 
     public function insertdatapanen(Request $request)
@@ -52,6 +65,7 @@ class PanenController extends Controller
         $namapetani = Auth::user()->name;
 
         // data lokasi
+        $id = $request->input('id');
         $kabupaten = $request->input('kabupaten');
         $lokasiSawah = $request->input('lokasi');
         $waktutanam = $request->input('waktutanam');
@@ -61,7 +75,7 @@ class PanenController extends Controller
         $hargaJual = $request->input('harga_sepakat');
         $statuspengepul = "0";
         panen::create([
-            'id_user' => $currentuserid,
+            'id_user' => $id,
             'namapetani' => $namapetani,
             'id_lokasisawah' => $lokasiSawah,
             'ks_waktu_tanam' => $waktutanam,
@@ -71,7 +85,7 @@ class PanenController extends Controller
             'panen_harga' => $hargaJual,
             'statusdaripengepul' => $statuspengepul,
             'status' => 'verify'
-            
+
         ]);
         // $updatekspanen = DB::table('penanaman_bawangs')->where('id_user', $currentuserid)->where('id_lokasisawah', $datalokasi)->update(['ks_panen' => '1']);
         return redirect()->route('datapanen')->with('success', 'Data Panen telah berhasil ditambahkan');
@@ -157,7 +171,8 @@ class PanenController extends Controller
 
     public function deletedatapanen($id)
     {
-        $delete = DB::table('panens')->where('id', $id)->delete();
+        $deletepanen = DB::table('panens')->where('panens.id_user', $id)->delete();
+        $deletepenanamanbawangs = DB::table('penanaman_bawangs')->where('penanaman_bawangs.id', $id)->delete();
         return redirect()->route('datapanen')->with('success', 'Data Panen telah dihapus');
     }
 

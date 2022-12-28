@@ -49,56 +49,11 @@
                                 "<p id='message'>panen</p>" .
                                 "</td>";
                         }
-                        foreach ($panen as $dataPanenpetani) {
-                            $value = $dataPanenpetani->id;
-                            // echo $value;
-                        }
-                        // dd($panen);
-                        echo ($panen);
-                        // echo $value;
-
-                        // echo $row->id;
-                        if ($panen == '[]') {
-                            echo "<td>" .
-                                "<button class='btn btn-primary'><a href='/formtambahdatapanen/$row->id'}}' style='color:black'>Hasil Panen</a></button>" .
-                                "</td>";
-                        } else {
-                            foreach ($panen as $dataPanenpetani) {
-                                $value = $dataPanenpetani->status;
-                                if ($value == 'verify') {
-                                    echo "<td>" .
-                                        "<button class='btn btn-primary' value 'disabled>Hasil Panen</button>" .
-                                        "</td>";
-                                } else {
-                                    echo "<td>" .
-                                        "<button class='btn btn-primary'><a href='/formtambahdatapanen/$row->id'}}' style='color:black'>Hasil Panen</a></button>" .
-                                        "</td>";
-                                }
-                            }
-                            // if ($value == $row->id) {
-                            //     echo "<td>" .
-                            //         "<button class='btn btn-primary' value ='$row->id'disabled>Hasil Panen</button>" .
-                            //         "</td>";
-                            // } else {
-                            //     echo "<td>" .
-                            //         "<button class='btn btn-primary'><a href='/formtambahdatapanen/$row->id'}}' style='color:black'>Hasil Panen</a></button>" .
-                            //         "</td>";
-                            // }
-                        }
-                        // if ($) {
-                        //     echo "<td>" .
-                        //         "<button class='btn btn-primary' disabled><a href='/formtambahdatapanen/$row->id'}}' style='color:black'>Hasil Panen</a></button>" .
-                        //         "</td>";
-                        // } else {
-                        //     echo "<td>" .
-                        //         "<button class='btn btn-primary'><a href='/formtambahdatapanen/$row->id'}}'style='color:black'>Hasil Panen</a></button>" .
-                        //         "</td>";
-                        // }
-                        // echo "<td>" .
-                        //     "<button class='btn btn-primary'><a href='/formtambahdatapanen/$row->id'}}' style='color:black'>Delete User</a></button>" .
-                        //     "</td>";
                         echo "<td>" .
-                            "<a href='/deletedatapanen/$row->id' class='btn btn-danger'>Hapus</a>" .
+                            "<button class='btn btn-primary'><a href='/formtambahdatapanen/$row->id'}}' style='color:black'>Hasil Panen</a></button>" .
+                            "</td>";
+                        echo "<td>" .
+                            "<button class='btn btn-danger'><a href='/deletedatapanen/$row->id'}}' style='color:black'>Hapus</a></button>" .
                             "</td>";
                         echo "</tr>";
                     }

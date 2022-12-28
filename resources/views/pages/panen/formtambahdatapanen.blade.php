@@ -24,6 +24,10 @@
                             @csrf
                             <!-- Kabupaten -->
                             <div class="mb-3">
+                                <label for="" class="form-label">id</label>
+                                <input type="hidden" name="id" id="id" style="width:100%" class="form-control" value="{{ $users->id }}">
+                            </div>
+                            <div class="mb-3">
                                 <label for="" class="form-label">Kabupaten</label>
                                 <input type="text" name="kabupaten" style="width:100%" class="form-control" value="{{ $users->kabupaten }}" disabled>
                             </div>
@@ -72,8 +76,23 @@
                             </div>
                             <!-- Button Submit dan Cancel -->
                             <div class="mb-4 mt-5 text-center">
-                                <button type="submit" class="btn btn-primary me-4">Submit</button>
-                                <button type="reset" class="btn btn-danger">Cancel</button>
+                                <!-- <button type="submit" class="btn btn-primary me-4">Submit</button>
+                                <button type="reset" class="btn btn-danger">Cancel</button> -->
+                                <?php
+                                if ($reviewpanen == "datakosong") {
+                                    echo  "<button class='btn btn-primary' type='submit'>SUBMIT</button>";
+                                } else {
+                                    foreach ($reviewpanen as $verifypanen) {
+                                        if ($verifypanen->id_user == $id) {
+                                            echo   "<button class='btn btn-primary' type='submit' disabled>SUBMIT</button>";
+                                            echo "<br>";
+                                            echo "Data Sudah Terisi";
+                                        } else {
+                                            echo  "<button class='btn btn-primary' type='submit'>SUBMIT</button>";
+                                        }
+                                    }
+                                }
+                                ?>
                             </div>
                         </form>
                     </div>
