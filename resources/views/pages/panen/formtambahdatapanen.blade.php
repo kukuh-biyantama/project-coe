@@ -59,9 +59,31 @@
                                 <label for="" class="form-label">Tanggal Panen</label>
                                 <input type="date" name="panen_tanggal" class="form-control">
                             </div>
-                            <div class="mb-3">
+                            <!-- <div class="mb-3">
                                 <label for="" class="form-label">Jumlah panen</label>
                                 <input type="number" name="panen_jumlah" class="form-control">
+                            </div> -->
+                            <div class="mb-3">
+                                <label class="form-label">Jumlah Panen</label>
+                                <p><input type="number" placeholder="Jumlah Panen" name="panen_jumlah" min="1"></p>
+                                <div class="form-radio">
+                                    <div class="up">
+                                        <input class="inputan" type="radio" name="stnJumlahpanen" id="kilogram" value="kg">
+                                        <label>Kg</label>
+                                    </div>
+                                </div>
+                                <div class="form-radio">
+                                    <div class="down">
+                                        <input class="inputan" type="radio" name="stnJumlahpanen" id="kuintal" value="kwintal">
+                                        <label>Kwintal</label>
+                                    </div>
+                                </div>
+                                <div class="form-radio">
+                                    <div class="down">
+                                        <input class="inputan" type="radio" name="stnJumlahpanen" id="ton" value="Ton">
+                                        <label>Ton</label>
+                                    </div>
+                                </div>
                             </div>
                             <div class="mb-3">
                                 <label for="" class="form-label">Nama penebas</label>
@@ -80,15 +102,15 @@
                                 <button type="reset" class="btn btn-danger">Cancel</button> -->
                                 <?php
                                 if ($reviewpanen == "datakosong") {
-                                    echo  "<button class='btn btn-primary' type='submit'>SUBMIT</button>";
+                                    echo  "<button class='btn btn-primary' type='submit'>Jual</button>";
                                 } else {
                                     foreach ($reviewpanen as $verifypanen) {
                                         if ($verifypanen->id_user == $id) {
-                                            echo   "<button class='btn btn-primary' type='submit' disabled>SUBMIT</button>";
+                                            echo   "<button class='btn btn-primary' type='submit' disabled>Jual</button>";
                                             echo "<br>";
                                             echo "Data Sudah Terisi";
                                         } else {
-                                            echo  "<button class='btn btn-primary' type='submit'>SUBMIT</button>";
+                                            echo  "<button class='btn btn-primary' type='submit'>Jual</button>";
                                         }
                                     }
                                 }

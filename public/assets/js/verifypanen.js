@@ -14,3 +14,8 @@ function isSubmit(){
         alert("data panen adalah data valid anda, apakah anda yakin?")
     }
 }
+
+//botton delete
+function deleted(){
+    alert("apakah yakin menghapus data?!");
+}

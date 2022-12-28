@@ -53,7 +53,7 @@
                             "<button class='btn btn-primary'><a href='/formtambahdatapanen/$row->id'}}' style='color:black'>Hasil Panen</a></button>" .
                             "</td>";
                         echo "<td>" .
-                            "<button class='btn btn-danger'><a href='/deletedatapanen/$row->id'}}' style='color:black'>Hapus</a></button>" .
+                            "<button class='btn btn-danger' onclick ='deleted()'><a href='/deletedatapanen/$row->id'}}' style='color:black'>Hapus</a></button>" .
                             "</td>";
                         echo "</tr>";
                     }
@@ -63,7 +63,7 @@
         </div>
     </div>
     @endsection
-    <script src="/assets/js/verifypanen.js"></script>
+    <!-- <script src="/assets/js/verifypanen.js"></script> -->
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
