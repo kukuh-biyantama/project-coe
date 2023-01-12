@@ -32,8 +32,48 @@
                     fjs.parentNode.insertBefore(js, fjs);
                 })(document, 'script', 'tomorrow-sdk');
             </script>
+            <?php
+            // Construct the API endpoint URL
+            $url = 'http://compute.dinus.ac.id:900/api/get/showiotuser/'. $data= Auth::user()->id ;
+            
+            // Make the API request
+            $curl = curl_init();
+            curl_setopt($curl, CURLOPT_URL, $url);
+            curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+            $response = curl_exec($curl);
+            curl_close($curl);
+            
+            // Decode the JSON response
+            $data = json_decode($response, true);
 
-            <div class="tomorrow" data-location-id="056965" data-language="EN" data-unit-system="METRIC" data-skin="light" data-widget-type="aqiPollen" style="padding-bottom:22px;position:relative;">
+            function tampilJSON($data){
+                foreach ($data as $item) {
+                    return $item['tommorow_code'];
+                }
+            }
+
+            $hasilJSON = tampilJSON($data);
+
+            //echo $hasilJSON;
+
+
+
+            // dd($data);
+            // Loop through the data and display it
+            foreach ($data as $item) {
+            //     echo <div class="tomorrow" data-location-id=$datum['tommorow_code'] data-language="EN" data-unit-system="METRIC"
+            //     data-skin="light" data-widget-type="aqiPollen" style="padding-bottom:22px;position:relative;">
+            //     <a href="https://www.tomorrow.io/weather/" rel="nofollow noopener noreferrer" target="_blank"
+            //         style="position: absolute; bottom: 0; transform: translateX(-50%); left: 50%;">
+            //     </a>
+            // </div>
+            //$hasil = $item['tommorow_code'];
+            //echo $item['tommorow_code'] . "<br>";
+
+            }
+            ?>
+
+            <div class="tomorrow" data-location-id="<?php echo '0'.$hasilJSON ?>" data-language="ID" data-unit-system="METRIC" data-skin="light" data-widget-type="aqiPollen" style="padding-bottom:22px;position:relative;">
                 <a href="https://www.tomorrow.io/weather/" rel="nofollow noopener noreferrer" target="_blank" style="position: absolute; bottom: 0; transform: translateX(-50%); left: 50%;">
                 </a>
             </div>
