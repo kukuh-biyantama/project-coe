@@ -94,7 +94,7 @@
                             <!-- nama penebas -->
                             <div class="mb-3 mt-4">
                                 <label for="" class="form-label">Harga yang disepakati</label>
-                                <input type="number" name="harga_sepakat" id="harga_sepakat" class="form-control">
+                                <input type="number" name="harga_sepakat" id="harga_sepakat" class="form-control" min="1">
                             </div>
                             <!-- Button Submit dan Cancel -->
                             <div class="mb-4 mt-5 text-center">
