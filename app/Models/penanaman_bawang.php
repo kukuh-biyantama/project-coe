@@ -17,4 +17,16 @@ class penanaman_bawang extends Model
         return DB::table('penanaman_bawangs')
             ->select('*');
     }
+
+
+    public function kspenyakit(){
+        return $this->belongsTo(kspenyakit::class, 'id', 'kegiatansawah_id');
+    }
+
+    public function penyakit(){
+        return $this->belongsTo(penyakit::class, 'penyakit_id', 'id');
+    }
+
+
+
 }

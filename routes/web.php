@@ -160,4 +160,7 @@ Route::get('/lokasipetani', [LokasiPetaniController::class, 'index'])->name('lok
 
 Route::get('/riwayatpanen', [RiwayatController::class, 'index'])->name('riwayatPanen');
 
-});	
+});
+
+
+Route::get('/menu/kspenyakit', [PenanamanBawangController::class, 'kegiatansawahorm']);

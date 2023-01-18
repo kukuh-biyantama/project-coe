@@ -34,7 +34,7 @@
             </script>
             <?php
             // Construct the API endpoint URL
-            $url = 'http://compute.dinus.ac.id:900/api/get/showiotuser/'. $data= Auth::user()->id ;
+            $url = 'http://compute.dinus.ac.id:900/api/get/lokasi/'. $data= Auth::user()->id ;
             
             // Make the API request
             $curl = curl_init();
@@ -48,7 +48,7 @@
 
             function tampilJSON($data){
                 foreach ($data as $item) {
-                    return $item['tommorow_code'];
+                    echo $item['kab']['tommorow_code'];
                 }
             }
 
@@ -73,7 +73,7 @@
             }
             ?>
 
-            <div class="tomorrow" data-location-id="<?php echo '0'.$hasilJSON ?>" data-language="ID" data-unit-system="METRIC" data-skin="light" data-widget-type="aqiPollen" style="padding-bottom:22px;position:relative;">
+            <div class="tomorrow" data-location-id="<?php echo  $hasilJSON ?>" data-language="ID" data-unit-system="METRIC" data-skin="light" data-widget-type="aqiPollen" style="padding-bottom:22px;position:relative;">
                 <a href="https://www.tomorrow.io/weather/" rel="nofollow noopener noreferrer" target="_blank" style="position: absolute; bottom: 0; transform: translateX(-50%); left: 50%;">
                 </a>
             </div>
@@ -409,6 +409,23 @@
                                     <h1 class="dot">6</h1>
                                     <div class="col">
                                         <h2 class="card-title text-uppercase text-muted mb-0">Riwayat Penanaman Bawang</h2>
+                                    </div>
+                                    <div class="col mt-2">
+                                        <div class="icon icon-shape bg-info text-white rounded-circle shadow">
+                                            <i class="fa fa-history"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="card card-stats mb-0 mb-xl-0 mt-2 btn btn-secondary">
+                        <a href="{{ url('datapenyakit') }}">
+                            <div class="card-body">
+                                <div class="row">
+                                    <h1 class="dot">?</h1>
+                                    <div class="col">
+                                        <h2 class="card-title text-uppercase text-muted mb-0">Penyakit Penanaman Bawang</h2>
                                     </div>
                                     <div class="col mt-2">
                                         <div class="icon icon-shape bg-info text-white rounded-circle shadow">

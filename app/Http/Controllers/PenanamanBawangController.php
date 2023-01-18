@@ -202,4 +202,10 @@ class PenanamanBawangController extends Controller
         ]);
         return redirect()->route('datapenanamanbawang')->with('success', 'Data Penanaman Bawang telah berhasil diupdate');
     }
+
+
+    public function kegiatansawahorm(){
+        $data = penanaman_bawang::with('kspenyakit')->with('penyakit')->get();
+        return json_encode($data);
+    }
 }
