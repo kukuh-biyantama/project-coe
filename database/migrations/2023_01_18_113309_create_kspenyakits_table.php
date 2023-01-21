@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('ks_penyakit_keterangan');
             $table->timestamps();
 
-
+            
         });
     }
 

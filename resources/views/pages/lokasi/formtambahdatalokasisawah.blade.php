@@ -43,13 +43,13 @@
                         <label for="" class="form-label">Kabupaten</label>
                         <select class="form-control" name="kabupaten" aria-label="Default select example">
                             <option selected disabled>Pilih</option>
-                            <option value="Boyolali">Boyolali</option>
-                            <option value="Brebes">Brebes</option>
-                            <option value="Demak">Demak</option>
-                            <option value="Kendal">Kendal</option>
-                            <option value="Temanggung">Temanggung</option>
-                            <option value="Kudus">Kudus</option>
-                            <option value="Pati">Pati</option>
+                            <option value="1">Boyolali</option>
+                            <option value="2">Brebes</option>
+                            <option value="3">Demak</option>
+                            <option value="4">Kendal</option>
+                            <option value="5">Temanggung</option>
+                            <option value="6">Kudus</option>
+                            <option value="7">Pati</option>
                         </select>
                     </div>
 

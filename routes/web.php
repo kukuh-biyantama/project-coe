@@ -3,6 +3,7 @@
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\reportiotclient;
 use App\Http\Controllers\RiwayatController;
+use App\Models\penyakit;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClusterpetaniController;
 use App\Http\Controllers\DataClusterController;
@@ -162,5 +163,11 @@ Route::get('/riwayatpanen', [RiwayatController::class, 'index'])->name('riwayatP
 
 });
 
+Route::get('/kspenyakit', [PenyakitController::class, 'index'])->name('kspenyakit.index');
 
-Route::get('/menu/kspenyakit', [PenanamanBawangController::class, 'kegiatansawahorm']);
+// Route::get('/menu/kspenyakit', [PenanamanBawangController::class, 'kegiatansawahorm']);
+
+// Route::resource('PenyakitController', 'PenyakitController');
+Route::get('/kspenyakit/create', [PenyakitController::class, 'create'])->name('kspenyakit.create');
+Route::post('/kspenyakit', [PenyakitController::class, 'store'])->name('kspenyakit.store');
+// Route::get('/kspenyakit', 'PenyakitController@index')->name('kspenyakit.index');

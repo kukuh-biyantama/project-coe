@@ -14,6 +14,8 @@
                 <table class="table">
                     <thead>
                         <tr>
+                            <th scope="col">Lokasi Sawah</th>
+                            {{-- <th scope="col">Penyakit ID</th> --}}
                             <th scope="col">Penyakit ID</th>
                             <th scope="col">Lokasi</th>
                             <th scope="col">Nama Penyakit</th>
@@ -24,7 +26,11 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach ($kegiatansawahs as $item)
+                            
+                        
                         <tr>
+                            <td>{{ item->id_lokasisawah }}</td>
                             <td>1</td>
                             <td>Sawah pak Ridho</td>
                             <td>Nama penyakit 1</td>
@@ -37,6 +43,7 @@
                             </td>
                         </tr>
                     </tbody>
+                    @endforeach
                 </table>
             </div>
         </div>

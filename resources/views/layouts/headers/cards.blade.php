@@ -2,10 +2,10 @@
     <div class="container-fluid">
         <div class="header-body">
             <!-- Card stats -->
-            @if(session('status'))
-            <div class="alert alert-success">
-                {{ session('status') }}
-            </div>
+            @if (session('status'))
+                <div class="alert alert-success">
+                    {{ session('status') }}
+                </div>
             @endif
             <style>
                 .dot {
@@ -34,7 +34,7 @@
             </script>
             <?php
             // Construct the API endpoint URL
-            $url = 'http://compute.dinus.ac.id:900/api/get/lokasi/'. $data= Auth::user()->id ;
+            $url = 'http://compute.dinus.ac.id:900/api/get/lokasi/' . ($data = Auth::user()->id);
             
             // Make the API request
             $curl = curl_init();
@@ -45,36 +45,22 @@
             
             // Decode the JSON response
             $data = json_decode($response, true);
-
-            function tampilJSON($data){
+            
+            function tampilJSON($data)
+            {
                 foreach ($data as $item) {
-                    echo $item['kab']['tommorow_code'];
+                        echo $item['kab']['tommorow_code'];
                 }
             }
-
+            
             $hasilJSON = tampilJSON($data);
-
-            //echo $hasilJSON;
-
-
-
-            // dd($data);
-            // Loop through the data and display it
-            foreach ($data as $item) {
-            //     echo <div class="tomorrow" data-location-id=$datum['tommorow_code'] data-language="EN" data-unit-system="METRIC"
-            //     data-skin="light" data-widget-type="aqiPollen" style="padding-bottom:22px;position:relative;">
-            //     <a href="https://www.tomorrow.io/weather/" rel="nofollow noopener noreferrer" target="_blank"
-            //         style="position: absolute; bottom: 0; transform: translateX(-50%); left: 50%;">
-            //     </a>
-            // </div>
-            //$hasil = $item['tommorow_code'];
-            //echo $item['tommorow_code'] . "<br>";
-
-            }
+            
             ?>
 
-            <div class="tomorrow" data-location-id="<?php echo  $hasilJSON ?>" data-language="ID" data-unit-system="METRIC" data-skin="light" data-widget-type="aqiPollen" style="padding-bottom:22px;position:relative;">
-                <a href="https://www.tomorrow.io/weather/" rel="nofollow noopener noreferrer" target="_blank" style="position: absolute; bottom: 0; transform: translateX(-50%); left: 50%;">
+            <div class="tomorrow" data-location-id="<?php echo $hasilJSON; ?>" data-language="ID" data-unit-system="METRIC"
+                data-skin="light" data-widget-type="aqiPollen" style="padding-bottom:22px;position:relative;">
+                <a href="https://www.tomorrow.io/weather/" rel="nofollow noopener noreferrer" target="_blank"
+                    style="position: absolute; bottom: 0; transform: translateX(-50%); left: 50%;">
                 </a>
             </div>
             {{-- <div class="container">
@@ -135,7 +121,7 @@
                         <a href="/datalokasisawah/">
                             <div class="card-body">
                                 <div class="row">
-                                        <h1 class="dot">1</h1>
+                                    <h1 class="dot">1</h1>
                                     <div class="col">
                                         <h2 class="card-title text-uppercase text-muted mb-0">Lokasi</h2>
                                     </div>
@@ -156,7 +142,8 @@
                                 <div class="row">
                                     <div class="col">
                                         <!-- <h2 class="mb-0 text-sm  font-weight-bold">Lokasi, {{ auth()->user()->name }}</h2> -->
-                                        <h2 class="mb-0 text-sm  font-weight-bold">Klik disini untuk melihat lokasi peta sawah Anda</h2>
+                                        <h2 class="mb-0 text-sm  font-weight-bold">Klik disini untuk melihat lokasi peta
+                                            sawah Anda</h2>
                                     </div>
                                     {{-- <div class="col">
                                         <div class="icon icon-shape bg-info text-white rounded-circle shadow">
@@ -220,7 +207,8 @@
                                 <div class="row">
                                     <h1 class="dot">2</h1>
                                     <div class="col">
-                                        <h2 class="card-title text-uppercase text-muted mb-4">Kegiatan Pertanian Bawang</h2>
+                                        <h2 class="card-title text-uppercase text-muted mb-4">Kegiatan Pertanian Bawang
+                                        </h2>
                                     </div>
                                     <div class="col">
                                         <div class="icon icon-shape bg-info text-white rounded-circle shadow">
@@ -249,7 +237,8 @@
                                 </div>
                                 <div class="row">
                                     <div class="col">
-                                        <h2 class="card-title text-uppercase text-black mb-0 wrap-text">15 Januari 2023</h2>
+                                        <h2 class="card-title text-uppercase text-black mb-0 wrap-text">15 Januari 2023
+                                        </h2>
                                     </div>
                                 </div>
                                 <div class="card card-stats mb-4 mb-xl-0 btn btn-info text-balck pt-2">
@@ -257,7 +246,8 @@
                                         <div class="card-body">
                                             <div class="row">
                                                 <div class="col">
-                                                    <h2 class="card-title text-uppercase text-muted mb-2">Laporan Pestisida</h2>
+                                                    <h2 class="card-title text-uppercase text-muted mb-2">Laporan
+                                                        Pestisida</h2>
                                                 </div>
                                                 {{-- <div class="col">
                                                     <div class="icon icon-shape bg-info text-white rounded-circle shadow">
@@ -287,7 +277,8 @@
                                 </div>
                                 <div class="row">
                                     <div class="col">
-                                        <h2 class="card-title text-uppercase text-black mb-0 wrap-text">10 Januari 2023</h2>
+                                        <h2 class="card-title text-uppercase text-black mb-0 wrap-text">10 Januari 2023
+                                        </h2>
                                     </div>
                                 </div>
                                 <div class="card card-stats mb-4 mb-xl-0 btn btn-info text-balck pt-2">
@@ -295,7 +286,8 @@
                                         <div class="card-body">
                                             <div class="row">
                                                 <div class="col">
-                                                    <h2 class="card-title text-uppercase text-muted mb-0">Laporan Pupuk</h2>
+                                                    <h2 class="card-title text-uppercase text-muted mb-0">Laporan Pupuk
+                                                    </h2>
                                                 </div>
                                                 {{-- <div class="col">
                                                     <div class="icon icon-shape bg-info text-white rounded-circle shadow">
@@ -332,7 +324,8 @@
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col">
-                                                <h2 class="card-title text-uppercase text-muted mb-0">Masukan Hasil Panen</h2>
+                                                <h2 class="card-title text-uppercase text-muted mb-0">Masukan Hasil
+                                                    Panen</h2>
                                             </div>
                                             {{-- <div class="col">
                                                 <div class="icon icon-shape bg-info text-white rounded-circle shadow">
@@ -352,8 +345,8 @@
                             <div class="row align-items-center">
                                 <div class="col">
                                     <h2 class="mb-0 text-black text-center">Saat ini Anda Berada Di Cluster</h2>
-                                    <h2 class="mb-0 text-black text-center"> {{$petanicluster}}</h2>
-                                    <h2 class="mb-0 text-black text-center">Petani {{$namapetani}}</h2>
+                                    <h2 class="mb-0 text-black text-center"> {{ $petanicluster }}</h2>
+                                    <h2 class="mb-0 text-black text-center">Petani {{ $namapetani }}</h2>
                                 </div>
                             </div>
                             {{-- <div class="col">
@@ -371,7 +364,8 @@
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col">
-                                                <h2 class="card-title text-uppercase text-muted mb-0">Lihat Laporan</h2>
+                                                <h2 class="card-title text-uppercase text-muted mb-0">Lihat Laporan
+                                                </h2>
                                             </div>
                                             {{-- <div class="col">
                                                 <div class="icon icon-shape bg-info text-white rounded-circle shadow">
@@ -408,7 +402,8 @@
                                 <div class="row">
                                     <h1 class="dot">6</h1>
                                     <div class="col">
-                                        <h2 class="card-title text-uppercase text-muted mb-0">Riwayat Penanaman Bawang</h2>
+                                        <h2 class="card-title text-uppercase text-muted mb-0">Riwayat Penanaman Bawang
+                                        </h2>
                                     </div>
                                     <div class="col mt-2">
                                         <div class="icon icon-shape bg-info text-white rounded-circle shadow">
@@ -425,7 +420,8 @@
                                 <div class="row">
                                     <h1 class="dot">?</h1>
                                     <div class="col">
-                                        <h2 class="card-title text-uppercase text-muted mb-0">Penyakit Penanaman Bawang</h2>
+                                        <h2 class="card-title text-uppercase text-muted mb-0">Penyakit Penanaman Bawang
+                                        </h2>
                                     </div>
                                     <div class="col mt-2">
                                         <div class="icon icon-shape bg-info text-white rounded-circle shadow">

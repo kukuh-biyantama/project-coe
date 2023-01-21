@@ -23,9 +23,9 @@ class penanaman_bawang extends Model
         return $this->belongsTo(kspenyakit::class, 'id', 'kegiatansawah_id');
     }
 
-    public function penyakit(){
-        return $this->belongsTo(penyakit::class, 'penyakit_id', 'id');
-    }
+    // public function penyakit(){
+    //     return $this->hasMany(penyakit::class, 'penyakit_id', 'id');
+    // }
 
 
 

@@ -22,48 +22,35 @@
                 <div class="col-8">
                     <div class="card">
                         <div class="card-body">
-                            <form action="" method="POST" enctype="multipart/form-data">
-                                <!-- @csrf -->
-                                
-                                <!-- Lokasi -->
-                                <div class="mb-3">
-                                    <label for="" class="form-label">Lokasi</label>
-                                    <select class="form-select" name="" aria-label="Default select example">
-                                        <option selected disabled>Pilih</option>
-                                        <option value="1">Sawah pak Ridho</option>
+                            <form action="{{ route('penyakit.store') }}" method="post">
+                                @csrf
+                                <div class="form-group">
+                                    <label for="kegiatansawah_id">Kegiatan Sawah</label>
+                                    <select name="kegiatansawah_id" id="kegiatansawah_id" class="form-control">
+                                        @foreach($kegiatansawahs as $kegiatansawah)
+                                            <option value="{{ $kegiatansawah->id }}">{{ $kegiatansawah->nama }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
-
-                                <!-- Nama penyakit -->
-                                <div class="mb-3">
-                                    <label for="penyakitNama" class="form-label">Nama Penyakit</label>
-                                    <input type="text" name="penyakit_nama" class="form-control" id="penyakitNama" aria-describedby="penyakitNama">
+                                <div class="form-group">
+                                    <label for="penyakit_id">Penyakit</label>
+                                    <select name="penyakit_id" id="penyakit_id" class="form-control">
+                                        @foreach($penyakits as $penyakit)
+                                            <option value="{{ $penyakit->id }}">{{ $penyakit->nama }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
-
-                                <!-- Tanggal Terkena penyakit -->
-                                <div class="mb-3">
-                                    <label for="tanggal_terkena_penyakit" class="form-label">Tanggal Terkena Penyakit</label>
-                                    <input type="datetime-local" name="tgl_terkena_penyakit" class="form-control" id="tanggal_terkena_penyakit" aria-describedby="tanggal_terkena_penyakit">
+                                <div class="form-group">
+                                    <label for="ks_penyakit_tanggal_terkena">Tanggal Terkena</label>
+                                    <input type="date" name="ks_penyakit_tanggal_terkena" id="ks_penyakit_tanggal_terkena" class="form-control">
                                 </div>
-                           
-                                <!-- Gambar penyakit -->
-                                <div class="mb-3">
-                                    <label for="gambar_penyakit" class="form-label">Gambar Penyakit</label>
-                                    <input type="file" name="gambar_penyakit" class="form-control" id="gambar_penyakit" aria-describedby="gambar_penyakit">
+                                <div class="form-group">
+                                    <label for="ks_penyakit_keterangan">Keterangan</label>
+                                    <textarea name="ks_penyakit_keterangan" id="ks_penyakit_keterangan" class="form-control"></textarea>
                                 </div>
-
-                                <!-- Keterangan penyakit -->
-                                <div class="mb-3">
-                                    <label for="penyakitKeterangan" class="form-label">Keterangan</label>
-                                    <textarea name="penyakit_keterangan" style="height: 100px" class="form-control" id="penyakitKeterangan" aria-describedby="penyakitKeterangan"></textarea>
-                                </div>
-
-                                <!-- Button Submit dan Cancel -->
-                                <div class="mb-4 mt-5 text-center">
-                                    <button type="submit" class="btn btn-primary me-4">Submit</button>
-                                    <button type="reset" class="btn btn-danger">Cancel</button>
-                                </div>
+                                <button type="submit" class="btn btn-primary">Simpan</button>
                             </form>
+                            
                         </div>
                     </div>
                 </div>
