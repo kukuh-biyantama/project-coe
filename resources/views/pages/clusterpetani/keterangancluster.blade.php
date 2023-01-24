@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="container-fluid mt--7">
-  <h2 class="text-center mb-4 mt-4 text-light">Keterangan Cluster</h2>
+  <h2 class="text-center mb-4 mt-4 text-light">Cluster description</h2>
 
   <!-- dev container untuk mengatur jarak tampilan -->
   < <body>

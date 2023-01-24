@@ -1,4 +1,4 @@
-FROM php:8.0-fpm
+FROM php:8.1.0-fpm
 
 # Set working directory
 WORKDIR /var/www
@@ -25,7 +25,6 @@ RUN apt-get update && apt-get install -y \
     lua-zlib-dev \
     libmemcached-dev \
     nginx
-
 # Install supervisor
 RUN apt-get install -y supervisor
 

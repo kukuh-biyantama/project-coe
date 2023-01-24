@@ -55,8 +55,6 @@ class LokasiController extends Controller
                 'lokasi_keterangan' => $lokasi_keterangan
             ]
         );
-        // $postgree = DB::table('penanaman_bawangs')->where('id_user', $userid)->where('id_lokasisawah', $lokasi_keterangan)->update();
-
         return redirect()->route('datalokasisawah')->with('success', 'Data Lokasi Sawah telah berhasil ditambahkan');
     }
 
