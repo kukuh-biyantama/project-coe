@@ -15,7 +15,7 @@ class PanenController extends Controller
         // $data = panen::all();
         // return view('/pages/panen/datapanen', compact('data'));
         $currentuserid = Auth::user()->id;
-        // $url = "http://103.30.1.54:900/api/get/lokasi/" . $currentuserid;
+        // $url = "http://compute.dinus.ac.id:900/api/get/lokasi/" . $currentuserid;
         // $response = Http::get($url);
         $response = DB::table('penanaman_bawangs')->where('penanaman_bawangs.id_user', $currentuserid);
         // $data = json_encode($response, true);
@@ -43,7 +43,7 @@ class PanenController extends Controller
     public function formtambahdatapanen()
     {
         $currentuserid = Auth::user()->id;
-        $url = "http://103.30.1.54:900/api/get/lokasi/" . $currentuserid;
+        $url = "http://compute.dinus.ac.id:900/api/get/lokasi/" . $currentuserid;
         $response = Http::get($url);
         $data = json_decode($response, true);
         $user_data = $data;

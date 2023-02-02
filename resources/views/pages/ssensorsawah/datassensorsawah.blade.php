@@ -222,10 +222,10 @@ div.h4 {
 
           <div class="col-lg-12 mx-auto mb-5 text-white text-center">
             <h1 class="display-4">Laporan Sensor IoT</h1>
-            <h1 class="display-4">ID IOT {{ $item['iot']['id_iot'] }} </h1>
+            <h1 class="display-4">ID IOT {{ $item['iot']['iot']['id_iot'] }} </h1>
 
             <p class="lead mb-0">Monitor Sensor IoT</p>
-            <p class="lead mb-0">Waktu {{ $item['iot']['tanggal'] }} </p>
+            <p class="lead mb-0">Waktu {{ $item['iot']['iot']['tanggal'] }} </p>
 
           </div>
           <!-- END -->
@@ -235,7 +235,7 @@ div.h4 {
               <h2 class="h6 font-weight-bold text-center mb-4">Data Kecepatan Angin</h2>
 
               <!-- Progress bar 1 -->
-              <div class="progress mx-auto" data-value={{ $item['iot']['datakecepatanangin'] }}>
+              <div class="progress mx-auto" data-value={{ $item['iot']['iot']['datakecepatanangin'] }}>
                 <span class="progress-left">
                               <span class="progress-bar border-primary"></span>
                 </span>
@@ -243,7 +243,7 @@ div.h4 {
                               <span class="progress-bar border-primary"></span>
                 </span>
                 <div class="progress-value w-100 h-100 rounded-circle d-flex align-items-center justify-content-center">
-                  <div class="h2 font-weight-bold">{{ $item['iot']['datakecepatanangin'] }}<sup class="small">km/h</sup></div>
+                  <div class="h2 font-weight-bold">{{ $item['iot']['iot']['datakecepatanangin'] }}<sup class="small">km/h</sup></div>
                 </div>
               </div>
             </div>
@@ -254,7 +254,7 @@ div.h4 {
               <h2 class="h6 font-weight-bold text-center mb-4">Data Suhu Udara</h2>
 
               <!-- Progress bar 2 -->
-              <div class="progress mx-auto" data-value={{ $item['iot']['datasuhuudara'] }}>
+              <div class="progress mx-auto" data-value={{ $item['iot']['iot']['datasuhuudara'] }}>
                 <span class="progress-left">
                               <span class="progress-bar border-danger"></span>
                 </span>
@@ -262,7 +262,7 @@ div.h4 {
                               <span class="progress-bar border-primary"></span>
                 </span>
                 <div class="progress-value w-100 h-100 rounded-circle d-flex align-items-center justify-content-center">
-                  <div class="h2 font-weight-bold">{{ $item['iot']['datasuhuudara'] }}<sup class="small">c</sup></div>
+                  <div class="h2 font-weight-bold">{{ $item['iot']['iot']['datasuhuudara'] }}<sup class="small">c</sup></div>
                 </div>
               </div>
               <!-- END -->
@@ -277,7 +277,7 @@ div.h4 {
               <h2 class="h6 font-weight-bold text-center mb-4">Data Kelembaban Udara</h2>
 
               <!-- Progress bar 3 -->
-              <div class="progress mx-auto" data-value={{ $item['iot']['datakelembabanudara'] }}>
+              <div class="progress mx-auto" data-value={{ $item['iot']['iot']['datakelembabanudara'] }}>
                 <span class="progress-left">
                               <span class="progress-bar border-success"></span>
                 </span>
@@ -285,7 +285,7 @@ div.h4 {
                               <span class="progress-bar border-primary"></span>
                 </span>
                 <div class="progress-value w-100 h-100 rounded-circle d-flex align-items-center justify-content-center">
-                  <div class="h2 font-weight-bold">{{ $item['iot']['datakelembabanudara'] }}<sup class="small">c</sup></div>
+                  <div class="h2 font-weight-bold">{{ $item['iot']['iot']['datakelembabanudara'] }}<sup class="small">c</sup></div>
                 </div>
               </div>
             </div>
@@ -296,7 +296,7 @@ div.h4 {
               <h2 class="h6 font-weight-bold text-center mb-4">Data Suhu Tanah</h2>
 
               <!-- Progress bar 3 -->
-              <div class="progress mx-auto" data-value='{{ $item['iot']['datasuhutanah'] }}'>
+              <div class="progress mx-auto" data-value='{{ $item['iot']['iot']['datasuhutanah'] }}'>
                 <span class="progress-left">
                               <span class="progress-bar border-success"></span>
                 </span>
@@ -304,7 +304,7 @@ div.h4 {
                               <span class="progress-bar border-primary"></span>
                 </span>
                 <div class="progress-value w-100 h-100 rounded-circle d-flex align-items-center justify-content-center">
-                  <div class="h2 font-weight-bold">{{ $item['iot']['datasuhutanah'] }}<sup class="small">c</sup></div>
+                  <div class="h2 font-weight-bold">{{ $item['iot']['iot']['datasuhutanah'] }}<sup class="small">c</sup></div>
                 </div>
               </div>
             </div>
@@ -315,7 +315,7 @@ div.h4 {
               <h2 class="h6 font-weight-bold text-center mb-4">datakelembabantanah</h2>
 
               <!-- Progress bar 3 -->
-              <div class="progress mx-auto" data-value={{ $item['iot']['datakelembabantanah'] }}>
+              <div class="progress mx-auto" data-value={{ $item['iot']['iot']['datakelembabantanah'] }}>
                 <span class="progress-left">
                               <span class="progress-bar border-success"></span>
                 </span>
@@ -323,7 +323,7 @@ div.h4 {
                               <span class="progress-bar border-primary"></span>
                 </span>
                 <div class="progress-value w-100 h-100 rounded-circle d-flex align-items-center justify-content-center">
-                  <div class="h2 font-weight-bold">{{ $item['iot']['datakelembabantanah'] }}<sup class="small">c</sup></div>
+                  <div class="h2 font-weight-bold">{{ $item['iot']['iot']['datakelembabantanah'] }}<sup class="small">c</sup></div>
                 </div>
               </div>
             </div>
@@ -334,7 +334,7 @@ div.h4 {
               <h2 class="h6 font-weight-bold text-center mb-4">Data Ph tanah</h2>
 
               <!-- Progress bar 4 -->
-              <div class="progress mx-auto" data-value={{ $item['iot']['dataphtanah'] }}>
+              <div class="progress mx-auto" data-value={{ $item['iot']['iot']['dataphtanah'] }}>
                 <span class="progress-left">
                               <span class="progress-bar border-warning"></span>
                 </span>
@@ -342,7 +342,7 @@ div.h4 {
                               <span class="progress-bar border-primary"></span>
                 </span>
                 <div class="progress-value w-100 h-100 rounded-circle d-flex align-items-center justify-content-center">
-                  <div class="h2 font-weight-bold">{{ $item['iot']['dataphtanah'] }} <sup class="small">pH</sup></div>
+                  <div class="h2 font-weight-bold">{{ $item['iot']['iot']['dataphtanah'] }} <sup class="small">pH</sup></div>
                 </div>
               </div>
             </div>
@@ -353,7 +353,7 @@ div.h4 {
                 <div class="card-body">
                     <p class="h6 font-weight-bold text-center mb-4">Status Alat<br></p>
 
-                        @if ($item['iot']['statusalat'] == 1)
+                        @if ($item['iot']['iot']['statusalat'] == 1)
                         <center><p class="h2 font-weight-bold">Hidup</p></center>
                         @else
                         <center><p class="h2 font-weight-bold">Mati  </p></center>
@@ -367,7 +367,7 @@ div.h4 {
               <div class="card-body">
                   <p class="h6 font-weight-bold text-center mb-4">Alamat Sensor Iot<br></p>
 
-                      <center><p class="h2 font-weight-bold">{{ $item['iot']['alamat'] }}</p></center>
+                      <center><p class="h2 font-weight-bold">{{ $item['iot']['iot']['alamat'] }}</p></center>
 
 
               </div>

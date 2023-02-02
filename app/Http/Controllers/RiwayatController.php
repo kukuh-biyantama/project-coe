@@ -20,7 +20,7 @@ class RiwayatController extends Controller
     {
         //get data lokasi API
         $currentuserid = Auth::user()->id;
-        // $url = "http://103.30.1.54:900/api/get/lokasi/" . $currentuserid;
+        // $url = "http://compute.dinus.ac.id:900/api/get/lokasi/" . $currentuserid;
         // $response = Http::get($url);
         // $data = json_decode($response, true);
         $data = panen::where('id_user', $currentuserid);

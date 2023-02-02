@@ -16,7 +16,7 @@ class KsPupukController extends Controller
         // $data = ks_pupuk::orderBy('ks_pupuk_tgl_rabuk', 'DESC')->get();
         // return view('/pages/pupuk/datapupuk', compact('data'));
         $currentuserid = Auth::user()->id;
-        $url = "http://103.30.1.54:900/api/get/lokasi/" . $currentuserid;
+        $url = "http://compute.dinus.ac.id:900/api/get/lokasi/" . $currentuserid;
         $response = Http::get($url);
         $data = json_decode($response, true);
         $user_data = $data;
@@ -34,7 +34,7 @@ class KsPupukController extends Controller
     public function tambahdatapupuk()
     {
         $currentuserid = Auth::user()->id;
-        $url = "http://103.30.1.54:900/api/get/lokasi/" . $currentuserid;
+        $url = "http://compute.dinus.ac.id:900/api/get/lokasi/" . $currentuserid;
         $response = Http::get($url);
         $data = json_decode($response, true);
         $user_data = $data;

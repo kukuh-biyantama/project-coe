@@ -17,7 +17,7 @@ class LokasiController extends Controller
     public function datalokasisawah()
     {
         $currentuserid = Auth::user()->id;
-        $url = "http://103.30.1.54:900/api/get/lokasi/" . $currentuserid;
+        $url = "http://compute.dinus.ac.id:900/api/get/lokasi/" . $currentuserid;
         $response = Http::get($url);
         $data = json_decode($response, true);
         $user_data = $data;
@@ -45,7 +45,7 @@ class LokasiController extends Controller
         $id_iot = $request->input('id_iot');
         $currentuserid = Auth::user()->id;
         $response = Http::post(
-            'http://103.30.1.54:900/api/post/location',
+            'http://compute.dinus.ac.id:900/api/post/location',
             [
                 'user_id' => $currentuserid, //user_id
                 'id_iot' => $id_iot,
@@ -91,7 +91,7 @@ class LokasiController extends Controller
         // $data_tanam = DB::table('penanaman_bawangs')->where('user_id', $userid)->where('id_lokasisawah', $lokasi_keterangan);
         $data_tanam = penanaman_bawang::all();
         if ($data_tanam == '[]') {
-            $url_response = "http://103.30.1.54:900/api/delete/lokasi" . '/' . $userid . '/' . $lokasi_keterangan;
+            $url_response = "http://compute.dinus.ac.id:900/api/delete/lokasi" . '/' . $userid . '/' . $lokasi_keterangan;
             $response = Http::post($url_response);
             return redirect()->route('datalokasisawah')->with('success', 'Data Lokasi Sawah telah berhasil dihapus');
         } else {
@@ -100,13 +100,13 @@ class LokasiController extends Controller
             }
             // return dd($data_tanam);
             if ($tanamverify == $lokasi_keterangan) {
-                $url_response = "http://103.30.1.54:900/api/delete/lokasi" . '/' . $userid . '/' . $lokasi_keterangan;
+                $url_response = "http://compute.dinus.ac.id:900/api/delete/lokasi" . '/' . $userid . '/' . $lokasi_keterangan;
                 // $postgree = DB::table('penanaman_bawangs')->where('id_user', $userid)->where('id_lokasisawah', $lokasi_keterangan)->update();
                 $updatelokasi = DB::table('penanaman_bawangs')->where('id_user', $currentuserid)->where('id_lokasisawah', $lokasi_keterangan)->update(['status_lokasi' => '1']);
                 $response = Http::post($url_response);
                 return redirect()->route('datalokasisawah')->with('success', 'Data Lokasi Sawah telah berhasil dihapus');
             } else {
-                $url_response = "http://103.30.1.54:900/api/delete/lokasi" . '/' . $userid . '/' . $lokasi_keterangan;
+                $url_response = "http://compute.dinus.ac.id:900/api/delete/lokasi" . '/' . $userid . '/' . $lokasi_keterangan;
                 $response = Http::post($url_response);
                 $postgree = DB::table('penanaman_bawangs')->where('id_user', $userid)->where('id_lokasisawah', $lokasi_keterangan)->delete();
                 return redirect()->route('datalokasisawah')->with('success', 'Data Lokasi Sawah telah berhasil dihapus');
