@@ -37,11 +37,11 @@
                             echo "<tr>";
                             echo "<td>". ($view->ks_metode_pengairan) . "</td>";
                             echo "<td>". ($view->ks_modal) . "</td>";
-                            echo "<td>". ($view->ks_luas_lahan) . "</td>";
-                            echo "<td>". ($view->ks_bibit) . "</td>";
+                            echo "<td>" . number_format($view->ks_luas_lahan, 0,',','.')  . "</td>";
+                            echo "<td>" . number_format($view->ks_bibit, 0,',','.')  . "</td>";
                             echo "<td>". ($view->ks_waktu_tanam) . "</td>";
                             echo "<td>". ($view->ks_status_lahan) . "</td>";
-                            echo "<td>". ($view->ks_jumlah_modal) . "</td>";
+                            echo "<td>" . number_format($view->ks_jumlah_modal, 0,',','.')  . "</td>";
                             echo "<td>". ($view->kabupaten) . "</td>";
                             echo "<td>". "sawah" . " " . ($view->id_lokasisawah) . "</td>";
                             echo "<td>". "Sudah Panen" . "</td>";

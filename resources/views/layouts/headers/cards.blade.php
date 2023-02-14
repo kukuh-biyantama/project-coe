@@ -160,7 +160,7 @@
                         <div class="card-body">
                             <div class="row align-items-center">
                                 <div class="col">
-                                    <h3 class="mb-0 text-black text-center">Perkiraan Cuaca</h3>
+                                    <h3 class="mb-0 text-black text-center">Laporan Cuaca</h3>
                                 </div>
                             </div>
 
