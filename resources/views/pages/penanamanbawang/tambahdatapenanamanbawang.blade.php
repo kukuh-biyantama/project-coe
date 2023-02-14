@@ -92,7 +92,7 @@
               <div class="mb-3">
                 <label for="luasLahan" class="form-label" style="font-weight: 600;">Luas Lahan</label><br>
 
-                <input type="decimal" style="width:100%" class="form-control @error('ks_luas_lahan') is-invalid @enderror" name="ks_luas_lahan" value="{{ old('ks_luas_lahan') }}">
+                <input type="number" step="0.01" style="width:100%" class="form-control @error('ks_luas_lahan') is-invalid @enderror" name="ks_luas_lahan" value="{{ old('ks_luas_lahan') }}">
                 <div class="form-check">
                   <div class="">
                     <input class="inputan" type="radio" id="meter" name="stnLuasLahan" value="Meter">
@@ -113,7 +113,7 @@
               <div class="mb-3">
                 <label for="bibit" class="form-label" style="font-weight: 600;">Jumlah Bibit</label><br>
 
-                <input type="decimal" name="ks_bibit" style="width:100%" class="form-control @error('ks_bibit') is-invalid @enderror" value="{{ old('ks_bibit') }}">
+                <input type="number" step="0.01" name="ks_bibit" style="width:100%" class="form-control @error('ks_bibit') is-invalid @enderror" value="{{ old('ks_bibit') }}">
                 <div class="form-check">
                   <div class="">
                     <input class="inputan" type="radio" id="kilogram" name="stnBibit" value="Kilogram">

@@ -59,7 +59,7 @@
               <!-- Luas Lahan -->
               <div class="mb-3">
                 <label for="luasLahan" class="form-label">Luas Lahan</label><br>
-                <input type="number" style="width:100%" class="form-control" name="ks_luas_lahan" value="{{ $data->ks_luas_lahan }}">
+                <input type="number" step="0.01" style="width:100%" class="form-control" name="ks_luas_lahan" value="{{ $data->ks_luas_lahan }}">
                 <div class="form-check">
                   <div class="">
                     <input class="inputan" type="radio" id="meter" name="stnLuasLahan" value="Meter">
@@ -75,7 +75,7 @@
               <!-- Bibit -->
               <div class="mb-3">
                 <label for="bibit" class="form-label">Jumlah Bibit</label><br>
-                <input type="number" name="ks_bibit" style="width:100%" class="form-control" value="{{ $data->ks_bibit }}">
+                <input type="number" step="0.01" name="ks_bibit" style="width:100%" class="form-control" value="{{ $data->ks_bibit }}">
                 <div class="form-check">
                   <div class="">
                     <input class="inputan" type="radio" id="kilogram" name="stnBibit" value="Kilogram">

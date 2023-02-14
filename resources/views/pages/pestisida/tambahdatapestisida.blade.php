@@ -100,7 +100,7 @@
                                     <label for="jmlTakaranPestisida" class="form-label" style="font-weight: 600;">Jumlah
                                         Takaran Pestisida</label><br>
 
-                                    <input type="decimal" style="width:100%"
+                                    <input type="number" step="0.01" style="width:100%"
                                         class="form-control  @error('ks_pestisida_jumlah_takaran') is-invalid @enderror"
                                         name="ks_pestisida_jumlah_takaran" value="{{ old('ks_pestisida_jumlah_takaran') }}">
 

@@ -24,7 +24,7 @@
                             @csrf
                             <!-- Kabupaten -->
                             <div class="mb-3">
-                                <label for="" class="form-label">id</label>
+                                <!-- <label for="" class="form-label">id</label> -->
                                 <input type="hidden" name="id" id="id" style="width:100%" class="form-control" value="{{ $users->id }}">
                             </div>
                             <div class="mb-3">
@@ -37,7 +37,7 @@
                                 <input type="text" name="" id="" style="width:100%" class="form-control" value="Sawah {{ $users->id_lokasisawah }}" disabled>
                             </div>
                             <div class="mb-3">
-                                <label for="" class="form-label">Lokasi</label>
+                                <!-- <label for="" class="form-label">Lokasi</label> -->
                                 <input type="hidden" name="lokasi" id="lokasi" style="width:100%" class="form-control" value="{{ $users->id_lokasisawah }}">
                             </div>
                             <!-- luas lahan -->
@@ -51,7 +51,7 @@
                                 <input type="text" name="" id="" style="width:100%" class="form-control" value="{{ $users->ks_waktu_tanam }}" disabled>
                             </div>
                             <div class="mb-3">
-                                <label for="" class="form-label">Waktu Tanam</label>
+                                <!-- <label for="" class="form-label">Waktu Tanam</label> -->
                                 <input type="hidden" name="waktutanam" id="waktutanam" style="width:100%" class="form-control" value="{{ $users->ks_waktu_tanam }}">
                             </div>
                             <!-- Tanggal Panen -->
@@ -65,7 +65,7 @@
                             </div> -->
                             <div class="mb-3">
                                 <label class="form-label">Jumlah Panen</label>
-                                <p><input type="number" placeholder="Jumlah Panen" name="panen_jumlah" min="1"></p>
+                                <p><input type="number" step="0.01" placeholder="Jumlah Panen" name="panen_jumlah" min="1"></p>
                                 <div class="form-radio">
                                     <div class="up">
                                         <input class="inputan" type="radio" name="stnJumlahpanen" id="kilogram" value="kg">

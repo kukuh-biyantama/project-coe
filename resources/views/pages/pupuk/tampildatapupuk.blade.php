@@ -196,7 +196,7 @@
                   <!-- Jumlah Takaran Pupuk -->
                   <div class="mb-3">
                       <label for="jmlTakaranPupuk" class="form-label">Jumlah Takaran Pupuk</label><br>
-                      <input type="decimal" name="ks_pupuk_jumlah_takaran" style="width:100%" class="form-control" value="{{ $data->ks_pupuk_jumlah_takaran }}">
+                      <input type="number" step="0.01" name="ks_pupuk_jumlah_takaran" style="width:100%" class="form-control" value="{{ $data->ks_pupuk_jumlah_takaran }}">
                       <div class="form-check">
                           <div class="">
                             <input class="inputan" type="radio" id="kilogram" name="stnPupuk" value="Kilogram">

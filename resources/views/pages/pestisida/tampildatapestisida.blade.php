@@ -90,7 +90,7 @@
                                 <!-- Jumlah Takaran Pestisida -->
                                 <div class="mb-3">
                                     <label for="jmlTakaranPestisida" class="form-label">Jumlah Takaran Pestisida</label><br>
-                                    <input type="decimal" style="width:100%" class="form-control" name="ks_pestisida_jumlah_takaran" value="{{ $data->ks_pestisida_jumlah_takaran }}">
+                                    <input type="number" step="0.01" style="width:100%" class="form-control" name="ks_pestisida_jumlah_takaran" value="{{ $data->ks_pestisida_jumlah_takaran }}">
                                     <div class="form-check">
                                         <div class="">
                                           <input class="inputan" type="radio" id="liter" name="stnJumlahTakaranPestisida" value="Liter">
