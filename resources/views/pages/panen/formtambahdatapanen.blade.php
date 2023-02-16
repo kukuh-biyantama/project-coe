@@ -25,7 +25,7 @@
                             <!-- Kabupaten -->
                             <div class="mb-3">
                                 <!-- <label for="" class="form-label">id</label> -->
-                                <input type="hidden" name="id" id="id" style="width:100%" class="form-control" value="{{ $users->id }}">
+                                <input name="id" id="id" style="width:100%" class="form-control" value="{{ $users->id }}">
                             </div>
                             <div class="mb-3">
                                 <label for="" class="form-label">Kabupaten</label>
@@ -85,13 +85,13 @@
                                     </div>
                                 </div>
                             </div>
+                            <!-- nama penebas -->
                             <div class="mb-3">
                                 <label for="" class="form-label">Nama penebas</label>
                                 <br>
                                 <select class="cari form-control" style="width:500px;" name="cari" id="id_penebas"></select>
                             </div>
                             {{ csrf_field() }}
-                            <!-- nama penebas -->
                             <div class="mb-3 mt-4">
                                 <label for="" class="form-label">Harga yang disepakati</label>
                                 <input type="number" name="harga_sepakat" id="harga_sepakat" class="form-control" min="1">
@@ -105,7 +105,7 @@
                                     echo  "<button class='btn btn-primary' type='submit'>Jual</button>";
                                 } else {
                                     foreach ($reviewpanen as $verifypanen) {
-                                        if ($verifypanen->id_user == $id) {
+                                        if ($verifypanen->id_penanaman == $id) {
                                             echo   "<button class='btn btn-primary' type='submit' disabled>Jual</button>";
                                             echo "<br>";
                                             echo "Data Sudah Terisi";

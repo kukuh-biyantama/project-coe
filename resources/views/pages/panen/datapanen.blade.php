@@ -12,7 +12,7 @@
             <a href="/home" type="button" class="btn btn-primary">Kembali</a>
         </div>
         <div class="row table-responsive">
-            <table class="table table-bordered"id="table">
+            <table class="table table-bordered" id="table">
                 <thead>
                     <tr>
                         <th scope="col">Kabupaten</th>
@@ -20,6 +20,7 @@
                         <th scope="col">Waktu tanam</th>
                         <th scope="col">Konfirmasi panen</th>
                         <th scope="col">Masukkan Hasil Panen</th>
+                        <th scope="col">Edit Data</th>
                         <th scope="col">Hapus Data</th>
                     </tr>
                 </thead>
@@ -50,10 +51,13 @@
                                 "</td>";
                         }
                         echo "<td>" .
-                            "<button class='btn btn-primary'><a href='/formtambahdatapanen/$row->id'}}' style='color:black'>Hasil Panen</a></button>" .
+                            "<button class='btn btn-primary'><a href='/formtambahdatapanen/$row->id' style='color:black'>Hasil Panen</a></button>" .
                             "</td>";
                         echo "<td>" .
-                            "<button class='btn btn-danger' onclick ='deleted()'><a href='/deletedatapanen/$row->id'}}' style='color:black'>Hapus</a></button>" .
+                            "<button class='btn btn-info'><a href='/edit/$row->id_user'>Edit</a></button>" .
+                            "</td>";
+                        echo "<td>" .
+                            "<button class='btn btn-danger' onclick ='deleted()'><a href='/deletedatapanen/$row->id'style='color:black'>Hapus</a></button>" .
                             "</td>";
                         echo "</tr>";
                     }

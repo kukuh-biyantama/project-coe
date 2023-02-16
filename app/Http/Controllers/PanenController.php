@@ -30,25 +30,24 @@ class PanenController extends Controller
                 ->get();
             // $panen = DB::table('panens')->where('panens.id_user', $currentuserid)->get();
             $panen = DB::table('panens')
-                ->join('penanaman_bawangs', 'penanaman_bawangs.id', '=', 'panens.id_user')
+                ->join('penanaman_bawangs', 'penanaman_bawangs.id', '=', 'panens.id_penanaman')
                 ->select('panens.id', 'panens.ks_waktu_tanam', 'panens.status')
                 ->get();
             return view('pages.panen.datapanen', compact('users', 'panen', 'currentuserid'));
-            // dd($panen);
         }
     }
 
     public function formtambahdatapanen($id)
     {
-        $currentuserid = Auth::user()->id;
+        // $currentuserid = Auth::user()->id;
         $users = penanaman_bawang::find($id);
-        $panens = DB::table('panens')->where('panens.id_user', $id)->get();
+        $panens = DB::table('panens')->where('panens.id_penanaman', $id)->get();
         if ($panens == '[]') {
             $reviewpanen = ("datakosong");
             return view('/pages/panen/formtambahdatapanen', compact('users', 'reviewpanen', 'id'));
         } else {
             foreach ($panens as $datapanen) {
-                if ((int)($datapanen->id_user) == (int)$id) {
+                if ((int)($datapanen->id_penanaman) == (int)$id) {
                     $reviewpanen =  $panens;
                 } else {
                     $reviewpanen = ("datakosong");
@@ -84,7 +83,7 @@ class PanenController extends Controller
         $hargaJual = $request->input('harga_sepakat');
         $statuspengepul = "0";
         panen::create([
-            'id_user' => $id,
+            'id_penanaman' => $currentuserid,
             'namapetani' => $namapetani,
             'id_lokasisawah' => $lokasiSawah,
             'ks_waktu_tanam' => $waktutanam,
@@ -113,10 +112,10 @@ class PanenController extends Controller
         $panen_tanggal = $request->input('panen_tanggal');
 
         // panen hasil produksi
-        $panenhasil = $request->input('panen_hasil_produksi');
-        $stnpanenhasil = $request->input('stnpanenhasil');
+        $panenhasil = $request->input('panen_jumlah');
+        $stnpanenhasil = $request->input('stnJumlahpanen');
         $resulthasilpanen = $panenhasil;
-        if ($stnpanenhasil == "Kuintal") {
+        if ($stnpanenhasil == "Kwintal") {
             $resulthasilpanen = $resulthasilpanen * 100;
         }
         if ($stnpanenhasil == "Ton") {
@@ -125,54 +124,15 @@ class PanenController extends Controller
             $resulthasilpanen = $resulthasilpanen;
         }
 
-        // panen kualitas a
-        $panenkualitas_a = $request->input('panen_kualitas_a');
-        $stnpanenkualitas_a = $request->input('stnpanenkualitas_a');
-        $resultpanenkualitas_a = $panenkualitas_a;
-        if ($stnpanenkualitas_a == "Kuintal") {
-            $resultpanenkualitas_a = $resultpanenkualitas_a * 100;
-        }
-        if ($stnpanenkualitas_a == "Ton") {
-            $resultpanenkualitas_a = $resultpanenkualitas_a * 1000;
-        } else {
-            $resultpanenkualitas_a = $resultpanenkualitas_a;
-        }
-
-        // panen kualitas b
-        $panenkualitas_b = $request->input('panen_kualitas_b');
-        $stnpanenkualitas_b = $request->input('stnpanenkualitas_b');
-        $resultpanenkualitas_b = $panenkualitas_b;
-        if ($stnpanenkualitas_b == "Kuintal") {
-            $resultpanenkualitas_b = $resultpanenkualitas_b * 100;
-        }
-        if ($stnpanenkualitas_b == "Ton") {
-            $resultpanenkualitas_b = $resultpanenkualitas_b * 1000;
-        } else {
-            $resultpanenkualitas_b = $resultpanenkualitas_b;
-        }
-
-        // panen kualitas c 
-        $panenkualitas_c = $request->input('panen_kualitas_c');
-        $stnpanenkualitas_c = $request->input('stnpanenkualitas_c');
-        $resultpanenkualitas_c = $panenkualitas_c;
-        if ($stnpanenkualitas_c == "Kuintal") {
-            $resultpanenkualitas_c = $resultpanenkualitas_c * 100;
-        }
-        if ($stnpanenkualitas_c == "Ton") {
-            $resultpanenkualitas_c = $resultpanenkualitas_c * 1000;
-        } else {
-            $resultpanenkualitas_c = $resultpanenkualitas_c;
-        }
-
+        //harga yang disepakati
+        $hargasepakat = $request->input('harga_sepakat');
         $data = panen::find($id);
         $data->update([
             // 'id_user' => $currentuserid,
             // 'id_lokasisawah' => $datalokasi,
             'panen_tanggal' => $panen_tanggal,
-            'panen_hasil_produksi' => $resulthasilpanen,
-            'panen_kualitas_a' => $resultpanenkualitas_a,
-            'panen_kualitas_b' => $resultpanenkualitas_b,
-            'panen_kualitas_c' => $resultpanenkualitas_c
+            'panen_jumlah' => $resulthasilpanen,
+            'panen_harga' => $hargasepakat
         ]);
 
         return redirect()->route('datapanen')->with('success', 'Data Panen telah berhasil diupdate');
@@ -194,5 +154,10 @@ class PanenController extends Controller
         return redirect()->route('datapanen')->with('success', 'Data Panen telah berhasil ditambahkan');
         // $users = DB::table('penanaman_bawangs')->get();
         // dd($users);
+    }
+    public function edit($id)
+    {
+        $data = DB::table('panens')->where('id_penanaman', $id)->first();
+        return view('pages.panen.formeditdatapanen', ['data' => $data]);
     }
 }

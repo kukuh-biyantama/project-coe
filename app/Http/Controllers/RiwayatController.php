@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use App\Models\panen;
 use App\Models\penanaman_bawang;
 use Illuminate\Http\Request;
@@ -20,19 +21,33 @@ class RiwayatController extends Controller
     {
         //get data lokasi API
         $currentuserid = Auth::user()->id;
-        // $url = "http://compute.dinus.ac.id:900/api/get/lokasi/" . $currentuserid;
-        // $response = Http::get($url);
-        // $data = json_decode($response, true);
         $data = panen::where('id_user', $currentuserid);
         $user_data = $data;
         // $user_data = array_slice($user_data, 0);
         if ($data == null) {
             return view('/pages/responslokasi/responslokasi');
         } else {
-            $data = penanaman_bawang::where('ks_panen', 1)->where('id_user', $currentuserid)->get();
+            $data = DB::table('penanaman_bawangs')
+                ->join('panens', 'panens.id_penanaman', '=', 'penanaman_bawangs.id_user')
+                ->select(
+                    'penanaman_bawangs.id_user',
+                    'penanaman_bawangs.ks_metode_pengairan',
+                    'penanaman_bawangs.ks_modal',
+                    'penanaman_bawangs.ks_luas_lahan',
+                    'penanaman_bawangs.ks_bibit',
+                    'penanaman_bawangs.ks_waktu_tanam',
+                    'penanaman_bawangs.ks_status_lahan',
+                    'penanaman_bawangs.ks_jumlah_modal',
+                    'penanaman_bawangs.kabupaten',
+                    'penanaman_bawangs.id_lokasisawah',
+                    'panens.panen_tanggal'
+                )
+                ->where('penanaman_bawangs.ks_panen', 1)
+                ->get();
+            // $data = penanaman_bawang::where('ks_panen', 1)->where('id_user', $currentuserid)->get();
             return view('pages.riwayat.riwayat', compact('data', 'currentuserid'));
         }
-    }   
+    }
 
     /**
      * Store a newly created resource in storage.

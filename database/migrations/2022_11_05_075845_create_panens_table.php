@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('panens', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('id_user');
+            $table->bigInteger('id_penanaman');
             $table->string('namapetani');
             $table->string('id_lokasisawah');
             $table->date('ks_waktu_tanam');

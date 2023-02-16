@@ -15,17 +15,12 @@
             <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <!-- <th scope="col">Lokasi Sawah</th>
-                        <th scope="col">Tanggal Panen</th>
-                        <th scope="col">Kualitas A (Bagus)</th>
-                        <th scope="col">Kualitas B (Sedang)</th>
-                        <th scope="col">Kualitas C (Jelek)</th>
-                        <th scope="col">Jumlah Panen</th> -->
                         <th scope="col">Kabupaten</th>
                         <th scope="col">Lokasi sawah</th>
                         <th scope="col">Waktu tanam</th>
                         <th scope="col">Konfirmasi panen</th>
                         <th scope="col">Masukkan Hasil Panen</th>
+                        <th scope="col">Edit Data</th>
                         <th scope="col">Hapus Data</th>
                     </tr>
                 </thead>
@@ -35,12 +30,6 @@
                         $dataPanen = $row->ks_panen;
                         $idSawah = $row->id;
                         echo "<tr>";
-                        // echo "<td>" .  "Sawah " . $row->id_lokasisawah . "</td>";
-                        // echo "<td>" . $row->panen_tanggal . "</td>";
-                        // echo "<td>" . number_format($row->panen_kualitas_a, 0, ',', '.') . " kg" . "</td>";
-                        // echo "<td>" . number_format($row->panen_kualitas_b, 0, ',', '.') . " kg" . "</td>";
-                        // echo "<td>" . number_format($row->panen_kualitas_c, 0, ',', '.') . " kg" . "</td>";
-                        // echo "<td>" . number_format($row->panen_jumlah, 0, ',', '.') . " kg" . "</td>";
                         echo "<td>" . ($row->kabupaten) . "</td>";
                         echo "<td>" . "sawah " . ($row->id_lokasisawah) . "</td>";
                         echo "<td>" . ($row->ks_waktu_tanam) . "</td>";
@@ -60,6 +49,9 @@
                         };
                         echo "<td>" .
                             "<a href='/formeditdatapanen/$row->id' class='btn btn-warning'>Hasil Panen</a>" .
+                            "</td>";
+                        echo "<td>" .
+                            "<a href='' class='btn btn-info'>Edit Data</a>" .
                             "</td>";
                         echo "<td>" .
                             "<a href='/deletedatapanen/$row->id' class='btn btn-danger'>Hapus</a>" .
