@@ -8,6 +8,8 @@ use App\Models\penanaman_bawang;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
+use PDF;
+
 
 
 class RiwayatController extends Controller
@@ -30,6 +32,7 @@ class RiwayatController extends Controller
             $data = DB::table('penanaman_bawangs')
                 ->join('panens', 'panens.id_penanaman', '=', 'penanaman_bawangs.id_user')
                 ->select(
+                    'penanaman_bawangs.id',
                     'penanaman_bawangs.id_user',
                     'penanaman_bawangs.ks_metode_pengairan',
                     'penanaman_bawangs.ks_modal',
@@ -49,48 +52,29 @@ class RiwayatController extends Controller
         }
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function pdfpanen($id)
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        $data = DB::table('penanaman_bawangs')
+            ->join('panens', 'panens.id_penanaman', '=', 'penanaman_bawangs.id_user')
+            ->select(
+                'penanaman_bawangs.id_user',
+                'penanaman_bawangs.namapetani',
+                'penanaman_bawangs.ks_metode_pengairan',
+                'penanaman_bawangs.ks_modal',
+                'penanaman_bawangs.ks_luas_lahan',
+                'penanaman_bawangs.ks_bibit',
+                'penanaman_bawangs.ks_waktu_tanam',
+                'penanaman_bawangs.ks_status_lahan',
+                'penanaman_bawangs.ks_jumlah_modal',
+                'penanaman_bawangs.kabupaten',
+                'penanaman_bawangs.id_lokasisawah',
+                'panens.panen_tanggal'
+            )
+            ->where('penanaman_bawangs.ks_panen', 1)
+            ->where('penanaman_bawangs.id', $id)
+            ->get();
+        // $pdf = PDF::loadView('pdf.view', compact('data'));
+        $pdf = PDF::loadView('pdf.pdf', compact('data'));
+        return $pdf->stream();
     }
 }

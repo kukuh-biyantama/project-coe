@@ -33,17 +33,43 @@
                     <?php
                     foreach ($data as $view) {
                         $verify = $currentuserid;
+                        $dataKabupaten = "";
+                        switch ($view->kabupaten) {
+                            case 1:
+                                $dataKabupaten = "Boyolali";
+                                break;
+                            case 2:
+                                $dataKabupaten = "Brebes";
+                                break;
+                            case 3:
+                                $dataKabupaten = "Demak";
+                                break;
+                            case 4:
+                                $dataKabupaten = "Kendal";
+                                break;
+                            case 5:
+                                $dataKabupaten = "Temanggung";
+                                break;
+                            case 6:
+                                $dataKabupaten = "Kudus";
+                                break;
+                            case 7:
+                                $dataKabupaten = "Pati";
+                                break;
+                            default:
+                                $dataKabupaten = "belum ada data";
+                        }
                         if ($view->id_user == $verify) {
                             $verifyPanen = $view->ks_panen;
                             echo "<tr>";
                             echo "<td colspan='4'>" . ($view->ks_metode_pengairan) . "</td>";
                             echo "<td colspan='4' >" . ($view->ks_modal) . "</td>";
-                            echo "<td colspan='4'>" .  number_format($view->ks_luas_lahan, 0,',','.') . "</td>";
-                            echo "<td colspan='4'>" . number_format($view->ks_bibit, 0,',','.') . "</td>";
+                            echo "<td colspan='4'>" .  number_format($view->ks_luas_lahan, 0, ',', '.') . "</td>";
+                            echo "<td colspan='4'>" . number_format($view->ks_bibit, 0, ',', '.') . "</td>";
                             echo "<td colspan='4'>" . ($view->ks_waktu_tanam) . "</td>";
                             echo "<td colspan='4'>" . ($view->ks_status_lahan) . "</td>";
-                            echo "<td colspan='4'>" . number_format($view->ks_jumlah_modal, 0,',','.')  . "</td>";
-                            echo "<td colspan='4'>" . ($view->kabupaten) . "</td>";
+                            echo "<td colspan='4'>" . number_format($view->ks_jumlah_modal, 0, ',', '.')  . "</td>";
+                            echo "<td colspan='4'>" . $dataKabupaten . "</td>";
                             echo "<td colspan='4'>" . "sawah" . " " . ($view->id_lokasisawah) . "</td>";
                             echo "<td colspan='4'>" .
                                 "<a href='/tampildatapenanamanbawang/$view->id' class='btn btn-warning'>Edit</a>" .

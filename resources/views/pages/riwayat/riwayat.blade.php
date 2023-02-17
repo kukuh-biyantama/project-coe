@@ -14,39 +14,57 @@
             <table class="table table-bordered" id="table">
                 <thead>
                     <tr>
-                        <!-- <th scope="col">Penanaman ID</th> -->
-                        <!-- <th scope="col">Lokasi Keterangan</th> -->
                         <th>Tanggal panen</th>
-                        <th>Metode Pengairan</th>
-                        <th>Sumber Modal</th>
-                        <th>Luas Lahan (m<sup>2</sup>)</th>
                         <th>Jumlah Bibit (kg)</th>
                         <th>Waktu Tanam</th>
-                        <th>Status Lahan</th>
-                        <th>Jumlah Modal (Rp)</th>
                         <th>Kabupaten</th>
                         <th>Alamat</th>
                         <th>Kondisi</th>
+                        <th>Cetak</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php
                     foreach ($data as $view) {
                         $verify = $currentuserid;
+                        $dataKabupaten = "";
+                        switch ($view->kabupaten) {
+                            case 1:
+                                $dataKabupaten = "Boyolali";
+                                break;
+                            case 2:
+                                $dataKabupaten = "Brebes";
+                                break;
+                            case 3:
+                                $dataKabupaten = "Demak";
+                                break;
+                            case 4:
+                                $dataKabupaten = "Kendal";
+                                break;
+                            case 5:
+                                $dataKabupaten = "Temanggung";
+                                break;
+                            case 6:
+                                $dataKabupaten = "Kudus";
+                                break;
+                            case 7:
+                                $dataKabupaten = "Pati";
+                                break;
+                            default:
+                                $dataKabupaten = "belum ada data";
+                        }
                         if ($view->id_user == $verify) {
                             // $verifyPanen = $view->ks_panen;
                             echo "<tr>";
                             echo "<td>" . ($view->panen_tanggal) . "</td>";
-                            echo "<td>" . ($view->ks_metode_pengairan) . "</td>";
-                            echo "<td>" . ($view->ks_modal) . "</td>";
-                            echo "<td>" . number_format($view->ks_luas_lahan, 0, ',', '.')  . "</td>";
                             echo "<td>" . number_format($view->ks_bibit, 0, ',', '.')  . "</td>";
                             echo "<td>" . ($view->ks_waktu_tanam) . "</td>";
-                            echo "<td>" . ($view->ks_status_lahan) . "</td>";
-                            echo "<td>" . number_format($view->ks_jumlah_modal, 0, ',', '.')  . "</td>";
-                            echo "<td>" . ($view->kabupaten) . "</td>";
+                            echo "<td>" . $dataKabupaten . "</td>";
                             echo "<td>" . "sawah" . " " . ($view->id_lokasisawah) . "</td>";
                             echo "<td>" . "Sudah Panen" . "</td>";
+                            echo "<td>" .
+                                "<button class='btn btn-warning'><a href='/pdf/$view->id'>PDF</a></button>" .
+                                "</td>";
                         }
                     }
                     ?>

@@ -28,6 +28,32 @@
                     <?php
                     foreach ($user_data as $data) {
                         $verify = $currentuserid;
+                        $dataKabupaten = "";
+                        switch ($data['kabupaten']) {
+                            case 1:
+                                $dataKabupaten = "Boyolali";
+                                break;
+                            case 2:
+                                $dataKabupaten = "Brebes";
+                                break;
+                            case 3:
+                                $dataKabupaten = "Demak";
+                                break;
+                            case 4:
+                                $dataKabupaten = "Kendal";
+                                break;
+                            case 5:
+                                $dataKabupaten = "Temanggung";
+                                break;
+                            case 6:
+                                $dataKabupaten = "Kudus";
+                                break;
+                            case 7:
+                                $dataKabupaten = "Pati";
+                                break;
+                            default:
+                                $dataKabupaten = "belum ada data";
+                        }
                         if ($data['user_id'] == $verify) {
                             $id = $data['user_id'];
                             $lokasi = $data['lokasi_keterangan'];
@@ -35,7 +61,7 @@
                             echo "<td>" . ($data['id_iot']) . "</td>";
                             echo "<td>" . ($data['lokasi_latitude']) . "</td>";
                             echo "<td>" . ($data['lokasi_longitude']) . "</td>";
-                            echo "<td>" . ($data['kabupaten']) . "</td>";
+                            echo "<td>" . $dataKabupaten . "</td>";
                             echo "<td>" . ($data['lokasi_keterangan']) . "</td>";
                             // echo "<td>" .
                             //     "<a href='/formeditdatalokasisawah/$id' class='btn btn-warning'>Edit</a>" .

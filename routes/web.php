@@ -22,6 +22,7 @@ use App\Http\Controllers\KegiatansawahController;
 use App\Http\Controllers\LokasiController;
 use App\Http\Controllers\LokasiPetaniController;
 use GuzzleHttp\Client;
+use Illuminate\Support\Facades\DB;
 
 /*
 |--------------------------------------------------------------------------
@@ -161,6 +162,32 @@ Route::group(['middleware' => 'auth'], function () {
 
 
 	Route::get('/riwayatpanen', [RiwayatController::class, 'index'])->name('riwayatPanen');
+
+	//pdf
+	// Route::get('/pdf/{id}', function () {
+	// 	$data = DB::table('penanaman_bawangs')
+	// 		->join('panens', 'panens.id_penanaman', '=', 'penanaman_bawangs.id_user')
+	// 		->select(
+	// 			'penanaman_bawangs.id_user',
+	// 			'penanaman_bawangs.ks_metode_pengairan',
+	// 			'penanaman_bawangs.ks_modal',
+	// 			'penanaman_bawangs.ks_luas_lahan',
+	// 			'penanaman_bawangs.ks_bibit',
+	// 			'penanaman_bawangs.ks_waktu_tanam',
+	// 			'penanaman_bawangs.ks_status_lahan',
+	// 			'penanaman_bawangs.ks_jumlah_modal',
+	// 			'penanaman_bawangs.kabupaten',
+	// 			'penanaman_bawangs.id_lokasisawah',
+	// 			'panens.panen_tanggal'
+	// 		)
+	// 		->where('penanaman_bawangs.ks_panen', 1)
+	// 		->where('penanaman_bawangs.id', $id)
+	// 		->get();
+	// 	// $pdf = PDF::loadView('pdf.view', compact('data'));
+	// 	$pdf = PDF::loadView('pdf.pdf', compact('data'));
+	// 	return $pdf->download('your_file_name.pdf');
+	// });
+	Route::get('/pdf/{id}', [RiwayatController::class, 'pdfpanen'])->name('pdfpanen');
 });
 
 Route::get('/kspenyakit', [PenyakitController::class, 'index'])->name('kspenyakit.index');
