@@ -74,6 +74,7 @@ class RiwayatController extends Controller
             ->where('penanaman_bawangs.id', $id)
             ->get();
         // $pdf = PDF::loadView('pdf.view', compact('data'));
+        // return pdf
         $pdf = PDF::loadView('pdf.pdf', compact('data'));
         return $pdf->stream();
     }
