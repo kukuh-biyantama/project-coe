@@ -241,7 +241,7 @@
                                         </h2>
                                     </div>
                                 </div>
-                                <div class="card card-stats mb-4 mb-xl-0 btn btn-info text-balck pt-2">
+                                <div class="card card-stats mb-4 mb-xl-0 btn btn-secondary pt-2">
                                     <a href="/datapestisida/">
                                         <div class="card-body">
                                             <div class="row">
@@ -281,7 +281,7 @@
                                         </h2>
                                     </div>
                                 </div>
-                                <div class="card card-stats mb-4 mb-xl-0 btn btn-info text-balck pt-2">
+                                <div class="card card-stats mb-4 mb-xl-0 btn btn-secondary text-balck pt-2">
                                     <a href="/datapupuk/">
                                         <div class="card-body">
                                             <div class="row">
