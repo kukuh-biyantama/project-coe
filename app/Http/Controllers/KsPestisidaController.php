@@ -10,11 +10,9 @@ use Illuminate\Support\Facades\Http;
 
 class KsPestisidaController extends Controller
 {
+    // view data pestisida
     public function datapestisida()
     {
-        // $data = ks_pestisida::orderBy('ks_pestisida_tgl_semprot', 'DESC')->get();
-
-
         $currentuserid = Auth::user()->id;
         $url = "http://compute.dinus.ac.id:900/api/get/lokasi/" . $currentuserid;
         $response = Http::get($url);
@@ -24,49 +22,53 @@ class KsPestisidaController extends Controller
         if ($data == null) {
             return view('/pages/responslokasi/responslokasi');
         } else {
-            $data = DB::table('ks_pestisidas')->from('penanaman_bawangs')->join('ks_pestisidas', 'penanaman_bawangs.id_user', '=', 'ks_pestisidas.id_user')
-                ->WHERE('penanaman_bawangs.id_user', $currentuserid)
+            $data = DB::table('ks_pestisidas')
+                ->join('pestisidas', 'ks_pestisidas.pestisida_id', '=', 'pestisidas.id')
+                ->join('penanaman_bawangs', 'ks_pestisidas.id_user', '=', 'penanaman_bawangs.id_user')
+                ->select('ks_pestisidas.*', 'penanaman_bawangs.*', 'pestisidas.pestisida_nama')
+                ->where('ks_pestisidas.id_user', $currentuserid)
                 ->where('penanaman_bawangs.ks_panen', 0)
+                ->orderBy('ks_pestisidas.ks_pestisida_tgl_semprot', 'DESC')
                 ->get();
             return view('pages.pestisida.datapestisida', compact('data'));
+            // return dd($data);
         }
     }
 
+    // form tambah kegiatan pestisida
     public function tambahdatapestisida()
     {
         $currentuserid = Auth::user()->id;
         $url = "http://compute.dinus.ac.id:900/api/get/lokasi/" . $currentuserid;
         $response = Http::get($url);
+        $pestisidas = DB::table('pestisidas')->orderBy('pestisida_nama', 'ASC')->get();
+        $data['pestisidas'] = $pestisidas;
         $data = json_decode($response, true);
         $user_data = $data;
         $user_data = array_slice($user_data, 0);
-        return view('pages.pestisida.tambahdatapestisida', compact('user_data'));
-        // return view('/pages/pestisida/tambahdatapestisida');
+        return view('pages.pestisida.tambahdatapestisida', compact('user_data', 'pestisidas'));
     }
 
+    // logic tambah kegiatan pestisida
     public function insertdatapestisida(Request $request)
     {
-        // Form Validasi
-        $currentuserid = Auth::user()->id;
-        $datalokasi = $request->input('lokasi_keterangan');
-        $this->validate($request, [
-            'ks_pestisida_nama' => 'required|max:50',
-            'ks_pestisida_tempat_membeli' => 'required|min:1',
+        // form validasi kegiatan pestisida
+        $request->validate([
             'ks_pestisida_tgl_semprot' => 'required',
-            'ks_pestisida_jumlah_takaran' => 'required',
+            'pestisida_id' => 'required',
+            'ks_pestisida_jumlah_takaran' => 'required'
+        ], [
+            'ks_pestisida_tgl_semprot'=> '*Field ini wajib diisi',
+            'pestisida_id'=> '*Field ini wajib diisi',
+            'ks_pestisida_jumlah_takaran' => '*Field ini wajib diisi',
         ]);
 
-        // nama pestisida
-        $input_ks_pestisida_nama = $request->input('ks_pestisida_nama');
+        $currentuserid = Auth::user()->id;
 
-        // data array tempat membeli pestisida
-        $ks_pestisida_tempat_membeli = isset($_POST['ks_pestisida_tempat_membeli']) && is_array($_POST['ks_pestisida_tempat_membeli']) ? $_POST['ks_pestisida_tempat_membeli'] : [];
-        $input_ks_pestisida_tempat_membeli = implode(', ', $ks_pestisida_tempat_membeli);
-
-        // tanggal semprot pestisida
         $input_ks_pestisida_tgl_semprot = $request->input('ks_pestisida_tgl_semprot');
 
-        // konversi jumlah takaran pestisida
+        $datalokasi = $request->input('lokasi_keterangan');
+        
         $dataJumlahTakaranPestisida = $request->input('ks_pestisida_jumlah_takaran');
         $stnJumlahTakaranPestisida = $request->input('stnJumlahTakaranPestisida');
         $dataHasilJumlahTakaranPestisida = $dataJumlahTakaranPestisida;
@@ -76,48 +78,46 @@ class KsPestisidaController extends Controller
             $dataHasilJumlahTakaranPestisida = $dataHasilJumlahTakaranPestisida;
         }
 
-        // keterangan pestisida
         $input_ks_pestisida_keterangan = $request->input('ks_pestisida_keterangan');
 
         ks_pestisida::create([
             'id_user' => $currentuserid,
             'id_lokasisawah' => $datalokasi,
-            'ks_pestisida_nama' => $input_ks_pestisida_nama,
-            'ks_pestisida_tempat_membeli' => $input_ks_pestisida_tempat_membeli,
             'ks_pestisida_tgl_semprot' => $input_ks_pestisida_tgl_semprot,
+            'pestisida_id' => $request->pestisida_id,
             'ks_pestisida_jumlah_takaran' => $dataHasilJumlahTakaranPestisida,
             'ks_pestisida_keterangan' => $input_ks_pestisida_keterangan
         ]);
-
-
-
 
         return redirect()->route('datapestisida')->with('success', 'Data Pestisida telah berhasil ditambahkan');
     }
 
     public function tampildatapestisida($id)
     {
-
-        // return view('pages.pestisida.tambahdatapestisida', compact('user_data'));
         $data = ks_pestisida::find($id);
-        return view('/pages/pestisida/tampildatapestisida', compact('data'));
+
+        $pestisidas = DB::table('pestisidas')->orderBy('pestisida_nama', 'ASC')->get();
+        $data['pestisidas'] = $pestisidas;
+
+        $data['data'] = $data;
+
+        return view('/pages/pestisida/tampildatapestisida', $data);
     }
 
+    // logic update kegiatan pestisida
     public function updatedatapestisida(Request $request, $id)
     {
-        // $currentuserid = Auth::user()->id;
-        // $datalokasi = $request->input('lokasi');
-        // nama pestisida
-        $input_ks_pestisida_nama = $request->input('ks_pestisida_nama');
+        // form validasi kegiatan pestisida
+        $request->validate([
+            'ks_pestisida_tgl_semprot' => 'required',
+            'pestisida_id' => 'required',
+            'ks_pestisida_jumlah_takaran' => 'required'
+        ], [
+            'ks_pestisida_tgl_semprot'=> '*Field ini wajib diisi',
+            'pestisida_id'=> '*Field ini wajib diisi',
+            'ks_pestisida_jumlah_takaran' => '*Field ini wajib diisi',
+        ]);
 
-        // data array tempat membeli pestisida
-        $ks_pestisida_tempat_membeli = isset($_POST['ks_pestisida_tempat_membeli']) && is_array($_POST['ks_pestisida_tempat_membeli']) ? $_POST['ks_pestisida_tempat_membeli'] : [];
-        $input_ks_pestisida_tempat_membeli = implode(', ', $ks_pestisida_tempat_membeli);
-
-        // tanggal semprot pestisida
-        $input_ks_pestisida_tgl_semprot = $request->input('ks_pestisida_tgl_semprot');
-
-        // konversi jumlah takaran pestisida
         $dataJumlahTakaranPestisida = $request->input('ks_pestisida_jumlah_takaran');
         $stnJumlahTakaranPestisida = $request->input('stnJumlahTakaranPestisida');
         $dataHasilJumlahTakaranPestisida = $dataJumlahTakaranPestisida;
@@ -127,20 +127,12 @@ class KsPestisidaController extends Controller
             $dataHasilJumlahTakaranPestisida = $dataHasilJumlahTakaranPestisida;
         }
 
-        // keterangan pestisida
-        $input_ks_pestisida_keterangan = $request->input('ks_pestisida_keterangan');
-
         $data = ks_pestisida::find($id);
         $data->update([
-            // 'id_user' => $currentuserid,
-            // 'id_lokasisawah' => $datalokasi,
-            'ks_pestisida_nama' => $input_ks_pestisida_nama,
-            'ks_pestisida_tempat_membeli' => $input_ks_pestisida_tempat_membeli,
-            'ks_pestisida_tgl_semprot' => $input_ks_pestisida_tgl_semprot,
+            'ks_pestisida_tgl_semprot' => $request->ks_pestisida_tgl_semprot,
+            'pestisida_id' => $request->pestisida_id,
             'ks_pestisida_jumlah_takaran' => $dataHasilJumlahTakaranPestisida,
-            // 'id_user' => $currentuserid,
-            // 'id_lokasisawah' => $datalokasi,
-            'ks_pestisida_keterangan' => $input_ks_pestisida_keterangan
+            'ks_pestisida_keterangan' => $request->ks_pestisida_keterangan
         ]);
 
         return redirect()->route('datapestisida')->with('success', 'Data Pestisida telah berhasil diupdate');

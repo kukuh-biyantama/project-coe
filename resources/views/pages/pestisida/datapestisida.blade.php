@@ -18,15 +18,14 @@
             @endif
         </script> -->
 
-        <div class="container-fluid">
-            <table class="table table-bordered table-responsive">
+        <div class="container-fluid table-responsive">
+            <table class="table table-bordered">
                 <thead>
                     <tr>
                         <th scope="col">Lokasi Keterangan</th>
                         <th scope="col">Tanggal Semprot Pestisida</th>
                         <th scope="col">Nama Pestisida</th>
-                        <th scope="col">Tempat Membeli Pestisida</th>
-                        <th scope="col">Jumlah Takaran Pestisida (liter)</th>
+                        <th scope="col">Jumlah Takaran Pestisida</th>
                         <th scope="col">Keterangan Kegiatan</th>
                         <th scope="col">Ubah Data</th>
                         <th scope="col">Hapus Data</th>
@@ -36,10 +35,9 @@
                     @foreach ($data as $row)
                         <tr>
                             <td>Sawah Ke {{ $row->id_lokasisawah }}</td>
-                            <td>{{ $row->ks_pestisida_tgl_semprot }}</td>
-                            <td>{{ $row->ks_pestisida_nama }}</td>
-                            <td>{{ $row->ks_pestisida_tempat_membeli }}</td>
-                            <td>{{ $row->ks_pestisida_jumlah_takaran }}</td>
+                            <td>{{ \Carbon\Carbon::parse($row->ks_pestisida_tgl_semprot)->translatedFormat('l, d F Y') }}</td>
+                            <td>{{ $row->pestisida_nama }}</td>
+                            <td>{{ $row->ks_pestisida_jumlah_takaran }} Liter</td>
                             <td>{{ $row->ks_pestisida_keterangan }}</td>
                             <td>
                                 <a href="/tampildatapestisida/{{ $row->id }}" class="btn btn-warning">Edit</a>

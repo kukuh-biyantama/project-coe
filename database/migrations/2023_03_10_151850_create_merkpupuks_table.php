@@ -13,14 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('ks_pestisidas', function (Blueprint $table) {
+        Schema::create('merkpupuks', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('id_user');
-            $table->string('id_lokasisawah');
-            $table->integer('pestisida_id');
-            $table->date('ks_pestisida_tgl_semprot');
-            $table->float('ks_pestisida_jumlah_takaran');
-            $table->string('ks_pestisida_keterangan')->nullable();
+            $table->integer('jenispupuk_id');
+            $table->string('merkpupuk_nama');
+            $table->string('merkpupuk_keterangan')->nullable();
             $table->timestamps();
         });
     }
@@ -32,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ks_pestisidas');
+        Schema::dropIfExists('merkpupuks');
     }
 };

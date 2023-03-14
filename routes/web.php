@@ -111,12 +111,15 @@ Route::group(['middleware' => 'auth'], function () {
 
 
 	// Pupuk
+	// view data pupuk
 	Route::get('/datapupuk', [KsPupukController::class, 'datapupuk'])->name('datapupuk');
+	// get data merk pupuk
+	Route::post('/fetch-merkpupuks/{id}',[KsPupukController::class,'fetchMerkpupuks']);
+	// crud ks pupuk
 	Route::get('/tambahdatapupuk', [KsPupukController::class, 'tambahdatapupuk'])->name('tambahdatapupuk');
 	Route::post('/insertdatapupuk', [KsPupukController::class, 'insertdatapupuk'])->name('insertdatapupuk');
 	Route::get('/tampildatapupuk/{id}', [KsPupukController::class, 'tampildatapupuk'])->name('tampildatapupuk');
 	Route::post('/updatedatapupuk/{id}', [KsPupukController::class, 'updatedatapupuk'])->name('updatedatapupuk');
-	//delete
 	Route::get('/deletepupuk/{id}', [KsPupukController::class, 'deletepupuk'])->name('deletepupuk');
 
 	// Data sensor sawah (IoT)

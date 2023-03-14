@@ -23,8 +23,9 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.css">
     <link rel="stylesheet" href="toruskit.bundle.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
-
-
+    <!-- Token AJAX Pupuk -->
+    <meta name="_token" content="{{ csrf_token() }}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.css">
 
 </head>
@@ -87,6 +88,7 @@
             }
         });
     </script>
+    <script src="{{ asset('assets/js/jquery-3.6.0.min.js') }}"></script>
 
 </html>
 <footer>

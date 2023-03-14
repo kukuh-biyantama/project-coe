@@ -17,11 +17,9 @@ return new class extends Migration
             $table->id();
             $table->bigInteger('id_user');
             $table->string('id_lokasisawah');
-            $table->string('ks_pupuk_jenis');
-            $table->string('ks_pupuk_sumber_organik');
-            $table->string('ks_pupuk_sumber_anorganik');
-            $table->string('ks_pupuk_merk');
             $table->date('ks_pupuk_tgl_rabuk');
+            $table->integer('jenispupuk_id');
+            $table->integer('merkpupuk_id');
             $table->float('ks_pupuk_jumlah_takaran');
             $table->string('ks_pupuk_keterangan')->nullable();
             $table->timestamps();

@@ -10,17 +10,15 @@
         <a href="/tambahdatapupuk" type="button" class="btn btn-success" style="float: right;">Tambah Data</a>
         <a href="/home" type="button" class="btn btn-primary">Kembali</a>
     </div>
-    <div class="container-fluid">
-        <table class="table table-bordered table-responsive">
+    <div class="container-fluid table-responsive">
+        <table class="table table-bordered">
             <thead>
                 <tr>
                     <th scope="col">Lokasi Sawah</th>
                     <th scope="col">Tanggal Rabuk Pupuk</th>
                     <th scope="col">Jenis Pupuk</th>
-                    <th scope="col">Sumber Pupuk Organik</th>
-                    <th scope="col">Sumber Pupuk Anorganik</th>
                     <th scope="col">Merk Pupuk</th>
-                    <th scope="col">Jumlah Takaran Pupuk (kg)</th>
+                    <th scope="col">Jumlah Takaran Pupuk</th>
                     <th scope="col">Keterangan Kegiatan</th>
                     <th scope="col">Ubah Data</th>
                     <th scope="col">Hapus Data</th>
@@ -30,13 +28,11 @@
                 <?php
                 foreach ($data as $row) {
                     echo "<tr>";
-                    echo "<td>" .  $row->id_lokasisawah . "</td>";
-                    echo "<td>" . $row->ks_pupuk_tgl_rabuk . "</td>";
-                    echo "<td>" . $row->ks_pupuk_jenis . "</td>";
-                    echo "<td>" . $row->ks_pupuk_sumber_organik . "</td>";
-                    echo "<td>" . $row->ks_pupuk_sumber_anorganik . "</td>";
-                    echo "<td>" . $row->ks_pupuk_merk  . "</td>";
-                    echo "<td>" . $row->ks_pupuk_jumlah_takaran . "</td>";
+                    echo "<td>" . "Sawah ke" . " " . ($row->id_lokasisawah) . "</td>";
+                    echo "<td>" . \Carbon\Carbon::parse($row->ks_pupuk_tgl_rabuk)->translatedFormat('l, d F Y') . "</td>";
+                    echo "<td>" . $row->jenispupuk_nama . "</td>";
+                    echo "<td>" . $row->merkpupuk_nama  . "</td>";
+                    echo "<td>" . $row->ks_pupuk_jumlah_takaran . " kg </td>";
                     echo "<td>" . $row->ks_pupuk_keterangan . "</td>";
                     echo "<td>" .
                         "<a href='/tampildatapupuk/$row->id' class='btn btn-primary'>Edit</a>" .

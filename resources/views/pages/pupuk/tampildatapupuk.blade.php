@@ -15,208 +15,85 @@
               <p style="font-weight: 600;">Form ini digunakan untuk memulai aktivitas pemupukan Bapak/Ibu</p>
               <p style="font-weight: 600;">Silahkan mengisi form berikut, agar sistem dapat memberikan rekomendasi terbaik untuk kegiatan pertanian Bapak/Ibu</p>
             </center>
+            <br>
           </div>
         </div>  
-        <div class="card">
+        <div class="card mt-3">
           <div class="card-body">
               <form action="/updatedatapupuk/{{ $data->id }}" method="POST" enctype="multipart/form-data">
                   @csrf
 
-                  {{-- <a href="/datapupuk" type="button" class="btns btn-primary mb-4">Kembali</a> --}}
-                  
-                  <!-- Lokasi -->
-                  <!-- <div class="mb-3">
-                      <label for="" class="form-label">Lokasi</label>
-                      <select class="form-select" name="" aria-label="Default select example">
-                          <option selected disabled>Pilih</option>
-                          <option value="1">Sawah pak Ridho</option>
-                      </select>
-                  </div> -->
-
-                  <!-- Jenis Pupuk -->
+                  <!-- Tanggal rabuk pupuk -->
                   <div class="mb-3">
-                      <label for="jenisPupuk" class="form-label">Jenis Pupuk</label>
-                      <div class="form-check">
-                          <div class="">
-                            <input class="" type="checkbox" name="ks_pupuk_jenis[]" value="Organik"> Organik<br>
-                          </div>
-                          <div class="">
-                            <input class="" type="checkbox" name="ks_pupuk_jenis[]" value="Anorganik"> Anorganik<br>
-                          </div>
-                      </div>
+                    <label for="tanggalPupuk" class="form-label" style="font-weight: 600;">Tanggal rabuk pupuk *</label>
+
+                    <input type="date" class="form-control @error('ks_pupuk_tgl_rabuk') is-invalid @enderror" name="ks_pupuk_tgl_rabuk" id="ks_pupuk_tgl_rabuk" value="{{ old('ks_pupuk_tgl_rabuk', $data->ks_pupuk_tgl_rabuk) }}">
+                    
+                    @error('ks_pupuk_tgl_rabuk')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
                   </div>
 
-                  <!-- Sumber Pupuk Organik -->
+                  <!-- Jenis pupuk -->
                   <div class="mb-3">
-                      <label for="sumberPupukOrganik" class="form-label">Sumber Pupuk Organik</label>
-                      <div class="form-check">
-                          <div class="">
-                            <input class="" type="checkbox" name="ks_pupuk_sumber_organik[]" value="Bantuan Pemerintah"> Bantuan Pemerintah<br>
-                          </div>
-                          <div class="">
-                            <input class="" type="checkbox" name="ks_pupuk_sumber_organik[]" value="Beli di Peternak"> Beli di Peternak<br>
-                          </div>
-                          <div class="">
-                            <input class="" type="checkbox" name="ks_pupuk_sumber_organik[]" value="Kompos"> Kompos<br>
-                          </div>
-                          <div class="">
-                            <input class="" type="checkbox" name="ks_pupuk_sumber_organik[]" value="Buat Sendiri"> Buat Sendiri<br>
-                          </div>
-                          <div class="">
-                            <input class="" type="checkbox" name="ks_pupuk_sumber_organik[]" value="Kelompok Tani"> Kelompok Tani<br>
-                          </div>
-                          <div class="">
-                            <input class="" type="checkbox" name="ks_pupuk_sumber_organik[]" value="Toko Pertanian"> Toko Pertanian<br>
-                          </div>
-                          <div class="">
-                            <input class="" type="checkbox" name="ks_pupuk_sumber_organik[]" value="Kotoran Ayam"> Kotoran Ayam<br>
-                          </div>
-                          <div class="">
-                            <input class="" type="checkbox" name="ks_pupuk_sumber_organik[]" value="Kotoran Sapi"> Kotoran Sapi<br>
-                          </div>
-                          <div class="">
-                            <input class="" type="checkbox" name="ks_pupuk_sumber_organik[]" value="Kotoran Kambing"> Kotoran Kambing<br>
-                          </div>
-                          <div class="">
-                            <input class="" type="checkbox" name="ks_pupuk_sumber_organik[]" value="Kotoran Hewan"> Kotoran Hewan<br>
-                          </div>
-                      </div>
-                  </div>
-                  
-                  <!-- Sumber Pupuk Anorganik -->
-                  <div class="mb-3">
-                      <label for="sumberPupukAnorganik" class="form-label">Sumber Pupuk Anorganik</label>
-                      <div class="form-check">
-                          <div class="">
-                            <input class="" type="checkbox" name="ks_pupuk_sumber_anorganik[]" value="Toko Pertanian"> Toko Pertanian<br>
-                          </div>
-                          <div class="">
-                            <input class="" type="checkbox" name="ks_pupuk_sumber_anorganik[]" value="Kelompok Tani"> Kelompok Tani<br>
-                          </div>
-                          <div class="">
-                            <input class="" type="checkbox" name="ks_pupuk_sumber_anorganik[]" value="Peternak"> Peternak<br>
-                          </div>
-                      </div>
+                    <label for="jenisPupuk" class="form-label" style="font-weight: 600;">Jenis pupuk *</label>
+                    
+                    <select name="jenispupuk_id" id="jenispupuk_id" class="form-control @error('jenispupuk_id') is-invalid @enderror">
+                        <option selected disabled>Pilih jenis pupuk</option>
+                        @if (!empty($jenispupuks))
+                            @foreach ($jenispupuks as $jenispupuk)
+                                <option value="{{ $jenispupuk->id }}">{{ $jenispupuk->jenispupuk_nama }}</option>
+                            @endforeach
+                        @endif
+                    </select>
+
+                    @error('jenispupuk_id')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
                   </div>
 
-                  <!-- Merk Pupuk -->
+                  <!-- Merk pupuk -->
                   <div class="mb-3">
-                      <label for="merkPupuk" class="form-label">Merk Pupuk</label>
-                      <div class="form-check">
-                          <div class="">
-                            <input class="" type="checkbox" name="ks_pupuk_merk[]" value="Bio to Grow"> Bio to Grow<br>
-                          </div>
-                          <div class="">
-                            <input class="" type="checkbox" name="ks_pupuk_merk[]" value="DGW"> DGW<br>
-                          </div>
-                          <div class="">
-                            <input class="" type="checkbox" name="ks_pupuk_merk[]" value="Mutiara"> Mutiara<br>
-                          </div>
-                          <div class="">
-                            <input class="" type="checkbox" name="ks_pupuk_merk[]" value="Phoska"> Phoska<br>
-                          </div>
-                          <div class="">
-                            <input class="" type="checkbox" name="ks_pupuk_merk[]" value="Saprodap"> Saprodap<br>
-                          </div>
-                          <div class="">
-                            <input class="" type="checkbox" name="ks_pupuk_merk[]" value="HCL"> HCL<br>
-                          </div>
-                          <div class="">
-                            <input class="" type="checkbox" name="ks_pupuk_merk[]" value="Kamas"> Kamas<br>
-                          </div>
-                          <div class="">
-                            <input class="" type="checkbox" name="ks_pupuk_merk[]" value="Meroke"> Meroke<br>
-                          </div>
-                          <div class="">
-                            <input class="" type="checkbox" name="ks_pupuk_merk[]" value="Pak Tani"> Pak Tani<br>
-                          </div>
-                          <div class="">
-                            <input class="" type="checkbox" name="ks_pupuk_merk[]" value="Lao Ying"> Lao Ying<br>
-                          </div>
-                          <div class="">
-                            <input class="" type="checkbox" name="ks_pupuk_merk[]" value="MKP"> MKP<br>
-                          </div>
-                          <div class="">
-                            <input class="" type="checkbox" name="ks_pupuk_merk[]" value="Phonska"> Phonska<br>
-                          </div>
-                          <div class="">
-                            <input class="" type="checkbox" name="ks_pupuk_merk[]" value="ZA"> ZA<br>
-                          </div>
-                          <div class="">
-                            <input class="" type="checkbox" name="ks_pupuk_merk[]" value="DAP"> DAP<br>
-                          </div>
-                          <div class="">
-                            <input class="" type="checkbox" name="ks_pupuk_merk[]" value="Golden Max"> Golden Max<br>
-                          </div>
-                          <div class="">
-                            <input class="" type="checkbox" name="ks_pupuk_merk[]" value="KCL"> KCL<br>
-                          </div>
-                          <div class="">
-                            <input class="" type="checkbox" name="ks_pupuk_merk[]" value="Mahkota"> Mahkota<br>
-                          </div>
-                          <div class="">
-                            <input class="" type="checkbox" name="ks_pupuk_merk[]" value="NPK"> NPK<br>
-                          </div>
-                          <div class="">
-                            <input class="" type="checkbox" name="ks_pupuk_merk[]" value="SP36"> SP36<br>
-                          </div>
-                          <div class="">
-                            <input class="" type="checkbox" name="ks_pupuk_merk[]" value="Subur Kali"> Subur Kali<br>
-                          </div>
-                          <div class="">
-                            <input class="" type="checkbox" name="ks_pupuk_merk[]" value="KSN"> KSN<br>
-                          </div>
-                          <div class="">
-                            <input class="" type="checkbox" name="ks_pupuk_merk[]" value="Petroganik"> Petroganik<br>
-                          </div>
-                          <div class="">
-                            <input class="" type="checkbox" name="ks_pupuk_merk[]" value="Pupuk Luar Negeri"> Pupuk Luar Negeri<br>
-                          </div>
-                          <div class="">
-                            <input class="" type="checkbox" name="ks_pupuk_merk[]" value="Randex"> Randex<br>
-                          </div>
-                          <div class="">
-                            <input class="" type="checkbox" name="ks_pupuk_merk[]" value="Urea"> Urea<br>
-                          </div>
-                          <div class="">
-                            <input class="" type="checkbox" name="ks_pupuk_merk[]" value="Fosfat"> Fosfat<br>
-                          </div>
-                          <div class="">
-                            <input class="" type="checkbox" name="ks_pupuk_merk[]" value="Meganic"> Meganic<br>
-                          </div>
-                      </div>
+                    <label for="merkPupuk" class="form-label" style="font-weight: 600;">Merk pupuk *</label>
+
+                    <select name="merkpupuk_id" id="merkpupuk_id" class="form-control @error('merkpupuk_id') is-invalid @enderror">
+                        <option selected disabled>Pilih merk pupuk</option>
+                    </select>
+
+                    @error('merkpupuk_id')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
                   </div>
 
-                  <!-- Tanggal Rabuk Pupuk -->
+                  <!--Jumlah takaran pupuk -->
                   <div class="mb-3">
-                      <label for="tglRabukPupuk" class="form-label">Tanggal Rabuk Pupuk</label>
-                      <input type="date" name="ks_pupuk_tgl_rabuk" class="form-control" id="tglRabukPupuk" aria-describedby="tglRabukPupuk" value="{{ $data->ks_pupuk_tgl_rabuk }}">
-                  </div>
+                    <label for="jmlTakaranPupuk" class="form-label" style="font-weight: 600;">Jumlah takaran pupuk *</label><br>
 
-                  <!-- Jumlah Takaran Pupuk -->
-                  <div class="mb-3">
-                      <label for="jmlTakaranPupuk" class="form-label">Jumlah Takaran Pupuk</label><br>
-                      <input type="number" step="0.01" name="ks_pupuk_jumlah_takaran" style="width:100%" class="form-control" value="{{ $data->ks_pupuk_jumlah_takaran }}">
-                      <div class="form-check">
-                          <div class="">
+                    <input type="number" step="0.01" name="ks_pupuk_jumlah_takaran" style="width:100%" class="form-control @error('ks_pupuk_jumlah_takaran') is-invalid @enderror" value="{{ old('ks_pupuk_jumlah_takaran', $data->ks_pupuk_jumlah_takaran) }}">
+                    <div class="form-check">
+                        <div class="">
                             <input class="inputan" type="radio" id="kilogram" name="stnPupuk" value="Kilogram">
                             <label>Kilogram</label>
-                          </div>
-                          <div class="">
-                              <input class="inputan" type="radio" id="kuintal" name="stnPupuk" value="Kuintal">
-                              <label>Kuintal</label>
-                          </div>
-                          <div class="">
-                              <input class="inputan" type="radio" id="ton" name="stnPupuk" value="Ton">
-                              <label>Ton</label>
-                          </div>
-                      </div>
+                        </div>
+                        <div class="">
+                            <input class="inputan" type="radio" id="kuintal" name="stnPupuk" value="Kuintal">
+                            <label>Kuintal</label>
+                        </div>
+                        <div class="">
+                            <input class="inputan" type="radio" id="ton" name="stnPupuk" value="Ton">
+                            <label>Ton</label>
+                        </div>
+                    </div>
+
+                    @error('ks_pupuk_jumlah_takaran')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
                   </div>
 
-                  <!-- Pupuk Keterangan -->
-                      <div class="mb-3">
-                      <label for="PupukKeterangan" class="form-label">Keterangan Kegiatan</label>
-                      <input type="text" name="ks_pupuk_keterangan" style="width:100%" class="form-control" value="{{ $data->ks_pupuk_keterangan }}">
+                  <!-- Keterangan kegiatan pemupukan -->
+                  <div class="mb-3">
+                    <label for="tglRabukPupuk" class="form-label" style="font-weight: 600;">Keterangan Kegiatan Pemupukan</label>
+                    <textarea class="form-control" name="ks_pupuk_keterangan" rows="4">{{ $data->ks_pupuk_keterangan }}</textarea>
                   </div>
 
                   <!-- Button Submit dan Cancel -->
@@ -250,6 +127,45 @@
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
   -->
+
+  <!-- Script AJAX Merk Pupuk -->
+  <script src="{{ asset('assets/js/jquery-3.6.0.min.js') }}"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
+  <script>
+    $(document).ready(function() {
+      $.ajaxSetup({
+          headers: {
+              'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+          }
+      });
+    });
+
+   $(document).ready(function(){
+        $("#jenispupuk_id").change(function(){
+            var jenispupuk_id = $(this).val();
+
+            if (jenispupuk_id == "") {
+                var jenispupuk_id = 0;
+            } 
+
+            $.ajax({
+                url: '{{ url("/fetch-merkpupuks/") }}/'+jenispupuk_id,
+                type: 'post',
+                dataType: 'json',
+                success: function(response) {                    
+                    $('#merkpupuk_id').find('option:not(:first)').remove();
+                
+                    if (response['merkpupuks'].length > 0) {
+                        $.each(response['merkpupuks'], function(key,value){
+                            $("#merkpupuk_id").append("<option value='"+value['id']+"'>"+value['merkpupuk_nama']+"</option>")
+                        });
+                    } 
+                }
+            });            
+        });
+   });
+  </script>
 
   @endsection
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">

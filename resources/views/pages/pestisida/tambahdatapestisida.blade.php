@@ -7,7 +7,7 @@
         <!-- dev container untuk mengatur jarak tampilan -->
         {{-- < class="container"> --}}
         <div class="row justify-content-center">
-            <div class="col-8">
+            <div class="col-6">
                 <div class="card mt-5">
                     <div class="card-body">
                         <center>
@@ -22,120 +22,82 @@
                         <form action="/insertdatapestisida" method="POST" enctype="multipart/form-data">
                             @csrf
                             <!-- Lokasi -->
-                                <div class="mb-3">
-                                    <label for="" class="form-label" style="font-weight: 600;">Lokasi</label>
-                                    <select class="form-control" name="lokasi_keterangan" aria-label="Default select example">
-                                        <option selected disabled>Pilih</option>
-                                        @foreach ($user_data as $iot)
-                                            <option value="{{ $iot['lokasi_keterangan'] }}">Sawah Ke
-                                                {{ $iot['lokasi_keterangan'] }}</option>
+                            <div class="mb-3">
+                                <label for="" class="form-label" style="font-weight: 600;">Lokasi *</label>
+                                <select class="form-control" name="lokasi_keterangan" aria-label="Default select example">
+                                    <option selected disabled>Pilih</option>
+                                    @foreach ($user_data as $iot)
+                                        <option value="{{ $iot['lokasi_keterangan'] }}">Sawah Ke
+                                            {{ $iot['lokasi_keterangan'] }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                            <!-- Tanggal Semprot Pestisida -->
+                            <div class="mb-3">
+                                <label for="tglRabukPestisida" class="form-label" style="font-weight: 600;">Tanggal semprot pestisida *</label>
+
+                                <input type="date" name="ks_pestisida_tgl_semprot" class="form-control @error('ks_pestisida_tgl_semprot') is-invalid @enderror" id="ks_pestisida_tgl_semprot" value="{{ old('ks_pestisida_tgl_semprot') }}">
+
+                                @error('ks_pestisida_tgl_semprot')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+
+                            <!-- Nama Pestisida -->
+                            <div class="mb-3">
+                                <label for="pestisida" class="form-label" style="font-weight: 600;">Nama pestisida *</label>
+
+                                <select name="pestisida_id" id="pestisida_id" class="form-control @error('pestisida_id') is-invalid @enderror">
+                                    <option selected disabled>Pilih nama pestisida</option>
+                                    @if (!empty($pestisidas))
+                                        @foreach ($pestisidas as $pestisida)
+                                            <option value="{{ $pestisida->id }}">{{ $pestisida->pestisida_nama }}</option>
                                         @endforeach
-                                    </select>
-                                </div>
+                                    @endif
+                                </select>
 
-                                <!-- Nama Pestisida -->
-                                <div class="mb-3">
-                                    <div class="form-group">
-                                        <label for="exampleFormControlSelect1" style="font-weight: 600;">Nama
-                                            Pestisida</label>
-                                        <select class="form-control" name="ks_pestisida_nama"
-                                            id="exampleFormControlSelect1">
-                                            <option selected disabled>Pilih</option>
-                                            <option value="Emacel">Emacel</option>
-                                            <option value="Matador">Matador</option>
-                                            <option value="Fenite">Fenite</option>
-                                            <option value="Tenano">Curacron</option>
-                                            <option value="Preza">Starelle</option>
-                                            <option value="Prima-Cel">Prima-Cel</option>
-                                            <option value="Brofreya">Brofreya</option>
-                                            <option value="Meurtier">Meurtier</option>
-                                            <option value="Ulate">Ulate</option>
-                                            <option value="Biowasil">Biowasil</option>
-                                            <option value="Promojoss">Promojoss</option>
-                                            <option value="Marshal">Marshal</option>
-                                            <option value="Lainnya">Lainnya</option>
-                                        </select>
+                                @error('pestisida_id')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            
+                            <!-- Jumlah Takaran Pestisida -->
+                            <div class="mb-3">
+                                <label for="jmlTakaranPestisida" class="form-label" style="font-weight: 600;">Jumlah takaran pestisida *</label><br>
+
+                                <input type="number" step="0.01" name="ks_pestisida_jumlah_takaran" style="width:100%" class="form-control @error('ks_pestisida_jumlah_takaran') is-invalid @enderror" value="{{ old('ks_pestisida_jumlah_takaran') }}">
+
+                                <div class="form-check">
+                                    <div class="">
+                                        <input class="inputan" type="radio" id="liter"
+                                            name="stnJumlahTakaranPestisida" value="Liter">
+                                        <label>Liter</label>
+                                    </div>
+                                    <div class="">
+                                        <input class="inputan" type="radio" id="mililiter"
+                                            name="stnJumlahTakaranPestisida" value="Mililiter">
+                                        <label>Mililiter</label>
                                     </div>
                                 </div>
 
-                                <!-- Tempat Membeli Pestisida -->
-                                <div class="mb-3">
-                                    <label for="tempatMembeliPestisida" class="form-label" style="font-weight: 600;">Tempat
-                                        Membeli Pestisida</label>
+                                @error('ks_pestisida_jumlah_takaran')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            
+                            <!-- Keterangan Kegiatan pestisida -->
+                            <div class="mb-3" style="font-weight: 600;">
+                                <label for="PestisidaKeterangan" class="form-label">Keterangan Kegiatan</label>
+                                
+                                <textarea class="form-control" name="ks_pestisida_keterangan" rows="4"></textarea>
+                            </div>
 
-                                    <div class="form-check @error('ks_pestisida_tempat_membeli') is-invalid @enderror"
-                                        value="{{ old('ks_pestisida_tempat_membeli[]') }}">
-                                        <div class="tempatMembeliPestisida">
-                                            <input class="inputTempatMembeliPestisida" type="checkbox"
-                                                name="ks_pestisida_tempat_membeli[]" value="Toko Obat Pertanian"> Toko Obat
-                                            Pertanian<br>
-                                        </div>
-                                        <div class="inputTempatMembeliPestisida">
-                                            <input class="" type="checkbox" name="ks_pestisida_tempat_membeli[]"
-                                                value="Kelompok Tani"> Kelompok Tani<br>
-                                        </div>
-                                    </div>
-
-                                    @error('ks_pestisida_tempat_membeli')
-                                        <div class="invalid-feedback">{{ $message }}</div>
-                                    @enderror
-                                </div>
-
-                                <!-- Tanggal Semprot Pestisida -->
-                                <div class="mb-3">
-                                    <label for="tglSemprotPestisida" class="form-label" style="font-weight: 600;">Tanggal
-                                        Semprot Pestisida</label>
-
-                                    <input type="date" name="ks_pestisida_tgl_semprot"
-                                        class="form-control @error('ks_pestisida_tgl_semprot') is-invalid @enderror"
-                                        value="{{ old('ks_pestisida_tgl_semprot') }}">
-
-                                    @error('ks_pestisida_tgl_semprot')
-                                        <div class="invalid-feedback">{{ $message }}</div>
-                                    @enderror
-                                </div>
-
-                                <!-- Jumlah Takaran Pestisida -->
-                                <div class="mb-3">
-                                    <label for="jmlTakaranPestisida" class="form-label" style="font-weight: 600;">Jumlah
-                                        Takaran Pestisida</label><br>
-
-                                    <input type="number" step="0.01" style="width:100%"
-                                        class="form-control  @error('ks_pestisida_jumlah_takaran') is-invalid @enderror"
-                                        name="ks_pestisida_jumlah_takaran" value="{{ old('ks_pestisida_jumlah_takaran') }}">
-
-                                    <div class="form-check">
-                                        <div class="">
-                                            <input class="inputan" type="radio" id="liter"
-                                                name="stnJumlahTakaranPestisida" value="Liter">
-                                            <label>Liter</label>
-                                        </div>
-                                        <div class="">
-                                            <input class="inputan" type="radio" id="mililiter"
-                                                name="stnJumlahTakaranPestisida" value="Mililiter">
-                                            <label>Mililiter</label>
-                                        </div>
-                                    </div>
-
-                                    @error('ks_pestisida_jumlah_takaran')
-                                        <div class="invalid-feedback">{{ $message }}</div>
-                                    @enderror
-
-                                </div>
-
-                                <!-- Pestisida Keterangan -->
-                                <div class="mb-3">
-                                    <label for="pestisidaKeterangan" class="form-label" style="font-weight: 600;">Keterangan
-                                        Kegiatan</label>
-                                    <input type="text" name="ks_pestisida_keterangan" style="width:100%"
-                                        class="form-control">
-                                </div>
-
-                                <!-- Button Submit dan Cancel -->
-                                <div class="mb-4 mt-5 text-center">
-                                    <button type="submit" class="btn btn-primary me-4">Submit</button>
-                                    <button type="reset" class="btn btn-danger">Cancel</button>
-                                </div>
+                            <!-- Button Submit dan Cancel -->
+                            <div class="mb-4 mt-5 text-center">
+                                <button type="submit" class="btn btn-primary me-4">Submit</button>
+                                <button type="reset" class="btn btn-danger">Cancel</button>
+                            </div>
                         </form>
                     </div>
                 </div>
