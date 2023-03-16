@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\ks_pestisida;
+use Encore\Admin\Middleware\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Session as FacadesSession;
 
 class KsPestisidaController extends Controller
 {
@@ -25,7 +27,8 @@ class KsPestisidaController extends Controller
             $data = DB::table('ks_pestisidas')
                 ->join('pestisidas', 'ks_pestisidas.pestisida_id', '=', 'pestisidas.id')
                 ->join('penanaman_bawangs', 'ks_pestisidas.id_user', '=', 'penanaman_bawangs.id_user')
-                ->select('ks_pestisidas.*', 'penanaman_bawangs.*', 'pestisidas.pestisida_nama')
+                ->select('ks_pestisidas.id AS uid', 'ks_pestisidas.*', 'pestisidas.pestisida_nama')
+                // ->select('penanaman_bawangs.*', 'pestisidas.pestisida_nama')
                 ->where('ks_pestisidas.id_user', $currentuserid)
                 ->where('penanaman_bawangs.ks_panen', 0)
                 ->orderBy('ks_pestisidas.ks_pestisida_tgl_semprot', 'DESC')
@@ -58,8 +61,8 @@ class KsPestisidaController extends Controller
             'pestisida_id' => 'required',
             'ks_pestisida_jumlah_takaran' => 'required'
         ], [
-            'ks_pestisida_tgl_semprot'=> '*Field ini wajib diisi',
-            'pestisida_id'=> '*Field ini wajib diisi',
+            'ks_pestisida_tgl_semprot' => '*Field ini wajib diisi',
+            'pestisida_id' => '*Field ini wajib diisi',
             'ks_pestisida_jumlah_takaran' => '*Field ini wajib diisi',
         ]);
 
@@ -68,7 +71,7 @@ class KsPestisidaController extends Controller
         $input_ks_pestisida_tgl_semprot = $request->input('ks_pestisida_tgl_semprot');
 
         $datalokasi = $request->input('lokasi_keterangan');
-        
+
         $dataJumlahTakaranPestisida = $request->input('ks_pestisida_jumlah_takaran');
         $stnJumlahTakaranPestisida = $request->input('stnJumlahTakaranPestisida');
         $dataHasilJumlahTakaranPestisida = $dataJumlahTakaranPestisida;
@@ -113,8 +116,8 @@ class KsPestisidaController extends Controller
             'pestisida_id' => 'required',
             'ks_pestisida_jumlah_takaran' => 'required'
         ], [
-            'ks_pestisida_tgl_semprot'=> '*Field ini wajib diisi',
-            'pestisida_id'=> '*Field ini wajib diisi',
+            'ks_pestisida_tgl_semprot' => '*Field ini wajib diisi',
+            'pestisida_id' => '*Field ini wajib diisi',
             'ks_pestisida_jumlah_takaran' => '*Field ini wajib diisi',
         ]);
 
@@ -139,7 +142,15 @@ class KsPestisidaController extends Controller
     }
     public function deletepestisida($id)
     {
+        // // $delete = ks_pestisida::find($id)->delete();
         $delete = DB::table('ks_pestisidas')->where('id', $id)->delete();
+        // $task = ks_pestisida::findOrFail($id);
+
+        // $task->delete();
         return redirect()->route('datapestisida')->with('success', 'Data Pupuk telah  dihapus');
+
+        // FacadesSession::flash('flash_message', 'Task successfully deleted!');
+
+        // return redirect()->route('datapestisida');
     }
 }

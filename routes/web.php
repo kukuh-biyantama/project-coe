@@ -107,7 +107,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::post('/insertdatapestisida', [KsPestisidaController::class, 'insertdatapestisida'])->name('insertdatapestisida');
 	Route::get('/tampildatapestisida/{id}', [KsPestisidaController::class, 'tampildatapestisida'])->name('tampildatapestisida');
 	Route::post('/updatedatapestisida/{id}', [KsPestisidaController::class, 'updatedatapestisida'])->name('updatedatapestisida');
-	Route::get('/deletepestisida/{id}', [KsPestisidaController::class, 'deletepestisida'])->name('deletepestisida');
+	Route::get('/deletepestisida/{id}', [KsPestisidaController::class, 'deletepestisida']);
 
 
 	// Pupuk
