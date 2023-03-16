@@ -87,10 +87,13 @@
                             </div>
                             <!-- nama penebas -->
                             <div class="mb-3">
-                                <label for="" class="form-label">Nama penebas</label>
+                                <label for="" class="form-label">Cari Nama Penebas/Pembeli</label>
                                 <br>
                                 <select class="cari form-control" style="width:500px;" name="cari" id="id_penebas"></select>
+                                <input type="text" name="cari" class="form-control" style="width:500px; margin-top:10px;" placeholder="Tidak menemukan hasil? Masukkan secara manual">
                             </div>
+
+
                             {{ csrf_field() }}
                             <div class="mb-3 mt-4">
                                 <label for="" class="form-label">Harga yang disepakati</label>
